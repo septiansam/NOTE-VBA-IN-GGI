@@ -1,0 +1,47 @@
+'MENJALANKAN SUB DI FILE MAKRO, yaitu Sub apussemua() secara langsung
+'Application.Run "'" & WBMAKRO.Name & "'!apussemua"
+
+
+
+
+
+
+
+
+Kode tersebut adalah bagian dari sebuah makro yang berjalan di Workbook A dan berfungsi untuk menjalankan sebuah sub-routine yang ada di Workbook B. Berikut adalah penjelasan rinci dari kode tersebut:
+
+' Menjalankan sub-routine di Workbook B
+Ini adalah komentar yang memberikan penjelasan umum tentang tujuan dari baris kode berikutnya.
+
+Application.Run
+Ini adalah metode yang digunakan untuk menjalankan sub-routine atau makro di luar Workbook A, dalam hal ini di Workbook B.
+
+"'" & wbB.Name & "'!MySub"
+Ini adalah argumen yang diberikan kepada metode Application.Run. Argumen ini menentukan nama dan lokasi sub-routine yang ingin dijalankan di Workbook B.
+
+Tanda ' di awal dan akhir digunakan untuk membungkus nama Workbook B dalam tanda petik satu karena Workbook B dianggap sebagai string.
+wbB.Name mengambil nama Workbook B (dalam hal ini, nama file Workbook B).
+"!" digunakan untuk memisahkan nama Workbook B dengan nama sub-routine yang ingin dijalankan di dalam Workbook B.
+"MySub" adalah nama sub-routine yang ingin dijalankan di Workbook B. Anda harus menggantinya dengan nama sub-routine yang sebenarnya dari Workbook B.
+Jadi, baris kode tersebut secara keseluruhan berfungsi untuk menjalankan sub-routine bernama "MySub" yang ada di Workbook B menggunakan metode Application.Run.
+
+
+
+Dalam kode tersebut, berikut adalah penjelasan dari setiap kata:
+
+Application.Run: Ini adalah metode yang digunakan untuk menjalankan sub-routine atau makro dalam VBA.
+
+': Tanda kutip satu (') digunakan sebagai tanda pembuka dan penutup untuk merujuk pada teks atau string dalam VBA. Dalam konteks ini, tanda kutip satu digunakan untuk membungkus nama Workbook B agar dianggap sebagai string.
+
+&: Operator konkatensasi, digunakan untuk menggabungkan atau menggabungkan teks atau string.
+
+wbB.Name: Ini adalah properti yang mengembalikan nama Workbook B yang telah diberikan ke variabel wbB. Properti .Name mengembalikan nama file Workbook B.
+
+'!': Tanda seru diikuti oleh tanda kutip (') digunakan untuk memisahkan antara nama Workbook B dengan nama sub-routine yang ingin dijalankan di dalam Workbook B.
+
+apussemua: Ini adalah nama sub-routine yang ingin dijalankan di Workbook B. Nama ini harus sesuai dengan nama sub-routine yang ada di Workbook B yang ingin Anda jalankan.
+
+Dalam keseluruhan kode tersebut, Application.Run digunakan untuk menjalankan sub-routine "apussemua" yang ada di Workbook B. Tanda kutip satu digunakan untuk membungkus nama Workbook B agar dianggap sebagai string, dan tanda seru diikuti oleh tanda kutip digunakan untuk memisahkan nama Workbook B dengan nama sub-routine.
+
+
+

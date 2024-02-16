@@ -1,0 +1,3 @@
+If shALL.Range("A2").MergeCells Then
+    shALL.Range("A2:F2").UnMerge
+End If

@@ -1,0 +1,33 @@
+ActiveWorkbook.Worksheets("TES2").Sort.SortFields.Add Key:=Range("H2:H100000"), _
+    SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal
+ActiveWorkbook.Worksheets("TES2").Sort.SortFields.Add Key:=Range("J2:J100000"), _
+    SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal
+ActiveWorkbook.Worksheets("TES2").Sort.SortFields.Add Key:=Range("I2:I100000"), _
+    SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal
+With ActiveWorkbook.Worksheets("TES2").Sort
+    .SetRange Range("A1:J100000")
+    .Header = xlYes
+    .MatchCase = False
+    .Orientation = xlTopToBottom
+    .SortMethod = xlPinYin
+    .Apply
+End With
+
+
+ActiveWorkbook: Ini adalah objek yang digunakan untuk merepresentasikan workbook (buku kerja) aktif di aplikasi Microsoft Excel. Workbook adalah file yang berisi satu atau lebih lembar kerja (worksheet).
+
+Worksheets("TES2"): Pada workbook yang aktif, kita mengakses lembar kerja yang memiliki nama "TES2". Dengan menggunakan Worksheets dan nama lembar kerja dalam tanda kutip ("TES2"), kita merujuk ke lembar kerja tersebut.
+
+Sort: Ini adalah metode yang digunakan untuk melakukan pengurutan data pada lembar kerja.
+
+SortFields.Add: Ini adalah metode yang digunakan untuk menambahkan kriteria pengurutan ke objek SortFields. Kriteria pengurutan dapat ditambahkan lebih dari satu jika diperlukan.
+
+Key:=Range("H2:H100000"): Parameter Key digunakan untuk menentukan range data yang akan diurutkan. Dalam kasus ini, data pada kolom H dari sel H2 sampai H100000 akan diurutkan.
+
+SortOn:=xlSortOnValues: Parameter SortOn menentukan kapan pengurutan akan dilakukan. Nilai xlSortOnValues menunjukkan bahwa pengurutan akan berdasarkan nilai-nilai (data) pada kolom yang ditentukan.
+
+Order:=xlAscending: Parameter Order menentukan urutan pengurutan, apakah menaik (ascending) atau menurun (descending). Nilai xlAscending menunjukkan pengurutan akan dilakukan dari nilai terkecil ke nilai terbesar.
+
+DataOption:=xlSortNormal: Parameter DataOption menentukan bagaimana pengurutan dilakukan terhadap data. Nilai xlSortNormal menunjukkan bahwa data akan diurutkan dengan cara biasa.
+
+Jadi, rangkaian kode tersebut akan mengurutkan data pada kolom H di lembar kerja "TES2" pada workbook aktif, dari sel H2 sampai H100000, dengan mengurutkan nilai-nilai secara menaik (ascending) berdasarkan data yang ada di kolom tersebut.

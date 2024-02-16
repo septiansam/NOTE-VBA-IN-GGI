@@ -1,0 +1,12 @@
+Function WorksheetExists(shtName As String) As Boolean
+    On Error Resume Next
+    WorksheetExists = Not Sheets(shtName) Is Nothing
+    On Error GoTo 0
+End Function
+
+If WorksheetExists(CEK_SHEET) Then
+        Sheets(CEK_SHEET).Select
+        Cells.Copy
+End If
+
+Sheets.Add(After:=Sheets(Sheets.Count)).Name = "tes2"

@@ -1,0 +1,32 @@
+' JIKA TERKLIK TOMBOL PROSES, DENGAN KODISI FILE TERSEBUT SUDAH ADA DI DIRECTORY
+' UNTUK MENGHINDARI REPLACE FILE YANG BERISI DATA PENTING
+
+' VALIDASI / CEK
+
+' Siapkan File Backup
+Dim wbBackup As Workbook, pathFile As String, nameFile As String
+nameFile = namaBulan & "'" & Right(Year(tanggalAwal), 2)
+pathFile = shBantu.Range("E4") & Application.PathSeparator & nameFile
+
+
+Dim pathCek As String, nameCek As String, version As Long, fileCek As String
+pathCek = shBantu.Range("E4")
+nameCek = nameFile
+
+' Inisialisasi nomor versi awal
+version = 2
+
+' Cek apakah ada file dengan nama yang sama tanpa v di awal, dan v berapa lagi yang ada
+If Dir(pathCek & "\" & nameCek & ".xlsx") <> "" Then
+    nameFile = nameCek & "v2.xlsx"
+End If
+
+If Dir(pathCek & "\" & nameFile) <> "" Then
+    Do
+        nameFile = nameCek & "v" & version & ".xlsx"
+        version = version + 1
+    Loop While Dir(pathCek & "\" & nameFile) <> ""
+End If
+
+' Simpan workbook dengan nama file yang belum digunakan
+pathFile = shBantu.Range("E4") & Application.PathSeparator & nameFile

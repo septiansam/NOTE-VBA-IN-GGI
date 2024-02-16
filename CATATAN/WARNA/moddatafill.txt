@@ -1,0 +1,266 @@
+modDataFill
+
+Option Explicit
+
+Sub findAndFill()
+'
+' CARI DATA DI SETIAP FILE DAN ISI
+'
+' DEVELOPER: SEPTIAN ARIF MAULANA
+'
+'
+
+    Dim twb As Workbook, wb As Workbook, WSREWORK As Worksheet
+    Dim folderPath As String
+    Dim fileNames() As Variant
+    Dim fileName As Variant
+    Dim filePath As String
+    Dim tgl As Date, R1 As Range, C1 As Range, ROWMASTER As Integer, COLMASTER As Integer
+    Dim LastRow As Long, LastColumn As Long, lr As Long, lrNote As Long
+    Dim colNames() As Variant
+    Dim i As Long, j As Long, colName As String
+    
+    Dim nameTotal As String
+    
+    Set twb = ThisWorkbook
+    Set WSREWORK = Sheets("REWORK")
+    ' Tentukan folder tempat file-file berada
+    folderPath = "E:\DATA SEPTIAN\LEARN-PROJECT\TERBARU 03_07_2023\REWORK"
+    
+    ' Tentukan nama file yang ingin dicari dalam array
+    fileNames = Array("Cileunyi", "Majalengka 1", "Majalengka 2", "Kalibenda", "CV Chawan", "CV Anugrah", "CNJ2", "CAHAYA BUSANA ABADI")
+    
+    ' Loop melalui setiap nama file dalam array
+    For i = LBound(fileNames) To UBound(fileNames)
+        Sheets("NOTE1").Select
+        Cells.Clear 'SUDAH TERMASUK ClearContents dan ClearFormat
+        
+        ' Tentukan nama file yang ingin dicari
+        fileName = fileNames(i)
+        
+        ' Cari file dalam folder yang terbuka
+
+        filePath = Dir(folderPath & Application.PathSeparator & "*" & fileName & "*")
+
+        ' Periksa apakah file ditemukan
+        If filePath = "" Then
+            ' Jika file tidak ditemukan
+            twb.Activate
+            MsgBox "File " & fileName & " Doesn't Exists", vbCritical
+            Exit Sub
+            'Next 'jika tidak ada lanjut keperulangan selanjutnya
+        Else
+            ' Buka file yang ditemukan
+            Workbooks.Open folderPath & "\" & filePath
+        End If
+        Set wb = ActiveWorkbook
+
+        Sheets(1).Select
+        Range("A" & Rows.Count).End(xlUp).Select
+        Range(Selection, "Z1").Copy
+        twb.Activate
+        
+        Sheets("NOTE1").Select: Cells(1, 1).PasteSpecial xlPasteAll: Application.CutCopyMode = False
+        Range("D:X").Delete shift:=xlToLeft
+        Range("D:D").Replace What:="% %", Replacement:="%", LookAt:=xlPart, MatchCase:=False
+        
+        lrNote = Range("A" & Rows.Count).End(xlUp).Row
+        Range("B" & lrNote).Select
+        Selection.UnMerge
+
+        wb.Close SaveChanges:=False
+
+        Sheets("NOTE1").Select
+        
+        lr = Sheets("NOTE1").Cells.Find(What:="*" _
+            , LookAt:=xlPart _
+            , LookIn:=xlFormulas _
+            , SearchOrder:=xlByRows _
+            , searchdirection:=xlPrevious).Row
+        colNames = Array("Cileunyi", "Maja 1", "Maja 2", "Kalibenda", "CV Chawan", "CV Anugrah", "CNJ2", "CBA")
+        
+        ' KARENA NAMA KOLOM BERADA DI PERULANGAN i
+        colName = colNames(i)
+        Set C1 = WSREWORK.Range("1:1").Find(colName)
+            
+        For j = 3 To lr
+            Sheets("NOTE1").Select
+            If Cells(j, "B") <> vbNullString Then
+                tgl = Cells(j, "B").Value2
+                Range(Cells(j, "D"), Cells(j + 1, "E")).Copy
+                
+                ' MASUK KE SHEETS REWORK
+'                Dim lrRework As Long
+                WSREWORK.Select
+'                    lrRework = WSREWORK.Cells.Find(What:="*" _
+'                    , LookAt:=xlPart _
+'                    , LookIn:=xlFormulas _
+'                    , SearchOrder:=xlByRows _
+'                    , searchdirection:=xlPrevious).Row
+                
+                Set R1 = Range("A:A" & lrRework).Find(tgl)
+                
+                ' CEK APAKAH R1 DITEMUKAN
+                If Not R1 Is Nothing And Not C1 Is Nothing Then
+                    ROWMASTER = Range("A:A").Find(tgl).Row 'dibaris mana
+                    COLMASTER = Rows(1).Find(colName).Column
+                    Cells(ROWMASTER, COLMASTER).PasteSpecial xlPasteAll
+                    Application.CutCopyMode = False
+                    
+                    ''' UPDATE 03/07/2023 SEPTIAN '''
+                    ' TAMAHAN YEUH
+                    Cells(ROWMASTER, COLMASTER).NumberFormat = "#,##0" 'ANGKA DIATAS PERSENNYA
+                    With Cells(ROWMASTER + 1, COLMASTER)
+                        .NumberFormat = "GENERAL" 'PERSENNYA
+                        .Value = .Value
+                    End With
+                    With Cells(ROWMASTER, COLMASTER + 1)
+                        .NumberFormat = "#,##0" 'GIGIREUN PERSEN ALIAS TOTAL
+                        .Value = .Value
+                    End With
+                    
+                    ' AKHIR UPDATE
+                    
+
+                    ' WARNA BEREUM
+                    
+                    Cells(1, COLMASTER).Select
+                    If Cells(ROWMASTER + 1, COLMASTER) > 0.05 And Cells(1, COLMASTER).Interior.ColorIndex = 6 Then
+                        Cells(ROWMASTER + 1, COLMASTER).Font.Color = vbRed
+                    ElseIf Cells(ROWMASTER + 1, COLMASTER) > 0.1 And Cells(1, COLMASTER).Interior.ColorIndex = 4 Then
+                        Cells(ROWMASTER + 1, COLMASTER).Font.Color = vbRed
+                    End If
+                End If
+            Else
+                Sheets("NOTE1").Select
+                If Cells(j, "A") = "TOTAL ALL LINE" Then
+                    nameTotal = Cells(j, "A").Value
+                    Range(Cells(j, "D"), Cells(j + 1, "E")).Copy
+                    WSREWORK.Select
+                    
+                    Dim rngTotal As Range
+                    Dim rowTotal As Integer
+                    Set rngTotal = Range("A:A").Find("*TOTAL*")
+                    If Not rngTotal Is Nothing Then
+                        rowTotal = Range("A:A").Find("*TOTAL*").Row
+                        COLMASTER = Rows(1).Find(colName).Column
+                        Cells(rowTotal, COLMASTER).PasteSpecial xlPasteAll
+                        Application.CutCopyMode = False
+                        Cells(rowTotal, COLMASTER).NumberFormat = "#,##0"
+                        
+                        ' GIGIREUN PERSEN ALIAS KOLON TOTAL, PANGHANAPNA
+                        With Cells(rowTotal, COLMASTER + 1)
+                            .NumberFormat = "#,##0"
+                            .Value = .Value
+                        End With
+                    End If
+                End If
+            End If
+        
+        Next j
+    Next i
+    
+    WSREWORK.Select
+    
+    ''' UPDATE 03/07/2023 SEPTIAN '''
+    
+    If ActiveSheet.AutoFilterMode = True Then ActiveSheet.AutoFilter
+    
+    ' BARIS AKHIR
+    LastRow = WSREWORK.Cells.Find(What:="*" _
+            , LookAt:=xlPart _
+            , LookIn:=xlFormulas _
+            , SearchOrder:=xlByRows _
+            , searchdirection:=xlPrevious).Row
+    
+    ' KOLOM AKHIR
+    LastColumn = WSREWORK.Cells.Find(What:="*" _
+    , LookAt:=xlPart _
+    , LookIn:=xlFormulas _
+    , SearchOrder:=xlByColumns _
+    , searchdirection:=xlPrevious).Column
+
+    ' RATA RATA ALL FACTORY
+    Cells(LastRow, LastColumn).FormulaR1C1 = _
+        "=AVERAGE(RC[-16],RC[-14],RC[-12],RC[-10],RC[-8],RC[-6],RC[-4],RC[-2])"
+    With Cells(LastRow, LastColumn)
+        .Font.Bold = True
+        .Font.Size = 14
+    End With
+
+    ' ISI BARIS TOTAL ALL LINE
+    
+    rowTotal = Range("A:A").Find("*TOTAL*").Row
+    
+    Dim TOTAL As Range
+    Set TOTAL = Range(Cells(rowTotal, 1), Cells(rowTotal + 1, LastColumn - 1))
+    
+    With TOTAL
+        .Font.Bold = True
+        .Interior.ColorIndex = 15
+    End With
+        
+    If Cells(rowTotal, "A").MergeCells = False Then
+        Cells(rowTotal, 1).ClearContents
+        Range(Cells(rowTotal, 1), Cells(rowTotal, 1).Offset(1)).Merge
+    End If
+    
+
+    ' BILIH AYA AUTOFILTER PAREUMAN
+    If ActiveSheet.AutoFilterMode = True Then ActiveSheet.AutoFilter
+    
+    ''' UPDATE SELESAI '''
+    With Cells
+        .EntireColumn.AutoFit
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+    End With
+    
+    Call fillEmptyCells
+    
+End Sub
+
+
+Sub fillEmptyCells()
+'
+' CARI CELL KOSONG, ISI "-", LALU MERGE
+'
+'
+Dim LastRow As Long, LastColumn As Long
+Dim i As Long, j As Long
+Dim twb As Workbook
+Dim WSREWORK As Worksheet
+Set twb = ThisWorkbook
+Set WSREWORK = twb.Sheets("REWORK")
+
+    WSREWORK.Select
+    LastRow = WSREWORK.Cells.Find(What:="*" _
+            , LookAt:=xlPart _
+            , LookIn:=xlFormulas _
+            , SearchOrder:=xlByRows _
+            , searchdirection:=xlPrevious).Row
+    LastColumn = WSREWORK.Cells.Find(What:="*" _
+            , LookAt:=xlPart _
+            , LookIn:=xlFormulas _
+            , SearchOrder:=xlByColumns _
+            , searchdirection:=xlPrevious).Column - 1
+            
+            ' DIKURANGAN HIJI SABAB KOLOM ALL FACTORY TIDAK DI PROSES DISINI
+
+
+    ' i untuk kolom, j untuk baris
+    For i = 3 To LastColumn ' 3 TEH TI KOLOM 3 ALIAS KOLOM "C"
+        For j = 4 To LastRow - 1 Step 2 ' MULAINA TI BARIS KA 4, 2 2 PROSESNA
+            ' LAMUN TE DI MERGE JEUNG KOSONG KONDISI NATEH
+            If Cells(j, i).MergeCells = False And Cells(j, i) = vbNullString Then
+                Cells(j, i) = "-"
+                With Range(Cells(j, i), Cells(j + 1, i))
+                    .Merge
+                    .VerticalAlignment = xlCenter
+                    .HorizontalAlignment = xlCenter
+                End With
+            End If
+        Next j
+    Next i
+
+End Sub

@@ -1,0 +1,11 @@
+Sub ConvertToText1()
+Sheets("Rekonsiliasi Pembelian Pajak").Select
+Dim rg As Range, cell As Range, x As String
+Set rg = Range(Cells(3, 8), Cells(Cells(Rows.Count, 8).End(xlUp).Row, 8))
+rg.Activate
+For Each cell In rg
+    cell.NumberFormat = "@"
+    x = cell.Value
+    cell.FormulaR1C1 = x
+Next cell
+End Sub

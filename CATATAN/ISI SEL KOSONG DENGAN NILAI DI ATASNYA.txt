@@ -1,0 +1,16 @@
+Sub fillBlankCells()
+
+Dim TEST As String
+Dim twb As Workbook, ws As Worksheet
+
+TEST = "TEST"
+Set twb = ThisWorkbook: Set ws = twb.Sheets(TEST)
+
+ws.Columns("A:A").Select
+Selection.SpecialCells(xlCellTypeBlanks).Select 'Memilih sel Kosongnya
+Selection.FormulaR1C1 = "=R[-1]C"
+
+
+Range("A2:C" & lr).SpecialCells(xlCellTypeBlanks).Formula = "=A2"
+
+End Sub

@@ -1,0 +1,25 @@
+'''[ PILIH FILE ]'''
+    Dim FullPathFile As Variant
+    Dim FileDialog As FileDialog
+
+    ' Membuat objek FileDialog
+    Set FileDialog = Application.FileDialog(msoFileDialogFilePicker)
+
+    ' Mengatur direktori awal
+    FileDialog.InitialFileName = "\\10.8.0.35\Bersama\IT\SEPTIAN\Macro Resume P-L Per Factory & Line" ' Ganti dengan direktori awal yang diinginkan
+
+    ' Menampilkan dialog File Explorer
+    With FileDialog
+        .Title = "Pilih File Data"
+        .AllowMultiSelect = False
+
+        ' Jika pengguna mengklik tombol "Cancel"
+        If .Show <> -1 Then
+            MsgBox "Proses dibatalkan!"
+            Exit Sub
+        End If
+
+        ' Mengambil nama file yang dipilih
+        FullPathFile = .SelectedItems(1)
+        TWB.Sheets("HOME").Range("AA2").Value = FullPathFile
+    End With

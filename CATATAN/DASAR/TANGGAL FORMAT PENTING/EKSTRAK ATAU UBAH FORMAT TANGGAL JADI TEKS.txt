@@ -1,0 +1,15 @@
+ATUR DULU JADI FORMAT TEKS = "@"
+
+
+' Ekstrak bagian-bagian tanggal
+         dayPart = Format(Day(jatem), "00")
+         monthPart = MonthName(Month(jatem))
+         yearPart = Year(jatem)
+         
+         ' Menggabungkan bagian-bagian tanggal dalam format teks
+         tglTeks = dayPart & "-" & monthPart & "-" & yearPart
+         
+         
+         tgl = Format(jatem, "dd-mmmm-yyyy")
+         Range("E2:E" & Range("a" & Rows.Count).End(xlUp).Row).NumberFormat = "@"
+         Range("E2:E" & Range("a" & Rows.Count).End(xlUp).Row).Value = tgl

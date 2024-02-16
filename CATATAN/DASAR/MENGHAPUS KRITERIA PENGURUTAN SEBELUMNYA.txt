@@ -1,0 +1,1 @@
+ActiveWorkbook.Worksheets("TES2").Sort.SortFields.Clear

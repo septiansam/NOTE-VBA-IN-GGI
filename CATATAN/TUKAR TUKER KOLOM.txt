@@ -1,0 +1,51 @@
+'    ''''' JUDULNA
+'    Sheets("UNDERWEAR LP10227 ORDER FORM").Select
+'    Rows("1").Copy
+'    Sheets("NOTE1").Select
+'    Selection.Cells(1, 1).PasteSpecial Paste:=xlPasteColumnWidths, Operation:=xlNone, _
+'        SkipBlanks:=False, Transpose:=False
+'    ActiveSheet.Paste
+'    Application.CutCopyMode = False
+
+'    ''''' EUSINA TI SHEET MANA
+'
+    '' DATA ORDER
+'    Sheets("DATA ORDER").Select
+'    Range("B:B,K:K,D:D,M:M").Copy Destination:=Sheets(NOTE2).Range("A1")
+'
+'    '' MASTER DATA FABRIC
+'    Sheets("MASTER DATA FABRIC").Select
+'    Range("D:D").Copy Destination:=Sheets(NOTE2).Range("A1").End(xlToRight).Offset(0, 1)
+'
+'    '' MASTER ADIDAS SKU
+'    Sheets("MASTER ADIDAS SKU").Select
+'    Range("C:C").Copy Destination:=Sheets(NOTE2).Range("A1").End(xlToRight).Offset(0, 1)
+'
+'    '' DATA ORDER
+'    Sheets("DATA ORDER").Select
+'    Range("N:N,O:O,H:H").Copy Destination:=Sheets(NOTE2).Range("A1").End(xlToRight).Offset(0, 1)
+'
+'
+'    ''''' RAPIHKAN DI SHEETS(NOTE2), TEMPATKAN DI POSISI YANG SESUAI DENGAN JUDUL DI NOTE1
+'    Sheets(NOTE2).Select
+'    Range("E2").Delete Shift:=xlUp
+'
+    ' Tuker kolom B dan C
+'    Columns("B:B").Cut
+'    Columns("D:D").Insert Shift:=xlToRight
+'
+'    ' Tuker kolom G dan H
+'    Columns("G:G").Cut
+'    Columns("I:I").Insert Shift:=xlToRight
+'
+'    ' Tuker kolom H dan I
+'    Columns("H:H").Cut
+'    Columns("J:J").Insert Shift:=xlToRight
+'
+'    ' PINDAHKAN KE NOTE1 DATANYA
+'    'Sheets(NOTE2).Cells.ClearFormats
+'    Sheets(NOTE2).UsedRange.Offset(1).Copy 'Destination:=Sheets(NOTE1).Cells(2, 1)
+'    Sheets(NOTE1).Cells(2, 1).PasteSpecial Paste:=xlPasteColumnWidths, Operation:=xlNone, _
+'        SkipBlanks:=False, Transpose:=False
+'    Sheets(NOTE1).Paste
+'    Application.CutCopyMode = False

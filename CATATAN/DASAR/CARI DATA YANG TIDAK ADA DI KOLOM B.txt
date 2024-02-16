@@ -1,0 +1,46 @@
+Sub FindMissingData()
+    Dim ws As Worksheet
+    Dim lastRowA As Long, lastRowB As Long
+    Dim dataA As Variant, dataB As Variant
+    Dim dict As Object
+    Set dict = CreateObject("Scripting.Dictionary")
+    
+    ' Ganti "Sheet1" dengan nama lembar kerja Anda
+    Set ws = ThisWorkbook.Worksheets("CEK")
+    
+    ' Temukan data terakhir di kolom A dan B
+    lastRowA = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row
+    lastRowB = ws.Cells(ws.Rows.Count, "B").End(xlUp).Row
+    
+    ' Baca data di kolom A dan B ke dalam array
+    dataA = ws.Range("A1:A" & lastRowA).Value
+    dataB = ws.Range("B1:B" & lastRowB).Value
+    
+    ' Tambahkan data dari kolom B ke dalam dictionary
+    Dim i As Long
+    For i = 1 To lastRowB
+        If Not dict.Exists(dataB(i, 1)) Then
+            dict.Add dataB(i, 1), 0
+        End If
+    Next i
+    
+    ' Cek data di kolom A dan cari yang tidak ada di dictionary (kolom B)
+    Dim missingData As String
+    For i = 1 To lastRowA
+        If Not dict.Exists(dataA(i, 1)) Then
+            ' Data di kolom A tidak ada di kolom B
+            If missingData = "" Then
+                missingData = dataA(i, 1)
+            Else
+                missingData = missingData & ", " & dataA(i, 1)
+            End If
+        End If
+    Next i
+    
+    ' Tampilkan data yang tidak ada di kolom B
+    If missingData = "" Then
+        MsgBox "Semua data di kolom A juga ada di kolom B."
+    Else
+        MsgBox "Data yang ada di kolom A tapi tidak ada di kolom B: " & missingData
+    End If
+End Sub

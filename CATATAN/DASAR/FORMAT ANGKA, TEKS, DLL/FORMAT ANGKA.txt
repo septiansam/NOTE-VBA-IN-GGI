@@ -1,0 +1,20 @@
+Columns("R").NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+
+
+Format yang Anda berikan dijelaskan sebagai berikut:
+
+_(* #,##0_);: Ini adalah format untuk angka positif. Angka akan ditampilkan dengan tanda pemisah ribuan (koma) dan tanpa desimal.
+
+_(* (#,##0);: Ini adalah format untuk angka negatif. Angka akan ditampilkan dalam tanda kurung dengan tanda pemisah ribuan (koma) dan tanpa desimal.
+
+_(* ""-""??_);: Ini adalah format untuk angka nol (0). Dalam hal ini, "??_" menunjukkan tempat di mana tanda minus akan ditampilkan, yang berarti tanda minus akan muncul di dalam sel.
+
+_(@_): Ini adalah format untuk teks. Teks akan ditampilkan tanpa perubahan.
+
+Jadi, jika kita menerapkan format ini pada suatu sel dengan angka positif, angka negatif, nol, dan teks, berikut adalah contoh hasil tampilannya:
+
+Angka positif (misalnya 12345) akan ditampilkan sebagai: 12,345
+Angka negatif (misalnya -6789) akan ditampilkan sebagai: (6,789)
+Angka nol (0) akan ditampilkan sebagai: -
+Teks (misalnya "Hello") akan tetap ditampilkan sebagai: Hello
+Harap diingat bahwa hasil ini tergantung pada pengaturan lokal Excel dan format tampilan yang diterapkan di sistem Anda. Format angka dan tampilan dapat bervariasi tergantung pada pengaturan regional dan preferensi yang diterapkan dalam lingkungan Excel.

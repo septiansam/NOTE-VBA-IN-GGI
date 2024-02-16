@@ -1,0 +1,59 @@
+' Mengganti karakter non-angka dengan string kosong menggunakan fungsi SUBSTITUTE
+    
+    Dim cell As Range
+    For Each cell In rng
+        Dim newString As String
+        newString = ""
+        
+        For i = 1 To Len(cell.Value)
+            Dim char As String
+            char = Mid(cell.Value, i, 1)
+            
+            ' Memeriksa apakah karakter bukan huruf
+            If Not (char Like "[A-Za-z]") Then
+                newString = newString & char
+            End If
+        Next i
+        
+        cell.Value = newString
+    Next cell
+
+' Mengganti karakter non-angka dengan string kosong menggunakan fungsi SUBSTITUTE
+
+
+Sub CopyNumbersOnly()
+    Dim lastRow As Long
+    
+    ' Menentukan baris terakhir di kolom C
+    lastRow = Cells(Rows.Count, "C").End(xlUp).Row
+    
+    ' Mengganti karakter non-angka dengan string kosong menggunakan fungsi SUBSTITUTE
+    Range("A1:A" & lastRow).Formula = "=SUBSTITUTE(C1,""[^0-9]"","""")"
+    
+    ' Menyalin nilai yang telah diubah ke kolom A menggunakan PasteSpecial
+    Range("A1:A" & lastRow).Copy
+    Range("A1:A" & lastRow).PasteSpecial Paste:=xlPasteValues
+    Application.CutCopyMode = False
+    
+    ' Membersihkan rumus di kolom A
+    Range("A1:A" & lastRow).ClearContents
+End Sub
+
+
+DILUHUR TEJALAN
+
+Function RemoveLetters(inputStr As String) As String
+    Dim regEx As Object
+    
+    ' Membuat objek RegExp
+    Set regEx = CreateObject("VBScript.RegExp")
+    
+    ' Pola regex untuk mencocokkan karakter huruf
+    regEx.Pattern = "[A-Za-z]"
+    
+    ' Menghapus karakter huruf dengan mengganti mereka dengan string kosong
+    RemoveLetters = regEx.Replace(inputStr, "")
+    
+    ' Membersihkan objek RegExp
+    Set regEx = Nothing
+End Function

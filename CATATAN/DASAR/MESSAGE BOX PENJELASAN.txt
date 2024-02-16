@@ -1,0 +1,127 @@
+Di VBA (Visual Basic for Applications), fungsi MsgBox digunakan untuk menampilkan kotak pesan (message box) yang memungkinkan pengguna untuk melihat pesan tertentu dan memberikan respons dengan memilih tombol tertentu. Fungsi ini memiliki beberapa parameter yang mengatur tampilan dan perilaku kotak pesan. Berikut adalah daftar parameter MsgBox dan penjelasannya:
+
+Prompt (wajib): Parameter ini adalah pesan teks yang ingin ditampilkan dalam kotak pesan. Ini adalah parameter wajib dan harus diisi.
+
+Buttons (opsional): Parameter ini menentukan jenis tombol yang akan ditampilkan dalam kotak pesan. Nilai yang dapat digunakan adalah angka yang mewakili jenis tombol yang berbeda:
+
+vbOKOnly (Nilai: 0):
+Menampilkan tombol "OK" saja dalam kotak pesan.
+Tidak ada tombol lain, sehingga pengguna hanya bisa menekan "OK" untuk menutup kotak pesan.
+
+vbOKCancel (Nilai: 1):
+Menampilkan tombol "OK" dan "Cancel" dalam kotak pesan.
+Pengguna dapat memilih untuk menekan tombol "OK" atau "Cancel" sebagai responsnya.
+
+vbAbortRetryIgnore (Nilai: 2):
+Menampilkan tombol "Abort", "Retry", dan "Ignore" dalam kotak pesan.
+Digunakan untuk situasi di mana pengguna harus memilih salah satu dari tiga pilihan respons.
+
+vbYesNoCancel (Nilai: 3):
+Menampilkan tombol "Yes", "No", dan "Cancel" dalam kotak pesan.
+Digunakan ketika pengguna diberikan opsi untuk memilih "Yes", "No", atau membatalkan aksi tersebut.
+
+vbYesNo (Nilai: 4):
+Menampilkan tombol "Yes" dan "No" dalam kotak pesan.
+Pengguna dapat memilih antara "Yes" atau "No" sebagai responsnya.
+
+vbRetryCancel (Nilai: 5):
+Menampilkan tombol "Retry" dan "Cancel" dalam kotak pesan.
+Digunakan untuk situasi di mana pengguna dapat mencoba kembali (Retry) atau membatalkan aksi tersebut.
+
+vbCritical (Nilai: 16):
+Menampilkan ikon pesan dengan tanda seru merah (peringatan).
+Berguna untuk menyoroti pesan yang dianggap penting atau kritis.
+
+vbQuestion (Nilai: 32):
+Menampilkan ikon pertanyaan (tanda tanya) dalam kotak pesan.
+Berguna untuk menampilkan pertanyaan kepada pengguna dan meminta responsnya.
+
+vbExclamation (Nilai: 48):
+Menampilkan ikon peringatan (tanda seru kuning).
+Digunakan untuk menyoroti situasi yang memerlukan perhatian atau peringatan.
+
+vbInformation (Nilai: 64):
+Menampilkan ikon informasi (i dalam lingkaran) dalam kotak pesan.
+Digunakan untuk menyampaikan informasi penting kepada pengguna.
+vbDefaultButton1 (Nilai: 0):
+
+Menetapkan tombol pertama (biasanya "OK") sebagai tombol default.
+Ini akan menjadi pilihan yang aktif ketika pengguna menekan tombol Enter.
+vbDefaultButton2 (Nilai: 256):
+
+Menetapkan tombol kedua (biasanya "No" atau "Cancel") sebagai tombol default.
+Ini akan menjadi pilihan yang aktif ketika pengguna menekan tombol Enter.
+vbDefaultButton3 (Nilai: 512):
+
+Menetapkan tombol ketiga (jika ada) sebagai tombol default.
+Ini akan menjadi pilihan yang aktif ketika pengguna menekan tombol Enter.
+vbDefaultButton4 (Nilai: 768):
+
+Menetapkan tombol keempat (jika ada) sebagai tombol default.
+Ini akan menjadi pilihan yang aktif ketika pengguna menekan tombol Enter.
+Ketika menggunakan parameter Buttons, Anda dapat menggabungkan beberapa nilai dengan menggunakan operator "+" untuk menggabungkan efek tombol yang berbeda. Sebagai contoh, vbExclamation + vbYesNo + vbDefaultButton2 akan menampilkan ikon peringatan, tombol "Yes" dan "No", dengan tombol "No" sebagai tombol default.
+
+HelpFile (opsional): Parameter ini digunakan untuk menentukan file bantuan yang terkait dengan pesan tersebut.
+
+Context (opsional): Parameter ini digunakan untuk menentukan konteks bantuan yang terkait dengan pesan tersebut.
+
+ReturnValue (opsional): Parameter ini berisi angka yang menggambarkan tombol yang dipilih pengguna dalam kotak pesan. Nilai ini dapat ditangkap untuk mengidentifikasi pilihan pengguna.
+
+Contoh Kode MsgBox dengan Semua Parameter Terisi:
+
+Sub ShowCustomMsgBox()
+    Dim response As VbMsgBoxResult
+    response = MsgBox("Ini adalah contoh pesan kustom.", vbYesNoCancel + vbExclamation + vbDefaultButton2, "Judul Pesan", "HelpFile.hlp", 1000)
+    
+    Select Case response
+        Case vbYes
+            MsgBox "Anda memilih tombol Yes."
+        Case vbNo
+            MsgBox "Anda memilih tombol No."
+        Case vbCancel
+            MsgBox "Anda memilih tombol Cancel."
+    End Select
+End Sub
+
+Penjelasan Parameter di Contoh Kode di atas:
+
+Prompt: "Ini adalah contoh pesan kustom."
+Buttons: vbYesNoCancel + vbExclamation + vbDefaultButton2
+vbYesNoCancel: Menampilkan tombol "Yes", "No", dan "Cancel".
+vbExclamation: Menampilkan ikon peringatan.
+vbDefaultButton2: Mengatur tombol "No" sebagai tombol default.
+Title: "Judul Pesan"
+HelpFile: "HelpFile.hlp" (tidak disediakan dalam contoh ini)
+Context: 1000 (tidak disediakan dalam contoh ini)
+Jika kode di atas dijalankan, akan muncul kotak pesan dengan pesan teks "Ini adalah contoh pesan kustom.", ikon peringatan, tombol "Yes", "No", dan "Cancel", tombol "No" sebagai tombol default, dan judul "Judul Pesan". Pengguna dapat memilih salah satu tombol, dan pesan yang sesuai akan ditampilkan berdasarkan pilihan pengguna.
+
+
+Konstan	Nilai	Keterangan
+vbOKOnly	0	Tampilkan tombol OK saja.
+vbOKCancel	1	Menampilkan tombol OK dan Batal .
+vbAbortRetryIgnore	2	Tampilkan tombol Abort , Retry , dan Abaikan .
+vbYesNoCancel	3	Menampilkan tombol Ya , Tidak , dan Batal .
+vbYaTidak	4	Menampilkan tombol Ya dan Tidak .
+vbRetryCancel	5	Tampilkan tombol Coba Lagi dan Batal .
+vbCritical	16	Menampilkan ikon Pesan Kritis .
+vbQuestion	32	Tampilkan ikon Kueri Peringatan .
+vbExclamation	48	Tampilkan ikon Pesan Peringatan .
+vbInformation	64	Tampilkan ikon Pesan Informasi .
+vbDefaultButton1	0	Tombol pertama adalah default.
+vbDefaultButton2	256	Tombol kedua adalah default.
+vbDefaultButton3	512	Tombol ketiga adalah default.
+vbDefaultButton4	768	Tombol keempat adalah default.
+vbApplicationModal	0	Modal aplikasi; pengguna harus menanggapi kotak pesan sebelum melanjutkan pekerjaan di aplikasi saat ini.
+vbSystemModal	4096	Modal sistem; semua aplikasi ditangguhkan sampai pengguna menanggapi kotak pesan.
+vbMsgBoxHelpButton	16384	Menambahkan tombol Bantuan ke kotak pesan.
+vbMsgBoxSetForeground	65536	Menentukan jendela kotak pesan sebagai jendela latar depan.
+vbMsgBoxRight	524288	Teks rata kanan.
+vbMsgBoxRtlReading	1048576	Menentukan teks harus muncul sebagai bacaan kanan-ke-kiri pada sistem bahasa Ibrani dan Arab.
+
+
+
+
+
+
+
+

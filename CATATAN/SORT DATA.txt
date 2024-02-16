@@ -1,0 +1,25 @@
+Sub sortData(ByVal sh As Worksheet, ByVal jenis As Boolean)
+'
+' Ascending ( A - Z ) -> True
+' Descending ( Z - A ) -> False
+'
+    Dim fSort As String 'format sort
+    If jenis = True Then
+        fSort = xlAscending
+    ElseIf jenis = False Then
+        fSort = xlDescending
+    End If
+    
+    Dim sortRange As Range
+    Set sortRange = sh.UsedRange
+    
+    With sh.Sort
+        .SortFields.Clear
+        .SortFields.Add2 key:=sortRange, SortOn:=xlSortOnValues, Order:=fSort, DataOption:=xlSortNormal
+        .SetRange sortRange
+        .Header = xlYes
+        .Orientation = xlTopToBottom
+        .Apply
+    End With
+
+End Sub

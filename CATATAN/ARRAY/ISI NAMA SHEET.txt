@@ -1,0 +1,21 @@
+Sub FillSheetNamesArray()
+    Dim sheetNames() As String
+    Dim i As Integer
+    Dim sheetCount As Integer
+    
+    ' Menghitung jumlah sheet
+    sheetCount = Sheets.Count
+    
+    ' Redefinisikan array dengan ukuran sejumlah sheet yang ada
+    ReDim sheetNames(1 To sheetCount - 1)
+    
+    ' Mengisi array dengan nama sheet, mulai dari sheet kedua
+    For i = 2 To sheetCount
+        sheetNames(i - 1) = Sheets(i).Name
+    Next i
+    
+    ' Menampilkan nama-nama sheet yang disimpan dalam array
+    For i = 1 To UBound(sheetNames)
+        Debug.Print sheetNames(i)
+    Next i
+End Sub

@@ -1,0 +1,41 @@
+Dim sr As String: sr = "SheetRun"
+Dim n As Integer, m As Integer
+Dim ws As Worksheet
+Dim ns As String
+
+n = 1
+If Evaluate("isref('" & "SheetRun1" & "'!A1)") Then
+  For Each ws In twb.Worksheets
+    If ws.Name Like "*" & sr & "*" Then
+      m = Right(ws.Name, Len(ws.Name) - Len(sr))
+    End If
+  Next ws
+  n = n + m
+  Sheets.Add(After:=Sheets(Sheets.Count)).Name = sr & n
+Else
+  Sheets.Add(After:=Sheets(Sheets.Count)).Name = sr & n
+End If
+
+Sub CariDanTambahSheetSheetRun()
+    Dim sr As String: sr = "SheetRun"
+    Dim ws As Worksheet
+    Dim twb As Workbook: Set twb = ThisWorkbook
+    Dim n As Long: n = 1
+    Dim m As Long
+    
+    For Each ws In twb.Sheets
+        If InStr(1, ws.Name, sr, vbTextCompare) > 0 Then
+            m = Right(ws.Name, Len(ws.Name) - Len(sr))
+            n = n + m
+        End If
+    Next ws
+    
+    If n = 1 Then
+        twb.Sheets.Add(After:=twb.Sheets(twb.Sheets.Count)).Name = sr & n
+    Else
+        If Application.Evaluate("ISREF('" & sr & n & "'!A1)") Then
+            n = n + 1
+        End If
+        twb.Sheets.Add(After:=twb.Sheets(twb.Sheets.Count)).Name = sr & n
+    End If
+End Sub

@@ -1,0 +1,10 @@
+With SH_TEMP4.UsedRange
+    .Borders.LineStyle = xlNone
+    .Borders.LineStyle = xlContinuous
+    .HorizontalAlignment = xlCenter
+    .VerticalAlignment = xlCenter
+    .Borders(xlEdgeLeft).Weight = xlMedium
+    .Borders(xlEdgeTop).Weight = xlMedium
+    .Borders(xlEdgeBottom).Weight = xlMedium
+    .Borders(xlEdgeRight).Weight = xlMedium
+End With

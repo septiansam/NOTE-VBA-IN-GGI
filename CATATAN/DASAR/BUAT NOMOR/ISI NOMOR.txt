@@ -1,0 +1,17 @@
+  If lr > 1 Then
+  Sheets(ns).Activate
+    Range("A2") = "1"
+    Range("A2").DataSeries Rowcol:=xlColumns, Step:=1, Stop:=lr - 1
+
+' Isi No
+shRpa.Activate
+lrRPA = shRpa.Range("B" & Rows.Count).End(xlUp).Row
+lrA = shRpa.Range("A" & Rows.Count).End(xlUp).Row
+' Agar header tidak terhapus saat tidak ada datanya
+If lrA = 1 Then lrA = 2
+
+''hapus dulu no nya''
+shRpa.Range("A2:A" & lrA).ClearContents
+''baru isi''
+Range("A2") = "1"
+Range("A2").DataSeries Rowcol:=xlColumns, Type:=xlLinear, Step:=1, Stop:=lrRPA - 1

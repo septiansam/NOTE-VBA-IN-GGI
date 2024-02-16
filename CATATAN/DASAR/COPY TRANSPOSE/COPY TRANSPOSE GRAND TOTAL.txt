@@ -1,0 +1,12 @@
+    SH1_DM1.Range("A1:A13").Value = Application.Transpose(Array("BULAN", "JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"))
+    SH1_DM1.Range("B1:B13").Value = Application.Transpose(Array("Plan Kirim", _
+                                                                SH1_REPORT.Range("D" & LR_TPL).Value, SH1_REPORT.Range("G" & LR_TPL).Value, SH1_REPORT.Range("J" & LR_TPL).Value, _
+                                                                SH1_REPORT.Range("M" & LR_TPL).Value, SH1_REPORT.Range("P" & LR_TPL).Value, SH1_REPORT.Range("S" & LR_TPL).Value, _
+                                                                SH1_REPORT.Range("V" & LR_TPL).Value, SH1_REPORT.Range("Y" & LR_TPL).Value, SH1_REPORT.Range("AB" & LR_TPL).Value, _
+                                                                SH1_REPORT.Range("AE" & LR_TPL).Value, SH1_REPORT.Range("AH" & LR_TPL).Value, SH1_REPORT.Range("AK" & LR_TPL).Value))
+    SH1_DM1.Range("C1:C13").Value = Application.Transpose(Array("Terkirim", _
+                                                                SH1_REPORT.Range("E" & LR_TPL).Value, SH1_REPORT.Range("H" & LR_TPL).Value, SH1_REPORT.Range("K" & LR_TPL).Value, _
+                                                                SH1_REPORT.Range("N" & LR_TPL).Value, SH1_REPORT.Range("Q" & LR_TPL).Value, SH1_REPORT.Range("T" & LR_TPL).Value, _
+                                                                SH1_REPORT.Range("W" & LR_TPL).Value, SH1_REPORT.Range("Z" & LR_TPL).Value, SH1_REPORT.Range("AC" & LR_TPL).Value, _
+                                                                SH1_REPORT.Range("AF" & LR_TPL).Value, SH1_REPORT.Range("AI" & LR_TPL).Value, SH1_REPORT.Range("AL" & LR_TPL).Value))
+

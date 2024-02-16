@@ -1,0 +1,55 @@
+HILANGKAN BORDER
+
+Cells.Borders.LineStyle = xlNone
+
+ATAU
+
+Sub HAPUSBORDER()
+Range("A2", Cells(Rows.Count, Columns.Count)).Select
+With Selection.Borders
+    .LineStyle = xlNone
+End With
+End Sub
+
+
+Dalam VBA Excel, terdapat beberapa metode dan properti yang berkaitan dengan pengaturan border (garis tepi) pada sel atau range. Berikut adalah penjelasan untuk beberapa metode dan properti tersebut:
+
+.Borders: Ini adalah properti yang digunakan untuk mengakses objek Borders dari sel atau range. Objek Borders memungkinkan Anda untuk mengatur dan mengelola garis tepi pada sel atau range.
+
+Contoh penggunaan:
+
+vba
+Copy code
+Range("A1").Borders(xlEdgeTop).LineStyle = xlContinuous
+Range("A1").Borders(xlEdgeTop).Color = RGB(255, 0, 0)
+.BorderAround: Ini adalah metode yang digunakan untuk mengatur garis tepi sekeliling (border around) pada sel atau range. Metode ini mengatur garis tepi di sekeliling sel atau range secara keseluruhan.
+
+Contoh penggunaan:
+
+vba
+Copy code
+Range("A1").BorderAround LineStyle:=xlContinuous, Color:=RGB(255, 0, 0)
+.LineStyle: Ini adalah properti yang digunakan untuk mengatur jenis garis pada border.
+
+Contoh penggunaan:
+
+vba
+Copy code
+Range("A1").Borders(xlEdgeLeft).LineStyle = xlDashDot
+.Color: Ini adalah properti yang digunakan untuk mengatur warna garis pada border.
+
+Contoh penggunaan:
+
+vba
+Copy code
+Range("A1").Borders(xlEdgeTop).Color = RGB(255, 0, 0)
+.Weight: Ini adalah properti yang digunakan untuk mengatur ketebalan garis pada border.
+
+Contoh penggunaan:
+
+vba
+Copy code
+Range("A1").Borders(xlEdgeBottom).Weight = xlThin
+Dalam contoh-contoh di atas, Range("A1") mengacu pada sel yang ingin Anda atur border-nya. Anda dapat mengganti Range("A1") dengan range atau sel yang sesuai dengan kebutuhan Anda.
+
+Melalui penggunaan metode dan properti tersebut, Anda dapat mengontrol dan mengatur tampilan garis tepi pada sel atau range dalam lembar kerja Excel menggunakan VBA. Anda dapat mengubah jenis garis, warna, ketebalan, dan lainnya sesuai dengan preferensi Anda.

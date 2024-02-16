@@ -1,0 +1,22 @@
+    ' BUAT NOMOR
+    lr = shHasil.Cells(Rows.Count, 2).End(xlUp).Row
+    If lr > 1 Then
+    shHasil.Range("A2:A" & lr).ClearContents
+    shHasil.Range("A2") = "1"
+    shHasil.Range("A2").DataSeries Rowcol:=xlColumns, Step:=1, Stop:=lr - 1
+    Else
+    shHasil.Range("A2") = "1"
+    End If
+
+ATAU
+
+    shHasil.Range("A2:A" & lr).ClearContents
+    shHasil.Range("A2") = "1"
+    shHasil.Range("A2").DataSeries Rowcol:=xlColumns, Step:=1, Stop:=lr - 1
+
+-1 MUN AYA JUDLAN
+
+CONTOH EWEH JUDULAN
+lr = Cells(Rows.Count, 2).End(xlUp).Row
+    Range("A1") = "1"
+    Range("A1").DataSeries xlColumns, xlLinear, , 1, lr

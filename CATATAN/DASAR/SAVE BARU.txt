@@ -1,0 +1,12 @@
+' Save File Hasil Proses 1
+    
+    Dim pathResult As String, folderResult As String, nameResult As String
+    folderResult = shTOMBOL.Range("E8")
+    nameResult = shTOMBOL.Range("D8")
+    pathResult = folderResult & Application.PathSeparator & nameResult
+    
+    twb.Sheets("OLAH").Copy
+    Sheets("OLAH").Name = nameResult
+    
+    ActiveWorkbook.SaveAs Filename:=pathResult, FileFormat:=xlOpenXMLWorkbook
+    ActiveWindow.Close SaveChanges:=True

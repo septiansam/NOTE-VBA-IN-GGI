@@ -1,0 +1,1 @@
+Range(Cells(1, Cells(6, Columns.Count).End(xlToLeft).Column), Cells(Rows.Count, Columns.Count - 1)).Offset(0, 1).Select

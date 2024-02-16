@@ -1,0 +1,85 @@
+HAPUS SHEETS, KECUALI SHEETS DENGAN NAMA TERTENTU. CONTOH:
+HAPUS SHEETS KECUALI SHEETS DENGAN NAMA TOMBOL DAN TES
+
+Sub ClearSheets()
+    
+    OptVBA True
+
+    Dim sn As Variant
+    Dim ws As Worksheet
+    
+    sn = Array("SAM", "SIZECODE", "MASTER", "TOMBOL")
+    
+    For Each ws In ThisWorkbook.Worksheets
+        
+        If ws.Visible = xlSheetHidden Then ws.Visible = xlSheetVisible
+
+        If IsError(Application.Match(ws.Name, sn, 0)) Then
+            ws.Delete
+        End If
+        
+    Next ws
+    
+    OptVBA False
+
+End Sub
+
+
+
+
+
+Sub DeleteWorksheets()
+    Dim ws As Worksheet
+    Dim nama As Variant
+
+    nama = Array("TOMBOL", "tes")
+
+    Application.DisplayAlerts = False
+
+    For Each ws In ThisWorkbook.Worksheets
+        If IsError(Application.Match(ws.Name, nama, 0)) Then
+            ws.Delete
+        End If
+    Next ws
+
+    Application.DisplayAlerts = True
+End Sub
+
+HAPUS UNTUK SELAIN SHEETS TOMBOL AJA
+
+Sub Clear()
+'
+' Hapus Semua Sheets Kecuali Sheets TOMBOL
+'
+    
+    Dim ws As Worksheet
+    
+    For Each ws In ThisWorkbook.Worksheets
+        If ws.Name <> "TOMBOL" Then
+            Application.DisplayAlerts = False
+            ws.Delete
+            Application.DisplayAlerts = True
+        End If
+    Next ws
+
+End Sub
+
+HAPUS SHEETS BEBERAPA, DAN SHEETS YANG TERHIDE TIDAK AKAN TERHAPUS.
+DENGAN CATATAN SHEETS YG DI AMANKAN HARUS DI HIDE DULU
+
+Sub DeleteVisibleWorksheets()
+    Dim ws As Worksheet
+    Dim nama As Variant
+
+    nama = Array("TOMBOL", "tes")
+
+    Application.DisplayAlerts = False
+
+    For Each ws In ThisWorkbook.Worksheets
+        If ws.Visible = xlSheetVisible And IsError(Application.Match(ws.Name, nama, 0)) Then
+            ws.Delete
+        End If
+    Next ws
+
+    Application.DisplayAlerts = True
+End Sub

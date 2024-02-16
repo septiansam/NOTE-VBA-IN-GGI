@@ -1,0 +1,2 @@
+If ActiveSheet.AutoFilterMode = True Then Selection.AutoFilter
+Cells.AutoFilter

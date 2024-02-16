@@ -1,0 +1,20 @@
+Sub InputUser()
+Dim twb As Workbook, shInput As Worksheet, shTes As Worksheet
+Dim lrInput As Long, rInput As Range, arr As Variant, lrTes As Long
+Set twb = ThisWorkbook
+Set shInput = twb.Sheets("INPUT USER")
+Set shTes = twb.Sheets("tes")
+
+lrTes = shTes.Range("A" & Rows.Count).End(xlUp).row
+
+lrInput = shInput.Range("A" & Rows.Count).End(xlUp).row
+Set rInput = shInput.Range("A" & lrInput + 1)
+
+shInput.Activate
+shTes.Range("A2:C" & lrTes & ", G2:I" & lrTes & ", R2:R" & lrTes).Copy Destination:=rInput
+
+With Cells
+  .EntireColumn.AutoFit
+  .HorizontalAlignment = xlCenter
+End With
+End Sub

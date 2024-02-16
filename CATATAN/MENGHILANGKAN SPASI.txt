@@ -1,0 +1,13 @@
+HAPUS SPASI BANYAK, MENYISAKAN SATU SPASI
+=TRIM(A1)
+Range("B2:B" & lr).Value = WorksheetFunction.Trim(Range("B2").Value)
+
+
+HAPUS SPASI
+=SUBSTITUTE(A1, " ","")
+
+For Each cell In rgExcost
+  If Not IsEmpty(cell.Value) Then
+    cell.Value = WorksheetFunction.Trim(cell.Value)
+  End If
+Next cell

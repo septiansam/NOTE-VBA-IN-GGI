@@ -1,0 +1,7 @@
+' DO SOMETHING
+
+shOlah.Activate
+lc = Cells(1, Columns.Count).End(xlToLeft).Column
+For Each cell In Range(Cells(1, 1), Cells(1, lc))
+    cell.Value = Application.WorksheetFunction.Trim(cell.Value)
+Next cell

@@ -1,0 +1,19 @@
+Sub PerbaikiKodingan()
+    Dim i As Long
+    For i = SUMPO To 1 Step -1
+        If Cells(1 + i, 2) <> "" And Cells(3 + i, 2) <> "" And Left(Cells(1 + i, 2), 6) <> Left(Cells(2 + i, 2), 6) And Cells(2 + i, 7) <> "" And Not IsError(Cells(2 + i, "O")) Then
+            If Cells(2 + i, 15) = "SMALL" Then
+                Rows(2 + i).Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+                Rows("1:2").Copy
+                Rows(3 + i).Insert Shift:=xlDown
+            ElseIf Cells(2 + i, 15) = "2X – LARGE" Then
+                Rows(2 + i).Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+                Sheets("MASTERKOLOM").Range("BD1:BP2").Copy
+                Sheets(Sheets.Count).Cells(3 + i, 2).Insert Shift:=xlDown
+            End If
+        End If
+    Next i
+End Sub
+
+
+=SUM(N3:N26)

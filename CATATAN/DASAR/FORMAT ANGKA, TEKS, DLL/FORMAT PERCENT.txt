@@ -1,0 +1,2 @@
+                    SH1_REPORT.Cells(LR_REPORT_Factory, LC_Bulan + 2).Style = "Percent"
+                    SH1_REPORT.Cells(LR_REPORT_Factory, LC_Bulan + 2).NumberFormat = "0.00%"

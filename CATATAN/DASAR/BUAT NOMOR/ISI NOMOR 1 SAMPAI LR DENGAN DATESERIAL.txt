@@ -1,0 +1,13 @@
+Sub fillseries()
+'
+' fillseries Macro
+'
+
+'
+    Range("A2").Select
+    ActiveCell.FormulaR1C1 = "1"
+    Range("A2").Select
+    Selection.DataSeries Rowcol:=xlColumns, Type:=xlLinear, Date:=xlDay, _
+        Step:=1, Stop:=100, Trend:=False
+End Sub
+

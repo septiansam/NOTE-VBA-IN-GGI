@@ -1,0 +1,3 @@
+Range("XAA6").CurrentRegion.SpecialCells(xlCellTypeFormulas).ClearContents
+
+shMaster.UsedRange.SpecialCells(xlCellTypeFormulas).ClearContents

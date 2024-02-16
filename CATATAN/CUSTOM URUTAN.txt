@@ -1,0 +1,13 @@
+lr = Range("a" & Rows.Count).End(xlUp).Row
+If lr <> 1 Then
+    With Sheets("FCT").Sort
+        .SortFields.Clear
+        .SortFields.Add Key:=Range("A2:A" & lr), SortOn:=xlSortOnValues, Order:=xlAscending, CustomOrder:="GM1,GM2,GK,CVA,CNJ2", DataOption:=xlSortNormal
+        .SetRange Range("A1:A" & lr)
+        .Header = xlNo
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+End If

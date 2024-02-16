@@ -1,0 +1,4 @@
+Range("C3") = "1"
+Range("C3").Copy
+Range("C" & Rows.Count).End(xlUp).Select
+Range(Selection, "C6").PasteSpecial Paste:=xlPasteAll, Operation:=xlMultiply, SkipBlanks:=False, Transpose:=False

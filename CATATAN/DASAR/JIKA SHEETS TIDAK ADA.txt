@@ -1,0 +1,3 @@
+    If Not Evaluate("isref('" & "STATUS" & "'!A1)") Then
+        Exit Sub
+    End If

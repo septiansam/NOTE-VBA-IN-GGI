@@ -1,0 +1,98 @@
+modUI
+
+Option Explicit
+
+Sub KETERANGAN()
+'
+' TAMBAHAN DESIGN DI SHEETS TOMBOL
+'
+    Dim twb As Workbook
+    Dim ws1 As Worksheet
+    Dim TOMBOL As String
+    Dim i As Long, j As Long
+    
+    
+    Set twb = ThisWorkbook: TOMBOL = "TOMBOL"
+    Set ws1 = twb.Sheets(TOMBOL)
+    
+    With ws1
+        .Range("A1:A3").Merge: .Range("A1:A3").Value = "Today's Date"
+        .Range("A4").Value = "Jumlah Hari Di Bulan Ini"
+        .Range("B1").Value = "Hari Ini : "
+        .Range("B2").Value = "Bulan : "
+        .Range("B3").Value = "Tahun : "
+        .Range("B4").Value = "Tanggal Awal"
+        .Range("C4").Value = "Tanggal Akhir"
+        With .Range("A1:A4,B1:B4,C4")
+            .Borders.LineStyle = xlContinuous
+            .Borders.Weight = xlMedium
+            .Borders.Color = RGB(0, 62, 63)
+        End With
+'        .Range("A1:A4,B1:B4,C4").
+'                        .Borders.LineStyle = xlContinuous
+'                .Borders.Weight = xlMedium
+'                .Borders.Color = RGB(255, 255, 255)
+    End With
+    
+    With ws1.Range("A1:A4,B1:B4,C4")
+        .Font.Bold = True
+        .Font.Size = 14
+        .Font.Name = "Comic Sans MS"
+        .Interior.Color = RGB(0, 185, 188)
+    End With
+    
+    With ws1
+        ' TANGGAL SEKARANG
+        .Cells(1, 4).Formula = "=TODAY()"
+        .Cells(1, 4).Font.Bold = True
+        ' BULAN BAHASA INDONESIA
+        .Cells(2, 3).Formula = "=UPPER((TEXT(D1,""[$-421]MMMM"")))"
+        .Cells(2, 3).Font.Bold = True
+        ' TAHUN SEKARANG
+        .Cells(3, 3).Formula = "=YEAR(D1)"
+        .Cells(3, 3).Font.Bold = True
+        ' JUMLAH HARI DI BULAN INI
+        .Cells(5, 1).Formula = "=DAY(EOMONTH(TODAY(), 0))"
+        .Cells(5, 1).Font.Bold = True
+        ' HARI INI
+        .Cells(1, 3).Formula = "=UPPER((TEXT(D1,""[$-421]DDDD"")))"
+        .Cells(1, 3).Font.Bold = True
+        ' TANGGAL AWAL
+        .Cells(5, 2).Formula = "=TEXT(DATE(YEAR(TODAY()),MONTH(TODAY()),1),""DD-MMM-YYYY"")"
+        .Cells(5, 2).Font.Bold = True
+        ' TANGGAL AKHIR
+        .Cells(5, 3).Formula = "=TEXT(DATE(YEAR(TODAY()),MONTH(TODAY())+1,0),""DD-MMM-YYYY"")"
+        .Cells(5, 3).Font.Bold = True
+    End With
+
+    Dim ranges() As Variant
+    ranges = Array("D1", "C1:C3", "A5:C5")
+    
+    With ws1
+        For i = LBound(ranges) To UBound(ranges)
+            With .Range(ranges(i))
+                .Font.Bold = True
+                .Font.Name = "Comic Sans MS"
+                .Font.Size = 11
+                .RowHeight = 24
+                '.Interior.Color = RGB(192, 192, 192) ' Warna abu-abu
+                .Interior.Color = RGB(124, 252, 0)
+                .Borders.LineStyle = xlContinuous
+                .Borders.Weight = xlMedium
+                .Borders.Color = RGB(0, 62, 63)
+            End With
+        Next i
+    End With
+
+    With ws1.Range("A1").CurrentRegion
+        '.Borders.LineStyle = xlContinuous
+        '.Borders.Weight = xlMedium
+        '.Borders.Color = RGB(255, 255, 255)
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .Cells.EntireColumn.AutoFit
+    End With
+
+
+
+End Sub

@@ -1,0 +1,114 @@
+Sub PivotTable_Sum()
+
+    ' Get the worksheets
+    Dim shRead As Worksheet, shWrite As Worksheet
+    Set shRead = ThisWorkbook.Worksheets("Transactions")
+    Set shWrite = ThisWorkbook.Worksheets("Report")
+    
+    ' Get the range
+    Dim rg As Range
+    Set rg = shRead.Range("A1").CurrentRegion
+   
+    ' Clear any existing pivot tables
+    Dim piv As PivotTable
+    For Each piv In shWrite.PivotTables
+        piv.TableRange2.Clear
+    Next piv
+    
+    ' Clear the data in output worksheet
+    shWrite.Cells.ClearContents
+  
+    ' Create the cache
+    Dim ptCache As PivotCache
+    Set ptCache = ThisWorkbook.PivotCaches.Create( _
+        SourceType:=xlDatabase _
+        , SourceData:=rg _
+        , Version:=xlPivotTableVersion15)
+    
+    ' Create the table
+    Dim ptTable As PivotTable
+    Set ptTable = shWrite.PivotTables.Add( _
+             PivotCache:=ptCache _
+            , TableDestination:=shWrite.Range("A1"))
+    
+    ' Set the name and style
+    ptTable.name = "pvItems"
+    ptTable.TableStyle2 = "PivotStyleDark14"
+    
+    ' Set the fields
+    Dim ptField As PivotField
+    With ptTable
+
+        ' Set the rows fields
+        .PivotFields("Item").Orientation = xlRowField
+        
+        ' Set the data(value) fields
+        .PivotFields("Volume").Orientation = xlDataField
+        .PivotFields("Sales").Orientation = xlDataField
+        
+    End With
+    
+End Sub
+
+' This is the same as above except for the filter code
+Sub PivotTable_Sum_Filter()
+
+    ' Get the worksheets
+    Dim shRead As Worksheet, shWrite As Worksheet
+    Set shRead = ThisWorkbook.Worksheets("Transactions")
+    Set shWrite = ThisWorkbook.Worksheets("Report")
+    
+    ' Get the range
+    Dim rg As Range
+    Set rg = shRead.Range("A1").CurrentRegion
+   
+    ' Clear any existing pivot tables
+    Dim piv As PivotTable
+    For Each piv In shWrite.PivotTables
+        piv.TableRange2.Clear
+    Next piv
+    
+    ' Clear the data in output worksheet
+    shWrite.Cells.ClearContents
+  
+    ' Create the cache
+    Dim ptCache As PivotCache
+    Set ptCache = ThisWorkbook.PivotCaches.Create( _
+        SourceType:=xlDatabase _
+        , SourceData:=rg _
+        , Version:=xlPivotTableVersion15)
+    
+    ' Create the table
+    Dim ptTable As PivotTable
+    Set ptTable = shWrite.PivotTables.Add( _
+             PivotCache:=ptCache _
+            , TableDestination:=shWrite.Range("A1"))
+    
+    ' Set the name and style
+    ptTable.name = "pvItems"
+    ptTable.TableStyle2 = "PivotStyleDark14"
+    
+    ' Set the fields
+    Dim ptField As PivotField
+    With ptTable
+
+        ' Set the rows fields
+        .PivotFields("Item").Orientation = xlRowField
+        
+        ' Set the data(value) fields
+        .PivotFields("Volume").Orientation = xlDataField
+        .PivotFields("Sales").Orientation = xlDataField
+        
+        ' Filter items
+        Dim pvItem As PivotItem
+        For Each pvItem In .PivotFields("Item").PivotItems
+            If pvItem.Caption = "Laptop Model A" Then
+                pvItem.Visible = True
+            Else
+                pvItem.Visible = False
+            End If
+        Next pvItem
+        
+    End With
+    
+End Sub

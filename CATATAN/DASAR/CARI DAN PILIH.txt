@@ -1,0 +1,5 @@
+Cells.Select
+Cells.Find (tanggal)
+    Selection.Find(What:=tanggal, After:=ActiveCell, LookIn:=xlFormulas, _
+    LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, _
+    MatchCase:=False, SearchFormat:=False).Activate

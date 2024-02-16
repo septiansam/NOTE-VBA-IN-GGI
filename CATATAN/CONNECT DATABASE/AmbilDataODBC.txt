@@ -1,0 +1,34 @@
+Sub AmbilDataODBC()
+    Dim Conn As Object
+    Dim Rs As Object
+    Dim strSQL As String
+
+    ' Buat objek koneksi ODBC
+    Set Conn = CreateObject("ADODB.Connection")
+
+    ' Atur string koneksi ODBC
+    Conn.ConnectionString = "ODBC_DSN_Name;UID=your_username;PWD=your_password"
+
+    ' Buka koneksi
+    Conn.Open
+
+    ' SQL query Anda
+    strSQL = "SELECT * FROM nama_tabel"
+
+    ' Buat objek recordset
+    Set Rs = CreateObject("ADODB.Recordset")
+
+    ' Eksekusi query
+    Rs.Open strSQL, Conn
+
+    ' Salin data ke lembar Excel
+    Sheets("Sheet1").Range("A1").CopyFromRecordset Rs
+
+    ' Tutup koneksi dan recordset
+    Rs.Close
+    Conn.Close
+
+    ' Hapus objek
+    Set Rs = Nothing
+    Set Conn = Nothing
+End Sub

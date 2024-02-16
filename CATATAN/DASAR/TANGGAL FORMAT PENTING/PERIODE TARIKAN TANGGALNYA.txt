@@ -1,0 +1,66 @@
+Option Explicit
+Sub JudulTabel()
+'
+' PERIODE TARIKAN
+'
+
+    Dim twb As Workbook
+    Dim ws As Worksheet
+    
+    Set twb = ThisWorkbook
+    Set ws = twb.Sheets("NOTE2")
+    
+    Dim sekarang As Date
+    Dim senin2MingguKedepan As Date
+    Dim sabtu2MingguKedepan As Date
+    Dim judul As String
+    
+    sekarang = Date
+    senin2MingguKedepan = DateAdd("ww", 2, DateAdd("d", 1 - Weekday(sekarang, vbMonday), sekarang))
+    sabtu2MingguKedepan = DateAdd("ww", 2, DateAdd("d", 6 - Weekday(sekarang, vbMonday), sekarang))
+    
+    ws.Range("A1").Value = sabtu2MingguKedepan
+    ws.Range("A2").Formula = "=UPPER((TEXT(A1,""[$-421]DD MMMM YYYYY"")))"
+    
+    Dim akhir As String
+    akhir = ws.Range("A2").Value
+    If sekarang Then
+        judul = "REPORT PERSENTASE PERIODE " & Format(senin2MingguKedepan, "DD") & " - " & akhir
+        ws.Range("C1").Value = judul
+    End If
+End Sub
+
+
+Sub JudulTabel()
+'
+' PERIODE TARIKAN
+'
+
+    Dim twb As Workbook
+    Dim ws As Worksheet
+    
+    Set twb = ThisWorkbook
+    'Set ws = twb.Sheets("NOTE2")
+    
+    Dim sekarang As Date
+    Dim senin2MingguKedepan As Date
+    Dim sabtu2MingguKedepan As Date
+    Dim judul As String
+    
+    sekarang = Date
+    senin2MingguKedepan = DateAdd("ww", 2, DateAdd("d", 1 - Weekday(sekarang, vbMonday), sekarang))
+    sabtu2MingguKedepan = DateAdd("ww", 2, DateAdd("d", 6 - Weekday(sekarang, vbMonday), sekarang))
+    
+    jumatayn = DateAdd("ww", 0, DateAdd("d", 5 - Weekday(sekarang, vbMonday), sekarang))
+    jumatharep = DateAdd("ww", 1, DateAdd("d", 5 - Weekday(sekarang, vbMonday), sekarang))
+    
+    ws.Range("A1").Value = sabtu2MingguKedepan
+    ws.Range("A2").Formula = "=UPPER((TEXT(A1,""[$-421]DD MMMM YYYYY"")))"
+    
+    Dim akhir As String
+    akhir = ws.Range("A2").Value
+    If sekarang Then
+        judul = "REPORT PERSENTASE PERIODE " & Format(senin2MingguKedepan, "DD") & " - " & akhir
+        ws.Range("C1").Value = judul
+    End If
+End Sub

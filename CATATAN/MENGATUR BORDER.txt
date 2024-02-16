@@ -1,0 +1,53 @@
+Sub SederhanakanKodeBorder()
+    Dim rng As Range
+    Set rng = Range("A1").CurrentRegion
+    
+    ' Menghilangkan diagonal borders
+    rng.Borders(xlDiagonalDown).LineStyle = xlNone
+    rng.Borders(xlDiagonalUp).LineStyle = xlNone
+    
+    ' Mengatur border untuk seluruh tepi
+    With rng.Borders
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    
+    ' Mengatur border untuk tepi luar dengan ketebalan medium
+    With rng.Borders(xlEdgeLeft, xlEdgeTop, xlEdgeBottom, xlEdgeRight)
+        .Weight = xlMedium
+    End With
+    
+    ' Mengatur border dalam vertical dengan ketebalan thin
+    rng.Borders(xlInsideVertical).Weight = xlThin
+    
+    ' Mengatur border dalam horizontal dengan ketebalan thin
+    rng.Borders(xlInsideHorizontal).Weight = xlThin
+End Sub
+
+
+Sub setPage()
+init
+With shPDF.PageSetup
+    .PrintQuality = 600
+    .Orientation = xlLandscape
+    .PaperSize = xlPaperLetter
+    .Order = xlDownThenOver
+    .Zoom = False
+    .FitToPagesWide = 1
+    .FitToPagesTall = 1
+    .PrintErrors = xlPrintErrorsDisplayed
+    .ScaleWithDocHeaderFooter = True
+    .AlignMarginsHeaderFooter = True
+End With
+With shPDF.Range("A1").CurrentRegion
+    .Borders.LineStyle = xlContinuous
+    .Borders.ColorIndex = 0
+    .Borders.TintAndShade = 0
+    .Borders.Weight = xlThin
+    .Borders(xlEdgeLeft, xlEdgeTop, xlEdgeBottom, xlEdgeRight).Weight = xlMedium
+    .Borders(xlInsideVertical).Weight = xlThin
+    .Borders(xlInsideHorizontal).Weight = xlThin
+End With
+End Sub

@@ -1,0 +1,43 @@
+Sub SetTanggalHariIni()
+    Dim hariIni As Date
+    Dim tanggalSelasa As Date
+    Dim tanggalRabu As Date
+    Dim tanggalKamis As Date
+    Dim tanggalJumat As Date
+    Dim tanggalSabtu As Date
+    Dim tanggalMinggu As Date
+    Dim selTarget As Range
+    
+    ' Tentukan sel target di sini
+    Set selTarget = Range("A2")
+    
+    ' Dapatkan tanggal hari ini
+    hariIni = Date
+    
+    ' Dapatkan tanggal Selasa
+    tanggalSelasa = hariIni - (Weekday(hariIni, vbTuesday) - 1)
+    
+    ' Dapatkan tanggal Rabu
+    tanggalRabu = tanggalSelasa + 1
+    
+    ' Dapatkan tanggal Kamis
+    tanggalKamis = tanggalSelasa + 2
+    
+    ' Dapatkan tanggal Jumat
+    tanggalJumat = tanggalSelasa + 3
+    
+    ' Dapatkan tanggal Sabtu
+    tanggalSabtu = tanggalSelasa + 4
+    
+    ' Dapatkan tanggal Minggu
+    tanggalMinggu = tanggalSelasa + 5
+    
+    ' Atur nilai sel target
+    selTarget.Value = "Hari Ini: " & hariIni & vbCrLf & _
+                      "Selasa: " & tanggalSelasa & vbCrLf & _
+                      "Rabu: " & tanggalRabu & vbCrLf & _
+                      "Kamis: " & tanggalKamis & vbCrLf & _
+                      "Jumat: " & tanggalJumat & vbCrLf & _
+                      "Sabtu: " & tanggalSabtu & vbCrLf & _
+                      "Minggu: " & tanggalMinggu
+End Sub

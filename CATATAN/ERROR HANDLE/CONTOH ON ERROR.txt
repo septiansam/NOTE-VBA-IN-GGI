@@ -1,0 +1,28 @@
+On Error GoTo TPB_Importing_E001
+
+
+TPB_Importing_E001:
+    MsgBox "CRITICAL ERROR (TPB_Importing_E001)" & _
+    vbNewLine & "#" & Err.Number & " - " & Err.Description & _
+    vbNewLine & "Data yg akan diimport sepertinya tidak sesuai." & _
+    vbCrLf & "jika kesulitan silakan hubungi " & Sheets("DB_Dummy").Range("X9") & " " & Sheets("DB_Dummy").Range("X7") & " (Ext: " & Sheets("DB_Dummy").Range("X8") & ")", _
+    vbOKOnly + vbCritical, "Oops :("
+
+
+Sub Copy_Row()
+On Error GoTo 0 ' Turn off error trapping.
+On Error Resume Next ' Defer error trapping.
+Err.Clear ' Clear Err object fields
+
+XDummyKolom = 1
+XYDummyBaris = ActiveCell.Row
+XNilai = Cells(XYDummyBaris, XDummyKolom).Address
+
+YDummyKolom = Range("Z5").End(xlToLeft).Column
+YNilai = Cells(XYDummyBaris, YDummyKolom).Address
+
+Range(Range(XNilai), Range(YNilai)).Select
+Selection.Copy
+
+On Error GoTo -1
+End Sub

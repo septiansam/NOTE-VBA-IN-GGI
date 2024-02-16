@@ -1,0 +1,8 @@
+    Set ws = ThisWorkbook.Sheets("RPA")
+    
+    ' Atur link
+    Set link = ws.Cells(2, 4).Hyperlinks.Add( _
+        Anchor:=ws.Cells(2, 4), _
+        Address:="\\10.8.0.35\Bersama\IT\SEPTIAN\PORTAL BC23\FILE PORTAL", _
+        TextToDisplay:="\\10.8.0.35\Bersama\IT\SEPTIAN\PORTAL BC23\FILE PORTAL" _
+        )

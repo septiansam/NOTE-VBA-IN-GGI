@@ -1,0 +1,20 @@
+LETAKKAN PADA modul "ThisWorkbook" dalam editor VBA
+
+
+
+Anda dapat menggunakan event handler VBA untuk menyimpan workbook secara otomatis setiap kali ada perubahan di lembar kerja. Anda bisa menggunakan event Worksheet_Change untuk mencapai ini. Berikut contoh kode VBA:
+
+vba
+Copy code
+Private Sub Workbook_Open()
+    ' Mengaktifkan event handler saat workbook dibuka
+    Application.EnableEvents = True
+End Sub
+
+Private Sub Workbook_SheetChange(ByVal Sh As Object, ByVal Target As Range)
+    ' Menyimpan workbook setiap kali ada perubahan di lembar kerja
+    Me.Save
+End Sub
+Letakkan kode di atas di modul "ThisWorkbook" dalam editor VBA. Kode ini akan mengaktifkan event handler saat workbook dibuka dan kemudian akan menyimpan workbook setiap kali ada perubahan di lembar kerja apa pun. Jadi, setiap kali ada perubahan di lembar kerja, workbook akan disimpan secara otomatis.
+
+Namun, harap diperhatikan bahwa menyimpan secara otomatis setiap perubahan bisa menjadi risiko jika Anda tidak ingin menyimpan perubahan yang tidak diinginkan. Pastikan untuk menguji dengan baik dan mempertimbangkan konsekuensinya sebelum menerapkan ini pada pekerjaan nyata.

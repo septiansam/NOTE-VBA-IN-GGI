@@ -1,0 +1,23 @@
+Sub GetDataMaster()
+'
+' Tarikan Data Master
+'
+'
+    shMASTER.Cells.Clear
+    
+    Set twb = ThisWorkbook
+    Dim pathMaster As String
+    pathMaster = "\\10.8.0.35\Bersama\IT\SEPTIAN\MAKRO BOM\ITEM MASTER\ITEM MASTER.xlsx"
+    
+    Dim wbMaster As Workbook
+    Set wbMaster = Workbooks.Open(pathMaster, ReadOnly:=True)
+    
+    Dim rgDest As Range
+    Set rgDest = shMASTER.Range("A1")
+    
+    Dim arr As Variant
+    arr = wbMaster.Sheets(1).UsedRange.Value
+    rgDest.Resize(UBound(arr, 1), UBound(arr, 2)) = arr
+    
+    wbMaster.Close SaveChanges:=False
+End Sub

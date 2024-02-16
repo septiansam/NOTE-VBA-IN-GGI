@@ -1,0 +1,17 @@
+HasFormula ADALAH MENGECEK SEL FORMAT RUMUS ATAU BKN
+
+Sub CheckFormula()
+    Dim rng As Range
+    Dim cell As Range
+    
+    ' Ganti "Sheet1" dengan nama lembar kerja Anda
+    Set rng = Sheets("Sheet1").Range("A1:A10")
+    
+    For Each cell In rng
+        If cell.HasFormula Then
+            MsgBox cell.Address & " berisi rumus."
+        Else
+            MsgBox cell.Address & " berisi nilai atau teks."
+        End If
+    Next cell
+End Sub

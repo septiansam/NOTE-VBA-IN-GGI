@@ -1,0 +1,28 @@
+Private Sub Workbook_Open()
+
+Application.DisplayAlerts = False
+Application.EnableEvents = False
+Application.ScreenUpdating = False
+
+Dim lr As Long, Awal As Date, Akhir As Date, TanggalAwal As String, TanggalAkhir As String
+
+ThisWorkbook.Sheets("INPUT RPA").Select
+lr = Range("A" & Rows.Count).End(xlUp).Row
+Range("B2:C" & lr).ClearContents
+
+Awal = DateSerial(Year(Date), Month(Date), 1)
+Akhir = DateSerial(Year(Date), Month(Date) + 1, 1 - 1)
+
+TanggalAwal = WorksheetFunction.Text(Awal, "MM/D/YYYY")
+TanggalAkhir = WorksheetFunction.Text(Akhir, "MM/D/YYYY")
+
+Range("B2:B" & lr) = TanggalAwal
+Range("C2:C" & lr) = TanggalAkhir
+
+Range("A1").Select
+
+Application.DisplayAlerts = True
+Application.EnableEvents = True
+Application.ScreenUpdating = True
+
+End Sub

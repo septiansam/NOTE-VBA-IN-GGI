@@ -1,0 +1,47 @@
+SIMPAN DI FILE THISWORKBOOK YANG ADA DI MICROSOFT EXCEL OBJECTS, objectnya ganti jadi Workbook pilih BeforeClose
+
+Private Sub Workbook_BeforeClose(Cancel As Boolean)
+    If Not Me.Saved Then
+        Application.DisplayAlerts = False
+        Me.Save
+        Application.DisplayAlerts = True
+    End If
+End Sub
+
+
+Me adalah kata kunci yang merujuk pada objek saat ini, yaitu objek yang sedang berinteraksi atau bekerja dengan kode VBA tersebut. Di dalam modul "ThisWorkbook", Me merujuk pada objek buku kerja (Workbook) saat ini, karena kode VBA ini ada di modul yang terkait dengan buku kerja.
+
+Misalnya, jika Anda memiliki kode VBA di modul "Sheet1" (Sheet1 adalah objek lembar kerja), maka Me akan merujuk pada lembar kerja (Sheet1) saat itu. Dan jika Anda memiliki kode VBA di modul "Sheet2", maka Me akan merujuk pada lembar kerja (Sheet2) saat itu.
+
+
+Berikut adalah penjelasan untuk setiap baris kode dan baris kata pada kode VBA berikut:
+
+Private Sub Workbook_BeforeClose(Cancel As Boolean):
+
+Ini adalah deklarasi prosedur khusus (event handler) yang dinamakan Workbook_BeforeClose.
+Workbook_BeforeClose adalah prosedur yang akan dijalankan secara otomatis sebelum buku kerja ditutup (sebelum closing).
+If Not Me.Saved Then:
+
+Ini adalah pernyataan kondisional If yang memeriksa apakah properti Saved dari objek buku kerja saat ini (Me adalah buku kerja saat ini) bernilai False.
+Properti Saved adalah sebuah properti boolean (True atau False) yang mengindikasikan apakah buku kerja telah disimpan sejak perubahan terakhir dilakukan.
+Not adalah operator logika yang akan mengubah nilai True menjadi False dan sebaliknya. Dalam konteks ini, Not Me.Saved akan bernilai True jika buku kerja memiliki perubahan yang belum disimpan.
+Application.DisplayAlerts = False:
+
+Ini adalah pernyataan untuk menonaktifkan tampilan notifikasi (alerts) dari aplikasi Excel, termasuk notifikasi "Want to save your changes to 'file.xlsm'?".
+Dengan menonaktifkan tampilan notifikasi, kita bisa menyimpan buku kerja tanpa munculnya notifikasi perubahan yang belum disimpan.
+Me.Save:
+
+Ini adalah pernyataan untuk menyimpan buku kerja saat ini ke dalam file yang sudah ada di disk.
+Kode ini akan dijalankan jika buku kerja memiliki perubahan yang belum disimpan (Not Me.Saved bernilai True).
+Application.DisplayAlerts = True:
+
+Ini adalah pernyataan untuk mengaktifkan kembali tampilan notifikasi (alerts) dari aplikasi Excel setelah menyimpan buku kerja.
+Setelah kita selesai menyimpan buku kerja, kita ingin memastikan notifikasi dinyalakan kembali untuk memungkinkan munculnya notifikasi lainnya jika ada.
+End If:
+
+Ini menandai akhir dari blok kondisional If.
+Jadi, keseluruhan kode berfungsi sebagai berikut:
+
+Ketika Anda menutup buku kerja, kode akan memeriksa apakah buku kerja memiliki perubahan yang belum disimpan (Not Me.Saved).
+Jika ada perubahan yang belum disimpan, maka notifikasi akan dinonaktifkan, buku kerja akan disimpan secara otomatis (tanpa notifikasi), dan notifikasi akan diaktifkan kembali setelah proses menyimpan selesai.
+Jika tidak ada perubahan yang belum disimpan, maka buku kerja akan ditutup tanpa tampilnya notifikasi "Want to save your changes to 'file.xlsm'?".

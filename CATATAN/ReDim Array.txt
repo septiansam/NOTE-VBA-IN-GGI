@@ -1,0 +1,18 @@
+Dim strNames() As String
+
+ReDim strNames(1 To 9)
+strNames(1) = "Worksheet PIC"
+strNames(2) = "Jumlah WO"
+strNames(3) = "Worksheet Terlambat"
+strNames(4) = "Persentase Worksheet"
+strNames(5) = "Trimcard Terlambat"
+strNames(6) = "Persentase Trimcard"
+strNames(7) = "Sample Terlambat"
+strNames(8) = "Persentase Sample"
+strNames(9) = "Rata-rata"
+
+SHEET_AWAL = Sheets(1).Name
+For i = LBound(strNames) To UBound(strNames)
+    Cells(1, i) = strNames(i)
+Next i
+Rows(1).Font.Bold = True

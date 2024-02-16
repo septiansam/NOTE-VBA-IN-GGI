@@ -1,0 +1,27 @@
+Dim startTime As Double, endTime As Double, executionTime As Double
+    
+'' program dimulai ''
+Application.DisplayAlerts = False
+Application.ScreenUpdating = False
+startTime = Timer
+
+
+
+
+'' program berakhir ''
+Application.DisplayAlerts = True
+Application.ScreenUpdating = True
+endTime = Timer
+executionTime = FormatNumber((endTime - startTime), 2) 'DUA ANGKA DI BELAKANG KOMA
+MsgBox "The program finishes running within: " & executionTime & " Second", vbInformation, "PROGRAM RUNNING SUCCESS"
+
+
+Private Sub OptVBA(isOn As Boolean)
+    With Application
+        .Calculation = IIf(isOn, xlCalculationManual, xlCalculationAutomatic)
+        .EnableEvents = Not (isOn)
+        .ScreenUpdating = Not (isOn)
+        .DisplayAlerts = Not (isOn)
+    End With
+    ActiveSheet.DisplayPageBreaks = Not (isOn)
+End Sub

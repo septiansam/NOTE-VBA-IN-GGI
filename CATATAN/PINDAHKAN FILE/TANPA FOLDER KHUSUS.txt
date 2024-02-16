@@ -1,0 +1,24 @@
+Sub PindahkanSemuaFile()
+    Dim fso As Object
+    Dim sSourceFolder As String
+    Dim sDestinationFolder As String
+    Dim sFile As String
+    
+    ' Buat objek FileSystemObject
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    
+    ' Tentukan folder asal dan folder tujuan
+    sSourceFolder = "C:\Path\FolderAsal\"
+    sDestinationFolder = "C:\Path\FolderTujuan\"
+    
+    ' Loop melalui semua file di folder asal
+    sFile = Dir(sSourceFolder & "*.*")
+    Do While sFile <> ""
+        ' Pindahkan file ke folder tujuan
+        fso.MoveFile sSourceFolder & sFile, sDestinationFolder & sFile
+        sFile = Dir
+    Loop
+    
+    ' Hapus objek FileSystemObject
+    Set fso = Nothing
+End Sub

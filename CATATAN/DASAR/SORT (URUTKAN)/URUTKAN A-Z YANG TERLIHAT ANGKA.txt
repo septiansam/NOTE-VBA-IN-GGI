@@ -1,0 +1,21 @@
+Sub Macro2()
+'
+' Macro2 Macro
+'
+
+'
+    Range("Y1").Select
+    Selection.CurrentRegion.Select
+    ActiveWorkbook.Worksheets("tes2").Sort.SortFields.Clear
+    ActiveWorkbook.Worksheets("tes2").Sort.SortFields.Add2 Key:=Range("Z1:Z16"), _
+        SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:= _
+        xlSortTextAsNumbers
+    With ActiveWorkbook.Worksheets("tes2").Sort
+        .SetRange Range("Y1:Z16")
+        .Header = xlGuess
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+End Sub

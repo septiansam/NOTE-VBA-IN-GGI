@@ -1,0 +1,1 @@
+Range("D2:D10000").Replace What:="IDR", Replacement:=""

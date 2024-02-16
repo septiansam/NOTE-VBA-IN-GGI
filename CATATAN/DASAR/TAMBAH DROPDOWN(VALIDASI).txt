@@ -1,0 +1,50 @@
+Sub CreateDropDown()
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim dropDownRange As Range
+
+    ' Ganti "Sheet1" dengan nama lembar kerja tempat Anda ingin membuat dropdown
+    Set ws = ThisWorkbook.Worksheets("Sheet1")
+
+    ' Menemukan baris terakhir di kolom E
+    lastRow = ws.Cells(ws.Rows.Count, "E").End(xlUp).Row
+
+    ' Menentukan rentang dropdown di kolom E dari baris 2 hingga baris terakhir
+    Set dropDownRange = ws.Range("E2:E" & lastRow)
+
+    ' Menghapus validasi data yang ada di kolom E (jika ada)
+    dropDownRange.Validation.Delete
+
+    ' Menambahkan validasi data dengan dropdown list
+    dropDownRange.Validation.Add Type:=xlValidateList, _
+        Formula1:="Y,X"
+
+    ' Menampilkan dropdown arrow di sel yang memiliki validasi data
+    dropDownRange.Select
+    With Selection.Validation
+        .ShowDropDown = True
+    End With
+End Sub
+
+
+Sub Macro6()
+'
+' Macro6 Macro
+'
+
+'
+    Range("J2").Select
+    With Selection.Validation
+        .Delete
+        .Add Type:=xlValidateList, AlertStyle:=xlValidAlertStop, Operator:= _
+        xlBetween, Formula1:="N;Y"
+        .IgnoreBlank = True
+        .InCellDropdown = True
+        .InputTitle = ""
+        .ErrorTitle = ""
+        .InputMessage = ""
+        .ErrorMessage = ""
+        .ShowInput = True
+        .ShowError = True
+    End With
+End Sub

@@ -1,0 +1,4 @@
+' HILANGKAN RUMUS
+    Cells.Copy
+    Cells.PasteSpecial Paste:=xlPasteValues: Application.CutCopyMode = xlCopy
+    

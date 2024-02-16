@@ -1,0 +1,125 @@
+Sub SortZtoA()
+    Dim ws As Worksheet
+    Set ws = ActiveSheet ' Mendapatkan lembar kerja aktif
+
+    ' Ganti "A1" dengan sel yang sesuai yang ingin Anda gunakan sebagai titik awal sort
+    ' Misalnya, jika Anda ingin mengurutkan berdasarkan kolom B, ganti "A1" dengan "B1"
+    Dim sortRange As Range
+    Set sortRange = ws.Range("A1").CurrentRegion
+
+    ' Ganti 1 dengan indeks kolom yang ingin Anda urutkan (misalnya, 2 untuk kolom B, 3 untuk kolom C, dst.)
+    ' Pengurutan akan dilakukan berdasarkan kolom yang Anda tentukan di sini
+    Dim sortColumn As Long
+    sortColumn = 1
+
+    ' Lakukan pengurutan dari Z ke A (Descending)
+    sortRange.Sort Key1:=sortRange.Columns(sortColumn), _
+                    Order1:=xlDescending, _
+                    Header:=xlYes
+
+    ' Kode di atas menganggap baris pertama (Header) adalah bagian dari rentang pengurutan.
+    ' Jika Anda ingin menyertakan baris header dalam pengurutan, gunakan Header:=xlYes.
+    ' Jika Anda ingin mengabaikan baris header dalam pengurutan, gunakan Header:=xlNo.
+    ' Jika Anda ingin mengubah kolom pengurutan, sesuaikan nilai sortColumn dengan indeks kolom yang diinginkan.
+End Sub
+
+
+Sub Macro6()
+'
+' Macro6 Macro
+'
+
+'
+    Columns("A:A").Select
+    ActiveWorkbook.Worksheets("Screamous").Sort.SortFields.Clear
+    ActiveWorkbook.Worksheets("Screamous").Sort.SortFields.Add2 key:=Range( _
+        "A1:A424"), SortOn:=xlSortOnValues, Order:=xlDescending, DataOption:= _
+        xlSortTextAsNumbers
+    With ActiveWorkbook.Worksheets("Screamous").Sort
+        .SetRange Range("A2:A424")
+        .Header = xlNo
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+End Sub
+
+
+Properti .SortMethod memiliki dua nilai yang mungkin:
+
+xlPinYin: Ini adalah nilai yang digunakan untuk mengurutkan teks berdasarkan fonetik bahasa Tionghoa (Pin Yin). Saat menggunakan nilai ini, karakter Tionghoa akan diurutkan berdasarkan pelafalannya (Pin Yin) dan bukan berdasarkan bentuk huruf yang sebenarnya. Ini memungkinkan pengurutan yang lebih sesuai dengan bahasa Tionghoa dan mempertahankan arti unik dari setiap karakter.
+
+xlStroke: Ini adalah nilai yang digunakan untuk mengurutkan teks berdasarkan jumlah garis yang digunakan dalam karakter Tionghoa. Ini adalah metode pengurutan tradisional yang mengurutkan karakter berdasarkan jumlah garis yang terdapat pada setiap karakter.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

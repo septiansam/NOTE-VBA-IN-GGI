@@ -1,0 +1,60 @@
+Sub AdvancedFilterExample()
+
+    ' Get the worksheets
+    Dim shRead As Worksheet, shWrite As Worksheet
+    Set shRead = ThisWorkbook.Worksheets("Transactions Filter")
+    Set shWrite = ThisWorkbook.Worksheets("Report")
+    
+    ' Clear any existing data
+    shWrite.Cells.Clear
+
+    ' Remove the filter
+    If shRead.FilterMode = True Then
+        shRead.ShowAllData
+    End If
+    
+    ' Get the source data range
+    Dim rgData As Range, rgCriteria As Range
+    Set rgData = shRead.Range("A1").CurrentRegion
+    
+    ' IMPORTANT: Do not have any blank rows in the criteria range
+    Set rgCriteria = shRead.Range("G1:K2")
+   
+    ' Apply the filter
+    rgData.AdvancedFilter Action:=xlFilterCopy, CriteriaRange:=rgCriteria _
+                , CopyToRange:=shWrite.Range("A1")
+
+End Sub
+
+
+Sub AdvancedFilter_Columns()
+
+    ' Get the worksheets
+    Dim shRead As Worksheet, shWrite As Worksheet
+    Set shRead = ThisWorkbook.Worksheets("Transactions Filter")
+    Set shWrite = ThisWorkbook.Worksheets("Report")
+    
+    ' Clear any existing data
+    shWrite.Cells.Clear
+    
+    ' Specify the output columns
+    shWrite.Range("A1").Value2 = "Item"
+    shWrite.Range("B1").Value2 = "Sales"
+
+    ' Remove the filter
+    If shRead.FilterMode = True Then
+        shRead.ShowAllData
+    End If
+    
+    ' Get the source data range
+    Dim rgData As Range, rgCriteria As Range
+    Set rgData = shRead.Range("A1").CurrentRegion
+    
+    ' IMPORTANT: Do not have any blank rows in the criteria range
+    Set rgCriteria = shRead.Range("G1:K2")
+   
+    ' Apply the filter
+    rgData.AdvancedFilter Action:=xlFilterCopy, CriteriaRange:=rgCriteria _
+                , CopyToRange:=shWrite.Range("A1:B1")
+
+End Sub

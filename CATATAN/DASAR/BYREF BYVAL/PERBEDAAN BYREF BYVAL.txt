@@ -1,0 +1,45 @@
+Contoh 1: Menggunakan ByRef (By Reference)
+
+Kode VBA:
+
+vba
+Copy code
+Sub ContohByRef(ByRef x As Integer)
+    x = x + 1
+End Sub
+
+Sub Main()
+    Dim a As Integer
+    a = 5
+
+    ContohByRef a
+    MsgBox a ' Nilai a akan menjadi 6 karena perubahan di dalam prosedur
+End Sub
+Hasil yang ditampilkan:
+
+Hasil Contoh ByRef
+
+Seperti yang Anda lihat, nilai variabel a berubah menjadi 6 karena perubahan yang dilakukan pada x di dalam prosedur ContohByRef.
+
+Contoh 2: Menggunakan ByVal (By Value)
+
+Kode VBA:
+
+vba
+Copy code
+Sub ContohByVal(ByVal x As Integer)
+    x = x + 1
+End Sub
+
+Sub Main()
+    Dim a As Integer
+    a = 5
+
+    ContohByVal a
+    MsgBox a ' Nilai a tetap 5 karena perubahan di dalam prosedur tidak memengaruhi variabel asal
+End Sub
+Hasil yang ditampilkan:
+
+Hasil Contoh ByVal
+
+Seperti yang Anda lihat, nilai variabel a tetap 5 karena perubahan yang dilakukan pada x di dalam prosedur ContohByVal tidak memengaruhi variabel asal.

@@ -1,0 +1,2 @@
+Sheets(Array("RESUME", "KRAPYAK", "MAJA-1", "MAJA-2", "GK", "GC", "CNJ2", "CGA", "CBA") _
+        ).Copy BEFORE:=Workbooks(NAMAFILE & " " & PERIODE & ".xlsx").Sheets(1)

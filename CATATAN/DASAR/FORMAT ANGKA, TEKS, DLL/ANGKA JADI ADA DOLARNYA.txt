@@ -1,0 +1,34 @@
+.NumberFormat = "_([$$-en-US]* #,##0.00_);_([$$-en-US]* (#,##0.00);_([$$-en-US]* ""-""??_);_(@_)"
+
+
+Kode ini mengatur format angka pada sel yang sedang aktif (atau sel yang Anda tentukan dalam konteks pemrograman) dengan format yang dijelaskan sebelumnya:
+
+_([$$-en-US]* #,##0.00_): Format untuk angka positif, dengan tanda dolar AS ($) sebagai simbol mata uang, menggunakan tanda pemisah ribuan (,) dan dua angka desimal.
+
+_([$$-en-US]* (#,##0.00): Format untuk angka negatif, dengan tanda dolar AS ($) sebagai simbol mata uang, menggunakan tanda pemisah ribuan dan dua angka desimal, tetapi dalam tanda kurung.
+
+_([$$-en-US]* ""-""??_): Format untuk nilai yang tidak ada (misalnya, sel kosong), hanya menampilkan tanda minus tanpa angka.
+
+(_@_): Format untuk teks, menampilkan teks yang ada dalam sel tanpa mengubah formatnya.
+
+Mari kita ambil contoh:
+
+Jika Anda memiliki kode VBA ini yang dijalankan dalam Excel dan diterapkan pada sel A1 dengan nilai:
+
+A1: 1234.56
+Setelah kode dieksekusi, hasil tampilan di dalam sel A1 akan menjadi:
+
+$1,234.56
+Jika Anda menggunakan kode VBA ini untuk sel A2 dengan nilai:
+
+A2: -5678.90
+Hasil tampilan di dalam sel A2 akan menjadi:
+
+($5,678.90)
+Dan jika Anda menggunakan kode VBA ini untuk sel A3 dengan nilai:
+
+A3: (987.65)
+Hasil tampilan di dalam sel A3 akan menjadi:
+
+$-987.65
+Harap diingat bahwa hasil ini mungkin akan bervariasi tergantung pada pengaturan regional di sistem dan aplikasi Anda, serta konteks pemrograman tempat kode ini dijalankan.

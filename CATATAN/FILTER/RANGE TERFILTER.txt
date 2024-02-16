@@ -1,0 +1,10 @@
+RANGE TERFILER
+
+    cPO = Rows(1).Find("No PO(O4)").Column
+    lr = Cells(Rows.Count, 2).End(xlUp).Row - 1 '-1 untuk judul
+    
+    Set rAkhir = wsInputTicket.AutoFilter.Range.Offset(lr).SpecialCells(xlCellTypeVisible).Cells(1, cPO)
+    
+    Set rAwal = wsInputTicket.AutoFilter.Range.Offset(1).SpecialCells(xlCellTypeVisible).Cells(1, cPO)
+    Set rgPO = Range(rAwal, rAkhir)
+    rgPO.Select

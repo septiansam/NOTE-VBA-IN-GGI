@@ -1,0 +1,24 @@
+Sub CopyFileNamesToExcel()
+    Dim FolderPath As String
+    Dim FileName As String
+    Dim RowCounter As Long
+    
+    ' Ganti dengan path folder yang sesuai
+    FolderPath = "C:\Path\Ke\Folder\Anda\DiSini\"
+    
+    ' Set lembar kerja aktif
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Sheets(1) ' Menggunakan lembar kerja pertama (Sheet 1)
+
+    ' Mulai dari baris pertama di lembar kerja
+    RowCounter = 1
+
+    ' Loop melalui semua file di folder
+    FileName = Dir(FolderPath & "*.*")
+    Do While FileName <> ""
+        ' Menyalin nama file ke sel di lembar kerja
+        ws.Cells(RowCounter, 1).Value = FileName
+        RowCounter = RowCounter + 1
+        FileName = Dir
+    Loop
+End Sub

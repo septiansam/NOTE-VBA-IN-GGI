@@ -1,0 +1,2 @@
+    ' Copy the data
+shWrite.Range("A1:D11").Value2 = shRead.Range("A1:D11").Value2

@@ -1,0 +1,60 @@
+1. Vlookup (Vertical Lookup):
+
+Digunakan dalam Excel untuk mencari nilai dalam suatu rentang data (kolom tunggal) dan mengembalikan nilai yang sesuai dari kolom yang diinginkan.
+Memiliki sintaksis: VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup]).
+Biasanya digunakan dalam spreadsheet untuk mencari nilai berdasarkan kunci dalam tabel.
+
+2. Xlookup:
+
+Merupakan fungsi pencarian terbaru yang diperkenalkan dalam Excel 365 dan versi selanjutnya.
+Lebih fleksibel dan kuat dibandingkan dengan Vlookup.
+Dapat melakukan pencarian di kolom mana pun dan mengembalikan nilai dari kolom yang diinginkan.
+Memiliki sintaksis: XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode]).
+Memiliki kemampuan untuk mencari nilai dengan baik secara horizontal maupun vertikal.
+
+3. Dlookup (Domain Lookup):
+
+Digunakan dalam Microsoft Access untuk mencari nilai dalam tabel atau kueri yang memenuhi kriteria tertentu.
+Memiliki sintaksis: DLookup(expression, domain, [criteria], [order_by]).
+Umumnya digunakan dalam program VBA (Visual Basic for Applications) untuk mengambil nilai dari database Access berdasarkan kriteria yang ditentukan.
+
+Contoh VBA menggunakan Vlookup:
+Dim result As Variant
+result = Application.WorksheetFunction.VLookup(lookup_value, table_array, col_index_num, False)
+
+
+Contoh VBA menggunakan Xlookup:
+Dim result As Variant
+result = Application.WorksheetFunction.XLookup(lookup_value, lookup_array, return_array, , , )
+
+
+Contoh VBA menggunakan Dlookup:
+Dim result As Variant
+result = DLookup("field_name", "table_name", "condition")
+
+
+
+
+Pastikan untuk mengganti "lookup_value", "table_array", "col_index_num", "lookup_array", "return_array", "field_name", "table_name", dan "condition" dengan nilai dan kondisi yang sesuai sesuai dengan kebutuhan Anda.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

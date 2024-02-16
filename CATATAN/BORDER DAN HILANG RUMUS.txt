@@ -1,0 +1,16 @@
+    ' BORDER
+    With Range("C2").CurrentRegion.Borders
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    
+    With Range("C11").CurrentRegion.Borders
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+    
+
+    
+    ' HILANGKAN RUMUS
+    'Cells.Copy
+    'Cells.PasteSpecial Paste:=xlPasteValues: Application.CutCopyMode = xlCopy

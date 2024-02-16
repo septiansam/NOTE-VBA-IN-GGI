@@ -1,0 +1,16 @@
+If ActiveSheet.AutoFilterMode = True Then
+    Range("a1:n1").Select
+    Selection.AutoFilter
+End If
+
+
+Sheets("OLAHAN38").Select
+If ActiveSheet.AutoFilterMode = True Then Selection.AutoFilter
+
+
+    Dim twb As Workbook, tws As Worksheet, i As Long
+    Set twb = ThisWorkbook: Set tws = twb.Sheets("tombol")
+    
+    'hidupkan filter di nama file
+    tws.Select
+    If ActiveSheet.AutoFilterMode = True Then Selection.AutoFilter

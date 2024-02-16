@@ -1,0 +1,21 @@
+Sub FilterKolomA()
+    Dim ws As Worksheet
+    Dim rng As Range
+
+    ' Mengatur worksheet aktif
+    Set ws = ThisWorkbook.ActiveSheet
+
+    ' Menerapkan AutoFilter pada kolom A
+    ws.AutoFilterMode = False ' Matikan filter jika sudah aktif
+    ws.Range("A1").AutoFilter Field:=1, Criteria1:="Kriteria Filter Anda" ' Gantilah "Kriteria Filter Anda" dengan kriteria yang sesuai
+
+    ' Mengambil area yang terfilter hanya di kolom A
+    On Error Resume Next ' Mengatasi kesalahan jika tidak ada hasil filter
+    Set rng = ws.AutoFilter.Range.Columns(1).SpecialCells(xlCellTypeVisible)
+    On Error GoTo 0 ' Kembalikan penanganan kesalahan ke keadaan normal
+
+    ' Mengaktifkan kembali semua sel dalam worksheet
+    ws.AutoFilterMode = False
+
+    ' Sekarang, variabel rng berisi hasil filter dari kolom A
+End Sub

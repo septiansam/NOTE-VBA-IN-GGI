@@ -1,0 +1,90 @@
+Option Explicit
+Dim twb As Workbook, ws As Worksheet, inputUser As Worksheet
+Dim wb As String, wb1 As String
+Dim NOTE1 As String
+Dim pathFile As String
+
+Sub Main()
+
+Dim startTime As Double, endTime As Double, executionTime As Double
+    
+'' program dimulai ''
+TurnOffStuff
+startTime = Timer
+' ==================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+' ==================================================================================
+'' program berakhir ''
+endTime = Timer
+executionTime = FormatNumber((endTime - startTime), 2) 'DUA ANGKA DI BELAKANG KOMA
+MsgBox "The program finishes running within: " & executionTime & " Second", vbInformation, "PROGRAM RUNNING SUCCESS"
+
+TurnOnStuff
+ActiveWorkbook.Save
+End Sub
+
+Public Sub TurnOffStuff()
+    Application.Calculation = xlCalculationManual
+    Application.DisplayStatusBar = False
+    Application.EnableEvents = False
+    Application.ScreenUpdating = False
+    Application.DisplayAlerts = False
+    ActiveSheet.DisplayPageBreaks = False
+End Sub
+
+Public Sub TurnOnStuff()
+    Application.Calculation = xlCalculationAutomatic
+    Application.DisplayStatusBar = True
+    Application.EnableEvents = True
+    Application.ScreenUpdating = True
+    Application.DisplayAlerts = True
+    ActiveSheet.DisplayPageBreaks = True
+End Sub
+
+Private Sub OptVBA(isOn As Boolean)
+    With Application
+        .Calculation = IIf(isOn, xlCalculationManual, xlCalculationAutomatic)
+        .EnableEvents = Not (isOn)
+        .ScreenUpdating = Not (isOn)
+        .DisplayAlerts = Not (isOn)
+    End With
+    ActiveSheet.DisplayPageBreaks = Not (isOn)
+End Sub

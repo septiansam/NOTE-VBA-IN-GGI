@@ -1,0 +1,12 @@
+tglmrh = Sheets("HOME").Range("H5").Value
+libur = DateSerial(Year(Date), Month(Date), tglmrh)
+
+cek = Date
+hari = Format(cek, "dddd")
+If hari = "Monday" Then
+    tanggal = cek - 3
+ElseIf cek - 1 = libur Then
+  tanggal = cek - 2
+Else
+    tanggal = cek - 1
+End If

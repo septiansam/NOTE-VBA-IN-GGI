@@ -1,0 +1,10 @@
+INGGRIS AMERIKA SERIKAT
+"[$-en-US]d-mmm-yy;@"
+[$-en-US]: Ini adalah kode bahasa dan wilayah. Dalam kasus ini, en-US mewakili bahasa Inggris Amerika Serikat. Ini memberi tahu Excel untuk menggunakan pengaturan regional bahasa Inggris AS untuk format tanggal dan angka.
+
+d-mmm-yy: Ini adalah bagian dari format tanggal yang menentukan bagaimana tanggal akan ditampilkan. Di sini, d mewakili tanggal, mmm mewakili bulan dalam bentuk tiga huruf, dan yy mewakili tahun dalam format dua digit.
+
+@: Ini adalah format teks umum. Ini menunjukkan bahwa bagian format setelah
+
+INDONESIA
+[$-id-ID]d-mmm-yy;@

@@ -1,0 +1,10 @@
+Private Sub Workbook_BeforeClose(Cancel As Boolean)
+    ' Matikan notifikasi untuk menyimpan saat menutup file
+    Application.DisplayAlerts = False
+
+    ' Simpan workbook secara otomatis
+    ThisWorkbook.Save
+
+    ' Hidupkan kembali notifikasi
+    Application.DisplayAlerts = True
+End Sub

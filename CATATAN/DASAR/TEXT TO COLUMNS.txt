@@ -1,0 +1,18 @@
+MEMISHKAN DATA INI DALAM SATU SEL
+
+2,187,035.00 2,187,035.00
+
+MENJADI DUA SEL
+
+2,187,035.00	2,187,035.00
+452,490.00	452,490.00
+377,075.00	377,075.00
+300,000.00	300,000.00
+100,000.00	100,000.00
+50,000.00	50,000.00
+
+KODENYA
+    Range("B1:B" & DATA_TES2).TextToColumns Destination:=Range("B1"), DataType:=xlDelimited, _
+        TextQualifier:=xlDoubleQuote, ConsecutiveDelimiter:=True, Tab:=False, _
+        Semicolon:=False, Comma:=False, Space:=True, Other:=False, FieldInfo _
+        :=Array(Array(1, 1), Array(2, 1)), TrailingMinusNumbers:=True

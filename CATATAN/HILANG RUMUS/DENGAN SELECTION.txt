@@ -1,0 +1,4 @@
+With Selection
+	.Copy
+	.PasteSpecial (xlPasteValues): Application.CutCopyMode = False
+End With

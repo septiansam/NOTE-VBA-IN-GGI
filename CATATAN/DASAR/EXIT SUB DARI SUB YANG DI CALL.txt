@@ -1,0 +1,15 @@
+Sub Proses1()
+    On Error GoTo ErrorHandler
+    
+    Call GetDataWO
+    
+    ' Kode lain yang akan dieksekusi jika GetDataWO tidak berhenti
+    
+    Exit Sub ' Keluar dari Sub jika kode selesai tanpa masalah
+
+ErrorHandler:
+    ' Mengatasi error atau penghentian dari GetDataWO
+    MsgBox "Terjadi kesalahan saat menjalankan GetDataWO." & vbCrLf & _
+           "Error: " & Err.Number & " - " & Err.Description, vbExclamation, "Kesalahan"
+    Exit Sub
+End Sub

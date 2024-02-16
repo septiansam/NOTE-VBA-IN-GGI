@@ -1,0 +1,4 @@
+Range("L1").Comment.Text Text:= _
+        "Perhitungan kebutuhan merupakan hasil perkalian (ratio penggunaan bahan x Qty yang user input) x Cons. Ratio penggunaan bahan ditentukan dari data WO with Breakdown."
+    
+    

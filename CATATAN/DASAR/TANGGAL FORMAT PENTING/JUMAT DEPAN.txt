@@ -1,0 +1,15 @@
+'dapatkan tanggal hari jumat (minggu ini & minggu depan)
+Dim ayeuna As Date, jumatAyeuna As Date, jumatHareup As Date
+ayeuna = Date
+jumatAyeuna = DateAdd("ww", 0, DateAdd("d", 5 - Weekday(ayeuna, vbMonday), ayeuna))
+jumatHareup = DateAdd("ww", 1, DateAdd("d", 5 - Weekday(ayeuna, vbMonday), ayeuna))
+
+Minggu = Sunday
+Senin = Monday
+Selasa = Tuesday
+Rabu = Wednesday
+Kamis = Thursday
+Jumat = Friday
+Sabtu = Saturday
+
+Sumber: https://mediaindonesia.com/humaniora/442503/ini-daftar-nama-hari-dalam-bahasa-inggris

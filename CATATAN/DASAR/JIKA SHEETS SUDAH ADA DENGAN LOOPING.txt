@@ -1,0 +1,8 @@
+Dim validates As String
+validates = Format(tanggalAwal, "dd") & " " & namaBulan & "'" & Right(Year(tanggalAwal), 2)
+
+For i = 3 To twb.Worksheets.Count
+    If LCase(Worksheets(i).Name) = LCase(validates) Then
+    Exit Sub
+    End If
+Next i

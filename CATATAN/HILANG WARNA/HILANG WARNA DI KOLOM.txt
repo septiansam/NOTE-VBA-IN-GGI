@@ -1,0 +1,34 @@
+If Sheets.Count > 4 Then
+    For i = 5 To Sheets.Count
+        Sheets(i).Select
+'        With Columns("N:N").Interior
+'            .Pattern = xlNone
+'            .TintAndShade = 0
+'            .PatternTintAndShade = 0
+'        End With
+'
+'        With Columns("N:N").Borders 'BUAT BORDER
+'            .LineStyle = xlNone
+'        End With
+        
+        Dim col As Range, colCount As Long
+        'HILANGKAN BORDER
+        For Each col In Sheets(i).UsedRange.Columns
+            ' Hitung jumlah sel yang tidak kosong dalam kolom
+            colCount = Application.WorksheetFunction.CountA(col)
+            
+            ' Hapus warna latar belakang kolom jika tidak ada data di kolom tersebut
+            If colCount = 0 Then
+                With col
+                    .Interior.Pattern = xlNone
+                    .Interior.TintAndShade = 0
+                    .Interior.PatternTintAndShade = 0
+                    .Borders.LineStyle = xlNone
+                End With
+'                col.Interior.ColorIndex = xlNone
+            End If
+        Next col
+    Next i
+End If
+
+End Sub

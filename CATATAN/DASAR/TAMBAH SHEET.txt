@@ -1,0 +1,22 @@
+TAMBAH
+DIM NOTE1 AS STRING
+NOTE1 = "NOTE1"
+    If Evaluate("isref('" & "NOTE1" & "'!A1)") Then
+        Sheets(NOTE1).Delete
+    End If
+    Sheets.Add(After:=inputUser).name = NOTE1
+
+HAPUS
+    If Evaluate("isref('" & "NOTE1" & "'!A1)") Then
+        Sheets(NOTE1).Delete
+    End If
+
+    Dim shDbKonversi As Worksheets
+    If Evaluate("isref('" & "Database Konversi" & "'!A1)") Then Sheets("Database Konversi").Delete
+    Sheets.Add(Before:=Sheets("Status")).Name = "Database Konversi"
+    Set shDbKonversi = twb.Sheets("Database Konversi")
+    
+    Dim shMaster As Worksheet
+    If Evaluate("isref('" & "MASTER" & "'!A1)") Then Sheets("MASTER").Delete
+    Sheets.Add(Before:=Sheets("Status")).Name = "MASTER"
+    Set shMaster = twb.Sheets("MASTER")

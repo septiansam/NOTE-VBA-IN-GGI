@@ -1,0 +1,29 @@
+LOKASI FILE MAKRO
+\\10.8.0.35\Bersama\IT\RPA Purchasing\Makro IR
+
+
+DI FILE MAKRO
+Sub apussemua()
+n_aplem = Sheets.Count - 1
+For i_aplem = n_aplem To 3 Step -1
+    If Sheets(i_aplem).Name <> "RPA" And Sheets(i_aplem).Name <> "TOMBOL" Then
+    Application.DisplayAlerts = False
+    Sheets(i_aplem).Delete
+    Application.DisplayAlerts = True
+    End If
+Next i_aplem
+other = "TARIKAN RPA"
+If Evaluate("isref('" & other & "'!A1)") Then
+   Application.DisplayAlerts = False
+   Sheets(other).Delete
+   Application.DisplayAlerts = True
+End If
+Sheets("RPA").Select
+lastrpa = Range("j" & Rows.Count).End(xlUp).Row
+If lastrpa > 1 Then
+    Range("a2:q" & lastrpa).ClearContents
+End If
+Cells.NumberFormat = "General"
+Sheets("Status").Range("a2").Value = 0
+MsgBox "Makro IR telah dikosongkan, silahkan gunakan file Input User untuk memasukkan data baru untuk proses IR."
+End Sub

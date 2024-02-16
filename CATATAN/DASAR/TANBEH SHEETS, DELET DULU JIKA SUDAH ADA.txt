@@ -1,0 +1,13 @@
+  'delete sheets jika sudah ada sebelum add
+  If Evaluate("isref('" & "TARIKAN OV" & "'!A1)") Then Sheets("TARIKAN OV").Delete
+  
+  If Evaluate("isref('" & "TARIKAN OR" & "'!A1)") Then Sheets("TARIKAN OR").Delete
+
+Private Sub OptVBA(isOn As Boolean)
+  With Application
+    .Calculation = IIf(isOn, xlCalculationManual, xlCalculationAutomatic)
+    .EnableEvents = Not (isOn)
+    .ScreenUpdating = Not (isOn)
+    .DisplayAlerts = Not (isOn)
+  End With
+End Sub

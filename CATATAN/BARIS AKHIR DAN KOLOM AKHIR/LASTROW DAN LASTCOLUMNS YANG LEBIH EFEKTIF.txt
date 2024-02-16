@@ -1,0 +1,14 @@
+lr = ShRew.Cells.Find(what:="*" _
+            , lookat:=xlPart _
+            , LookIn:=xlFormulas _
+            , Searchorder:=xlByRows _
+            , searchdirection:=xlPrevious).Row
+
+lc = ShRew.Cells.Find(what:="*" _
+            , lookat:=xlPart _
+            , LookIn:=xlFormulas _
+            , Searchorder:=xlByColumns _
+            , searchdirection:=xlPrevious).Column
+
+LC_DATA = SH_TEMP4.Cells.Find(what:="*", lookat:=xlPart, LookIn:=xlFormulas, Searchorder:=xlByColumns, searchdirection:=xlPrevious).Column
+            

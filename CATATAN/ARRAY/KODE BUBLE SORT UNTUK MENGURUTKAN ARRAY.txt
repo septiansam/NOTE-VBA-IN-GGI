@@ -1,0 +1,51 @@
+Sub SortData()
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim dataArr As Variant
+    Dim i As Long, j As Long
+    Dim temp As Variant
+
+    ' Tentukan lembar kerja yang akan diurutkan
+    Set ws = ThisWorkbook.Worksheets("TES2")
+
+    ' Tentukan kolom terakhir dengan data dalam kolom H
+    lastRow = ws.Cells(ws.Rows.Count, "H").End(xlUp).Row
+
+    ' Muat data ke dalam array
+    dataArr = ws.Range("A1:J" & lastRow).Value2
+
+    ' Lakukan pengurutan data dengan algoritma Bubble Sort
+    For i = 1 To UBound(dataArr, 1) - 1
+        For j = 1 To UBound(dataArr, 1) - i
+            If dataArr(j, 8) > dataArr(j + 1, 8) Then
+                ' Tukar posisi data jika kondisi terpenuhi (mengurutkan berdasarkan kolom H)
+                temp = dataArr(j, 1)
+                dataArr(j, 1) = dataArr(j + 1, 1)
+                dataArr(j + 1, 1) = temp
+
+                temp = dataArr(j, 2)
+                dataArr(j, 2) = dataArr(j + 1, 2)
+                dataArr(j + 1, 2) = temp
+
+                ' Lanjutkan untuk kolom J dan I (sesuai dengan urutan yang diinginkan)
+                temp = dataArr(j, 10)
+                dataArr(j, 10) = dataArr(j + 1, 10)
+                dataArr(j + 1, 10) = temp
+
+                temp = dataArr(j, 9)
+                dataArr(j, 9) = dataArr(j + 1, 9)
+                dataArr(j + 1, 9) = temp
+
+                temp = dataArr(j, 8)
+                dataArr(j, 8) = dataArr(j + 1, 8)
+                dataArr(j + 1, 8) = temp
+            End If
+        Next j
+    Next i
+
+    ' Tulis kembali data yang telah diurutkan ke dalam lembar kerja
+    ws.Range("A1:J" & lastRow).Value2 = dataArr
+End Sub
+
+
+Kode di atas menggunakan algoritma Bubble Sort untuk mengurutkan data di dalam array. Algoritma Bubble Sort sederhana dan mudah dipahami, tetapi ada algoritma pengurutan lain yang lebih efisien untuk jumlah data yang besar. Jika jumlah data yang diurutkan sangat besar, Anda mungkin ingin menggunakan algoritma pengurutan yang lebih cepat seperti QuickSort atau MergeSort.

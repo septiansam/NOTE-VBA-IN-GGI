@@ -1,0 +1,4 @@
+    ' Memeriksa apakah ada data yang terlihat setelah filter
+    If Application.WorksheetFunction.Subtotal(103, twb.Sheets("Input User").Range("A:A")) = 1 Then
+        Exit For ' Keluar dari loop jika tidak ada data yang terlihat
+    End If

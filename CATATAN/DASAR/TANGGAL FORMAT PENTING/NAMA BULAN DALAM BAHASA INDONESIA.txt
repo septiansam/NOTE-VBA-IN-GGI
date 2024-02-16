@@ -1,0 +1,51 @@
+    bulan = WorksheetFunction.Text(Date, "[$-id-ID]mmmm")
+
+' Mendapatkan angka bulan dari nama bulan
+    Dim angkaBulan As Integer
+    angkaBulan = Month(DateSerial(Tahun, Month(shBantu.Range("B4").Value), 1))
+    
+    ' Mendapatkan tanggal awal bulan ini
+    tanggalAwal = DateSerial(Tahun, angkaBulan, 1)
+    
+    ' Tanggal akhir bulan
+    tanggalAkhir = DateSerial(Tahun, angkaBulan + 1, 0)
+    
+    ' Nama bulan dalam format MMMM
+    
+    namaBulan = Format(tanggalAwal, "MMMM")
+    namaBulan = WorksheetFunction.Text(angkaBulan * 29, "[$-421]mmmm")
+
+
+    Range("F14").Select
+    Selection.NumberFormat = "[$-id-ID]mmmm yyyy"
+
+Function NamaBulanIndonesia(bulan As Integer) As String
+    Select Case bulan
+        Case 1
+            NamaBulanIndonesia = "Januari"
+        Case 2
+            NamaBulanIndonesia = "Februari"
+        Case 3
+            NamaBulanIndonesia = "Maret"
+        Case 4
+            NamaBulanIndonesia = "April"
+        Case 5
+            NamaBulanIndonesia = "Mei"
+        Case 6
+            NamaBulanIndonesia = "Juni"
+        Case 7
+            NamaBulanIndonesia = "Juli"
+        Case 8
+            NamaBulanIndonesia = "Agustus"
+        Case 9
+            NamaBulanIndonesia = "September"
+        Case 10
+            NamaBulanIndonesia = "Oktober"
+        Case 11
+            NamaBulanIndonesia = "November"
+        Case 12
+            NamaBulanIndonesia = "Desember"
+        Case Else
+            NamaBulanIndonesia = "Tidak Diketahui"
+    End Select
+End Function

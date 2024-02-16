@@ -1,0 +1,8 @@
+Sub Macro2()
+    With Range("A1").CurrentRegion
+        .Borders.LineStyle = xlNone
+        .Borders.LineStyle = xlContinuous
+        .Rows(1).Borders.LineStyle = xlContinuous
+        .Rows(1).Borders.Weight = xlMedium
+    End With
+End Sub

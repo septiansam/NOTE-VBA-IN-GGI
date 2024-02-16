@@ -1,0 +1,6 @@
+=INDIRECT("tb_Planner[NAMA PLANNER]")
+
+tb_JenisPekerjaan
+
+
+=INDIRECT("tb_JenisPekerjaan[Jenis Pekerjaan]")

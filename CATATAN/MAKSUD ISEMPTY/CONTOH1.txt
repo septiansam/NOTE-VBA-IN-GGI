@@ -1,0 +1,3 @@
+IsFound = IsEmpty(Rows(1).Find(STR_COMPARISON, , , xlPart))
+
+JIKA DITEMUKAN MAKA AKAN BERNILAI FALSE

@@ -1,0 +1,32 @@
+' UPDATE 4 SEPTEMBER ATUR TANGGAL (SAM)
+    Dim tanggalAwal As Date
+    Dim tanggalAkhir As Date
+    Dim kolom As Integer
+    Dim baris As Integer
+    
+    ' Tentukan tanggal awal dan akhir bulan ini
+    tanggalAwal = DateSerial(Year(Date), Month(Date), 1)
+    tanggalAkhir = DateSerial(Year(Date), Month(Date) + 1, 1) - 1
+    
+    ' Tentukan kolom dan baris awal
+    kolom = 5 ' Kolom E
+    baris = 7 ' Baris 7
+    
+    ' Loop melalui tanggal dari tanggalAwal hingga tanggalAkhir
+    Do While tanggalAwal <= tanggalAkhir
+        ' Tulis tanggal dalam format nomor tanggal saja
+        Cells(baris, kolom).Value = Day(tanggalAwal)
+        
+        ' Beri warna merah pada hari Sabtu dan Minggu
+        If Weekday(tanggalAwal, vbSunday) = 1 Or Weekday(tanggalAwal, vbSunday) = 7 Then
+            Cells(baris, kolom).Interior.Color = RGB(255, 0, 0) ' Warna Merah
+        End If
+        
+        ' Pindah ke kolom berikutnya
+        kolom = kolom + 1
+        
+        ' Pindah ke tanggal berikutnya
+        tanggalAwal = DateAdd("d", 1, tanggalAwal)
+    Loop
+    
+    'SELESAI

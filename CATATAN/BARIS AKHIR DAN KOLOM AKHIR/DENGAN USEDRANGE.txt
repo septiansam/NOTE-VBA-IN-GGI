@@ -1,0 +1,51 @@
+Set rg = Sheet1.UsedRange
+barisAwal = rg.Row
+jumlahBaris = rg.Rows.Count
+barisAkhir = barisAwal + jumlahBaris - 1
+kolomAkhir = rg.Column + rg.Columns.Count - 1
+
+'••_-_-_ SECARA LANGSUNG _-_-_••'
+
+barisAwal = Sheet1.UsedRange.Row
+kolomAwal = Sheet1.UsedRange.Column
+
+Debug.Print "Baris Awal : "; barisAwal
+Debug.Print "Kolom Awal : "; kolomAwal
+Debug.Print "_-_-_-_-_-_-_-_-_", vbNewLine
+
+Debug.Print "Baris Akhir : "; barisAkhir
+Debug.Print "Kolom Akhir : "; kolomAkhir
+Debug.Print "_-_-_-_-_-_-_-_-_", vbNewLine
+
+barisAkhir2 = Sheet1.UsedRange.Row + Sheet1.UsedRange.Rows.Count - 1
+kolomAkhir2 = Sheet1.UsedRange.Column + Sheet1.UsedRange.Columns.Count - 1
+
+Debug.Print "Baris Akhir2 : "; barisAkhir2
+Debug.Print "Kolom Akhir2 : "; kolomAkhir2
+Debug.Print "_-_-_-_-_-_-_-_-_", vbNewLine
+
+With Sheet1.UsedRange
+    barisAkhir3 = .Row + .Rows.Count - 1
+    kolomAkhir3 = .Column + .Columns.Count - 1
+End With
+
+Sheet1.Activate
+With ActiveSheet.UsedRange
+    barisAkhir3 = .Row + .Rows.Count - 1
+    kolomAkhir3 = .Column + .Columns.Count - 1
+End With
+
+
+Debug.Print "Baris Akhir3 : "; barisAkhir3
+Debug.Print "Kolom Akhir3 : "; kolomAkhir3
+Debug.Print "_-_-_-_-_-_-_-_-_", vbNewLine
+
+lr = rg.Row + rg.Rows.Count - 1
+lr = rg.Column + rg.Columns.Count - 1
+
+Debug.Print "Baris Akhir lr : "; barisAkhir
+Debug.Print "Kolom Akhir lc : "; kolomAkhir
+
+str_Col = Split(Cells(1, kolomAkhir).Address, "$")(1)
+
+ΞΞΞΞΞΞ

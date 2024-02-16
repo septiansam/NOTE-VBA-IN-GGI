@@ -1,0 +1,15 @@
+Sub setPage()
+init
+With shPDF.PageSetup
+    .PrintQuality = 600
+    .Orientation = xlLandscape
+    .PaperSize = xlPaperLetter
+    .Order = xlDownThenOver
+    .Zoom = False
+    .FitToPagesWide = 1
+    .FitToPagesTall = 1
+    .PrintErrors = xlPrintErrorsDisplayed
+    .ScaleWithDocHeaderFooter = True
+    .AlignMarginsHeaderFooter = True
+End With
+End Sub

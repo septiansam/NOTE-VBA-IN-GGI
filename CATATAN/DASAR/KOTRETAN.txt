@@ -1,0 +1,175 @@
+    If Not Evaluate("isref('" & nameSheet & "'!A1)") Then
+        Set WS = ThisWorkbook.Sheets.Add(After:=ThisWorkbook.Sheets(ThisWorkbook.Sheets.Count))
+        WS.Name = nameSheet
+
+If Evaluate("isref('" & "NOTE1" & "'!A1)") Then
+    Sheets("NOTE1").Delete
+End If
+If Evaluate("isref('" & "NOTE2" & "'!A1)") Then
+    Sheets("NOTE2").Delete
+End If
+If Evaluate("isref('" & "NOTE3" & "'!A1)") Then
+    Sheets("NOTE3").Delete
+End If
+Application.DisplayAlerts = True
+
+Sheets.Add(after:=Sheets(Sheets.Count)).Name = "NOTE1"
+Sheets.Add(after:=Sheets(Sheets.Count)).Name = "NOTE2"
+
+
+Sheets("TES4").Select
+Sheets("TES4").Cells.EntireColumn.AutoFit
+Columns("F").ColumnWidth = 12
+Columns(1).HorizontalAlignment = xlCenter
+LASTROW = Cells(Rows.Count, 1).End(xlUp).Row
+
+Application.DisplayAlerts = False
+
+Save = Application.ActiveWorkbook.Path & "\"
+ARAN = "SUMMARY WO PURCHASING.pdf"
+namafile = ARAN
+With ActiveSheet.PageSetup
+    .Orientation = xlLandscape
+    .PrintArea = "A1:AA" & LASTROW
+    .FitToPagesTall = False: .FitToPagesWide = 1
+    .Zoom = False: .PaperSize = xlPaperA4
+End With
+Application.DisplayAlerts = True
+Sheets("TES4").ExportAsFixedFormat Type:=xlTypePDF, Filename:=Save & namafile
+
+
+Cells(DATA_KIRIM, 2) = "\\10.8.0.35\Bersama\IT\RPA Purchasing\WO Purchasing\SUMMARY WO PURCHASING.pdf"
+Cells(DATA_KIRIM + 1, 2) = "\\10.8.0.35\Bersama\IT\RPA Purchasing\WO Purchasing\SUMMARY WO PURCHASING.pdf"
+
+
+
+LASTCOL = Sheets("TES3").Cells.Find(what:="*" _
+            , lookat:=xlPart _
+            , LookIn:=xlFormulas _
+            , Searchorder:=xlByColumns _
+            , searchdirection:=xlPrevious).Column
+            
+LASTROW = Sheets("TES3").Cells.Find(what:="*" _
+            , lookat:=xlPart _
+            , LookIn:=xlFormulas _
+            , Searchorder:=xlByRows _
+            , searchdirection:=xlPrevious).Row
+
+
+
+Sheets("TES3").Select
+Rows(1).Insert
+Cells(1, 1) = NAMA_ORANG
+Cells(1, 1).Font.Bold = True
+
+LASTCOL = Sheets("TES3").Cells.Find(what:="*" _
+            , lookat:=xlPart _
+            , LookIn:=xlFormulas _
+            , Searchorder:=xlByColumns _
+            , searchdirection:=xlPrevious).Column
+            
+LASTROW = Sheets("TES3").Cells.Find(what:="*" _
+            , lookat:=xlPart _
+            , LookIn:=xlFormulas _
+            , Searchorder:=xlByRows _
+            , searchdirection:=xlPrevious).Row
+
+Set RNG = Range(Cells(2, 1), Cells(LASTROW, LASTCOL))
+With RNG.Borders
+    .LineStyle = xlContinuous: .Weight = xlThin
+End With
+Sheets("TES3").Select
+For i = 3 To LASTROW
+    Cells(i, 1) = i - 2
+Next i
+Save = alamat & ARAN
+Cells.EntireColumn.AutoFit
+Cells.EntireRow.AutoFit
+Columns("F").EntireColumn.AutoFit
+
+Columns("M:N").NumberFormat = "MM/D/YYYY"
+
+Application.DisplayAlerts = False
+ARAN = "WO PURCHASING_" & NAMA_ORANG & ".pdf"
+namafile = ARAN
+With ActiveSheet.PageSetup
+    .Orientation = xlLandscape
+    .PrintArea = "A1:AA" & LASTROW
+    .FitToPagesTall = False
+    .FitToPagesWide = 1
+    .Zoom = False
+    .PaperSize = xlPaperA4
+End With
+Application.DisplayAlerts = True
+
+Sheets("TES3").ExportAsFixedFormat Type:=xlTypePDF, Filename:=Save & namafile
+Range("A1").CurrentRegion.Copy Destination:=Sheets("TES4").Range("A" & Rows.Count).End(xlUp).Offset(3, 0)
+
+rgb(17,252,45) hejo
+rgb(255,255,0) koneng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+Sub ConvertBulanToAngka()
+    Dim listBulan As Variant
+    listBulan = Array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember")
+    
+    Dim bulan As String
+    Dim angkaBulan As Integer
+    
+    For i = LBound(listBulan) To UBound(listBulan)
+        bulan = listBulan(i)
+        angkaBulan = i + 1
+        
+        ' Lakukan konversi berdasarkan nama bulan
+        Select Case bulan
+            Case "Januari"
+                angkaBulan = 1
+            Case "Februari"
+                angkaBulan = 2
+            Case "Maret"
+                angkaBulan = 3
+            Case "April"
+                angkaBulan = 4
+            Case "Mei"
+                angkaBulan = 5
+            Case "Juni"
+                angkaBulan = 6
+            Case "Juli"
+                angkaBulan = 7
+            Case "Agustus"
+                angkaBulan = 8
+            Case "September"
+                angkaBulan = 9
+            Case "Oktober"
+                angkaBulan = 10
+            Case "November"
+                angkaBulan = 11
+            Case "Desember"
+                angkaBulan = 12
+        End Select
+        
+        ' Lakukan sesuatu dengan bulan dan angkaBulan di sini
+        ' Contoh: MsgBox "Bulan " & bulan & " memiliki angka " & angkaBulan
+    Next i
+End Sub

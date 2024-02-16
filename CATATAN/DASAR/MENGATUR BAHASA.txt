@@ -1,0 +1,60 @@
+Sub SetLocalSettings()
+    ' Simpan pengaturan bahasa lokal saat ini
+    Dim currentLocal As String
+    currentLocal = Application.International(xlCountrySetting)
+    
+    ' Set bahasa lokal ke English-US (Inggris Amerika)
+    Application.LanguageSettings.LanguageID(msoLanguageIDUI) = 1033
+    
+    ' Sekarang kode Anda dapat menggunakan tanda titik (.) sebagai tanda desimal
+    
+    ' Contoh operasi matematika yang tidak terpengaruh oleh pengaturan regional
+    Dim result As Double
+    Dim value1 As Double
+    Dim value2 As Double
+    
+    value1 = 19.56
+    value2 = 15305
+    
+    ' Melakukan perkalian
+    result = value1 * value2
+    
+    ' Menampilkan hasil perkalian
+    MsgBox "Hasil perkalian: " & result
+    
+    ' Mengembalikan pengaturan bahasa lokal ke pengaturan awal
+    Application.LanguageSettings.LanguageID(msoLanguageIDUI) = currentLocal
+End Sub
+
+
+Sub ChangeLanguageAndProcessData()
+    Dim currentLanguage As Long
+    Dim ws As Worksheet
+    
+    ' Simpan pengaturan bahasa lokal saat ini
+    currentLanguage = Application.LanguageSettings.LanguageID(msoLanguageIDUI)
+    
+    ' Set bahasa lokal ke English-US (Inggris Amerika) jika bahasa saat ini adalah bahasa Indonesia
+    If currentLanguage = 1057 Then ' Kode bahasa Indonesia
+        Application.LanguageSettings.LanguageID(msoLanguageIDUI) = 1033 ' Kode bahasa Inggris
+    End If
+    
+    ' Mengganti nama lembar kerja yang sesuai
+    Set ws = ThisWorkbook.Sheets("Nama_Lembar_Kerja_Anda")
+    
+    ' Lakukan pengolahan data di sini sesuai kebutuhan Anda
+    ' Contoh: ws.Range("A1").Value = "Data yang diubah"
+    
+    ' Set bahasa lokal kembali ke bahasa Indonesia jika bahasa sebelumnya adalah bahasa Indonesia
+    If currentLanguage = 1057 Then ' Kode bahasa Indonesia
+        Application.LanguageSettings.LanguageID(msoLanguageIDUI) = 1057 ' Kode bahasa Indonesia
+    End If
+    
+    ' Mengembalikan pengaturan bahasa lokal ke pengaturan awal jika sebelumnya bukan bahasa Indonesia
+    If currentLanguage <> 1057 Then ' Jika bahasa sebelumnya bukan bahasa Indonesia
+        Application.LanguageSettings.LanguageID(msoLanguageIDUI) = currentLanguage
+    End If
+    
+    ' Bersihkan objek worksheet
+    Set ws = Nothing
+End Sub

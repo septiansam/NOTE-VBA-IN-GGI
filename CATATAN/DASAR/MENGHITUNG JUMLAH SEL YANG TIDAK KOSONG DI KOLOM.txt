@@ -1,0 +1,3 @@
+Application.WorksheetFunction.CountA(Range("b:b"))
+
+HITUNG DI KOLOM B

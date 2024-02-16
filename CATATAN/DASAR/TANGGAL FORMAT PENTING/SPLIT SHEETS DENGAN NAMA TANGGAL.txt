@@ -1,0 +1,92 @@
+Option Explicit
+
+Public twb As Workbook
+Public shBantu As Worksheet
+Public shRpa As Worksheet
+
+
+Sub SplitDate()
+
+Set twb = ThisWorkbook
+Set shBantu = twb.Sheets("Bantuan")
+Set shRpa = twb.Sheets("RPA")
+
+Dim bulan As String, noBulan As Integer
+Dim tahun As String
+Dim tanggalAwal As Date
+Dim tanggalAkhir As Date
+Dim namaBulan As String
+Dim namaSheet As String
+Dim i As Integer
+Dim tanggal As Date
+
+bulan = shBantu.Range("B4").Value
+    
+' Lakukan konversi berdasarkan nama bulan
+Select Case bulan
+    Case "Januari"
+        noBulan = 1
+    Case "Februari"
+        noBulan = 2
+    Case "Maret"
+        noBulan = 3
+    Case "April"
+        noBulan = 4
+    Case "Mei"
+        noBulan = 5
+    Case "Juni"
+        noBulan = 6
+    Case "Juli"
+        noBulan = 7
+    Case "Agustus"
+        noBulan = 8
+    Case "September"
+        noBulan = 9
+    Case "Oktober"
+        noBulan = 10
+    Case "November"
+        noBulan = 11
+    Case "Desember"
+        noBulan = 12
+End Select
+
+tahun = shBantu.Range("C4").Value
+
+' Mendapatkan tanggal awal bulan ini
+tanggalAwal = DateSerial(Year(Date), noBulan, 1)
+' Mendapatkan tanggal akhir bulan ini
+tanggalAkhir = DateSerial(Year(Date), noBulan + 1, 0)
+' Mendapatkan nama bulan
+namaBulan = Format(bulan, "MMMM")
+
+' Membuat sheets sesuai dengan jumlah hari dalam bulan
+Dim header As Variant
+For tanggal = tanggalAwal To tanggalAkhir
+    namaSheet = Format(tanggal, "dd") & " " & namaBulan & "'" & Right(Year(tanggalAwal), 2)
+    
+    ' Membuat lembar kerja baru dengan nama tanggal
+    Sheets.Add(After:=Sheets(Sheets.Count)).Name = namaSheet
+    
+    ' Memindahkan data atau melakukan operasi lain di lembar kerja baru
+    ReDim header(1 To 7)
+    header(1) = "No"
+    header(2) = "Penerima"
+    header(3) = "Pengirim"
+    header(4) = "Packaging"
+    header(5) = "Keterangan"
+    header(6) = "Email"
+    header(7) = "Status"
+    For i = LBound(header) To UBound(header)
+        Cells(1, i) = header(i)
+    Next i
+    With Range("1:1")
+        .Font.Bold = True
+        .EntireColumn.AutoFit
+        .EntireRow.AutoFit
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+    End With
+Next tanggal
+
+
+End Sub

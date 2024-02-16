@@ -1,0 +1,5 @@
+Range("O1") = "1"
+Range("O1").Copy
+Range("Q" & Rows.Count).End(xlUp).Select
+Range(Selection, "Q2").Select
+Selection.PasteSpecial Paste:=xlPasteAll, Operation:=xlMultiply, SkipBlanks:=False, Transpose:=False

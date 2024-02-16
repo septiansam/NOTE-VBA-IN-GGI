@@ -1,0 +1,15 @@
+On Error GoTo SAM_HANDLING
+
+
+SAM_HANDLING:
+    For Each SH In twb.Worksheets
+        If SH.Name <> "TOMBOL" Then SH.Delete
+    Next SH
+    MsgBox "...TERJADI ERROR..." & _
+    vbNewLine & _
+    vbNewLine & "#" & Err.Number & " - " & Err.Description & _
+    vbNewLine & _
+    vbNewLine & "Sepertinya terdapat pada data atau sintaxis." & _
+    vbNewLine & _
+    vbCrLf & "Jika Kesulitan Silakan Hubungi Septian", _
+    vbOKOnly + vbCritical, "Error Detected............. :("

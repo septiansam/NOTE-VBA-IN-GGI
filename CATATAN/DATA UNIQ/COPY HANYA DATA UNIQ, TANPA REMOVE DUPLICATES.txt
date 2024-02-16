@@ -1,0 +1,1 @@
+Range("C6:C" & Cells(Rows.Count, 3).End(xlUp).Row).AdvancedFilter Action:=xlFilterCopy, CopyToRange:=Range("SAM1"), Unique:=True

@@ -1,0 +1,4 @@
+.ShrinkToFit = False 'ARTINYA TIDAK
+
+ARAH BACA
+.ReadingOrder = xlContext

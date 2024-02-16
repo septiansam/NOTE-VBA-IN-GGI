@@ -1,0 +1,8 @@
+Private Sub IsOptimal(isOn As Boolean)
+    With Application
+        .Calculation = IIf(isOn, xlCalculationManual, xlCalculationAutomatic)
+        .EnableEvents = Not (isOn)
+        .ScreenUpdating = Not (isOn)
+        .DisplayAlerts = Not (isOn)
+    End With
+End Sub

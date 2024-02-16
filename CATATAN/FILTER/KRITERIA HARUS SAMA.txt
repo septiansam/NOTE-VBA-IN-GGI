@@ -1,0 +1,3 @@
+HARUS DENGAN = CONTOH
+ActiveSheet.Range("$A$7:$N$" & Range("a" & Rows.Count).End(xlUp).Row).AutoFilter Field:=10, Criteria1:= _
+                        "=*" & simpan_OR_filter & "*", Operator:=xlAnd

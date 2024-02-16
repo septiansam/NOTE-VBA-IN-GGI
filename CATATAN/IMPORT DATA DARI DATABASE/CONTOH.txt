@@ -1,0 +1,55 @@
+Sub RetrieveDataFromDatabaseToExcel()
+    Dim conn As Object
+    Dim rs As Object
+    Dim strSQL As String
+    Dim strConnection As String
+    Dim ws As Worksheet
+    Dim i As Integer, j As Integer
+    
+    ' Set up the connection string
+    strConnection = "Driver={SQL Server};Server=MCR0001\SQLEXPRESS;Database=DBTester;" _
+        & "uid=sam;pwd=Septi@n15;Connect Timeout=0;"
+    
+    ' Create a new connection object
+    Set conn = CreateObject("ADODB.Connection")
+    
+    ' Open the database connection
+    conn.Open strConnection
+    
+    ' Set up the SQL query
+    strSQL = "SELECT * FROM tb_Test" ' Menggunakan nama tabel "tb_Test"
+    
+    ' Create a recordset object
+    Set rs = CreateObject("ADODB.Recordset")
+    
+    ' Execute the SQL query
+    rs.Open strSQL, conn
+    
+    ' Set a reference to Sheet1 (ganti dengan nama lembar kerja yang sesuai)
+    Set ws = ThisWorkbook.Sheets("Sheet1") ' Ganti "Sheet1" sesuai dengan nama lembar kerja yang Anda inginkan
+    
+    ' Menulis header kolom ke Excel
+    For j = 1 To rs.Fields.Count
+        ws.Cells(1, j).Value = rs.Fields(j - 1).Name
+    Next j
+    
+    ' Menulis data dari recordset ke Excel
+    i = 2 ' Baris pertama sudah digunakan oleh header
+    Do Until rs.EOF
+        For j = 1 To rs.Fields.Count
+            ws.Cells(i, j).Value = rs.Fields(j - 1).Value
+        Next j
+        i = i + 1
+        rs.MoveNext
+    Loop
+    
+    ' Tutup recordset
+    rs.Close
+    
+    ' Tutup koneksi database
+    conn.Close
+    
+    ' Hapus objek koneksi dan recordset
+    Set rs = Nothing
+    Set conn = Nothing
+End Sub

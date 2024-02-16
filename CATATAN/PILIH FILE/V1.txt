@@ -1,0 +1,10 @@
+Private Sub Btn_FileBC25_Click()
+        Dim FullPathFile As Variant
+        FullPathFile = Application.GetOpenFilename(, , "Pilih File Kuesioner", , False)
+        If FullPathFile = False Then
+            MsgBox "Cancel", vbExclamation, "Select File"
+            Exit Sub
+        Else
+            Fm_ImportFile.Txt_FileBC25.Value = FullPathFile '<<--[N]
+        End If
+End Sub

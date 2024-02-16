@@ -1,0 +1,16 @@
+vbTextCompare adalah salah satu konstanta yang digunakan dalam fungsi InStr yang digunakan dalam kode VBA. Fungsi InStr digunakan untuk mencari sebuah substring dalam sebuah string. vbTextCompare adalah salah satu argumen yang dapat digunakan untuk mengontrol bagaimana pencarian substring dilakukan. Inilah beberapa konstanta yang dapat digunakan bersama dengan InStr:
+
+vbBinaryCompare (nilai default):
+
+Pencarian dilakukan secara biner (case-sensitive).
+Huruf besar dan kecil dianggap berbeda. Misalnya, "A" tidak sama dengan "a".
+vbTextCompare:
+
+Pencarian dilakukan secara teks (case-insensitive).
+Huruf besar dan kecil dianggap sama. Misalnya, "A" sama dengan "a".
+vbDatabaseCompare:
+
+Pencarian dilakukan sesuai dengan aturan perbandingan basis data yang digunakan di lingkungan pengembangan VBA Anda. Ini bisa menjadi kasus sensitif atau tidak sensitif terhadap huruf besar-kecil tergantung pada pengaturan basis data yang digunakan.
+vbUseCompareOption:
+
+Pencarian mengikuti pengaturan opsi perbandingan saat ini di lingkungan VBA Anda. Anda dapat mengatur opsi perbandingan ini menggunakan Option Compare di awal modul atau kode VBA Anda.

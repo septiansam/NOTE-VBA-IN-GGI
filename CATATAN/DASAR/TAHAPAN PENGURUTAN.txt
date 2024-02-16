@@ -1,0 +1,26 @@
+  ' hapus kriteria sort
+  shTES2.Sort.SortFields.Clear
+  
+  ' buat kriteria sort
+  Dim k1 As Range, k2 As Range, k3 As Range
+  Set k1 = shTES2.Range("H2:H" & lr)
+  Set k2 = shTES2.Range("I2:I" & lr)
+  Set k3 = shTES2.Range("J2:J" & lr)
+  
+  ' tambahkan kriteria yang sudah dibuat
+  shTES2.Sort.SortFields.Add Key:=k1, SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal
+  shTES2.Sort.SortFields.Add Key:=k2, SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal
+  shTES2.Sort.SortFields.Add Key:=k3, SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal
+  
+  ' lakukan pengurutan
+  Dim rg As Range
+  Set rg = shTES2.UsedRange
+  
+  With shTES2.Sort
+    .SetRange rg
+    .Header = xlYes
+    .MatchCase = False
+    .Orientation = xlTopToBottom
+    .SortMethod = xlPinYin
+    .Apply
+  End With

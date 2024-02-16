@@ -1,0 +1,53 @@
+1. FORMAT FILE EXCEL (XLSX)
+
+ActiveWorkbook.SaveAs "C:\Path\to\file.xlsx", xlOpenXMLWorkbook
+
+
+2. FORMAT FILE EXCEL (XLSM)
+
+ActiveWorkbook.SaveAs "C:\Path\to\file.xlsm", FileFormat:=52
+ActiveWorkbook.SaveAs "C:\Path\to\file.xlsm", xlOpenXMLWorkbookMacroEnabled
+
+3. FORMAT FILE PDF
+
+ActiveSheet.ExportAsFixedFormat Type:=xlTypePDF, Filename:="C:\Path\to\file.pdf"
+
+
+4. FORMAT FILE WORD
+
+ActiveDocument.SaveAs "C:\Path\to\file.docx", wdFormatDocumentDefault
+
+
+5. FORMAT FILE PowerPoint
+
+ActivePresentation.SaveAs "C:\Path\to\file.pptx", ppSaveAsOpenXMLPresentation
+
+
+6. FORMAT FILE TEXT
+
+ActiveWorkbook.SaveAs "C:\Path\to\file.txt", xlText
+
+
+7. FORMAT FILE CSV(Comma Separated Values)
+
+ActiveWorkbook.SaveAs "C:\Path\to\file.csv", xlCSV
+
+
+8. FORMAT FILE XML
+
+ActiveWorkbook.SaveAs "C:\Path\to\file.xml", xlXMLSpreadsheet
+
+
+9. FORMAT FILE HTML
+
+ActiveWorkbook.SaveAs "C:\Path\to\file.html", xlHtml
+
+
+
+
+
+
+
+
+
+

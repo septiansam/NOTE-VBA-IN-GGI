@@ -1,0 +1,28 @@
+'Workbooks.Open(sFilename, ReadOnly:=True)
+'Tutup save bisi lagi ada yang update
+'Workbooks.Close saveChanges:=True
+
+Sub WorksheetRead()
+
+    ' Get the full filename and path of "WriteData.xlsx"
+    Dim sFilename As String
+    sFilename = _
+         ThisWorkbook.Path & Application.PathSeparator & "WriteData.xlsx"
+
+    ' Open workbook as read-only and store in variable wk
+    Dim wk As Workbook
+    Set wk = Workbooks.Open(sFilename, ReadOnly:=True)
+
+    ' Store the worksheet Sheet1 in the variable shRead
+    Dim shRead As Worksheet
+    Set shRead = wk.Worksheets("Sheet1")
+    
+    ' Print the value from the worksheet cell A1
+    If IsEmpty(shRead.Range("A1").Value2) Then
+        MsgBox "No value was found in cell Sheet1:A1 of WriteData.xlsx."
+    Else
+        MsgBox "The value found in Sheet1:A1 is of WriteData.xlsx is: " _
+            & shRead.Range("A1").Value2
+    End If
+    
+End Sub

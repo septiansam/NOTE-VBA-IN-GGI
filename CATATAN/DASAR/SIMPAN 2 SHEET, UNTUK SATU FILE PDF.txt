@@ -1,0 +1,28 @@
+Sub PDFF()
+
+alamat = Sheets("BANTUAN").Range("H12")
+Save = alamat & "\"
+
+Application.DisplayAlerts = False
+
+    LASTROW = Sheets("NOTE2").Cells.Find(what:="*" _
+            , lookat:=xlPart _
+            , LookIn:=xlFormulas _
+            , Searchorder:=xlByRows _
+            , searchdirection:=xlPrevious).Row
+      
+Worksheets(Array("NOTE1", "NOTE2")).Select
+ARAN = "WO PURCHASING_" & ".pdf"
+namafile = ARAN
+With ActiveSheet.PageSetup
+    .Orientation = xlLandscape
+    .PrintArea = "A1:G" & LASTROW
+    .FitToPagesTall = False
+    .FitToPagesWide = 1
+    .Zoom = False
+    .PaperSize = xlPaperA4
+End With
+Application.DisplayAlerts = True
+
+
+Sheets("NOTE2").ExportAsFixedFormat Type:=xlTypePDF, fileName:=Save & namafile

@@ -1,0 +1,6 @@
+00 00 00 00 1e 1e 1e 00 34 3a 40 00 3c 42 48 00 d4 d4 d4 00 ff ff ff 00 26 4f 78 00 56 9c d6 00 74 b0 df 00 79 4e 8b 00 9f 74 b1 00 e5 14 00 00 d6 9d 85 00 ce 91 78 00 60 8b 4e 00 b5 ce a8 00
+
+
+00 00 00 00 1e 1e 1e 00 34 3a 40 00 3c 42 48 00 d4 d4 d4 00 ff ff ff 00 26 4f 78 00 56 9c d6 00 74 b0 df 00 79 4e 8b 00 9f 74 b1 00 e5 14 00 00 d6 9d 85 00 ce 91 78 00 60 8b 4e 00 b5 ce a8 00
+
+JetBrains Mono NL SemiBold

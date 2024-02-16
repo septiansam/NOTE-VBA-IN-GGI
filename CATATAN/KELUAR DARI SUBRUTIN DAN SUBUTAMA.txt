@@ -1,0 +1,18 @@
+Sub tes()
+    
+    MsgBox "ini sub tes"
+    isData = False
+    Exit Sub
+    
+    MsgBox "ini sub tes lagi"
+    
+End Sub
+
+Sub tesCEK()
+
+Call tes
+If isData = False Then Exit Sub
+
+MsgBox "Masih Jalan"
+
+End Sub

@@ -1,0 +1,98 @@
+shInputUserMacro.AutoFilter.Range.Offset(1).SpecialCells(xlCellTypeVisible).Cells(1, cow).Select
+
+' salah
+    shInputUserMacro.AutoFilter.Range.Offset(1).SpecialCells(xlCellTypeVisible).Cells(1, cOW).Select
+    lr = Cells(Rows.Count, ActiveCell.Column + 1).End(xlUp).Row
+    
+    'Masukkan OW
+    Set rgOW = Range(ActiveCell, Cells(lr, cOW))
+    rgOW.Value = ow
+    
+    'Masukkan PO
+    Set rgPO = Range(ActiveCell.Offset(0, 2), Cells(lr, cPO))
+    rgPO.Value = po
+
+' benar
+
+For i = 1 To SUMWOPO
+    shBantuan.Select
+    Key = Cells(i + 1, 4) 'ADDRESS NUMBER
+    po = Cells(i + 1, "I")
+    wsInputTicket.Activate
+    If wsInputTicket.AutoFilterMode = True Then Selection.AutoFilter
+    Range("A1").AutoFilter
+    Range("A1").CurrentRegion.AutoFilter Rows(1).Find("Address Number").Column, Key
+    Range("A1").CurrentRegion.AutoFilter 19, "="
+    Range("A1").CurrentRegion.AutoFilter 20, "="
+    
+    ' Memeriksa apakah ada data yang terlihat setelah filter
+    If Application.WorksheetFunction.Subtotal(103, wsInputTicket.Range("A:A")) = 1 Then
+        Selection.AutoFilter
+        MsgBox "HUBUNGI TIM MACRO", vbExclamation, "TERJADI KESALAHAN"
+        Stop
+        Exit For ' Keluar dari loop jika tidak ada data yang terlihat
+    End If
+    
+    cPO = Rows(1).Find("No PO(O4)").Column
+    
+    wsInputTicket.AutoFilter.Range.Offset(1).SpecialCells(xlCellTypeVisible).Cells(1, cPO).Select
+
+    Set rgPO = Range(ActiveCell.Offset(0, -1), Selection.Offset(0, -1).End(xlDown))
+    rgPO.Offset(0, 1).Select
+    Selection.Value = po
+    Selection.Offset(0, 1).Value = "DONE"
+    If wsInputTicket.AutoFilterMode = True Then Selection.AutoFilter
+    
+    shInputUser.Activate
+    
+    If shInputUser.AutoFilterMode = True Then Selection.AutoFilter
+    Range("A1").AutoFilter
+    Range("A1").CurrentRegion.AutoFilter Rows(1).Find("Address Number").Column, Key
+    Range("A1").CurrentRegion.AutoFilter 19, "="
+    Range("A1").CurrentRegion.AutoFilter 20, "="
+    
+    ' Memeriksa apakah ada data yang terlihat setelah filter
+    If Application.WorksheetFunction.Subtotal(103, twb.Sheets("Input User").Range("A:A")) = 1 Then
+        Selection.AutoFilter
+        MsgBox "HUBUNGI TIM MACRO", vbExclamation, "TERJADI KESALAHAN"
+        Stop
+        Exit For ' Keluar dari loop jika tidak ada data yang terlihat
+    End If
+    
+    cPO = Rows(1).Find("No PO(O4)").Column
+    
+    shInputUser.AutoFilter.Range.Offset(1).SpecialCells(xlCellTypeVisible).Cells(1, cPO).Select
+    
+    'Masukkan PO
+    Set rgPO = Range(ActiveCell.Offset(0, -1), Selection.Offset(0, -1).End(xlDown))
+    rgPO.Offset(0, 1).Select
+    Selection.Value = po
+    Selection.Offset(0, 1).Value = "DONE"
+    If shInputUser.AutoFilterMode = True Then shInputUser.AutoFilterMode = False
+    
+    Cells.EntireColumn.AutoFit
+
+Next i
+
+
+    'Criteria Item Makloon
+    shKotret.Range("B2:B" & Range("B2").End(xlDown).row).ClearContents
+    Set f = Rows(1).Find("Item Makloon")
+    If Not f Is Nothing Then
+        colItemMakloon = Rows(1).Find("Item Makloon").Column
+        
+        shOlah.AutoFilter.Range.Offset(1).SpecialCells(xlCellTypeVisible).Cells(1, colItemMakloon).Select
+        x = Application.WorksheetFunction.Subtotal(103, shOlah.Range("A:A"))
+        If x > 2 Then
+            shOlah.Range(ActiveCell, Selection.End(xlDown)).Copy Destination:=shKotret.Range("B1")
+'        lr = Cells.SpecialCells(xlCellTypeVisible).Cells(Rows.Count, colItemMakloon).End(xlUp).row
+'        Cells.SpecialCells(xlCellTypeVisible).Range(Cells(2, colItemMakloon), Cells(lr, colItemMakloon)).Copy _
+'            Destination:=shKotret.Range("B1")
+        ElseIf x = 2 Then
+            ActiveCell.Copy Destination:=shKotret.Range("B1")
+        Else
+            MsgBox "Hubungi Tim Macro", vbInformation
+            Stop
+        End If
+    End If
+    shKotret.Activate

@@ -1,0 +1,32 @@
+If ActiveSheet.AutoFilterMode = True Then
+    Range("a1:n1").Select
+    Selection.AutoFilter
+End If
+
+
+Sheets("OLAHAN38").Select
+If ActiveSheet.AutoFilterMode = True Then Selection.AutoFilter
+
+
+    Dim twb As Workbook, tws As Worksheet, i As Long
+    Set twb = ThisWorkbook: Set tws = twb.Sheets("tombol")
+    
+    'hidupkan filter di nama file
+    tws.Select
+    If ActiveSheet.AutoFilterMode = True Then Selection.AutoFilter
+
+
+    Dim twb As Workbook, tws As Worksheet, a As Long, b As Long, c As Long
+    Set twb = ThisWorkbook: Set tws = twb.Sheets("tombol")
+If tws.AutoFilterMode = True Then tws.AutoFilterMode = False
+
+
+Selain xlOr, ada juga beberapa operator logika lainnya yang dapat Anda gunakan dalam parameter Operator dalam filter VBA, seperti:
+
+xlAnd: Mengembalikan True jika semua kondisi terpenuhi.
+xlOr: Mengembalikan True jika setidaknya satu kondisi terpenuhi.
+xlFilterValues: Menggunakan array nilai sebagai kriteria.
+xlFilterCellColor: Menggunakan warna sel sebagai kriteria.
+xlFilterFontColor: Menggunakan warna font sebagai kriteria.
+xlFilterIcon: Menggunakan ikon sel sebagai kriteria.
+Anda dapat memilih operator yang sesuai dengan tujuan filter Anda.

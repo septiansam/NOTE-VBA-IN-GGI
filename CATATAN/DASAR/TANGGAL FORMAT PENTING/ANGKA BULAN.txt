@@ -1,0 +1,30 @@
+cekBulan = shRDP.Range("C5")
+Select Case LCase(cekBulan)
+    Case "januari"
+        AngkaBulan = 1
+    Case "februari"
+        AngkaBulan = 2
+    Case "maret"
+        AngkaBulan = 3
+    Case "april"
+        AngkaBulan = 4
+    Case "mei"
+        AngkaBulan = 5
+    Case "juni"
+        AngkaBulan = 6
+    Case "juli"
+        AngkaBulan = 7
+    Case "agustus"
+        AngkaBulan = 8
+    Case "september"
+        AngkaBulan = 9
+    Case "oktober"
+        AngkaBulan = 10
+    Case "november"
+        AngkaBulan = 11
+    Case "desember"
+        AngkaBulan = 12
+    Case Else
+        AngkaBulan = 0 ' Nama bulan tidak valid
+End Select
+cekBulan = WorksheetFunction.Text(AngkaBulan * 29, "[$-421]mmmm")

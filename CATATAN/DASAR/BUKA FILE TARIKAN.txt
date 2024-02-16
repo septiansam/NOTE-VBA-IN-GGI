@@ -1,0 +1,34 @@
+' Buka File
+    If Dir(pathFile) = "" Then
+        twb.Activate
+        Sheets(NOTE1).Delete
+        MsgBox "File " & fileWO & " doesn't exist", vbCritical
+        TurnOnStuff
+        Exit Sub
+    Else
+        ' Buka File Tarikan (Source/Sumber)
+        Dim wkSource As Workbook
+        Set wkSource = Workbooks.Open(pathFile, ReadOnly:=True)
+    End If
+    
+    ' Cek Jika Data Di File Tarikan Tidak Ada
+    If wkSource.Sheets(1).Range("A1") = vbNullString Then
+        MsgBox "Data Kintetsu Kosong. Silahkan Cek Kembali", vbExclamation
+        wkSource.Close SaveChanges:=True
+        twb.Sheets(NOTE1).Delete
+        inputUser.Activate
+        Range("A1").Select
+        TurnOnStuff
+        Exit Sub
+    End If
+    
+    ' Assignt Nilainya / Copy -> Kintetsu ke NOTE1
+    Dim rgSource As Range
+    Set rgSource = wkSource.Sheets(1).Range("A1").CurrentRegion
+    
+    ' Tempat Isian / Paste -> NOTE1
+    Dim rgDest As Range
+    Set rgDest = twb.Sheets(NOTE1).Range("A1")
+    
+    rgDest.Resize(rgSource.Rows.Count, rgSource.Columns.Count) = rgSource.Value
+    wkSource.Close SaveChanges:=False

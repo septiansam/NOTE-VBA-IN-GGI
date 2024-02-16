@@ -1,0 +1,43 @@
+BUAT JADI TABEL
+Sub Macro3()
+'
+' Macro3 Macro
+'
+
+'
+    Range("A1").Select
+    Selection.CurrentRegion.Select
+    Application.CutCopyMode = False
+    ActiveSheet.ListObjects.Add(xlSrcRange, Range("$A$1:$D$8"), , xlYes).Name = _
+        "Table8"
+    Range("Table8[#All]").Select
+End Sub
+
+
+
+TABEL KE BIASA
+
+Sub KonversiTabelKeBiasa()
+    Dim tbl As ListObject
+    Dim rngTable As Range
+    Dim rngData As Range
+    
+    ' Ganti "Tabel1" dengan nama tabel yang ingin Anda konversi
+    Set tbl = ThisWorkbook.Sheets("NamaSheet").ListObjects("Tabel1")
+    
+    ' Dapatkan rentang tabel yang berisi data
+    Set rngData = tbl.DataBodyRange
+    
+    ' Dapatkan rentang sel yang mencakup tabel
+    Set rngTable = tbl.Range
+    
+    ' Hapus gaya dan konversikan ke kisaran sel biasa
+    rngTable.Select
+    rngTable.ClearFormats
+    rngData.Copy
+    rngData.PasteSpecial Paste:=xlPasteValues
+    
+    ' Hapus tabel
+    tbl.Delete
+End Sub
+

@@ -1,0 +1,17 @@
+If shTes.AutoFilterMode = True Then Selection.AutoFilter
+    
+    Dim rg As Range, r1 As Range, r2 As Range
+    
+    Range("A1").AutoFilter Field:=1, Criteria1:="="
+    
+    ' Data Awal hasil filter
+    Set r1 = shTes.AutoFilter.Range.Offset(1).SpecialCells(xlCellTypeVisible).Cells(1, 1)
+    
+    ' Data Akhir hasil filter
+    Set r2 = shTes.AutoFilter.Range.SpecialCells(xlCellTypeVisible).Cells(Rows.Count, 1).End(xlUp)
+    
+    Set rg = Range(r1, r2).SpecialCells(xlCellTypeVisible)
+    
+    rg.Delete Shift:=xlUp
+    
+    If shTes.AutoFilterMode = True Then shTes.AutoFilterMode = False

@@ -1,0 +1,18 @@
+Pada kode LookIn:=xlValues, LookAt:=xlWhole, argumen LookIn dan LookAt adalah bagian dari metode Find dalam VBA yang digunakan untuk menentukan bagaimana pencarian harus dilakukan.
+
+LookIn (Lihat di dalam):
+Argumen LookIn digunakan untuk menentukan di mana pencarian nilai harus dilakukan. Anda memiliki beberapa opsi untuk nilai argumen ini:
+
+xlValues: Pencarian akan dilakukan pada nilai-nilai yang terkandung di sel-sel.
+xlFormulas: Pencarian akan dilakukan pada rumus yang ada di sel-sel.
+xlComments: Pencarian akan dilakukan pada komentar yang ada di sel-sel.
+xlNotes: Pencarian akan dilakukan pada catatan yang ada di sel-sel.
+Dan beberapa nilai lainnya yang lebih spesifik tergantung pada jenis konten yang ingin Anda cari.
+LookAt (Lihat):
+Argumen LookAt digunakan untuk menentukan bagaimana pencarian harus memeriksa nilai dalam sel. Anda juga memiliki beberapa opsi untuk nilai argumen ini:
+
+xlWhole: Pencarian akan dilakukan untuk nilai yang cocok secara keseluruhan dalam sel. Misalnya, jika Anda mencari "ABC", maka hanya akan menemukan sel dengan nilai "ABC", bukan "ABCDEF" atau "ABCDE".
+xlPart: Pencarian akan dilakukan untuk nilai yang mengandung teks yang cocok dengan kriteria pencarian. Misalnya, jika Anda mencari "ABC", maka akan menemukan sel dengan nilai "ABC", "ABCDEF", atau "ABCDE".
+Dalam kode LookIn:=xlValues, LookAt:=xlWhole, kita menginstruksikan VBA untuk melakukan pencarian hanya pada nilai-nilai yang terkandung di sel (bukan pada rumus atau komentar), dan kita mencari nilai yang cocok secara keseluruhan dalam sel.
+
+Dengan pengaturan ini, Find akan mencari nilai "Description" di kolom A dan hanya akan menemukan sel yang memiliki nilai "Description" secara keseluruhan (bukan nilai yang mengandung "Description" di tengah atau di akhir sel).

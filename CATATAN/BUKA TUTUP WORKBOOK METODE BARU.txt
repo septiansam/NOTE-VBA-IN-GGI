@@ -1,0 +1,161 @@
+Sub Process()
+    Application.DisplayAlerts = False
+    
+    Dim FileLokasi As String
+    Dim WB1 As String, WB2 As String, NamaSheet As String
+    Dim FR_NamaSheet As Integer, Rownya  As Integer, FR_Output As Integer
+    Dim LastColumn As Long, LastRow As Long
+    Dim startDate As Date
+    Dim endDate As Date
+    
+
+    WB1 = ActiveWorkbook.Name
+    FileLokasi = Sheets("DB_Dummy").Range("a2").Value
+    Application.Workbooks.Open FileLokasi
+    WB2 = ActiveWorkbook.Name
+    
+    Windows(WB1).Activate
+    FR_NamaSheet = 2
+    FR_Output = 2
+    
+    Do Until FR_NamaSheet > 9
+    
+        Do Until FR_Output > 4
+            Windows(WB1).Activate
+            ' ISI KOLOM A
+            Sheets("Output").Select
+            startDate = DateSerial(2023, 2, 21) ' Tanggal mulai periode
+            endDate = DateSerial(2023, 3, 20) ' Tanggal akhir periode
+            Range("A2").Value = startDate ' Mengisi nilai tanggal awal ke sel A1
+            Range("A2:A" & DateDiff("d", startDate, endDate) + 2).DataSeries Rowcol:=xlColumns, _
+                Type:=xlChronological, Date:=xlDay, Step:=1 ' Mengisi rentang tanggal menggunakan fungsi AutoFill. +2 karena dari A2
+            'LR DI MACRO.XLSX
+            LastRow = Sheets("Output").Cells.Find(What:="*" _
+                , LookAt:=xlPart _
+                , LookIn:=xlFormulas _
+                , SearchOrder:=xlByRows _
+                , searchdirection:=xlPrevious).Row
+            
+            NamaSheet = Sheets("DB_Dummy").Range("C" & FR_NamaSheet).Value
+            
+            'LC DI WB2
+            Windows(WB2).Activate
+            Sheets(NamaSheet).Select
+            LastColumn = Sheets(NamaSheet).Cells.Find(What:="*" _
+                , LookAt:=xlPart _
+                , LookIn:=xlFormulas _
+                , SearchOrder:=xlByColumns _
+                , searchdirection:=xlPrevious).Column
+            Dim Lokasinya As String, Namanya As String
+            Windows(WB1).Activate
+            Sheets("DB_Dummy").Select
+            Columns("G:H").Select
+            Selection.Find(What:=NamaSheet, After:=ActiveCell, LookIn:=xlFormulas2, _
+                    LookAt:=xlPart, SearchOrder:=xlByColumns, searchdirection:=xlNext, _
+                    MatchCase:=False, SearchFormat:=False).Activate
+            Rownya = ActiveCell.Row
+            Lokasinya = Sheets("DB_Dummy").Range("h" & Rownya).Value
+            Namanya = Range("e" & FR_Output).Value
+        
+            If Namanya = "jlh_kry.xlsx" Then
+                Windows(WB2).Activate
+                Sheets(NamaSheet).Select
+                '>copy 1
+                Range(Cells(6, "D"), Cells(7, LastColumn - 1)).Copy
+                'done 7/6/2023
+                Windows(WB1).Activate
+                Sheets("Output").Select
+                'Range("C2").Select
+                '>paste1 transpose & benerin format
+                Range("C2").PasteSpecial Paste:=xlPasteAll, Operation:=xlNone, _
+                    SkipBlanks:=False, Transpose:=True
+                With Selection
+                    .Borders.LineStyle = xlNone
+                    .Interior.Pattern = xlNone
+                End With
+'                Selection.PasteSpecial Paste:=xlPasteAll, Operation:=xlNone, _
+'                    SkipBlanks:=False, Transpose:=True
+                Range("B2:B" & LastRow).Value = "jlh_kry"
+                
+                ' Rubah sel kosong dan sel yang berisi - jadi 0
+                Range("A1").CurrentRegion.SpecialCells(xlCellTypeBlanks).Value = "0"
+                Range("A1").CurrentRegion.Replace What:="-", Replacement:="0", LookAt:=xlPart, _
+                    SearchOrder:=xlByColumns, MatchCase:=False, SearchFormat:=False, ReplaceFormat:=False, _
+                    FormulaVersion:=xlReplaceFormula2
+                With Cells
+                    .HorizontalAlignment = xlCenter
+                    .VerticalAlignment = xlCenter
+                    .EntireColumn.AutoFit
+                End With
+                'done 7/6/2023
+            ElseIf Namanya = "absensi.xlsx" Then
+                Windows(WB2).Activate
+                Sheets(NamaSheet).Select
+                '>copy 1
+                Range(Cells(6, "D"), Cells(7, LastColumn - 1)).Copy
+                'done 7/6/2023
+                Windows(WB1).Activate
+                Sheets("Output").Select
+                'Range("C2").Select
+                '>paste1 transpose & benerin format
+                Range("C2").PasteSpecial Paste:=xlPasteAll, Operation:=xlNone, _
+                    SkipBlanks:=False, Transpose:=True
+                
+'                Selection.PasteSpecial Paste:=xlPasteAll, Operation:=xlNone, _
+'                    SkipBlanks:=False, Transpose:=True
+                Range("B2:B" & LastRow).Value = "absensi"
+                
+                ' Rubah sel kosong dan sel yang berisi - jadi 0
+                Range("A1").CurrentRegion.SpecialCells(xlCellTypeBlanks).Value = "0"
+                Range("A1").CurrentRegion.Replace What:="-", Replacement:="0", LookAt:=xlPart, _
+                    SearchOrder:=xlByColumns, MatchCase:=False, SearchFormat:=False, ReplaceFormat:=False, _
+                    FormulaVersion:=xlReplaceFormula2
+                'done 7/6/2023
+            ElseIf Namanya = "keluar.xlsx" Then
+                Windows(WB2).Activate
+                Sheets(NamaSheet).Select
+                '>copy 1
+                Range(Cells(6, "D"), Cells(7, LastColumn - 1)).Copy
+                'done 7/6/2023
+                Windows(WB1).Activate
+                Sheets("Output").Select
+                'Range("C2").Select
+                '>paste1 transpose & benerin format
+                Range("C2").PasteSpecial Paste:=xlPasteAll, Operation:=xlNone, _
+                    SkipBlanks:=False, Transpose:=True
+                
+'                Selection.PasteSpecial Paste:=xlPasteAll, Operation:=xlNone, _
+'                    SkipBlanks:=False, Transpose:=True
+                Range("B2:B" & LastRow).Value = "keluar"
+                
+                ' Rubah sel kosong dan sel yang berisi - jadi 0
+                Range("A1").CurrentRegion.SpecialCells(xlCellTypeBlanks).Value = "0"
+                Range("A1").CurrentRegion.Replace What:="-", Replacement:="0", LookAt:=xlPart, _
+                    SearchOrder:=xlByColumns, MatchCase:=False, SearchFormat:=False, ReplaceFormat:=False, _
+                    FormulaVersion:=xlReplaceFormula2
+                'done 7/6/2023
+            End If
+
+            'export:
+            keFn = export(Lokasinya, Namanya)
+            
+            Windows(WB1).Activate
+            Sheets("Output").Select
+            'Range("A2:D17").Select '<bikin dinamis
+            Range("A1").CurrentRegion.Offset(1).ClearContents
+            'done
+            Range("A1").Select
+            FR_Output = FR_Output + 1
+        Loop
+        
+        FR_NamaSheet = FR_NamaSheet + 1
+        NamaSheet = Sheets("DB_Dummy").Range("C" & FR_NamaSheet).Value
+    Loop
+ 
+    Windows(WB1).Close SaveChanges:=False
+Application.DisplayAlerts = True
+End Sub
+
+
+
+ 

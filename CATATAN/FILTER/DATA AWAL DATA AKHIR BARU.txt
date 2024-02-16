@@ -1,0 +1,14 @@
+        ' Data Awal hasil filter
+        Set r1 = Sheets("TES1").AutoFilter.Range.Offset(1).SpecialCells(xlCellTypeVisible).Cells(1, col2)
+        r1.Select
+        ' Data Akhir hasil filter
+        Set r2 = Sheets("TES1").AutoFilter.Range.SpecialCells(xlCellTypeVisible).Cells(Rows.Count, col2).End(xlUp)
+        r2.Select
+        Set rg = Range(r1, r2)
+        rg.Select
+        For Each cell In rg
+            cell.Select
+            val = cell.Value
+            val = val + 7
+            cell.Value = val
+        Next cell

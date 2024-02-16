@@ -1,0 +1,16 @@
+Sub HideSheetsFromArray()
+    Dim sn As Variant
+    sn = Array("SAM", "SIZECODE", "MASTER", "TOMBOL")
+    
+    Dim ws As Worksheet
+    Dim i As Long
+    
+    For i = LBound(sn) To UBound(sn)
+        For Each ws In ThisWorkbook.Worksheets
+            If ws.Name = sn(i) Then
+                ws.Visible = xlSheetHidden ' Anda juga bisa menggunakan xlSheetVeryHidden untuk menyembunyikan lembar kerja dengan sangat tersembunyi
+                Exit For ' Keluar dari loop setelah lembar kerja ditemukan dan disembunyikan
+            End If
+        Next ws
+    Next i
+End Sub

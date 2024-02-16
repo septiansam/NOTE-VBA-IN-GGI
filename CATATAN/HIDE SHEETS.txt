@@ -1,0 +1,9 @@
+    ' HIDE SHEETS DB_Dummy & OUTPUT
+    If Sheets("DB_Dummy").Visible = False Or Sheets("OUTPUT").Visible = False Then
+        Sheets("DB_Dummy").Visible = True
+        Sheets("OUTPUT").Visible = True
+    End If
+
+
+    Sheets("DB_Dummy").Visible = False
+    Sheets("OUTPUT").Visible = False

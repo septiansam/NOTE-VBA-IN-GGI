@@ -1,0 +1,129 @@
+SUBTOTAL(function_num,ref1,[ref2],...)
+
+Sintaks fungsi SUBTOTAL memiliki argumen berikut:
+
+Function_num     Diperlukan. Angka 1-11 atau 101-111 yang menentukan fungsi yang akan digunakan untuk subtotal. 1-11 menyertakan baris yang disembunyikan secara manual, sementara 101-111, sel yang difilter selalu dikecualikan.
+
+Function_num
+(termasuk baris tersembunyi)
+
+Function_num
+(mengabaikan baris tersembunyi)
+
+Fungsi
+
+1
+
+101
+
+AVERAGE
+
+2
+
+102
+
+COUNT
+
+3
+
+103
+
+COUNTA
+
+4
+
+104
+
+MAX
+
+5
+
+105
+
+MIN
+
+6
+
+106
+
+PRODUCT
+
+7
+
+107
+
+STDEV
+
+8
+
+108
+
+STDEVP
+
+9
+
+109
+
+SUM
+
+10
+
+110
+
+VAR
+
+11
+
+111
+
+VARP
+
+Ref1     Diperlukan. Rentang atau referensi yang pertama kali dinamai yang ingin Anda dapatkan subtotalnya..
+
+Ref2,...     Opsional. Rentang atau referensi yang dinamai 2 sampai 254 yang ingin Anda dapatkan subtotalnya.
+
+Keterangan
+Jika ada subtotal lain di dalam ref1, ref2,... (atau subtotal bertumpuk), subtotal bertumpuk ini diabaikan untuk menghindari penghitungan ganda.
+
+Untuk konstanta function_num dari 1 sampai 11, fungsi SUBTOTAL menyertakan nilai baris yang disembunyikan oleh perintah Sembunyikan Baris pada submenu Sembunyikan & Munculkan dari perintah Format di grup Sel di tab Beranda di aplikasi dekstop Excel. Gunakan konstanta ini saat Anda ingin mendapatkan subtotal nilai yang tersembunyi atau tidak tersembunyi di dalam daftar. Untuk konstanta function_Num dari 101 sampai 111, fungsi SUBTOTAL mengabaikan nilai baris yang disembunyikan oleh perintah Sembunyikan Baris. Gunakan konstanta ini saat Anda hanya ingin menghitung subtotal nilai yang tidak tersembunyi di dalam daftar.
+
+Fungsi SUBTOTAL mengabaikan semua baris yang tidak disertakan di hasil filter, tidak peduli nilai function_num yang Anda gunakan.
+
+Fungsi SUBTOTAL dirancang untuk kolom data, atau rentang vertikal. Itu tidak dirancang untuk baris data, atau rentang horizontal. Sebagai contoh, saat Anda menghitung subtotal rentang horizontal menggunakan function_num 101 atau lebih besar, seperti SUBTOTAL(109,B2:G2), menyembunyikan kolom tidak mempengaruhi subtotal. Tapi, menyembunyikan baris dalam subtotal rentang vertikal pasti mempengaruhi subtotal.
+
+Jika salah satu referensi adalah referensi 3-D, SUBTOTAL mengembalikan #VALUE! #REF!.
+
+Contoh
+Salin contoh data di dalam tabel berikut ini dan tempel ke dalam sel A1 lembar kerja Excel yang baru. Agar rumus menunjukkan hasil, pilih datanya, tekan F2, lalu tekan Enter. Jika perlu, Anda bisa menyesuaikan lebar kolom untuk melihat semua data.
+
+Data
+
+120
+
+10
+
+150
+
+23
+
+Rumus
+
+Deskripsi
+
+Hasil
+
+=SUBTOTAL(9,A2:A5)
+
+Jumlah subtotal sel A2:A5, yang menggunakan 9 sebagai argumen pertama.
+
+303
+
+=SUBTOTAL(1,A2:A5)
+
+Rata-rata subtotal sel A2:A5, menggunakan 1 sebagai argumen pertama.
+
+75.75
+
+Catatan
+
+Fungsi SUBTOTAL selalu memerlukan argument numerik (1 hingga 11, 101 hingga 111) sebagai argumen pertamanya. Argumen numerik ini ditetapkan ke subtotal nilai (rentang sel, rentang bernama) yang ditentukan sebagai argumen yang mengikuti.

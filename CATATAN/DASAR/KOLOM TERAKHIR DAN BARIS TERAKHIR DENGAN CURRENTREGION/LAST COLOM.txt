@@ -1,0 +1,2 @@
+            Set temp = Cells(r, c).CurrentRegion
+            lc = temp.Columns(temp.Columns.count).Column

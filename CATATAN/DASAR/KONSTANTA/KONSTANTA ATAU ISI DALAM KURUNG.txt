@@ -1,0 +1,58 @@
+Konstanta untuk Borders (Garis Batas):
+
+xlEdgeLeft, xlEdgeTop, xlEdgeRight, xlEdgeBottom: Digunakan untuk mengakses tepi (garis) sebelah kiri, atas, kanan, dan bawah dari objek (seperti sel atau range) dalam pengaturan garis batas.
+xlInsideVertical, xlInsideHorizontal: Digunakan untuk mengakses garis batas dalam (vertikal dan horizontal) dari objek, misalnya dalam pengaturan garis batas sel-sel dalam area tertentu.
+
+Konstanta untuk Alignment (Penyelarasan):
+
+xlLeft, xlCenter, xlRight: Digunakan untuk mengatur penyelarasan teks atau isi sel (kiri, tengah, kanan).
+xlTop, xlMiddle, xlBottom: Digunakan untuk mengatur penyelarasan vertikal isi sel (atas, tengah, bawah).
+
+Konstanta untuk Number Format (Format Angka):
+
+xlGeneralFormat, xlNumberFormat: Digunakan untuk mengatur format tampilan angka dalam sel (misalnya, umum atau angka desimal).
+
+Konstanta untuk Font (Huruf):
+
+xlBold, xlItalic, xlUnderline, xlStrikethrough: Digunakan untuk mengatur gaya huruf (tebal, miring, garis bawah, garis tengah).
+xlFontFamily: Digunakan untuk mengatur jenis keluarga huruf (misalnya, Arial atau Times New Roman).
+
+Konstanta untuk Color (Warna):
+
+RGB: Fungsi yang digunakan untuk menghasilkan nilai warna berdasarkan komponen merah (R), hijau (G), dan biru (B).
+vbColor: Konstanta yang mewakili warna dalam format yang terdefinisi dalam sistem VBA.
+
+Konstanta untuk Error Handling (Penanganan Kesalahan):
+
+On Error Resume Next, On Error GoTo: Digunakan untuk mengontrol bagaimana program menangani kesalahan saat menjalankan kode.
+
+Konstanta untuk Worksheet Function (Fungsi Lembar Kerja):
+
+Berbagai konstanta seperti xlSum, xlAverage, xlMin, xlMax digunakan dalam pemanggilan fungsi lembar kerja Excel (seperti SUM, AVERAGE, MIN, MAX) melalui VBA.
+
+Konstanta untuk Borders (Garis Batas):
+
+xlDiagonalDown, xlDiagonalUp: Garis diagonal dari sudut kiri atas ke sudut kanan bawah dan sebaliknya pada objek, seperti sel atau range.
+Konstanta untuk Worksheet Function (Fungsi Lembar Kerja):
+
+xlWorksheetFunction: Digunakan untuk memanggil fungsi bawaan Excel dalam VBA.
+Konstanta untuk Text Alignment (Penyelarasan Teks):
+
+xlDistributed, xlJustify: Digunakan untuk mengatur penyelarasan teks dengan penyebaran atau penjustifikasi di dalam sel.
+
+Konstanta untuk Number Format (Format Angka):
+
+xlCurrencyFormat, xlPercentFormat, xlScientificFormat: Digunakan untuk mengatur format mata uang, persentase, atau ilmiah pada angka dalam sel.
+
+Konstanta untuk Color (Warna):
+
+vbBlack, vbWhite, vbRed, vbGreen, vbBlue, dll.: Representasi kode warna dalam format VBA.
+
+Konstanta untuk Font (Huruf):
+
+xlFontWeightThin, xlFontWeightExtraBold: Digunakan untuk mengatur berat (ketebalan) huruf dalam sel.
+
+Konstanta untuk Worksheet Properties (Properti Lembar Kerja):
+
+xlSheetHidden, xlSheetVeryHidden: Digunakan untuk mengatur sifat tersembunyi dari lembar kerja.
+

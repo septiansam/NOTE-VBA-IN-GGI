@@ -1,0 +1,39 @@
+Sub backupFile()
+
+Dim twb As Workbook
+Dim shTombol As Worksheet
+Dim pathFIle As String, pathBulan As String, pathBackup As String
+Dim folder As String, file As String, fileBackup As String
+Dim bulan As String
+Dim copyFile As String, pasteFile As String
+
+Set twb = ThisWorkbook
+Set shTombol = twb.Sheets("TOMBOL")
+
+pathFIle = "\\10.8.0.35\rpa$\RPA Excel Template\HR\Payrol\CMS"
+pathBulan = "\\10.8.0.35\rpa$\RPA Excel Template\HR\Payrol\BACKUP CMS"
+
+bulan = WorksheetFunction.Text(Date, "[$-id-ID]mmmm")
+bulan = UCase(bulan)
+folder = bulan
+
+' BUAT FOLDER JIKA TIDAK ADA
+pathBackup = pathBulan & Application.PathSeparator & folder
+If Dir(pathBackup, vbDirectory) = vbNullString Then
+    MkDir pathBackup
+End If
+
+' PINDAHKAN FILE KE FILE BACKUP
+file = Dir(pathFIle & Application.PathSeparator & "*.*")
+If file = "" Then
+    Exit Sub
+Else
+    Do While file <> ""
+        copyFile = pathFIle & Application.PathSeparator & file
+        pasteFile = pathBackup & Application.PathSeparator & file
+        fileCopy copyFile, pasteFile
+        file = Dir
+    Loop
+End If
+
+End Sub

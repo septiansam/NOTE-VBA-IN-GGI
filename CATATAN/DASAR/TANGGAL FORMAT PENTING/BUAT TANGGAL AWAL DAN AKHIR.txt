@@ -1,0 +1,24 @@
+Dim startDate As Date
+Dim currentDate As Date
+Dim i As Integer
+
+' Ganti tanggal awal dengan tanggal yang Anda inginkan (dalam format "MM/DD/YYYY")
+startDate = DateValue("01/01/2021")
+
+' Inisialisasi tanggal saat ini
+currentDate = startDate
+
+' Loop untuk mengisi sel B2 sampai B13 dengan tanggal 1 setiap bulan
+For i = 2 To 13
+    Cells(i, 2).Value = Format(currentDate, "M/D/YYYY")
+    currentDate = DateAdd("m", 1, currentDate) ' Tambah 1 bulan
+Next i
+
+' Reset tanggal saat ini ke tanggal awal
+currentDate = startDate
+
+' Loop untuk mengisi sel C2 sampai C13 dengan tanggal terakhir setiap bulan
+For i = 2 To 13
+    Cells(i, 3).Value = DateSerial(Year(currentDate), Month(currentDate) + 1, 0)
+    currentDate = DateAdd("m", 1, currentDate) ' Tambah 1 bulan
+Next i
