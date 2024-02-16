@@ -10,3 +10,6 @@ If WorksheetExists(CEK_SHEET) Then
 End If
 
 Sheets.Add(After:=Sheets(Sheets.Count)).Name = "tes2"
+
+CARA LAMA
+If Evaluate("isref('" & "TES" & "'!A1)") Then Sheets("TES").Delete

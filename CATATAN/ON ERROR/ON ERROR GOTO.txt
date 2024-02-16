@@ -1,0 +1,54 @@
+Kode VBA On Error GoTo 0 dan On Error Resume Next juga berkaitan dengan manajemen kesalahan, tetapi dengan fungsi yang berbeda:
+
+1.	On Error GoTo 0:
+
+On Error GoTo 0 digunakan untuk menghapus manajemen kesalahan yang telah diatur sebelumnya. Ini mengembalikan penanganan kesalahan ke keadaan normal di mana setiap kesalahan akan menyebabkan dialog pesan kesalahan standar VBA muncul.
+Setelah On Error GoTo 0, setiap kesalahan akan dianggap serius dan akan menghentikan eksekusi program kecuali jika ada kode khusus untuk menanganinya.
+Contoh penggunaan On Error GoTo 0:
+
+Sub ContohErrorHandling()
+    On Error GoTo ErrorHandler
+
+    ' Potensial untuk terjadi kesalahan
+    Dim x As Integer
+    x = 1 / 0 ' Pembagian oleh nol akan menyebabkan kesalahan
+
+    ' Kode lain di sini
+
+    Exit Sub
+
+ErrorHandler:
+    ' Kode untuk menangani kesalahan di sini
+    MsgBox "Terjadi kesalahan!"
+    On Error GoTo 0 ' Menghapus manajemen kesalahan
+
+    ' Kode lain untuk menangani kesalahan di sini
+End Sub
+
+2.	On Error Resume Next:
+
+On Error Resume Next digunakan untuk menginstruksikan VBA untuk melanjutkan eksekusi program setelah kesalahan terjadi tanpa menampilkan pesan kesalahan atau menghentikan program. Ini berarti jika ada kesalahan, eksekusi program akan melompati baris di mana kesalahan terjadi dan melanjutkan dari baris berikutnya.
+Ini berguna jika Anda ingin melanjutkan eksekusi program bahkan jika ada kesalahan, dan kemudian Anda dapat memeriksa status kesalahan dengan menggunakan properti Err.
+Contoh penggunaan On Error Resume Next:
+
+Sub ContohErrorHandling()
+    On Error Resume Next
+
+    ' Potensial untuk terjadi kesalahan
+    Dim x As Integer
+    x = 1 / 0 ' Pembagian oleh nol akan menyebabkan kesalahan
+
+    ' Kode lain di sini
+
+    If Err.Number <> 0 Then
+        MsgBox "Terjadi kesalahan: " & Err.Description
+        Err.Clear
+    End If
+
+    On Error GoTo 0 ' Kembali ke penanganan kesalahan normal
+End Sub
+
+
+Dalam contoh kedua, program akan terus berjalan bahkan jika kesalahan terjadi saat melakukan pembagian oleh nol. Anda dapat menggunakan Err.Number untuk memeriksa nomor kesalahan dan Err.Description untuk mendapatkan deskripsi kesalahan yang terjadi. Setelah menangani kesalahan, Err.Clear digunakan untuk menghapus status kesalahan saat ini. Setelah itu, manajemen kesalahan dikembalikan ke keadaan normal dengan On Error GoTo 0.
+
+
