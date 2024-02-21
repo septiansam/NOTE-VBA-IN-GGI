@@ -1,0 +1,14 @@
+        'Warnai Baris
+        If RowAccount Mod 2 = 0 Then
+                With SH1_Costing.Range(Cells(RowAccount, 1), Cells(RowAccount, longCol)).Interior
+                    .Pattern = xlSolid
+                    .PatternColorIndex = xlAutomatic
+                    .Color = 16777215
+                End With
+        Else
+                With SH1_Costing.Range(Cells(RowAccount, 1), Cells(RowAccount, longCol)).Interior
+                    .Pattern = xlSolid
+                    .PatternColorIndex = xlAutomatic
+                    .Color = 15855844
+                End With
+        End If
