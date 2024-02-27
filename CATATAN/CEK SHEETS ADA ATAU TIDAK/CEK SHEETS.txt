@@ -1,8 +1,10 @@
-Function WorksheetExists(shtName As String) As Boolean
+Public Function WorksheetExists(shtName As String) As Boolean
     On Error Resume Next
     WorksheetExists = Not Sheets(shtName) Is Nothing
     On Error GoTo 0
 End Function
+
+If WorksheetExists("TARIKAN GCC") Then Sheets("TARIKAN GCC").Delete
 
 If WorksheetExists(CEK_SHEET) Then
         Sheets(CEK_SHEET).Select
