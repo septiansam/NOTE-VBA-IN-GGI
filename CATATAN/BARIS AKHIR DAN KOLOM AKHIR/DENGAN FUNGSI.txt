@@ -1,0 +1,15 @@
+Public Function LR() As Long
+    LR = ActiveSheet.Cells.Find(What:="*" _
+        , LookAt:=xlPart _
+        , LookIn:=xlFormulas _
+        , SearchOrder:=xlByRows _
+        , SearchDirection:=xlPrevious).Row
+End Function
+
+Public Function LC() As Long
+    LC = ActiveSheet.Cells.Find(What:="*" _
+        , LookAt:=xlPart _
+        , LookIn:=xlFormulas _
+        , SearchOrder:=xlByColumns _
+        , SearchDirection:=xlPrevious).Column
+End Function

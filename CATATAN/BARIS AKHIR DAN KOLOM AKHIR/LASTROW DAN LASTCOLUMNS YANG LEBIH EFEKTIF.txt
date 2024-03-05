@@ -1,3 +1,64 @@
+'FUNCTION.......
+
+Public Function LR() As Long
+    LR = ActiveSheet.Cells.Find(what:="*" _
+        , lookat:=xlPart _
+        , LookIn:=xlFormulas _
+        , Searchorder:=xlByRows _
+        , searchdirection:=xlPrevious).Row
+End Function
+
+Public Function LC() As Long
+    LC = ActiveSheet.Cells.Find(what:="*" _
+        , lookat:=xlPart _
+        , LookIn:=xlFormulas _
+        , Searchorder:=xlByColumns _
+        , searchdirection:=xlPrevious).Column
+End Function
+
+Public Function LR(Optional ws As Worksheet) As Long
+    If ws Is Nothing Then Set ws = ActiveSheet
+    
+    Dim lastCell As Range
+    Set lastCell = ws.Cells.Find(what:="*", _
+                                  After:=ws.Cells(1, 1), _
+                                  Lookat:=xlPart, _
+                                  LookIn:=xlFormulas, _
+                                  Searchorder:=xlByRows, _
+                                  searchdirection:=xlPrevious)
+    
+    If Not lastCell Is Nothing Then
+        LR = lastCell.Row
+    Else
+        ' Tidak ada data yang ditemukan
+        LR = 1 ' Mengembalikan baris pertama
+    End If
+End Function
+
+Public Function LC(Optional ws As Worksheet) As Long
+    If ws Is Nothing Then Set ws = ActiveSheet
+    
+    Dim lastCell As Range
+    Set lastCell = ws.Cells.Find(what:="*", _
+                                  After:=ws.Cells(1, 1), _
+                                  Lookat:=xlPart, _
+                                  LookIn:=xlFormulas, _
+                                  Searchorder:=xlByColumns, _
+                                  searchdirection:=xlPrevious)
+    
+    If Not lastCell Is Nothing Then
+        LC = lastCell.Column
+    Else
+        ' Tidak ada data yang ditemukan
+        LC = 1 ' Mengembalikan kolom pertama
+    End If
+End Function
+
+'--------------------------------------
+
+
+LR = SH_HISTORY.Cells.Find(What:="*", LookAt:=xlPart, LookIn:=xlFormulas, SearchOrder:=xlByRows, SearchDirection:=xlPrevious).Row
+
 LR = WS.Cells.Find(what:="*" _
     , lookat:=xlPart _
     , LookIn:=xlFormulas _
@@ -9,6 +70,9 @@ LC = WS.Cells.Find(what:="*" _
     , LookIn:=xlFormulas _
     , Searchorder:=xlByColumns _
     , searchdirection:=xlPrevious).Column
+
+LC = WS.Cells.Find(What:="*", LookAt:=xlPart, LookIn:=xlFormulas, SearchOrder:=xlByColumns, SearchDirection:=xlPrevious).Column
+
 
 LC_DATA = SH_TEMP4.Cells.Find(what:="*", lookat:=xlPart, LookIn:=xlFormulas, Searchorder:=xlByColumns, searchdirection:=xlPrevious).Column
             

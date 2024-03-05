@@ -1,0 +1,8 @@
+With Range("T2:T" & LR)
+    .FormulaR1C1 = _
+        "=IFERROR(IF(RC[-19]<>"""", " & _
+        "INDEX('[" & STR_WB_INPUT_USER & "]" & SH_BANTU.Name & "'!C9, " & _
+        "MATCH(RC[-19],'[" & STR_WB_INPUT_USER & "]" & SH_BANTU.Name & "'!C1,0)),""""),"""")"
+    .Copy
+    .PasteSpecial xlPasteValuesAndNumberFormats: Application.CutCopyMode = False: Cells.EntireColumn.AutoFit
+End With

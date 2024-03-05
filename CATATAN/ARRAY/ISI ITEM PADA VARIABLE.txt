@@ -1,0 +1,7 @@
+woNya = ""
+For Each cell In rg
+    woNya = woNya & cell.Value & ", "
+Next cell
+If Len(woNya) > 0 Then
+    woNya = Left(woNya, Len(woNya) - 2)
+End If

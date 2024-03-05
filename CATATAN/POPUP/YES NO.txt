@@ -1,0 +1,7 @@
+Dim response As VbMsgBoxResult
+
+response = MsgBox("Apakah Anda Sudah Mengganti Judul PDF?", vbInformation + vbYesNo, "TITLE PDF")
+
+If response = vbNo Then
+    Exit Sub
+End If

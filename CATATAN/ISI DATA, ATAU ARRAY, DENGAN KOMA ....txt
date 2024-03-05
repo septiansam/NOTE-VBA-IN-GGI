@@ -1,0 +1,8 @@
+    n = WorksheetFunction.CountA(Range("C8:C" & lr))
+    awal = 8 'angka awal
+    baris = ""
+    For i = 1 To n
+      baris = baris & awal & ", " & awal + 1 & ", "
+      awal = awal + 3 ' Selisih 1 diganti menjadi selisih 3 karena Anda ingin melewati awal kedua
+    Next i
+    baris = Left(baris, Len(baris) - 2)
