@@ -1,0 +1,5 @@
+Jika Nilai nya 0, akan tampil 0%
+Jika Nilai nya 1, maka akan tampil 100%
+jika lebih dari 0 atau kurang dari 1 akan tampil dengan format "0.0%"
+
+[>=1]0%;[>=0.1]0.0%;0%
