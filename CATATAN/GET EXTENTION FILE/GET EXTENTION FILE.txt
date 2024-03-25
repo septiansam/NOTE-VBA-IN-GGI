@@ -1,0 +1,13 @@
+Sub GetFileExtension()
+    Dim filePath As String
+    Dim fileExtension As String
+    
+    ' Tentukan string path file Anda
+    filePath = "\\10.8.0.35\Bersama\IT\RPA PPIC\Inputan OW_PO_konker\Sagaf\MACRO InputanPlannerBuatOWPOKONKER.*"
+    
+    ' Dapatkan ekstensi file dengan menggunakan fungsi Right
+    filePath = Dir(filePath)
+    fileExtension = Right(filePath, Len(filePath) - (InStrRev(filePath, ".") - 1))
+    ' Tampilkan hasil
+    MsgBox "Ekstensi file: " & fileExtension
+End Sub

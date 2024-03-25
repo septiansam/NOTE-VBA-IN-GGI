@@ -1,0 +1,5 @@
+CARA MENULIS KARAKTER EN DASH (–)
+yaitu: Alt+(0150) di numpad
+
+CARA MENULIS KARAKTER EM DASH (—)
+yaitu: Alt+(0151) di numpad

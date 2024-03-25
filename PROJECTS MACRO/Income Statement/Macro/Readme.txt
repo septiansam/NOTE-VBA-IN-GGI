@@ -1,0 +1,2 @@
+Jika ada penambahan kategori baru pada "PRODUCTION COST" atau perubahan formula input saja di sheet "Temp_PerBranch1", dikolom "A", input "C" agar formulanya dicopy ke masing-masing branch
+JGN ADA YG DUPLIKAT
