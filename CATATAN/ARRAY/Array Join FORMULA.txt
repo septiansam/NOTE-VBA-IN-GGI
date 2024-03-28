@@ -1,0 +1,9 @@
+Sub TES()
+    Dim STR As Variant
+    STR = Array("A", "B", "C")
+    
+    Dim concatFormula As String
+    concatFormula = "=CONCATENATE(""" & Join(STR, """,""") & """)"
+    
+    Range("A31").FormulaR1C1 = concatFormula
+End Sub
