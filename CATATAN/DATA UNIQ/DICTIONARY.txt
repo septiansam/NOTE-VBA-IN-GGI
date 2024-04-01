@@ -1,0 +1,22 @@
+Sub GetUniqueValues()
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim cell As Range
+    Dim uniqueValues As Object
+    
+    Set ws = ThisWorkbook.Sheets("Sheet1") ' Ubah "Sheet1" sesuai dengan nama sheet Anda
+    lastRow = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row
+    Set uniqueValues = CreateObject("Scripting.Dictionary")
+    
+    ' Loop through column A to find unique values
+    For Each cell In ws.Range("A2:A" & lastRow) ' Mulai dari baris kedua (A2)
+        If Not uniqueValues.exists(cell.Value) Then
+            uniqueValues.Add cell.Value, Nothing
+        End If
+    Next cell
+    
+    ' Print unique values
+    For Each key In uniqueValues.keys
+        Debug.Print key
+    Next key
+End Sub

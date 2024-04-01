@@ -1,0 +1,35 @@
+Sub FilterDataByUniqueValues()
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim cell As Range
+    Dim uniqueValues As Object
+    Dim key As Variant
+    
+    Set ws = ThisWorkbook.Sheets("Sheet1") ' Ubah "Sheet1" sesuai dengan nama sheet Anda
+    lastRow = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row
+    Set uniqueValues = CreateObject("Scripting.Dictionary")
+    
+    ' Loop through column A to find unique values
+    For Each cell In ws.Range("A2:A" & lastRow) ' Mulai dari baris kedua (A2)
+        If Not uniqueValues.exists(cell.Value) Then
+            uniqueValues.Add cell.Value, Nothing
+        End If
+    Next cell
+    
+    ' Loop through unique values and filter data
+    For Each key In uniqueValues.keys
+        ws.AutoFilterMode = False ' Hapus semua filter yang ada sebelumnya
+        ws.Range("A1").AutoFilter Field:=1, Criteria1:=key ' Filter berdasarkan nilai unik
+        ' Di sini Anda dapat menambahkan kode untuk melakukan operasi atau pemrosesan pada data yang telah difilter
+        ' Sebagai contoh, Anda bisa menyalin data ke tempat lain, menghitung statistik, dll.
+        ' Misalnya:
+        ' ws.Range("A2:B" & lastRow).Copy Destination:=ws.Range("D2")
+        ' atau
+        ' Debug.Print "Jumlah baris dengan nilai " & key & ": " & ws.Range("A2:A" & lastRow).SpecialCells(xlCellTypeVisible).Count - 1
+        ' atau
+        ' 'Lakukan apa pun yang Anda butuhkan dengan data yang difilter di sini
+    Next key
+    
+    ' Hapus semua filter setelah selesai
+    ws.AutoFilterMode = False
+End Sub
