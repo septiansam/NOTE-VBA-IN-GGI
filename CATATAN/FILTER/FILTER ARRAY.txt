@@ -1,0 +1,20 @@
+Set DATA_RANGE = Range("A2:A" & Cells(Rows.Count, "A").End(xlUp).Row)
+ReDim ARR_KRITERIA(1 To DATA_RANGE.Rows.Count)
+i = 1
+DATA_RANGE.Activate
+For Each CELL In DATA_RANGE
+    ARR_KRITERIA(i) = Mid(CELL.Value, 1, Len(CELL.Value) - 6)
+    i = i + 1
+Next CELL
+
+'FILTER
+'SH_SRC_CEK.Range("$A$1:$AZ$" & LR_CEK).AutoFilter Field:=1, Criteria1:=ARR_KRITERIA(), Operator:=xlFilterValues
+'If Range("C" & Rows.Count).End(xlUp).Value <> "BU" Then
+'    Range(Cells(1, 1), Cells(LR_CEK, LC_CEK)).SpecialCells(xlCellTypeVisible).Copy
+'
+'    SH_CEK.Range("A1").PasteSpecial xlPasteValuesAndNumberFormats
+'
+'    Application.CutCopyMode = False
+'Else
+'    Stop
+'End If

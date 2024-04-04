@@ -1,0 +1,54 @@
+Sub UnhideSheet()
+
+Dim twb As Workbook
+Dim tombol As Worksheet
+Dim ws As Worksheet
+Dim i As Long
+
+Set twb = ThisWorkbook
+Set tombol = twb.Sheets("ADD SHEET")
+tombol.Activate
+Range("Z:Z").Clear
+Range("Z1") = "History Nama Sheets Terhide"
+
+' Loop melalui setiap lembar kerja dalam buku kerja
+i = 2
+For Each ws In ThisWorkbook.Worksheets
+    ' Periksa apakah lembar kerja saat ini tersembunyi
+    If ws.Visible = xlSheetHidden Then
+        ' Jika tersembunyi, buka lembar kerja tersebut
+        ws.Visible = xlSheetVisible
+        tombol.Cells(i, 26).Value = ws.Name
+        i = i + 1
+    End If
+Next ws
+tombol.Activate
+End Sub
+
+Sub HideSheet()
+
+Dim twb As Workbook
+Dim tombol As Worksheet
+Dim ws As Worksheet
+Dim i As Long
+
+Set twb = ThisWorkbook
+Set tombol = twb.Sheets("ADD SHEET")
+tombol.Activate
+
+' Loop melalui setiap lembar kerja dalam buku kerja
+i = 2
+For Each ws In ThisWorkbook.Worksheets
+    ' Periksa apakah lembar kerja saat ini tersembunyi
+    If ws.Name = tombol.Cells(i, 26).Value Then
+        If ws.Visible = xlSheetVisible Then
+            ' Jika tersembunyi, buka lembar kerja tersebut
+            ws.Visible = xlSheetHidden
+        End If
+        Cells(i - 1, 26).Clear
+        i = i + 1
+    End If
+Next ws
+Cells(1, 26).Clear
+tombol.Activate
+End Sub
