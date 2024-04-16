@@ -1,0 +1,60 @@
+Perbedaan utama antara menggunakan MkDir dan FileSystemObject adalah:
+
+Kelengkapan Fungsionalitas: FileSystemObject menyediakan lebih banyak fungsionalitas untuk berinteraksi dengan sistem file, seperti menghapus folder, membaca isi folder, menghapus file, dan lain-lain. Sementara MkDir hanya dapat digunakan untuk membuat direktori.
+
+Kejelasan Kode: Kode yang menggunakan MkDir mungkin sedikit lebih sederhana dan langsung ke tujuan karena fokus pada tugas tunggal yaitu membuat direktori. Namun, dengan FileSystemObject, Anda memiliki lebih banyak fleksibilitas dan opsi untuk berinteraksi dengan sistem file.
+
+Sub CheckCreateFolder()
+    Dim fso As Object
+    Dim folderPath As String
+    Dim targetFolder As Object
+    Dim newFolderName As String
+    
+    ' Tentukan direktori yang ingin diperiksa
+    folderPath = "\\10.8.0.35\Bersama\IT\RPA Purchasing\WO Purchasing\Performance\.backup\FIELDS RESUME"
+    
+    ' Inisialisasi objek FileSystemObject
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    
+    ' Nama folder yang ingin diperiksa
+    newFolderName = "2024"
+    
+    ' Periksa apakah folder sudah ada
+    If fso.FolderExists(folderPath & "\" & newFolderName) Then
+        MsgBox "Folder '2024' sudah ada."
+    Else
+        ' Jika tidak, buat folder baru
+        Set targetFolder = fso.CreateFolder(folderPath & "\" & newFolderName)
+        If Not targetFolder Is Nothing Then
+            MsgBox "Folder '2024' telah berhasil dibuat."
+        Else
+            MsgBox "Gagal membuat folder '2024'."
+        End If
+    End If
+    
+    ' Hapus objek FileSystemObject
+    Set fso = Nothing
+End Sub
+
+Sub CreateFolder()
+    Dim folderPath As String
+    Dim newFolderName As String
+    
+    ' Tentukan direktori yang ingin dibuat
+    folderPath = "\\10.8.0.35\Bersama\IT\RPA Purchasing\WO Purchasing\Performance\.backup\FIELDS RESUME"
+    
+    ' Nama folder yang ingin dibuat
+    newFolderName = folderPath & "\2024"
+    
+    ' Periksa apakah folder sudah ada
+    If Dir(newFolderName, vbDirectory) = "" Then
+        ' Jika tidak, buat folder baru
+        MkDir newFolderName
+        MsgBox "Folder '2024' telah berhasil dibuat."
+    Else
+        MsgBox "Folder '2024' sudah ada."
+    End If
+End Sub
+
+
+

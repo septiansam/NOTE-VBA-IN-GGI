@@ -1,0 +1,42 @@
+Sub CreateFile()
+    Application.DisplayAlerts = False
+    
+    Set TWB = ThisWorkbook
+    name_New = "Performance WO Preparation " & Year(Date) & ".xlsx"
+    path_New = TWB.Path & Application.PathSeparator & name_New
+    ws_Name = ""
+    
+    For Each ws In TWB.Sheets
+        If ws.Visible = xlSheetVisible And ws.Name <> "TOMBOL" Then
+            ws_Name = ws_Name & ws.Name & ","
+        End If
+    Next ws
+    
+    ' Menghapus koma ekstra di akhir daftar
+    If Len(ws_Name) > 0 Then
+        ws_Name = Left(ws_Name, Len(ws_Name) - 1)
+    End If
+    
+    arr_Sheets = Split(ws_Name, ",")
+    
+    Sheets(arr_Sheets()).Copy
+    Set wb_New = ActiveWorkbook
+
+    With wb_New.Sheets("Resume Monthly").Tab
+        .Color = 65535
+        .TintAndShade = 0
+    End With
+    With wb_New.Sheets("Resume PIC").Tab
+        .Color = 65535
+        .TintAndShade = 0
+    End With
+    Sheets("Resume Monthly").Move Before:=Sheets(1)
+    Sheets("Resume PIC").Move Before:=Sheets(2)
+    
+    Sheets("Resume Monthly").Select
+    Cells(1, 1).Select
+    
+    wb_New.SaveAs Filename:=path_New, FileFormat:=xlOpenXMLWorkbook
+    wb_New.Close (True)
+    Windows(TWB.Name).Activate
+End Sub
