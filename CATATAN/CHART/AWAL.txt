@@ -1,0 +1,24 @@
+Sub CreateChart_v1(ByRef ws As Worksheet, tableName As String)
+
+Dim chrt As Chart
+Dim data_rng As Range
+
+Set data_rng = Range(tableName)
+Set chrt = ws.Shapes.AddChart2(Style:=-1).Chart
+'Set chrt = ws.Shapes.AddChart2(Style:=-1, Width:=600, Height:=400, _
+'Left:=Range("G1").Left, Top:=Range("G1").Top).Chart
+
+With chrt
+    .SetSourceData Source:=data_rng
+    .ChartType = xlColumnClustered
+    .SetElement msoElementChartTitleAboveChart
+    .ChartTitle.Text = "WO Performance Monthly"
+    .SetElement msoElementDataLabelOutSideEnd
+    .SetElement msoElementPrimaryValueGridLinesMajor
+    .SetElement msoElementPrimaryValueAxisShow
+'    .SetElement msoElementLegendBottom
+'    .SetElement msoElementPrimaryCategoryAxisTitleBelowAxis
+'    .Axes(xlCategory).AxisTitle.Text = "Country"
+End With
+
+End Sub
