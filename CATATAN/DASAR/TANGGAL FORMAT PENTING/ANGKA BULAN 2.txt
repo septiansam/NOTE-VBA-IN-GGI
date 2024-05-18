@@ -1,0 +1,62 @@
+
+cekBulan = WorksheetFunction.Text(AngkaBulan * 29, "[$-421]mmmm")
+
+Function NomorBulan(namaBulan As String) As Integer
+    Select Case LCase(namaBulan)
+        Case "januari", "january"
+            NomorBulan = 1
+        Case "februari", "february"
+            NomorBulan = 2
+        Case "maret", "march"
+            NomorBulan = 3
+        Case "april"
+            NomorBulan = 4
+        Case "mei", "may"
+            NomorBulan = 5
+        Case "juni", "june"
+            NomorBulan = 6
+        Case "juli", "july"
+            NomorBulan = 7
+        Case "agustus", "august"
+            NomorBulan = 8
+        Case "september"
+            NomorBulan = 9
+        Case "oktober", "october"
+            NomorBulan = 10
+        Case "november"
+            NomorBulan = 11
+        Case "desember", "december"
+            NomorBulan = 12
+        Case Else
+            ' Jika nama bulan tidak dikenali dalam bahasa Indonesia, coba cek untuk nama bulan dalam bahasa Inggris
+            Select Case LCase(namaBulan)
+                Case "january"
+                    NomorBulan = 1
+                Case "february"
+                    NomorBulan = 2
+                Case "march"
+                    NomorBulan = 3
+                Case "april"
+                    NomorBulan = 4
+                Case "may"
+                    NomorBulan = 5
+                Case "june"
+                    NomorBulan = 6
+                Case "july"
+                    NomorBulan = 7
+                Case "august"
+                    NomorBulan = 8
+                Case "september"
+                    NomorBulan = 9
+                Case "october"
+                    NomorBulan = 10
+                Case "november"
+                    NomorBulan = 11
+                Case "december"
+                    NomorBulan = 12
+                Case Else
+                    ' Jika nama bulan tidak dikenali dalam bahasa Inggris juga, kembalikan nilai 0 atau nilai yang sesuai untuk kasus Anda
+                    NomorBulan = 0
+            End Select
+    End Select
+End Function

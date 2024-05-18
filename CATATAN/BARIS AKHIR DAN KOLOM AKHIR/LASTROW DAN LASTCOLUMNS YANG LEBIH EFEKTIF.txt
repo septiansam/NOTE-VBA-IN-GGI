@@ -57,7 +57,7 @@ End Function
 '--------------------------------------
 
 
-LR = SH_HISTORY.Cells.Find(What:="*", LookAt:=xlPart, LookIn:=xlFormulas, SearchOrder:=xlByRows, SearchDirection:=xlPrevious).Row
+LR = Cells.Find(What:="*", LookAt:=xlPart, LookIn:=xlFormulas, SearchOrder:=xlByRows, SearchDirection:=xlPrevious).Row
 
 LR = WS.Cells.Find(what:="*" _
     , lookat:=xlPart _
@@ -71,7 +71,7 @@ LC = WS.Cells.Find(what:="*" _
     , Searchorder:=xlByColumns _
     , searchdirection:=xlPrevious).Column
 
-LC = WS.Cells.Find(What:="*", LookAt:=xlPart, LookIn:=xlFormulas, SearchOrder:=xlByColumns, SearchDirection:=xlPrevious).Column
+LC = Cells.Find(What:="*", LookAt:=xlPart, LookIn:=xlFormulas, SearchOrder:=xlByColumns, SearchDirection:=xlPrevious).Column
 
 
 LC_DATA = SH_TEMP4.Cells.Find(what:="*", lookat:=xlPart, LookIn:=xlFormulas, Searchorder:=xlByColumns, searchdirection:=xlPrevious).Column

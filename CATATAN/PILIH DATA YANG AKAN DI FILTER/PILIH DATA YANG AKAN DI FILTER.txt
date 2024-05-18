@@ -1,0 +1,5 @@
+    Range("A6").Select
+    Range(Selection, ActiveCell.SpecialCells(xlLastCell)).Select
+
+Range("A6", Range("A6").SpecialCells(xlLastCell)).Activate
+

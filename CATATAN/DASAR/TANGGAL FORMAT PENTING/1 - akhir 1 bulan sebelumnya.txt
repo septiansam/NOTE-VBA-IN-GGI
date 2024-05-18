@@ -1,0 +1,35 @@
+Sub IsiTanggalSebelum()
+    Dim TANGGAL_AWAL As Date
+    Dim TANGGAL_AKHIR As Date
+    Dim BulanSekarang As Integer
+    Dim TahunSekarang As Integer
+    Dim BulanSebelum As Integer
+    Dim TahunSebelum As Integer
+    
+    ' Dapatkan bulan sekarang dan tahun sekarang
+    BulanSekarang = Month(Date)
+    TahunSekarang = Year(Date)
+    
+    ' Tentukan bulan dan tahun satu bulan sebelum bulan sekarang
+    If BulanSekarang = 1 Then
+        BulanSebelum = 12
+        TahunSebelum = TahunSekarang - 1
+    Else
+        BulanSebelum = BulanSekarang - 1
+        TahunSebelum = TahunSekarang
+    End If
+    
+    ' Tanggal 1 satu bulan sebelum bulan sekarang
+    TANGGAL_AWAL = DateSerial(TahunSebelum, BulanSebelum, 1)
+    
+    ' Tanggal pertama bulan sekarang
+    Dim TanggalPertamaBulanIni As Date
+    TanggalPertamaBulanIni = DateSerial(TahunSekarang, BulanSekarang, 1)
+    
+    ' Tanggal terakhir satu bulan sebelum bulan sekarang adalah satu hari sebelum tanggal pertama bulan sekarang
+    TANGGAL_AKHIR = TanggalPertamaBulanIni - 1
+    
+    ' Tampilkan hasil (opsional)
+    MsgBox "Tanggal Awal: " & TANGGAL_AWAL
+    MsgBox "Tanggal Akhir: " & TANGGAL_AKHIR
+End Sub

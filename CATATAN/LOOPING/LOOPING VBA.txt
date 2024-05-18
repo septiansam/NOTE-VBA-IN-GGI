@@ -1,0 +1,76 @@
+1. For Next Loop:
+   
+   Contoh:
+     
+   ```vba
+   Dim i As Integer
+   For i = 1 To 10
+       ' Lakukan sesuatu di sini
+   Next i
+ Kelebihan:
+ - Cukup mudah dipahami dan digunakan.
+ 
+ Kekurangan:
+ - Tidak selalu paling cepat untuk perulangan yang besar.
+
+
+2.  Do While Loop:
+
+Dim i As Integer
+i = 1
+Do While i <= 10
+    ' Lakukan sesuatu di sini
+    i = i + 1
+Loop
+ Kelebihan:
+ - Fleksibel, cocok untuk kondisi perulangan yang tidak diketahui dari awal.
+ 
+ Kekurangan:
+ - Lebih lambat daripada For Next Loop untuk perulangan yang besar.
+
+3. Do Until Loop:
+Dim i As Integer
+i = 1
+Do Until i > 10
+    ' Lakukan sesuatu di sini
+    i = i + 1
+Loop
+
+ Kelebihan:
+ - Sama fleksibelnya dengan Do While Loop.
+ 
+ Kekurangan:
+ - Perlu kejelasan dalam kondisi berhenti, yang bisa membuatnya agak sulit dibaca.
+
+4. For Each Loop:
+Dim cell As Range
+For Each cell In Range("A1:A10")
+    ' Lakukan sesuatu di sini
+Next cell
+
+
+ Kelebihan:
+ - Ideal untuk iterasi melalui elemen dalam koleksi, seperti rentang sel.
+ 
+ Kekurangan:
+ - Tidak cocok untuk akses indeks.
+
+5. While Wend Loop:
+Dim i As Integer
+i = 1
+While i <= 10
+    ' Lakukan sesuatu di sini
+    i = i + 1
+Wend
+
+ Kelebihan:
+ - Sama fleksibelnya dengan Do While Loop.
+ 
+ Kekurangan:
+ - Kurang populer, mungkin agak sulit dipahami bagi beberapa pengguna.
+
+
+
+
+
+

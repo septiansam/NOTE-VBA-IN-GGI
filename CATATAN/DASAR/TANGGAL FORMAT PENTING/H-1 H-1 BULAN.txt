@@ -1,0 +1,25 @@
+Sub IsiTanggal()
+    Dim tanggalSebelumnya As Date
+    Dim tanggalHariIni As Date
+    Dim tanggalKemarin As Date
+    
+    ' Tentukan tanggal hari ini
+    tanggalHariIni = Date
+    Debug.Print tanggalHariIni
+    tanggalKemarin = DateAdd("d", -1, tanggalHariIni)
+    
+    ' Hitung tanggal satu bulan sebelumnya (selalu tanggal 1)
+    If Month(tanggalHariIni) = 1 Then
+        ' Jika bulan saat ini adalah Januari, maka tahun diubah menjadi tahun sebelumnya
+        tanggalSebelumnya = DateSerial(Year(tanggalHariIni) - 1, 12, 1)
+    Else
+        ' Jika bulan saat ini bukan Januari, maka tanggal 1 dari bulan sebelumnya
+        tanggalSebelumnya = DateSerial(Year(tanggalHariIni), Month(tanggalHariIni) - 1, 1)
+    End If
+    
+    ' Isi data ke dalam sel A2 dan B2
+    With ThisWorkbook.Sheets("Sheet1") ' Ganti "Sheet1" dengan nama sheet Anda
+        .Range("A2").Value = tanggalSebelumnya
+        .Range("B2").Value = tanggalHariIni
+    End With
+End Sub

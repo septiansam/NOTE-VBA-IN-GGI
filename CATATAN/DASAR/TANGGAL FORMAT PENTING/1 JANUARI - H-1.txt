@@ -1,0 +1,18 @@
+Sub IsiTanggal()
+    Dim TANGGAL_AWAL As Date
+    Dim TANGGAL_AKHIR As Date
+    Dim TahunIni As Integer
+    
+    ' Dapatkan tahun ini
+    TahunIni = Year(Date)
+    
+    ' Tanggal 1 Januari tahun ini
+    TANGGAL_AWAL = DateSerial(TahunIni, 1, 1)
+    
+    ' Satu hari sebelum hari ini
+    TANGGAL_AKHIR = DateAdd("d", -1, Date)
+    
+    ' Tampilkan hasil (opsional)
+    MsgBox "Tanggal Awal: " & TANGGAL_AWAL
+    MsgBox "Tanggal Akhir: " & TANGGAL_AKHIR
+End Sub

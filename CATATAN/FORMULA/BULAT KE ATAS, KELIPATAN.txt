@@ -1,0 +1,5 @@
+=CEILING(123, 10) ' Hasilnya adalah 130
+=CEILING(123, 5) ' Hasilnya adalah 125
+=CEILING(123, 1) ' Hasilnya adalah 123
+
+MEMBULATHAN KE ATAS

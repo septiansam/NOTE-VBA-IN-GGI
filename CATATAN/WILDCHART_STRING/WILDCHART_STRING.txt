@@ -1,0 +1,27 @@
+1. * (Asterisk):
+   - Mewakili nol atau lebih karakter.
+   - Contoh: Like "appl*" akan cocok dengan "apple", "application", "apply", dll.
+
+2. ? (Tanda Tanya):
+   - Mewakili tepat satu karakter.
+   - Contoh: Like "b?t" akan cocok dengan "bat", "bit", "bot", dll.
+
+3. # (Tanda Pagar):
+   - Mewakili tepat satu digit angka (0-9).
+   - Contoh: Like "###" akan cocok dengan "123", "456", "789", dll.
+
+4. [] (Karakter Set):
+   - Mewakili satu karakter yang sesuai dengan karakter yang diberikan di dalam tanda kurung siku.
+   - Contoh: Like "[aeiou]" akan cocok dengan huruf vokal mana pun (a, e, i, o, u).
+
+5. ! (Not):
+   - Digunakan bersama dengan karakter set [] untuk mengecualikan karakter tertentu dari pencocokan.
+   - Contoh: Like "[!aeiou]" akan cocok dengan karakter apa pun kecuali huruf vokal.
+
+6. - (Range):
+   - Digunakan dalam karakter set [] untuk menentukan rentang karakter.
+   - Contoh: Like "[a-z]" akan cocok dengan semua huruf kecil dari a sampai z.
+
+7. | (Alternation):
+   - Digunakan untuk menyatakan alternatif dalam pencocokan pola.
+   - Contoh: Like "apple|orange" akan cocok dengan "apple" atau "orange".

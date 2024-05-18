@@ -1,0 +1,9 @@
+COUNT_STYLE = Application.WorksheetFunction.CountA(Range("A:A")) - 1
+STR_STYLES = ""
+For i = 1 To COUNT_STYLE
+    If STR_STYLES = "" Then
+        STR_STYLES = Cells(i, 1).Value
+    Else
+        STR_STYLES = STR_STYLES & ", " & Cells(i, 1).Value
+    End If
+Next i
