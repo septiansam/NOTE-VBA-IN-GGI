@@ -1,0 +1,45 @@
+Sub CreatePeriode()
+    
+    Set TWB = ThisWorkbook
+    Set HOME = TWB.Sheets("{HOME}")
+
+    ' Deklarasi variabel
+    Dim PERIODE As Worksheet
+    Dim periodeAwalSch As String
+    Dim periodeAkhirSch As String
+    Dim periodeAwalSewing As String
+    Dim periodeAkhirSewing As String
+    
+    ' Dapatkan tanggal sekarang
+    Dim today As Date
+    today = Date
+    
+    ' Variabel pertama: Tanggal 1 bulan sekarang
+    periodeAwalSch = DateSerial(Year(today), Month(today), 1)
+    
+    ' Variabel kedua: Tanggal terakhir bulan sekarang
+    periodeAkhirSch = DateSerial(Year(today), Month(today) + 1, 0)
+    
+    ' Variabel ketiga: Tanggal 1, 4 bulan ke belakang dari bulan sekarang
+    periodeAwalSewing = DateSerial(Year(today), Month(today) - 3, 1)
+    
+    ' Variabel keempat: Tanggal sekarang
+    periodeAkhirSewing = today
+    
+'    ' Tampilkan nilai variabel dalam jendela pesan
+'    MsgBox "periodeAwalSch: " & periodeAwalSch & vbCrLf & _
+'           "periodeAkhirSch: " & periodeAkhirSch & vbCrLf & _
+'           "periodeAwalSewing: " & periodeAwalSewing & vbCrLf & _
+'           "periodeAkhirSewing: " & periodeAkhirSewing
+    
+    
+    If WorksheetExists("PERIODE") Then Sheets("PERIODE").Delete
+    Set PERIODE = Sheets.Add(AFTER:=HOME): ActiveSheet.Name = "PERIODE": PERIODE.Activate
+    Rows(2).NumberFormat = "m/d/yyyy"
+    
+    Range("A1") = "Prod Sche Awal": Range("A2") = periodeAwalSch
+    Range("B1") = "Prod Sche Akhir": Range("B2") = periodeAkhirSch
+    Range("C1") = "Upload Sewing Awal": Range("C2") = periodeAwalSewing
+    Range("D1") = "Upload Sewing Akhir": Range("D2") = periodeAkhirSewing
+
+End Sub

@@ -1,0 +1,29 @@
+Sub CreatePeriode()
+
+    Application.DisplayAlerts = False
+    
+    Set TWB = ThisWorkbook
+    Set HOME = TWB.Sheets("{HOME}")
+    For i = TWB.Sheets.Count To 2 Step -1
+        Sheets(i).Delete
+    Next i
+    Set PERIODE = TWB.Sheets.Add(Sheets(Sheets.Count)): ActiveSheet.Name = "PERIODE"
+    PERIODE.Activate
+    PERIODE.Range("A1") = "TANGGAL TARIKAN"
+    
+    If Weekday(Date, vbMonday) = 1 Then
+        ' Jika hari ini adalah hari Senin, isi tanggal hari Jumat (H-3)
+        dateTarikan = DateAdd("d", -3, Date)
+    Else
+        ' Jika bukan hari Senin, isi tanggal hari sebelumnya (H-1)
+        dateTarikan = DateAdd("d", -1, Date)
+    End If
+    
+    dateTarikan = CDate(Format(dateTarikan, "m/d/yyyy"))
+    PERIODE.Range("A2") = dateTarikan
+    Cells.EntireColumn.AutoFit: Cells(1, 1).Select
+    HOME.Activate: Cells(1, 1).Select
+    
+    Application.DisplayAlerts = True
+
+End Sub

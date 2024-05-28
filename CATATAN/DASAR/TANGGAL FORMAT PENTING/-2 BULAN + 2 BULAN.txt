@@ -1,0 +1,39 @@
+Sub CreatePeriode()
+
+    Application.DisplayAlerts = False
+    
+    Set TWB = ThisWorkbook
+    Set HOME = TWB.Sheets("{HOME}")
+    If WSX("PERIODE") Then Sheets("PERIODE").Delete
+    Set PERIODE = Sheets.Add(AFTER:=Sheets(Sheets.Count)): ActiveSheet.name = "PERIODE"
+    
+    ' Variabel pertama: Tanggal pertama dari 2 bulan terakhir
+    tanggalAwal = DateSerial(Year(Date), Month(Date) - 2, 1)
+    
+    ' Variabel kedua: Tanggal terakhir dari 2 bulan ke depan
+    tanggalAkhir = DateSerial(Year(Date), Month(Date) + 3, 0)
+    
+    PERIODE.Activate
+    
+    Randomize
+    randomColor = RGB(Int(Rnd() * 255), Int(Rnd() * 255), Int(Rnd() * 255))
+    
+    With PERIODE.Tab
+        .Color = randomColor
+        .TintAndShade = 0
+    End With
+    
+    Range("A2:B2").NumberFormat = "m/d/yyyy"
+    
+    PERIODE.Range("A1") = "TANGGAL AWAL"
+    PERIODE.Range("B1") = "TANGGAL AKHIR"
+    
+    Range("A2") = tanggalAwal
+    Range("B2") = tanggalAkhir
+        
+    Cells.EntireColumn.AutoFit: Cells(1, 1).Select
+    HOME.Activate: Cells(1, 1).Select
+    
+    Application.DisplayAlerts = True
+
+End Sub
