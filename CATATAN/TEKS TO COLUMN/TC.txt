@@ -1,0 +1,2 @@
+TEMP.Range("A:A").TextToColumns Destination:=TEMP.Range("B1"), DataType:=xlDelimited, _
+        Other:=True, OtherChar:="-"

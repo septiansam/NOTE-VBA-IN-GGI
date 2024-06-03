@@ -1,0 +1,12 @@
+For i = 1 To sumOR
+    strOR = RPA.Range("I" & i + 1).Value
+    collectOR = collectOR & strOR & ", "
+Next i
+collectOR = Left(collectOR, Len(collectOR) - 2)
+arrOR = Split(collectOR, ", ")
+ReDim arrName(LBound(arrOR) To UBound(arrOR) + 1)
+arrName(LBound(arrName)) = "RPA"
+
+For i = LBound(arrOR) To UBound(arrOR)
+    arrName(i + 1) = arrOR(i)
+Next i
