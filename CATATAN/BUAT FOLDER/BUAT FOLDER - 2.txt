@@ -1,0 +1,15 @@
+Sub CheckAndCreateFolder()
+    Dim folderPath As String
+    
+    ' Tentukan path folder yang ingin diperiksa/dibuat
+    folderPath = "C:\Path\To\Your\Directory\2024"
+    
+    ' Cek apakah folder sudah ada
+    If Dir(folderPath, vbDirectory) = "" Then
+        ' Jika folder belum ada, buat folder tersebut
+        MkDir folderPath
+        MsgBox "Folder '2024' telah dibuat di " & folderPath, vbInformation
+    Else
+        MsgBox "Folder '2024' sudah ada di " & folderPath, vbInformation
+    End If
+End Sub
