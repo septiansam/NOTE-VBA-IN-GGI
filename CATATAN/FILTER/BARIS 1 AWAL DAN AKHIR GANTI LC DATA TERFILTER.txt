@@ -1,0 +1,6 @@
+lr = Cells.Find("*", , xlFormulas, xlPart, xlByRows, xlPrevious).Row
+lc = Cells.Find("*", , xlFormulas, xlPart, xlByColumns, xlPrevious).Column
+
+Set rng = Range(Cells(5, 1), Cells(lr, lc))
+
+rng.Offset(1, 0).SpecialCells(xlCellTypeVisible).Cells(1, 1).Select

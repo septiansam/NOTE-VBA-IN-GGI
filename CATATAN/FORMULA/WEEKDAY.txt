@@ -1,0 +1,18 @@
+Fungsi WEEKDAY digunakan untuk mendapatkan nomor hari dalam seminggu untuk sebuah tanggal tertentu. Hasilnya adalah angka dari 1 sampai 7 yang merepresentasikan hari dalam seminggu, di mana angka 1 adalah Minggu, 2 adalah Senin, dan seterusnya hingga 7 yang adalah Sabtu.
+
+Contoh:
+
+WEEKDAY("2024-06-01") akan mengembalikan 7, karena 1 Juni 2024 adalah Sabtu.
+WEEKDAY("2024-06-02") akan mengembalikan 1, karena 2 Juni 2024 adalah Minggu.
+
+WEEKDAY(DATE(YEAR(A2), MONTH(A2), 1))
+
+Fungsi WEEKDAY mengembalikan hari dalam seminggu untuk tanggal tertentu. Secara default, Excel mengembalikan angka dari 1 hingga 7, di mana:
+
+1 = Minggu
+2 = Senin
+3 = Selasa
+4 = Rabu
+5 = Kamis
+6 = Jumat
+7 = Sabtu

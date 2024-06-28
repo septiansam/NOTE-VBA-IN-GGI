@@ -1,0 +1,2 @@
+INV.AutoFilter.Range.Offset(2).SpecialCells(xlCellTypeVisible).Cells(1, 1).Select
+INV.AutoFilter.Range.SpecialCells(xlCellTypeVisible).Cells(Rows.Count, lc).End(xlUp).Select

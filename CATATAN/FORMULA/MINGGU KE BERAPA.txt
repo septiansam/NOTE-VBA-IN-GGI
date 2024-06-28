@@ -1,0 +1,1 @@
+=CEILING((DAY(A1) + WEEKDAY(DATE(YEAR(A1), MONTH(A1), 1)) - 1) / 7, 1)

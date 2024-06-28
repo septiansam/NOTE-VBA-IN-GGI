@@ -1,0 +1,15 @@
+Sub IsiTanggal()
+    Dim tanggalHariIni As Date
+    Dim tanggalMinus30 As Date
+    
+    ' Tentukan tanggal hari ini
+    tanggalHariIni = Date
+    Debug.Print tanggalHariIni
+    tanggalMinus30 = DateAdd("d", -30, tanggalHariIni)
+    
+    ' Isi data ke dalam sel A2 dan B2
+    With ThisWorkbook.Sheets("Sheet1") ' Ganti "Sheet1" dengan nama sheet Anda
+        .Range("A2").Value = tanggalHariIni
+        .Range("B2").Value = tanggalMinus30
+    End With
+End Sub

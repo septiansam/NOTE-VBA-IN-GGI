@@ -1,0 +1,46 @@
+Sub BUTTON_CariFolder_TarikanJDE()
+    
+    Dim fso As Object
+    Dim twb As Workbook
+    Dim btn As Worksheet
+    
+    Set twb = ThisWorkbook
+    Set btn = twb.Sheets("BUTTON")
+    
+    btn.Activate
+    
+    Dim FldrPicker As FileDialog
+    Dim FilePicker As FileDialog
+    Dim myFolder As String
+    Dim myFile As String
+    
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    
+    Set FldrPicker = Application.FileDialog(msoFileDialogFolderPicker)
+    
+    With FldrPicker
+        .Title = "Select A Target Folder 'ITEM CONVERSION'"
+        .AllowMultiSelect = False
+        .ButtonName = "Selected Folder"
+        
+        .InitialFileName = "\\10.8.0.35\Bersama\IT\Data Master"
+        If .Show <> -1 Then Exit Sub
+        myFolder = .SelectedItems(1)
+    End With
+    
+    Set FilePicker = Application.FileDialog(msoFileDialogFilePicker)
+    With FilePicker
+        .Title = "Select A Target File 'ITEM CONVERSION'"
+        .AllowMultiSelect = False
+        .ButtonName = "Selected File"
+        
+        .InitialFileName = myFolder
+        If .Show <> -1 Then Exit Sub
+        myFile = .SelectedItems(1)
+    End With
+    
+    btn.Range("F6").Value = fso.GetParentFolderName(myFolder)
+    btn.Range("G6").Value = fso.GetBaseName(myFile)
+    btn.Range("H6").Value = "." & fso.GetExtensionName(myFile)
+        
+End Sub

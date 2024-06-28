@@ -1,0 +1,24 @@
+Dalam kode VBA untuk membuat Pivot Table di Excel, pengaturan parameter Subtotals pada PivotFields dapat sedikit membingungkan. Mari kita bahas secara lebih mendetail.
+
+Dalam baris seperti berikut:
+
+vba
+Salin kode
+Subtotals = Array(False, False, False, False, False, False, False, False, False, False, False, False)
+Array ini memiliki 12 parameter. Alasannya adalah karena Excel Pivot Table mendukung 12 jenis subtotal berbeda. Setiap elemen dalam array ini berhubungan dengan satu jenis subtotal, dan urutannya adalah sebagai berikut:
+
+xlSum - Penjumlahan
+xlCount - Penghitungan
+xlAverage - Rata-rata
+xlMax - Nilai maksimum
+xlMin - Nilai minimum
+xlProduct - Hasil perkalian
+xlCountNums - Penghitungan angka
+xlStdDev - Standar deviasi (estimasi populasi)
+xlStdDevP - Standar deviasi (populasi)
+xlVar - Variansi (estimasi populasi)
+xlVarP - Variansi (populasi)
+xlUnknown - Tidak dikenal atau tidak digunakan
+Jadi, ketika Anda menetapkan Array(False, False, False, False, False, False, False, False, False, False, False, False), ini berarti Anda mematikan semua jenis subtotal ini. Dalam kata lain, tidak ada subtotal yang akan ditampilkan di Pivot Table Anda untuk field yang ditentukan.
+
+Setiap False dalam array ini secara eksplisit mematikan jenis subtotal yang sesuai dengan posisinya dalam array.

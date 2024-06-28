@@ -1,0 +1,32 @@
+BUKA FILE,
+UNTUK DAPATKAN FOLDER
+Set FldrPicker = Application.FileDialog(msoFileDialogFolderPicker)
+
+Sub Btn_GetFinalSI()
+    Set FldrPicker = Application.FileDialog(msoFileDialogFolderPicker)
+    With FldrPicker
+        .InitialFileName = "\\10.5.0.27\bersama\BUYER EXPORT\"
+        .Title = "SELECT Final SI DATA"
+        .AllowMultiSelect = False
+        .ButtonName = "Selected File Final SI"
+        If .Show <> -1 Then Exit Sub
+        myPath = .SelectedItems(1)
+        ThisWorkbook.Worksheets("HOME").Range("D8").Value = myPath
+    End With
+End Sub
+
+UNTUK DAPATKAN FILE
+Set FldrPicker = Application.FileDialog(msoFileDialogFilePicker)
+
+Sub Btn_GetFinalSI()
+    Set FldrPicker = Application.FileDialog(msoFileDialogFilePicker)
+    With FldrPicker
+        .InitialFileName = "\\10.5.0.27\bersama\BUYER EXPORT\"
+        .Title = "SELECT Final SI DATA"
+        .AllowMultiSelect = False
+        .ButtonName = "Selected File Final SI"
+        If .Show <> -1 Then Exit Sub
+        myPath = .SelectedItems(1)
+        ThisWorkbook.Worksheets("HOME").Range("D8").Value = myPath
+    End With
+End Sub

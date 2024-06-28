@@ -1,0 +1,20 @@
+    FileDialog.InitialFileName = "\\10.5.0.27\bersama\BUYER EXPORT\"
+    With FileDialog
+        .Title = "Pilih File Data Loadingan"
+        .AllowMultiSelect = False
+
+        ' Jika pengguna mengklik tombol "Cancel"
+        If .Show <> -1 Then
+            MsgBox "Proses dibatalkan!", vbExclamation, "Select File Failed"
+            If WorksheetExists("TEMP") Then Sheets("TEMP").Delete
+            End
+            Exit Sub
+        End If
+
+        ' Mengambil nama file yang dipilih
+        FullPathFile = .SelectedItems(1)
+        Set wb_Loadingan = Workbooks.Open(FullPathFile): wb_Loadingan.Activate: Sheets(1).Select: ActiveSheet.AutoFilterMode = False: Cells.EntireColumn.Hidden = False: Cells.EntireRow.Hidden = False
+        lr = Range("C" & Rows.Count).End(xlUp).Row
+        Range("C1:C" & lr).Copy TEMP.Range("A1")
+        wb_Loadingan.Close False
+    End With

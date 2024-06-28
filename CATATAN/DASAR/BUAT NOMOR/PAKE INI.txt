@@ -20,3 +20,6 @@ CONTOH EWEH JUDULAN
 lr = Cells(Rows.Count, 2).End(xlUp).Row
     Range("A1") = "1"
     Range("A1").DataSeries xlColumns, xlLinear, , 1, lr
+
+Range("A2") = 1
+Range("A2").DataSeries xlColumns, xlLinear, , 1, lr - 1

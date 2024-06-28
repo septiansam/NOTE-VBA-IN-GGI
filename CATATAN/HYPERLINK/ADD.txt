@@ -1,0 +1,4 @@
+    RPA.Hyperlinks.Add _
+                    Anchor:=Range("J" & I + 1), _
+                    Address:=PATH_UPLOAD, _
+                    TextToDisplay:=PATH_UPLOAD
