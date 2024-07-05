@@ -1,3 +1,24 @@
+    arrHistory = Right(arrHistory, Len(arrHistory) - 1)
+    str_Arr() = Split(arrHistory, ",")
+    
+    index = UBound(str_Arr()) - LBound(str_Arr()) + 1
+    If index = 1 Then
+        Sheets(arrHistory).Copy
+        Set wbHistory = ActiveWorkbook
+        wbHistory.SaveAs pathHistory & nameHistory, xlOpenXMLWorkbook
+        wbHistory.Close False
+    Else
+        Sheets(str_Arr()).Select
+        Sheets(str_Arr()).Copy
+        Set wbHistory = ActiveWorkbook
+        wbHistory.Activate
+        wbHistory.SaveAs pathHistory & nameHistory, xlOpenXMLWorkbook
+        wbHistory.Close False
+    End If
+
+
+
+
 Sub CreateFile()
     Application.DisplayAlerts = False
     
