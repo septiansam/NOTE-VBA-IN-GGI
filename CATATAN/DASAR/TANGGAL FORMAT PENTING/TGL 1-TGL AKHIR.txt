@@ -1,0 +1,17 @@
+Sub TanggalAwalAkhirBulan()
+    Dim TanggalHariIni As Date
+    Dim TanggalAwalBulan As Date
+    Dim TanggalAkhirBulan As Date
+    
+    ' Ambil tanggal hari ini
+    TanggalHariIni = Date
+    
+    ' Tentukan tanggal awal bulan
+    TanggalAwalBulan = DateSerial(Year(TanggalHariIni), Month(TanggalHariIni), 1)
+    
+    ' Tentukan tanggal akhir bulan
+    TanggalAkhirBulan = DateSerial(Year(TanggalHariIni), Month(TanggalHariIni) + 1, 0)
+    
+    ' Menampilkan hasil dalam MsgBox
+    MsgBox "Tanggal Awal Bulan: " & TanggalAwalBulan & vbCrLf & "Tanggal Akhir Bulan: " & TanggalAkhirBulan
+End Sub
