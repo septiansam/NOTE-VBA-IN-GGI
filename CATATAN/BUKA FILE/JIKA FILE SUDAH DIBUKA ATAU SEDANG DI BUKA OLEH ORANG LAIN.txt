@@ -1,0 +1,23 @@
+' Periksa apakah workbook sudah terbuka
+    Dim WB As Workbook
+    wbName = Dir(path_On_Hand)
+    wbOpen = False
+    On Error Resume Next
+    Set WB = Workbooks(wbName)
+    On Error GoTo 0
+    
+    If Not WB Is Nothing Then
+        wbOpen = True
+    End If
+        
+    ' Jika workbook belum terbuka, buka workbook tersebut
+    If Not wbOpen Then
+        Set WB = Workbooks.Open(path_On_Hand)
+    End If
+    
+    ' Aktifkan workbook
+    If wbOpen Then
+        WB.Activate
+    Else
+        Windows(wbName).Activate
+    End If

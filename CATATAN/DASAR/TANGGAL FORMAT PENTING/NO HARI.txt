@@ -1,0 +1,22 @@
+Argumen firstdayofweek memiliki pengaturan berikut:
+
+
+vbMinggu	1	Minggu (default)
+Senin	2	Senin
+vbSelasa	3	Selasa
+vbRabu	4	Rabu
+vbKamis	5	Kamis
+vbJumat	6	Jumat
+vbSabtu	7	Sabtu
+
+
+Fungsi Weekday dapat mengembalikan salah satu nilai berikut:
+
+Konstan	Nilai	Keterangan
+vbMinggu	1	Minggu
+Senin	2	Senin
+vbSelasa	3	Selasa
+vbRabu	4	Rabu
+vbKamis	5	Kamis
+vbJumat	6	Jumat
+vbSabtu	7	Sabtu

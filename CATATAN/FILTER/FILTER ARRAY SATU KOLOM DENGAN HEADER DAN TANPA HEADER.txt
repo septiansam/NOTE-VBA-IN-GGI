@@ -1,0 +1,6 @@
+#.. DENGAN HEADER
+
+Rng.Columns(14).Resize(Rng.Columns(14).Rows.Count, 1).SpecialCells(xlCellTypeVisible).Select
+
+#.. TANPA HEADER
+Rng.Columns(14).Offset(1).Resize(Rng.Columns(14).Rows.Count -1 , 1).SpecialCells(xlCellTypeVisible).Select

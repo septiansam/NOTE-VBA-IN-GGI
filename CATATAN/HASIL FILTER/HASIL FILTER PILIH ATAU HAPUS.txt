@@ -1,0 +1,3 @@
+If Application.WorksheetFunction.CountA(Rng.Offset(1).Resize(Rng.Rows.Count - 1).SpecialCells(xlCellTypeVisible)) > 0 Then
+        Rng.Offset(1).Resize(Rng.Rows.Count - 1).SpecialCells(xlCellTypeVisible).Select
+    End If

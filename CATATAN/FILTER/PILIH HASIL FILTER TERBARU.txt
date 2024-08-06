@@ -1,0 +1,16 @@
+    Set rng = TMP1.Range(TMP1.Cells(1, 1), TMP1.Cells(lr, lc))
+    rPaste = 2
+    For i = 1 To SumMonth
+        TMP1.Activate
+        TMP1.AutoFilterMode = False
+        rng.AutoFilter 1, i
+        rng.Offset(1).Resize(rng.Rows.Count - 1).SpecialCells(xlCellTypeVisible).Select
+
+
+Set rng = Nothing
+    TMP2.Activate: TMP2.AutoFilterMode = False
+    lr = Cells.Find("*", , xlFormulas, xlPart, xlByRows, xlPrevious).Row
+    lc = Cells.Find("*", , xlFormulas, xlPart, xlByColumns, xlPrevious).Column
+    Set rng = Range(Cells(1, col_PIC), Cells(lr, col_PIC))
+    Cells.AutoFilter col_PIC, "<>"
+    rng.Offset(1).Resize(rng.Rows.Count - 1).SpecialCells(xlCellTypeVisible).Select

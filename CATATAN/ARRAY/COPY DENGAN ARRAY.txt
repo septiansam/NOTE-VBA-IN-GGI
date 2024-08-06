@@ -1,0 +1,11 @@
+shSAM.Range("A9").CurrentRegion.Copy Destination:=Sheets("PROSES" & i_Create).Range("A1")
+        
+        Dim arr As Variant
+        
+        arr = twb.Sheets("PROSES" & i_Create).UsedRange.Value2
+        twb.Sheets("PROSES" & i_Create).Range("A1").Resize(UBound(arr, 1), UBound(arr, 2)).Value2 = arr
+
+##### DI FILTER DULU
+Set Rng = Range(Cells(6, 1), Cells(lr, lc))
+    Rng.AutoFilter 1, ""
+    arr_ILDV = Rng.Resize(Rng.Rows.Count, Rng.Columns.Count).SpecialCells(xlCellTypeVisible).Value

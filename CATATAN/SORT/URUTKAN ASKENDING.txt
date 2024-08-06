@@ -1,0 +1,10 @@
+    With TMP2.Sort
+        .SortFields.Clear
+        .SortFields.Add2 Key:=Range("A1:A19"), SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal
+        .SetRange Range("A1:A19")
+        .Header = xlNo
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With

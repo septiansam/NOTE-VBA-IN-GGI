@@ -1,0 +1,57 @@
+## REKOMENDASI DATE SERIAL
+
+# Dengan Dateserial
+Sub GetPreviousMonthDatesWithDateSerial()
+    Dim currentDate As Date
+    Dim firstDayPreviousMonth As Date
+    Dim lastDayPreviousMonth As Date
+    Dim currentYear As Integer
+    Dim currentMonth As Integer
+
+    ' Dapatkan tanggal hari ini
+    currentDate = Date
+
+    ' Dapatkan tahun dan bulan saat ini
+    currentYear = Year(currentDate)
+    currentMonth = Month(currentDate)
+
+    ' Cek apakah bulan saat ini adalah Januari
+    If currentMonth = 1 Then
+        ' Jika bulan saat ini Januari, kembali ke Desember tahun sebelumnya
+        firstDayPreviousMonth = DateSerial(currentYear - 1, 12, 1)
+    Else
+        ' Dapatkan tanggal 1, satu bulan sebelum bulan sekarang
+        firstDayPreviousMonth = DateSerial(currentYear, currentMonth - 1, 1)
+    End If
+
+    ' Dapatkan tanggal terakhir dari satu bulan sebelum bulan sekarang
+    lastDayPreviousMonth = DateSerial(currentYear, currentMonth, 0)
+
+    ' Tampilkan hasil di Immediate Window (Ctrl + G untuk membuka)
+    Debug.Print "Tanggal 1, satu bulan sebelumnya: " & Format(firstDayPreviousMonth, "dd-mmm-yyyy")
+    Debug.Print "Tanggal terakhir, satu bulan sebelumnya: " & Format(lastDayPreviousMonth, "dd-mmm-yyyy")
+End Sub
+
+
+
+
+# Dengan DateAdd
+
+Sub GetPreviousMonthDatesWithDateAdd()
+    Dim currentDate As Date
+    Dim firstDayPreviousMonth As Date
+    Dim lastDayPreviousMonth As Date
+
+    ' Dapatkan tanggal hari ini
+    currentDate = Date
+
+    ' Dapatkan tanggal 1, satu bulan sebelum bulan sekarang
+    firstDayPreviousMonth = DateAdd("m", -1, DateSerial(Year(currentDate), Month(currentDate), 1))
+
+    ' Dapatkan tanggal terakhir dari satu bulan sebelum bulan sekarang
+    lastDayPreviousMonth = DateAdd("d", -1, DateSerial(Year(currentDate), Month(currentDate), 1))
+
+    ' Tampilkan hasil di Immediate Window (Ctrl + G untuk membuka)
+    Debug.Print "Tanggal 1, satu bulan sebelumnya (DateAdd): " & Format(firstDayPreviousMonth, "dd-mmm-yyyy")
+    Debug.Print "Tanggal terakhir, satu bulan sebelumnya (DateAdd): " & Format(lastDayPreviousMonth, "dd-mmm-yyyy")
+End Sub

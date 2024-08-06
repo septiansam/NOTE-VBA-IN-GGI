@@ -8,3 +8,5 @@ RANGE TERFILER
     Set rAwal = wsInputTicket.AutoFilter.Range.Offset(1).SpecialCells(xlCellTypeVisible).Cells(1, cPO)
     Set rgPO = Range(rAwal, rAkhir)
     rgPO.Select
+
+Rng.Offset(1).Resize(Rng.Rows.Count - 1).SpecialCells(xlCellTypeVisible).Select

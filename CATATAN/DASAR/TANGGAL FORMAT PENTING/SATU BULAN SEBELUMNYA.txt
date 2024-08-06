@@ -1,0 +1,8 @@
+Function GetPreviousMonth() As String
+    Dim currentDate As Date
+    currentDate = Date
+    GetPreviousMonth = Format(DateAdd("m", -1, currentDate), "mmmm yyyy")
+End Function
+
+currentDate = DateAdd("m", -1, date)
+bulan_Sebelumnya = WorksheetFunction.Text(currentDate, "[$-id-ID]mmmm")
