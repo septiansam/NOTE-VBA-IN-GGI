@@ -1,0 +1,12 @@
+Sub AddCommentToCell()
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Sheets("Sheet1") ' Ganti "Sheet1" dengan nama sheet Anda
+    
+    ' Periksa apakah sel A1 sudah memiliki komentar, jika ada, hapus dulu
+    If Not ws.Range("A1").Comment Is Nothing Then
+        ws.Range("A1").Comment.Delete
+    End If
+    
+    ' Tambahkan komentar pada sel A1
+    ws.Range("A1").AddComment "Ini adalah komentar baru"
+End Sub

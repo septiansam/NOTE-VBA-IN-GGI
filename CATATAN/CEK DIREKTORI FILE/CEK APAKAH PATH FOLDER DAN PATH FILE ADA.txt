@@ -1,0 +1,20 @@
+Sub ValidatePaths()
+    Dim ws As Worksheet
+    Dim cell As Range
+    Dim path As String
+    
+    ' Ganti Sheet1 dengan nama sheet yang sesuai
+    Set ws = ThisWorkbook.Sheets("Sheet1")
+    
+    ' Loop melalui range E12 sampai E17
+    For Each cell In ws.Range("E12:E17")
+        path = cell.Value
+        
+        ' Cek apakah path ada (file atau folder)
+        If Dir(path, vbDirectory) <> "" Or Dir(path) <> "" Then
+            cell.Offset(0, 1).Value = "Valid" ' Tampilkan Valid di sebelah kanan jika ada
+        Else
+            cell.Offset(0, 1).Value = "Not Found" ' Tampilkan Not Found jika tidak ada
+        End If
+    Next cell
+End Sub

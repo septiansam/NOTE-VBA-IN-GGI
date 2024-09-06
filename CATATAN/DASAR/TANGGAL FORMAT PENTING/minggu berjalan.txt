@@ -1,0 +1,20 @@
+Sub TampilkanMingguBerjalan()
+    Dim TanggalSekarang As Date
+    Dim HariPertama As Date
+    Dim MingguBerjalan As Integer
+    
+    ' Mendapatkan tanggal hari ini
+    TanggalSekarang = Date
+    
+    ' Mendapatkan tanggal 1 di bulan ini
+    HariPertama = DateSerial(Year(TanggalSekarang), Month(TanggalSekarang), 1)
+    
+    ' Menghitung minggu berjalan
+    MingguBerjalan = Application.WorksheetFunction.RoundUp((Day(TanggalSekarang) + Weekday(HariPertama, vbSunday) - 1) / 7, 0)
+    
+    ' Menampilkan minggu berjalan
+    MsgBox "Saat ini adalah minggu ke-" & MingguBerjalan & " dalam bulan ini.", vbInformation
+End Sub
+
+versi formula
+=INT((DAY(TODAY()) + WEEKDAY(DATE(YEAR(TODAY()), MONTH(TODAY()), 1), 2) - 1) / 7) + 1

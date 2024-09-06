@@ -1,0 +1,44 @@
+Sub WriteEndOfMonthDates()
+
+    ' Deklarasi variabel
+    Dim ws As Worksheet
+    Dim currentYear As Integer
+    Dim selectedYear As Integer
+    Dim monthIndex As Integer
+    Dim lastDay As Date
+    
+    ' Mengatur sheet kerja aktif
+    Set ws = ThisWorkbook.Sheets("Sheet1") ' Ganti dengan nama sheet yang sesuai
+    
+    ' Meminta pengguna untuk memasukkan tahun (bisa abaikan jika menggunakan tahun berjalan)
+    selectedYear = InputBox("Masukkan tahun (contoh: 2024):", "Tahun", Year(Date))
+    
+    ' Menggunakan tahun yang dimasukkan atau tahun berjalan jika input tidak valid
+    If selectedYear = 0 Then
+        currentYear = Year(Date)
+    Else
+        currentYear = selectedYear
+    End If
+    
+    ' Menghapus konten sebelumnya di kolom A
+    ws.Columns("A").ClearContents
+
+    ' Menulis tanggal akhir setiap bulan di kolom A
+    For monthIndex = 1 To 12
+        ' Mendapatkan tanggal terakhir setiap bulan
+        lastDay = DateSerial(currentYear, monthIndex + 1, 0)
+        
+        ' Menulis tanggal ke dalam sel di kolom A
+        ws.Cells(monthIndex, 1).Value = lastDay
+    Next monthIndex
+
+    ' Menambahkan judul
+    ws.Cells(1, 1).EntireRow.Insert
+    ws.Cells(1, 1).Value = "Tanggal Akhir Bulan " & currentYear
+
+    ' Memberikan format tanggal
+    ws.Columns("A").NumberFormat = "[$-id-ID]dddd, dd mmmm yyyy"
+    
+    MsgBox "Tanggal akhir bulan untuk tahun " & currentYear & " telah ditulis ke kolom A.", vbInformation
+
+End Sub
