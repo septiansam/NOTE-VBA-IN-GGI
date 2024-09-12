@@ -1,0 +1,35 @@
+Sub Move_Files()
+    Dim SourceFolder As String
+    Dim DestinationFolder As String
+    Dim FileName As String
+    Dim FilePath As String
+    
+    ' Set the source and destination folder paths
+    SourceFolder = ThisWorkbook.Worksheets("HOME").Range("E12") & "\"
+    DestinationFolder = ThisWorkbook.Worksheets("HOME").Range("E13") & "\"
+
+    ' Check if the source folder exists
+    If Dir(SourceFolder, vbDirectory) = "" Then
+        MsgBox "Source folder does not exist: " & SourceFolder, vbExclamation
+        Exit Sub
+    End If
+
+    ' Check if the destination folder exists, if not, create it
+    If Dir(DestinationFolder, vbDirectory) = "" Then
+        MkDir DestinationFolder
+    End If
+
+    ' Get the first file in the source folder
+    FileName = Dir(SourceFolder & "*.*") ' Use *.* to get all files
+
+    ' Loop through all the files in the source folder
+    Do While FileName <> ""
+        FilePath = SourceFolder & FileName
+        ' Move the file to the destination folder
+        Name FilePath As DestinationFolder & FileName
+        ' Get the next file
+        FileName = Dir
+    Loop
+
+    MsgBox "Files have been moved successfully!", vbInformation
+End Sub

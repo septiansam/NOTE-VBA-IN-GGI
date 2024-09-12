@@ -1,0 +1,72 @@
+Sub Create_Folder_and_Move_File()
+
+    Set WB1 = ThisWorkbook
+    Set SH1_HOME = WB1.Worksheets("HOME")
+    
+    ''[*].. DELETE HYPERLINK
+    SH1_HOME.Activate
+    For i = 13 To SH1_HOME.Range("F" & Rows.Count).End(xlUp).Row
+        Range("F" & i).Hyperlinks.Delete
+    Next i
+    
+    Path_RIF = SH1_HOME.Range("F15") & "\" & SH1_HOME.Range("G15") & SH1_HOME.Range("H15")
+    Path_DataIncome = SH1_HOME.Range("F16") & "\" & SH1_HOME.Range("G16") & SH1_HOME.Range("H16")
+    NamaFolder = CStr(Year(Date) - 1)
+    SrcFolder = SH1_HOME.Range("F15") & "\"
+    SrcFolder = SrcFolder & NamaFolder
+    
+    ''[*].. CEK FILE DULU, LALU CEK FOLDER, JIKA FILE ADA DAN FOLDER TIDAK ADA MAKA BUATKAN FOLDER DAN PINDAHKAN FILE
+    
+    '..-> JIKA FILE RIF TIDAK ADA, FOLDER ADA, FILE DALAM FOLDER TIDAK ADA
+    If Dir(Path_RIF) = "" And Dir(SrcFolder, vbDirectory) <> "" _
+                          And Dir(SrcFolder & "\" & SH1_HOME.Range("G15") & SH1_HOME.Range("H15")) = "" Then
+        SH1_HOME.Activate: SH1_HOME.Cells(1, 1).Select
+        MsgBox "File Resume Income Factory Does Not Exists", vbCritical, "PERINGATAN..."
+        End
+    End If
+      
+    '..-> JIKA FILE DIF TIDAK ADA, FOLDER ADA, FILE DALAM FOLDER TIDAK ADA
+    If Dir(Path_DataIncome) = "" And Dir(SrcFolder, vbDirectory) <> "" _
+                          And Dir(SrcFolder & "\" & SH1_HOME.Range("G16") & SH1_HOME.Range("H16")) = "" Then
+        SH1_HOME.Activate: SH1_HOME.Cells(1, 1).Select
+        MsgBox "File Data Income per-Factory Does Not Exists", vbCritical, "PERINGATAN..."
+        End
+    End If
+    
+    '..-> JIKA FILE RIF TIDAK ADA, DAN FOLDER TIDAK ADA
+    If Dir(Path_RIF) = "" And Dir(SrcFolder, vbDirectory) = "" Then
+        SH1_HOME.Activate: SH1_HOME.Cells(1, 1).Select
+        MsgBox "File Resume Income Factory Does Not Exists", vbCritical, "PERINGATAN..."
+        End
+    End If
+    
+    '..-> JIKA FILE DIF TIDAK ADA, DAN FOLDER TIDAK ADA
+    If Dir(Path_DataIncome) = "" And Dir(SrcFolder, vbDirectory) = "" Then
+        SH1_HOME.Activate: SH1_HOME.Cells(1, 1).Select
+        MsgBox "File Data Income per-Factory Does Not Exists", vbCritical, "PERINGATAN..."
+        End
+    End If
+    
+    IsFolder = False
+    '..-> JIKA FILE ADA DAN FOLDER TIDAK ADA MAKA BUATKAN FOLDER
+    If Dir(Path_RIF) <> "" And Dir(Path_DataIncome) <> "" And Dir(SrcFolder, vbDirectory) = "" Then
+        MkDir SrcFolder
+        IsFolder = True
+    End If
+    
+    '..-> JIKA FILE ADA DAN FOLDER ADA MAKA PINDAHKAN FILE
+    If IsFolder = True Then
+        FileNameRIF = Dir(Path_RIF)
+        FileNameDIF = Dir(Path_DataIncome)
+        DstFolder = SrcFolder & "\"
+        
+        '--> PINDAHKAN RIF
+        Name Path_RIF As DstFolder & FileNameRIF
+        
+        '--> PINDAHKAN DIF
+        Name Path_DataIncome As DstFolder & FileNameDIF
+    End If
+    
+    SH1_HOME.Activate
+    SH1_HOME.Cells(1, 1).Select
+End Sub

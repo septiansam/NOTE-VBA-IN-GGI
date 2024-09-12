@@ -5,7 +5,7 @@ Attribute VB_Name = "Mdl_SAM"
 
 Dim WB1 As Workbook
 Dim WB_Source As Workbook
-Dim HOME As Worksheet, TMP1 As Worksheet, TMP2 As Worksheet, PESAN As Worksheet, SH As Worksheet
+Dim HOME As Worksheet, TMP1 As Worksheet, TMP2 As Worksheet, Pesan As Worksheet, SH As Worksheet
 Dim path_src As String, lr As Long, lc As Long, jumlah_Request As Long, rowPaste As Long
 Dim isi_pesan As String, arr_penerima_pesan As Variant, penerima As String
 
@@ -17,7 +17,7 @@ End Sub
 Sub Validation()
     Set WB1 = ThisWorkbook
     Set HOME = WB1.Sheets("HOME")
-    path_src = HOME.Range("H8").Value
+    path_src = HOME.Range("H8").value
     If Dir(path_src) = "" Then
         MsgBox "Source File, Doesn't Exists", vbInformation, "File Not Found"
         Exit Sub
@@ -27,7 +27,7 @@ End Sub
 Sub Initialization()
     Set TMP1 = WB1.Sheets("TMP1")
     Set TMP2 = WB1.Sheets("TMP2")
-    Set PESAN = WB1.Sheets("PESAN")
+    Set Pesan = WB1.Sheets("PESAN")
 End Sub
 
 Sub Import_File()
@@ -58,7 +58,7 @@ Sub Add_Sheets_Preprocessing(ParamArray arr_sheet_names() As Variant) 'SEPAKET D
         If Not ws Is Nothing Then ws.Delete
         Set ws = Nothing
         
-        Set new_sheet = Sheets.Add(AFTER:=Sheets(Sheets.Count))
+        Set new_sheet = Sheets.Add(after:=Sheets(Sheets.Count))
         new_sheet.Name = sheet_name
     Next i
 End Sub
@@ -99,7 +99,7 @@ Sub Delete_Sheets_Except_Assets()
     Dim SH_6 As String, SH_7 As String, SH_8 As String, SJ_9 As String, SH_10 As String
 '~  >>>> -SHEET ASSET- <<<<  ~
     SH_1 = "HOME"
-    SH_2 = ""
+    SH_2 = "SetupDB"
     SH_3 = ""
     SH_4 = ""
     SH_5 = ""
@@ -135,8 +135,8 @@ Sub DeleteSheetsExcept(ParamArray sheetNames() As Variant)
         keepSheets(CStr(sheetName)) = True
     Next sheetName
     
-    ' Disable alerts to prevent confirmation dialogs when deleting sheets
-    Application.DisplayAlerts = False
+'    ' Disable alerts to prevent confirmation dialogs when deleting sheets
+'    Application.DisplayAlerts = False
     
     ' Loop through each worksheet in the workbook
     For Each ws In ThisWorkbook.Worksheets
@@ -146,8 +146,8 @@ Sub DeleteSheetsExcept(ParamArray sheetNames() As Variant)
         End If
     Next ws
     
-    ' Re-enable alerts after the process is complete
-    Application.DisplayAlerts = True
+'    ' Re-enable alerts after the process is complete
+'    Application.DisplayAlerts = True
 End Sub
 
 Function wsx(sheet_names As String) As Boolean
