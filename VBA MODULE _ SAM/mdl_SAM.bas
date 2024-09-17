@@ -3,45 +3,6 @@ Attribute VB_Name = "Mdl_SAM"
 '        My Code SAM
 '+-------------------------------+
 
-Dim WB1 As Workbook
-Dim WB_Source As Workbook
-Dim HOME As Worksheet, TMP1 As Worksheet, TMP2 As Worksheet, Pesan As Worksheet, SH As Worksheet
-Dim path_src As String, lr As Long, lc As Long, jumlah_Request As Long, rowPaste As Long
-Dim isi_pesan As String, arr_penerima_pesan As Variant, penerima As String
-
-Sub End_Process()
-    HOME.Activate
-    Range("A1").Select
-End Sub
-
-Sub Validation()
-    Set WB1 = ThisWorkbook
-    Set HOME = WB1.Sheets("HOME")
-    path_src = HOME.Range("H8").value
-    If Dir(path_src) = "" Then
-        MsgBox "Source File, Doesn't Exists", vbInformation, "File Not Found"
-        Exit Sub
-    End If
-End Sub
-
-Sub Initialization()
-    Set TMP1 = WB1.Sheets("TMP1")
-    Set TMP2 = WB1.Sheets("TMP2")
-    Set Pesan = WB1.Sheets("PESAN")
-End Sub
-
-Sub Import_File()
-    Set WB_Source = Workbooks.Open(path_src)
-    Windows(WB_Source.Name).Activate
-    Set SH = WB_Source.Sheets(1): SH.AutoFilterMode = False
-    Cells.Copy
-    Windows(WB1.Name).Activate
-    TMP1.Activate
-    Range("A1").PasteSpecial xlPasteAll: Application.CutCopyMode = False
-    Cells.EntireColumn.AutoFit: Cells(1, 1).Select
-    WB_Source.Close False
-End Sub
-
 Sub Add_Sheets_Preprocessing(ParamArray arr_sheet_names() As Variant) 'SEPAKET DENGAN FUNGSI WSX
     Dim i As Integer
     Dim sheet_name As String

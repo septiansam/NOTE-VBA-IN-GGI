@@ -1,0 +1,15 @@
+Sub RemoveLeadingSpaces()
+    Dim cell As Range
+    Dim ws As Worksheet
+
+    ' Ubah "Sheet1" dengan nama sheet Anda
+    Set ws = ThisWorkbook.Sheets("Sheet1")
+    
+    ' Loop melalui setiap sel di kolom A yang terisi
+    For Each cell In ws.Range("B1:B" & ws.Cells(ws.Rows.Count, 1).End(xlUp).Row)
+        ' Hilangkan spasi di awal
+        cell.Value = LTrim(cell.Value)
+    Next cell
+
+    MsgBox "Semua spasi di awal karakter telah dihapus!", vbInformation
+End Sub

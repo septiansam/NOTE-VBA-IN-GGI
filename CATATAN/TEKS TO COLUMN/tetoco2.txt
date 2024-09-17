@@ -1,0 +1,4 @@
+Sub PisahkanKolom()
+    Range("A:A").TextToColumns Destination:=Range("J1"), DataType:=xlDelimited, _
+        Other:=True, OtherChar:="|"
+End Sub
