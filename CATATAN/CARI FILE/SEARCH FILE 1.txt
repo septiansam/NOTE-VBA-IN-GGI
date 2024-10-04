@@ -1,0 +1,36 @@
+Sub BUTTON_CariFile_Ledger()
+    Dim FilePicker As FileDialog
+    Dim myFile As String
+
+    Set FilePicker = Application.FileDialog(msoFileDialogFilePicker)
+
+    With FilePicker
+        .Filters.Clear
+        .Filters.Add "Excel Files", "*.xls;*.xlsx"
+        .Title = "Select a File 'File Ledger'"
+        .AllowMultiSelect = False
+
+        ' Set lokasi default
+        '.InitialFileName = ThisWorkbook.Worksheets("HOME").Range("E13").Value
+'        .InitialFileName = ThisWorkbook.Worksheets("(HOME)").Range("E13").Value & "\FILE.xlsx"
+
+        If .Show <> -1 Then Exit Sub
+        myFile = .SelectedItems(1)
+        ThisWorkbook.Worksheets("HOME").Range("E15").Value = myFile
+    End With
+End Sub
+
+Sub BUTTON_CariFolder_TarikanJDE()
+    Dim FldrPicker As FileDialog
+    Dim myFolder As String
+
+    Set FldrPicker = Application.FileDialog(msoFileDialogFolderPicker)
+    With FldrPicker
+        .Title = "Select A Target Folder 'Tarikan JDE'"
+        .AllowMultiSelect = False
+'        .InitialFileName = ThisWorkbook.Worksheets("HOME").Range("E14").Value
+        If .Show <> -1 Then Exit Sub
+        myFolder = .SelectedItems(1)
+        ThisWorkbook.Worksheets("HOME").Range("E14").Value = myFolder
+    End With
+End Sub

@@ -1,0 +1,76 @@
+Application.AskToUpdateLinks = False
+Application.DisplayAlerts = False
+Application.DisplayStatusBar = False
+Application.EnableEvents = False
+Application.ScreenUpdating = False
+Application.DisplayScrollBars = False
+
+
+Kode VBA ini digunakan untuk mengontrol beberapa pengaturan aplikasi Excel secara global saat menjalankan skrip VBA. 
+Setiap baris memiliki fungsinya masing-masing, yang bertujuan untuk mempercepat eksekusi, mencegah interupsi, dan memberikan kontrol penuh atas apa yang ditampilkan selama kode berjalan. Berikut penjelasan tiap barisnya:
+
+1. Application.AskToUpdateLinks = False
+   - Mengatur agar Excel tidak menampilkan prompt (pesan) kepada pengguna untuk memperbarui link eksternal di workbook saat dibuka. 
+     Jika workbook memiliki referensi ke data di workbook lain, biasanya Excel akan menanyakan apakah ingin memperbarui data tersebut. 
+     Dengan mengatur ini ke False, prompt tersebut tidak akan muncul.
+
+2. Application.DisplayAlerts = False
+   - Menghentikan tampilan peringatan atau pesan konfirmasi dari Excel. 
+     Contohnya, jika ada pesan peringatan saat menyimpan workbook yang sudah ada, peringatan tersebut tidak akan muncul. 
+     Penting untuk memastikan bahwa ini diatur kembali ke True setelah kode selesai berjalan, agar pengguna kembali mendapatkan peringatan yang relevan.
+
+3. Application.DisplayStatusBar = False
+   - Menyembunyikan Status Bar di bagian bawah aplikasi Excel. 
+     Status bar biasanya digunakan untuk menampilkan informasi status seperti hasil perhitungan otomatis, pesan proses, dll. 
+     Dengan ini, status bar akan disembunyikan.
+
+4. Application.EnableEvents = False
+   - Menghentikan pemicu event di Excel. 
+     Ini berguna saat kode VBA dijalankan untuk menghindari pemicu otomatis dari event, seperti saat worksheet diubah, workbook dibuka, atau data diperbarui. 
+     Mencegah kejadian ini dapat mengurangi gangguan saat skrip berjalan.
+
+5. Application.ScreenUpdating = False
+   - Mematikan pembaruan layar selama kode berjalan. 
+     Ini mempercepat eksekusi kode VBA karena Excel tidak perlu memperbarui tampilan lembar kerja atau workbook saat data diubah atau proses lainnya berlangsung. 
+     Setelah kode selesai, ini harus dikembalikan ke True agar layar bisa diperbarui kembali.
+
+6. Application.DisplayScrollBars = False
+   - Menyembunyikan scrollbars (bilah gulir) di lembar kerja Excel. 
+     Scrollbars adalah alat untuk menggulir layar saat bekerja dengan worksheet yang besar. 
+     Dengan mengatur ini ke False, scrollbars akan disembunyikan, memberikan tampilan yang lebih bersih, biasanya digunakan saat presentasi atau untuk estetika tertentu.
+
+Contoh Penggunaan:
+
+Misalnya, Anda membuat kode VBA yang secara otomatis mengolah data dari beberapa worksheet, dan ingin prosesnya berjalan cepat tanpa interupsi dari Excel. 
+Berikut contoh implementasinya:
+
+Sub ProcessData()
+    ' Nonaktifkan fitur interupsi Excel untuk meningkatkan kecepatan dan mencegah gangguan
+    Application.AskToUpdateLinks = False
+    Application.DisplayAlerts = False
+    Application.DisplayStatusBar = False
+    Application.EnableEvents = False
+    Application.ScreenUpdating = False
+    Application.DisplayScrollBars = False
+
+    ' Contoh proses yang dilakukan oleh VBA
+    ' Misalnya, memproses data di worksheet
+    For i = 1 To 10
+        Sheets(i).Range("A1:A10").Value = "Processed"
+    Next i
+
+    ' Kembalikan pengaturan Excel ke default setelah proses selesai
+    Application.AskToUpdateLinks = True
+    Application.DisplayAlerts = True
+    Application.DisplayStatusBar = True
+    Application.EnableEvents = True
+    Application.ScreenUpdating = True
+    Application.DisplayScrollBars = True
+End Sub
+
+Penjelasan:
+- Kode di atas akan mengubah nilai di rentang A1:A10 dari 10 lembar kerja menjadi "Processed".
+- Selama proses berjalan, Excel tidak akan menampilkan notifikasi atau memperbarui tampilan layar, sehingga proses berjalan lebih cepat dan tanpa interupsi.
+- Setelah selesai, pengaturan Excel dikembalikan ke default agar pengguna tetap mendapatkan fungsionalitas normal.
+
+

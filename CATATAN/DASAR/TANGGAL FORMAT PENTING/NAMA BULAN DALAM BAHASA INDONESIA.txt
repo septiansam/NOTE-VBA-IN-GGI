@@ -1,5 +1,5 @@
     bulan = WorksheetFunction.Text(Date, "[$-id-ID]mmmm")
-
+=TEXT(B2,"[$-en-EN]mmmm")
 ' Mendapatkan angka bulan dari nama bulan
     Dim angkaBulan As Integer
     angkaBulan = Month(DateSerial(Tahun, Month(shBantu.Range("B4").Value), 1))

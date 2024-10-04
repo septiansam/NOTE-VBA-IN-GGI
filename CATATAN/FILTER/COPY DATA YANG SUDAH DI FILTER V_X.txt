@@ -1,0 +1,68 @@
+
+Jika variabel j (baris tempat data ditempel di Sheet2) harus dimasukkan ke dalam loop, maka perhitungan baris tujuan harus dilakukan setiap kali loop melalui setiap kolom. Dengan begitu, data dari setiap kolom yang dicopy akan ditempatkan pada baris yang benar di Sheet2. Berikut adalah versi modifikasi di mana kondisi j (baris) dihitung dalam loop untuk setiap kolom yang dicopy:
+
+
+Sub CopyFilteredColumns()
+    Dim wsSource As Worksheet
+    Dim wsTarget As Worksheet
+    Dim rngFiltered As Range
+    Dim rngToCopy As Range
+    Dim ColsToCopy As Variant
+    Dim i As Long, j As Long
+    
+    ' Set worksheet variables
+    Set wsSource = ThisWorkbook.Sheets("Sheet1") ' Sheet data yang telah difilter
+    Set wsTarget = ThisWorkbook.Sheets("Sheet2") ' Sheet target tempat copy data
+
+    ' Tentukan kolom-kolom yang ingin dicopy
+    ColsToCopy = Array(1, 3, 5) ' Sesuaikan dengan kolom yang ingin kamu copy, misal kolom 1, 3, dan 5
+
+    ' Pastikan data terfilter
+    If wsSource.AutoFilterMode = False Then
+        MsgBox "Tidak ada data yang terfilter!", vbExclamation
+        Exit Sub
+    End If
+    
+    ' Set range data yang terfilter (selain header)
+    On Error Resume Next
+    Set rngFiltered = wsSource.AutoFilter.Range.Offset(1, 0).SpecialCells(xlCellTypeVisible)
+    On Error GoTo 0
+
+    If rngFiltered Is Nothing Then
+        MsgBox "Tidak ada data terfilter!", vbExclamation
+        Exit Sub
+    End If
+
+    ' Loop melalui kolom yang akan dicopy
+    For i = LBound(ColsToCopy) To UBound(ColsToCopy)
+        ' Set range yang akan dicopy
+        Set rngToCopy = Intersect(rngFiltered, wsSource.Columns(ColsToCopy(i)))
+        
+        ' Cek apakah Sheet2 (wsTarget) kosong atau tidak
+        If Application.WorksheetFunction.CountA(wsTarget.Cells) = 0 Then
+            j = 1 ' Jika wsTarget kosong, mulai dari baris pertama
+        Else
+            j = wsTarget.Cells(wsTarget.Rows.Count, 1).End(xlUp).Row + 1 ' Jika tidak kosong, cari baris terakhir
+        End If
+        
+        ' Copy data ke sheet target
+        If Not rngToCopy Is Nothing Then
+            rngToCopy.Copy wsTarget.Cells(j, i + 1) ' Paste ke sheet target mulai dari kolom yang sesuai
+        End If
+    Next i
+    
+    MsgBox "Data terfilter berhasil dicopy ke Sheet2.", vbInformation
+End Sub
+
+
+Penjelasan:
+j dimasukkan dalam loop: Setiap kali loop berjalan untuk setiap kolom, j akan dihitung ulang. Jika Sheet2 kosong, data ditempel di baris pertama. Jika sudah ada data, data ditempel di baris pertama yang kosong.
+
+Ini memastikan bahwa data dari setiap kolom ditempelkan di baris yang tepat pada Sheet2.
+
+Cek rngToCopy: Sebelum melakukan copy, kita cek apakah rngToCopy (hasil Intersect) adalah Nothing atau tidak. Jika rngToCopy ada, maka datanya akan di-copy ke wsTarget. Ini mencegah kesalahan jika tidak ada data di kolom tersebut.
+
+Perhitungan baris j:
+
+Jika wsTarget kosong, data ditempel di baris pertama.
+Jika wsTarget sudah berisi data, baris terakhir dihitung, dan data baru ditempel di bawahnya.

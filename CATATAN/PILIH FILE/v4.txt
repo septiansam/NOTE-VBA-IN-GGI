@@ -1,0 +1,40 @@
+Sub hcPILIH_FILE()
+Dim Pesan As Integer
+Dim Goto_WB1, Goto_WB2 As String
+Dim FullPathFile As Variant
+    Application.DisplayAlerts = False
+    Application.EnableEvents = False
+    Application.AskToUpdateLinks = False
+
+    Goto_WB1 = ActiveWorkbook.Name
+    FullPathFile = Application.GetOpenFilename(, , "Cari Lokasi File", , False)
+    If FullPathFile = False Then
+        MsgBox "No file selected.", vbExclamation, "Sorry!"
+        End
+    Else
+        Pesan = MsgBox("Convert Weekly: " & vbNewLine & FullPathFile & vbCrLf & "Lanjutkan ?", vbYesNo + vbQuestion, "Convert Weekly")
+        If Pesan = vbYes Then
+
+            Dim FolderPath As String, FileName As String
+            FolderPath = Left(FullPathFile, InStrRev(FullPathFile, "\"))
+            FileName = Mid(FullPathFile, InStrRev(FullPathFile, "\") + 1)
+            ActiveWorkbook.Worksheets("TOMBOL").Range("F6").Value = FolderPath
+            ActiveWorkbook.Worksheets("TOMBOL").Range("F7").Value = FileName
+
+            Workbooks.Open (FullPathFile)
+            Goto_WB2 = ActiveWorkbook.Name
+            Windows(Goto_WB2).Activate
+            keFn = ConvertWeekly(Goto_WB1, Goto_WB2)
+        Else
+            MsgBox "Cancel", vbOKOnly + vbInformation, "Convert Weekly"
+        
+        End If
+    End If
+    
+    Application.DisplayAlerts = True
+    Application.EnableEvents = True
+    Application.AskToUpdateLinks = True
+    Application.CutCopyMode = False
+    MsgBox "Done", vbOKOnly + vbInformation, "Convert Weekly"
+    End
+End Sub

@@ -1,0 +1,29 @@
+Sub HitungDataUnik()
+    Dim ws As Worksheet
+    Dim rng As Range
+    Dim uniqueCount As Long
+    Dim cell As Range
+    Dim dict As Object
+    
+    ' Set worksheet ke Sheet1
+    Set ws = ThisWorkbook.Sheets("Sheet1")
+    
+    ' Set range kolom A yang memiliki data
+    Set rng = ws.Range("A1:A" & ws.Cells(ws.Rows.Count, "A").End(xlUp).Row)
+    
+    ' Buat dictionary untuk menyimpan data unik
+    Set dict = CreateObject("Scripting.Dictionary")
+    
+    ' Looping setiap sel di kolom A
+    For Each cell In rng
+        If Not dict.exists(cell.Value) And cell.Value <> "" Then
+            dict.Add cell.Value, Nothing
+        End If
+    Next cell
+    
+    ' Hitung jumlah data unik
+    uniqueCount = dict.Count
+    
+    ' Tampilkan jumlah data unik
+    MsgBox "Jumlah data unik di kolom A: " & uniqueCount
+End Sub
