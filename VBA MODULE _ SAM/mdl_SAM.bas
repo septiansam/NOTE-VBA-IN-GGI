@@ -38,7 +38,7 @@ Sub Add_Sheets_Preprocessing(ParamArray arr_sheet_names() As Variant)
         Set ws = Nothing
         
         ' Tambahkan sheet baru dengan nama yang diberikan
-        Set new_sheet = Sheets.Add(after:=Sheets(Sheets.Count))
+        Set new_sheet = Sheets.Add(After:=Sheets(Sheets.Count))
         new_sheet.Name = sheet_name
     Next i
 End Sub
@@ -80,7 +80,7 @@ Sub DeleteSheets_WithName(ParamArray arr_sheet_names() As Variant)
         End If
     Next i
     
-    Application.DisplayAlerts = True
+'    Application.DisplayAlerts = True
 End Sub
 
 '+------------------------------------------------+

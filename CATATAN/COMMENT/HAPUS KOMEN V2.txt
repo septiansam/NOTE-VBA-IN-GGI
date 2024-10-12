@@ -1,0 +1,1 @@
+SH1_InputUser_KodeBarang.Range("C1").ClearComments

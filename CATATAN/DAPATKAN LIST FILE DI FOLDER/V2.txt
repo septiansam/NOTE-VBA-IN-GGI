@@ -1,0 +1,50 @@
+Sub ListFileInDirectory()
+    Dim WB1 As Workbook
+    Dim SH1_Tombol As Worksheet, SH1_ListFile As Worksheet
+    
+    Dim folderPath As String
+    Dim fileName As String
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    
+    ' Set Init
+    Set WB1 = ThisWorkbook
+    Set SH1_Tombol = WB1.Worksheets("TOMBOL")
+    Set SH1_ListFile = WB1.Worksheets("LIST FILE")
+    
+    SH1_ListFile.Activate
+    
+    SH1_ListFile.Range("A:A").ClearContents
+    
+    SH1_ListFile.Range("A1").Value = "LIST FILE DALAM DIREKTORY"
+    SH1_ListFile.Range("A1").Font.Bold = True
+    SH1_ListFile.Range("A1").HorizontalAlignment = xlCenter
+    
+    ' Tentukan folder yang ingin di-scan (ubah sesuai direktori yang diinginkan)
+    folderPath = SH1_Tombol.Range("B8") ' Ganti dengan direktori yang diinginkan
+    
+    ' Pastikan folder diakhiri dengan backslash
+    If Right(folderPath, 1) <> "\" Then folderPath = folderPath & "\"
+    
+    ' Dapatkan file pertama di direktori
+    fileName = Dir(folderPath)
+    
+    ' Inisialisasi baris pertama di sheet untuk menulis
+    lastRow = 2
+    
+    ' Loop melalui setiap file di folder
+    Do While fileName <> ""
+        ' Masukkan nama file ke dalam kolom A pada Sheet1
+        SH1_ListFile.Cells(lastRow, 1).Value = fileName
+        
+        ' Pindah ke baris berikutnya
+        lastRow = lastRow + 1
+        
+        ' Ambil file berikutnya di direktori
+        fileName = Dir
+    Loop
+    
+    SH1_ListFile.Cells.EntireColumn.AutoFit
+    SH1_ListFile.Cells(1, 1).Select
+    
+End Sub

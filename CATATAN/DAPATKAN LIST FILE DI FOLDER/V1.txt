@@ -1,0 +1,78 @@
+Sub GetfileName()
+'---------------------------------------------------------------------------------------*
+'[VARIABEL LOKAL]
+''''''''''''''''''''''''''''''''''
+    Dim oFSO As Object
+    Dim oFolder As Object
+    Dim oFile As Object
+    Dim i As Integer
+    Dim CurrentPath As String
+
+'[INISIALISASI]
+''''''''''''''''''''''''''''''''''
+    Set WB1 = ThisWorkbook
+    Set SH1_HOME = WB1.Worksheets("MENU")
+    LokasiFolder = Sheets("MENU").Range("E12").Value
+    
+    Set SH1_X = Sheets.Add(After:=Sheets(Sheets.Count))
+    SH1_X.Name = "ListFile_ToProcess"
+    SH1_X.Activate
+    SH1_X.Range("A1").FormulaR1C1 = "List File yang akan di proses"
+    SH1_X.Range("A2").FormulaR1C1 = "sumber dari (Menu-E12)"
+    Range("A1").Select
+    Selection.Font.Bold = True
+    Selection.Font.Underline = xlUnderlineStyleSingle
+    Range("A2").Select
+    Selection.Font.Italic = True
+    With Selection.Font
+        .Name = "Calibri"
+        .Size = 9
+        .Underline = xlUnderlineStyleNone
+        .ThemeColor = xlThemeColorLight1
+        .ThemeFont = xlThemeFontMinor
+    End With
+    
+    Range("A1:C1").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlBottom
+        .ReadingOrder = xlContext
+    End With
+    Selection.Merge
+    
+    Range("A2:C2").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlBottom
+        .ReadingOrder = xlContext
+    End With
+    Selection.Merge
+    
+    Range("A3").FormulaR1C1 = "NO"
+    Range("B3").FormulaR1C1 = "FILE NAME"
+    Range("C3").FormulaR1C1 = "MACRO COMPILE STATUS"
+    Range("A3:D3").Font.Bold = True
+    
+'[get]
+''''''''''''''''''''''''''''''''''
+    Set oFSO = CreateObject("Scripting.FileSystemObject")
+    On Error GoTo FILE_TIDAKDITEMUKAN
+    Set oFolder = oFSO.GetFolder(LokasiFolder)
+    
+    For Each oFile In oFolder.Files
+        Cells(i + 4, 2).Select
+        Cells(i + 4, 2) = oFile.Name
+        i = i + 1
+    Next oFile
+    
+    SH1_X.Range("A4:A" & SH1_X.Range("B" & Rows.Count).End(xlUp).Row).FormulaR1C1 = "=ROW()-3"
+    SH1_X.Range("A4:A" & SH1_X.Range("B" & Rows.Count).End(xlUp).Row).Copy
+    SH1_X.Range("A4:A" & SH1_X.Range("B" & Rows.Count).End(xlUp).Row).PasteSpecial xlPasteValues
+    
+    
+FILE_TIDAKDITEMUKAN:
+    On Error GoTo 0
+    Cells.Select
+    Cells.EntireColumn.AutoFit
+    Range("A3").Select
+End Sub

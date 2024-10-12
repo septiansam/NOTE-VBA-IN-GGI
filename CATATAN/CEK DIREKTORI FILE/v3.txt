@@ -1,0 +1,23 @@
+Sub Validasi_File_dan_Folder()
+
+'[*]. INISIALISASI SHEETS
+'-----------------------------------------------------------------------
+    Set WB1 = ThisWorkbook
+    Set SH1_Home = WB1.Worksheets("HOME")
+    
+    SH1_Home.Activate
+    LR1 = SH1_Home.Range("E" & Rows.Count).End(xlUp).Row
+    For i = 12 To LR1
+        If Left(SH1_Home.Range("C" & i), 6) = "LOKASI" Then
+            SH1_Home.Range("E" & i).Hyperlinks.Delete
+            Path = SH1_Home.Range("E" & i).Value
+            If Dir(Path, vbDirectory) = "" Or Dir(Path) = "" Then
+                SH1_Home.Activate
+                SH1_Home.Cells(1, 1).Select
+                MsgBox SH1_Home.Range("C" & i).Value & " Tidak Ditemukan", vbExclamation, "NOT FOUND"
+                End
+            End If
+        End If
+    Next i
+    
+End Sub

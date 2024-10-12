@@ -1,0 +1,36 @@
+jadi warna merah nu minus na UNTUK FILL
+
+If SumFactory > 8 Then
+        Set Rng_Value = SH1_REPORT1.Range("B6:EB" & SumFactory + 5)
+    Else
+        Set Rng_Value = SH1_REPORT1.Range("B6:EB13")
+    End If
+    
+    Rng_Value.Select
+    Rng_Value.FormatConditions.Delete
+    Rng_Value.FormatConditions.Add Type:=xlCellValue, Operator:=xlLess, Formula1:="=0"
+    Rng_Value.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority
+    With Rng_Value.FormatConditions(1).Interior
+        .PatternColorIndex = xlAutomatic
+        .Color = 255
+        .TintAndShade = 0
+    End With
+    Rng_Value.FormatConditions(1).StopIfTrue = False
+
+
+UNTUK FONT
+    If SumFactory > 8 Then
+        Set Rng_Value = SH1_REPORT1.Range("B6:EB" & SumFactory + 5)
+    Else
+        Set Rng_Value = SH1_REPORT1.Range("B6:EB13")
+    End If
+    
+'    Rng_Value.Select
+    Rng_Value.FormatConditions.Delete
+    Rng_Value.FormatConditions.Add Type:=xlCellValue, Operator:=xlLess, Formula1:="=0"
+    Rng_Value.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority
+    With Rng_Value.FormatConditions(1).Font
+        .Color = -16776961
+        .TintAndShade = 0
+    End With
+    Rng_Value.FormatConditions(1).StopIfTrue = False
