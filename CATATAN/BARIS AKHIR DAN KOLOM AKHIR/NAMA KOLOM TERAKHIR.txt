@@ -1,0 +1,2 @@
+    LC1 = SH1_Resume_PerFactory.Cells.Find("*", , xlFormulas, xlPart, xlByColumns, xlPrevious).Column + 1
+    Str_LC1 = Split(SH1_Resume_PerFactory.Cells(1, LC1).Address, "$")(1)
