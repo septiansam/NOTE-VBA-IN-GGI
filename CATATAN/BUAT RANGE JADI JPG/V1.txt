@@ -1,0 +1,37 @@
+    '[*].. SAVE AS HASIL TABEL KE JPG
+    path_Jpg = SH1_HOME.Range("E15").Value
+    
+    '''SET AREA PICTURES
+    Set Rng_Picture = SH1_Tbl_Violations.Range(SH1_Tbl_Violations.Cells(1, 1), SH1_Tbl_Violations.Cells(LR1, LC1))
+    Rng_Picture.CopyPicture Appearance:=xlScreen, Format:=xlPicture
+    
+    With SH1_Tbl_Violations
+        .Shapes.AddChart2
+        With .Shapes.Item(1)
+            .Height = Rng_Picture.Height
+            .Width = Rng_Picture.Width
+            .Line.Visible = msoFalse
+        End With
+        .Activate
+        .Shapes.Item(1).Select
+        Set ObjChart = ActiveChart
+        With ObjChart
+            .Axes(xlValue).MajorGridlines.Delete
+            .ChartTitle.Delete
+            .Axes(xlValue).Delete
+            .Axes(xlCategory).Delete
+            .Legend.Delete
+            Do While .SeriesCollection.Count > 0
+                .SeriesCollection(1).Delete
+            Loop
+        End With
+    End With
+    
+    ObjChart.Paste
+    ObjChart.Export path_Jpg
+    
+    For i = 1 To SH1_Tbl_Violations.Shapes.Count
+        SH1_Tbl_Violations.Shapes.Item(i).Delete
+    Next i
+    
+    SH1_Tbl_Violations.Cells(1, 1).Select
