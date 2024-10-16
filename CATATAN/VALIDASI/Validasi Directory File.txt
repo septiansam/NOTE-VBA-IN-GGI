@@ -1,0 +1,23 @@
+Sub Validasi_File()
+    Set WB1 = ThisWorkbook
+    Set SH1_Home = WB1.Worksheets("HOME")
+    
+    SH1_Home.Activate
+    LR1 = SH1_Home.Range("F" & Rows.Count).End(xlUp).Row
+    
+    '[*].. SIMPAN DIREKTORI THISWORKBOOK
+    SH1_Home.Range("F7").Value = WB1.FullName
+    
+    '[*].. VALIDASI DIREKTORI
+    For i = 4 To LR1
+        SH1_Home.Range("F" & i).Hyperlinks.Delete
+        If Left(SH1_Home.Range("D" & i).Value, 6) = "LOKASI" Then
+            Path = SH1_Home.Range("F" & i).Value
+            If Dir(Path, vbDirectory) = "" Or Dir(Path) = "" Then
+                MsgBox Path & vbNewLine & _
+                       "TIDAK DITEMUKAN", vbCritical, "VALIDASI PATH FILE"
+                End
+            End If
+        End If
+    Next i
+End Sub
