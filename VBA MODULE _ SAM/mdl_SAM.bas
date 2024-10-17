@@ -10,7 +10,7 @@ Attribute VB_Name = "mdl_SAM"
 '+------------------------------------------------+
 
 '+------------------------------------------------+
-'        Subroutine: Add_Sheets_Preprocessing
+'        Subroutine: Add_Sheets
 ' Deskripsi: Prosedur ini digunakan untuk menambah
 '           sheet baru ke workbook berdasarkan
 '           array nama sheet yang diberikan.
@@ -21,7 +21,7 @@ Attribute VB_Name = "mdl_SAM"
 '   - arr_sheet_names: Array nama sheet yang
 '                      akan ditambahkan.
 '+------------------------------------------------+
-Sub Add_Sheets_Preprocessing(ParamArray arr_sheet_names() As Variant)
+Sub Add_Sheets(ParamArray arr_sheet_names() As Variant)
     Dim i As Integer
     Dim sheet_name As String
     Dim new_sheet As Worksheet, ws As Worksheet
