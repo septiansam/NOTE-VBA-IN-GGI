@@ -38,7 +38,7 @@ Sub Add_Sheets(ParamArray arr_sheet_names() As Variant)
         Set ws = Nothing
         
         ' Tambahkan sheet baru dengan nama yang diberikan
-        Set new_sheet = Sheets.Add(After:=Sheets(Sheets.Count))
+        Set new_sheet = Sheets.Add(After:=Sheets(Sheets.count))
         new_sheet.Name = sheet_name
     Next i
 End Sub
@@ -72,7 +72,7 @@ Sub DeleteSheets_WithName(ParamArray arr_sheet_names() As Variant)
     Next i
     
     ' Iterasi melalui sheet dari belakang
-    For i = ThisWorkbook.Sheets.Count To 1 Step -1
+    For i = ThisWorkbook.Sheets.count To 1 Step -1
         sheetName = ThisWorkbook.Sheets(i).Name
         ' Memeriksa apakah nama sheet ada dalam dictionary
         If sheetNamesDict.exists(sheetName) Then
@@ -160,10 +160,10 @@ End Sub
 '+------------------------------------------------+
 '        Subroutine: ImportDataFile
 ' Deskripsi: Fungsi ini akan mencopy data
-'           dari workbook lain ke dalam
-'           workbook yang sedang aktif,
-'           dari sheet ke 1 workbook lain
-'           tersebut
+'            dari workbook lain ke dalam
+'            workbook yang sedang aktif,
+'            dari sheet ke 1 workbook lain
+'            tersebut
 ' Parameter:
 '   - PathSource: Lokasi File SRC workbook yang akan di import.
 '   - Rng_Dest: Lokasi File akan copyan akan di letakan.
@@ -188,10 +188,10 @@ End Sub
 '+------------------------------------------------+
 '        Subroutine: UnhideSheets
 ' Deskripsi: Fungsi ini memeriksa apakah sheet
-'           dengan nama yang diberikan ada
-'           di workbook atau tidak, dan
-'           apakah sheet tersebut ter hide,
-'           jika ter hide maka unhide.
+'            dengan nama yang diberikan ada
+'            di workbook atau tidak, dan
+'            apakah sheet tersebut ter hide,
+'            jika ter hide maka unhide.
 ' Parameter:
 '   - sheetNames: Nama sheet yang ingin diperiksa.
 '+------------------------------------------------+
@@ -222,10 +222,10 @@ End Sub
 '+------------------------------------------------+
 '        Subroutine: HideSheets
 ' Deskripsi: Fungsi ini memeriksa apakah sheet
-'           dengan nama yang diberikan ada
-'           di workbook atau tidak, dan
-'           apakah sheet tersebut
-'           visible (not hide), maka unhide.
+'            dengan nama yang diberikan ada
+'            di workbook atau tidak, dan
+'            apakah sheet tersebut
+'            visible (not hide), maka unhide.
 ' Parameter:
 '   - sheetNames: Nama sheet yang ingin diperiksa.
 '+------------------------------------------------+
@@ -257,10 +257,10 @@ End Sub
 '+------------------------------------------------+
 '        Function: wsx
 ' Deskripsi: Fungsi ini memeriksa apakah sheet
-'           dengan nama yang diberikan ada
-'           di workbook atau tidak. Mengembalikan
-'           nilai True jika sheet ada, dan False
-'           jika tidak ada.
+'            dengan nama yang diberikan ada
+'            di workbook atau tidak. Mengembalikan
+'            nilai True jika sheet ada, dan False
+'            jika tidak ada.
 ' Parameter:
 '   - sheet_names: Nama sheet yang ingin diperiksa.
 '+------------------------------------------------+
