@@ -1,0 +1,24 @@
+Sub BTN_SelectDrive()
+    Dim FldrPicker As FileDialog
+    Dim selectedPath As String
+    Dim driveLetter As String
+
+    ' Membuka dialog untuk memilih drive
+    Set FldrPicker = Application.FileDialog(msoFileDialogFolderPicker)
+    With FldrPicker
+        .Title = "Pilih Drive yang Diinginkan (Contoh: C:\, D:\, dll.)"
+        .AllowMultiSelect = False
+
+        ' Jika pengguna tidak memilih apa pun, keluar dari sub
+        If .Show <> -1 Then Exit Sub
+        
+        ' Mengambil path yang dipilih
+        selectedPath = .SelectedItems(1)
+
+        ' Mendapatkan drive letter
+        driveLetter = selectedPath
+        
+        ' Menyimpan drive letter di sel A1 Sheet1
+        ThisWorkbook.Sheets("HOME").Range("E12").Value = driveLetter
+    End With
+End Sub

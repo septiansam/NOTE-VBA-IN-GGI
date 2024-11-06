@@ -1,12 +1,14 @@
-tglmrh = Sheets("HOME").Range("H5").Value
-libur = DateSerial(Year(Date), Month(Date), tglmrh)
-
-cek = Date
-hari = Format(cek, "dddd")
-If hari = "Monday" Then
-    tanggal = cek - 3
-ElseIf cek - 1 = libur Then
-  tanggal = cek - 2
-Else
-    tanggal = cek - 1
-End If
+Sub GetStartAndEndDates()
+    Dim StartOfMonth As Date
+    Dim EndOfMonth As Date
+    
+    ' Tanggal 1 bulan berjalan
+    StartOfMonth = DateSerial(Year(Date), Month(Date), 1)
+    
+    ' Tanggal akhir bulan berjalan + 7 hari
+    EndOfMonth = DateSerial(Year(Date), Month(Date) + 1, 0) + 7
+    
+    ' Menampilkan hasil
+    MsgBox "Tanggal 1 bulan berjalan: " & StartOfMonth & vbCrLf & _
+           "Tanggal akhir bulan berjalan + 7: " & EndOfMonth
+End Sub

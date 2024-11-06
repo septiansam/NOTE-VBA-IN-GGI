@@ -38,7 +38,7 @@ Sub Add_Sheets(ParamArray arr_sheet_names() As Variant)
         Set ws = Nothing
         
         ' Tambahkan sheet baru dengan nama yang diberikan
-        Set new_sheet = Sheets.Add(After:=Sheets(Sheets.count))
+        Set new_sheet = Sheets.Add(after:=Sheets(Sheets.Count))
         new_sheet.Name = sheet_name
     Next i
 End Sub
@@ -72,7 +72,7 @@ Sub DeleteSheets_WithName(ParamArray arr_sheet_names() As Variant)
     Next i
     
     ' Iterasi melalui sheet dari belakang
-    For i = ThisWorkbook.Sheets.count To 1 Step -1
+    For i = ThisWorkbook.Sheets.Count To 1 Step -1
         sheetName = ThisWorkbook.Sheets(i).Name
         ' Memeriksa apakah nama sheet ada dalam dictionary
         If sheetNamesDict.exists(sheetName) Then
@@ -178,6 +178,7 @@ Sub ImportDataFile(PathSource As String, Rng_Dest As Range)
     SH_SRC.Activate
     SH_SRC.AutoFilterMode = False
     SH_SRC.Cells.EntireColumn.Hidden = False
+    SH_SRC.Cells.EntireRow.Hidden = False
     SH_SRC.Cells.Copy Rng_Dest
     WB_SRC.Close False
     

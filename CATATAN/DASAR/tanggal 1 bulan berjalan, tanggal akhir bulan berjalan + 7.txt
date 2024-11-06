@@ -1,0 +1,14 @@
+Sub GetStartAndEndDates()
+    Dim StartOfMonth As Date
+    Dim EndOfMonth As Date
+    
+    ' Tanggal 1 bulan berjalan
+    StartOfMonth = DateSerial(Year(Date), Month(Date), 1)
+    
+    ' Tanggal akhir bulan berjalan + 7 hari
+    EndOfMonth = DateSerial(Year(Date), Month(Date) + 1, 0) + 7
+    
+    ' Menampilkan hasil
+    MsgBox "Tanggal 1 bulan berjalan: " & StartOfMonth & vbCrLf & _
+           "Tanggal akhir bulan berjalan + 7: " & EndOfMonth
+End Sub
