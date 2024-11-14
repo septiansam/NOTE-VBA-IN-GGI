@@ -1,0 +1,12 @@
+' Initialize dataArray as empty array
+
+[*]jika deklarasi awal
+dim dataArray as variant
+
+dataArray = VBA.Array()  ' Mengosongkan array
+atau
+dataArray = Empty -> LEBIH CEPAT
+
+[*]jika deklarasi awal
+dim dataArray() as string
+Erase dataArray
