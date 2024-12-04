@@ -34,3 +34,67 @@ Sub BUTTON_CariFolder_TarikanJDE()
         ThisWorkbook.Worksheets("HOME").Range("E14").Value = myFolder
     End With
 End Sub
+
+Sub BUTTON_CariFolder_TarikanCEISA()
+    Dim FldrPicker As FileDialog
+    Dim myFolder As String
+
+    Set FldrPicker = Application.FileDialog(msoFileDialogFolderPicker)
+    With FldrPicker
+        .Title = "Select A Target Folder 'Hasil Penarikan dari CEISA'"
+        .AllowMultiSelect = False
+        .InitialFileName = ThisWorkbook.Worksheets("MENU").Range("E12").Value
+        If .Show <> -1 Then Exit Sub
+        myFolder = .SelectedItems(1)
+        ThisWorkbook.Worksheets("MENU").Range("E12").Hyperlinks.Delete
+        ThisWorkbook.Worksheets("MENU").Range("E12").Value = myFolder
+    End With
+End Sub
+
+Sub BUTTON_CariFolder_HasilPengolahanMacro()
+    Dim FldrPicker As FileDialog
+    Dim myFolder As String
+
+    Set FldrPicker = Application.FileDialog(msoFileDialogFolderPicker)
+    With FldrPicker
+        .Title = "Select A Target Folder 'Hasil Pengolahan Macro'"
+        .AllowMultiSelect = False
+        .InitialFileName = ThisWorkbook.Worksheets("MENU").Range("E13").Value
+        If .Show <> -1 Then Exit Sub
+        myFolder = .SelectedItems(1)
+        ThisWorkbook.Worksheets("MENU").Range("E13").Hyperlinks.Delete
+        ThisWorkbook.Worksheets("MENU").Range("E13").Value = myFolder
+    End With
+End Sub
+
+Sub BUTTON_CariLokasi_SelectSingleFile()
+    Dim FldrPicker As FileDialog
+    Dim myFolder As String
+
+    Set FldrPicker = Application.FileDialog(msoFileDialogFilePicker)
+    With FldrPicker
+        .Title = "Select A Target File 'Single File'"
+        .AllowMultiSelect = False
+        .InitialFileName = ThisWorkbook.Worksheets("MENU").Range("E13").Value
+        If .Show <> -1 Then Exit Sub
+        myFolder = .SelectedItems(1)
+        ThisWorkbook.Worksheets("MENU").Range("E14").Hyperlinks.Delete
+        ThisWorkbook.Worksheets("MENU").Range("E14").Value = myFolder
+    End With
+End Sub
+
+Sub BUTTON_CariFolder_HasilPengolahanSingle()
+    Dim FldrPicker As FileDialog
+    Dim myFolder As String
+
+    Set FldrPicker = Application.FileDialog(msoFileDialogFolderPicker)
+    With FldrPicker
+        .Title = "Select A Target Folder 'Hasil Pengolahan Single File'"
+        .AllowMultiSelect = False
+        .InitialFileName = ThisWorkbook.Worksheets("MENU").Range("E13").Value
+        If .Show <> -1 Then Exit Sub
+        myFolder = .SelectedItems(1)
+        ThisWorkbook.Worksheets("MENU").Range("E15").Hyperlinks.Delete
+        ThisWorkbook.Worksheets("MENU").Range("E15").Value = myFolder
+    End With
+End Sub

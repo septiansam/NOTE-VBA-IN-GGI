@@ -27,3 +27,17 @@ Sub HitungDataUnik()
     ' Tampilkan jumlah data unik
     MsgBox "Jumlah data unik di kolom A: " & uniqueCount
 End Sub
+
+
+
+'''HITUNG PO (KONTRAK KERJA) SEBAGAI DATA UNIQ -JIKA LEBIH DARI SATU MAKA HENTIKAN PROSES
+    LR2 = SH2_X.Range("A" & Rows.Count).End(xlUp).Row
+    Set rng = SH2_X.Range("S2:S" & LR2)
+    Set dict = CreateObject("Scripting.Dictionary")
+    For Each cell In rng
+        If Not dict.exists(cell.Value) And cell.Value <> "" Then
+            dict.Add cell.Value, Nothing
+        End If
+    Next cell
+    
+    CountPO = dict.Count

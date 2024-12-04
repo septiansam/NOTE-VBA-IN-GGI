@@ -1,0 +1,7 @@
+    Select Case MsgBox("Anda akan memindahkan data ke Sheets (''DATAPINDAHAN'')" _
+                & vbCrLf & "Apakah Anda yakin?" _
+                , vbYesNo Or vbQuestion Or vbDefaultButton1, "Pindah Data")
+    Case vbNo
+        Exit Sub
+    Case vbYes
+    End Select

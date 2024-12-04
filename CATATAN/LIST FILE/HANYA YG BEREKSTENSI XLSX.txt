@@ -1,0 +1,15 @@
+    'LIST NAMA FILE DI KOLOM A
+    '''
+    str_Path = SH1_Home.Range("F4").Value
+    Set oFSO = CreateObject("Scripting.FileSystemObject")
+    Set oFolder = oFSO.GetFolder(str_Path)
+    
+    i = 1
+    For Each oFile In oFolder.Files
+        ' Periksa apakah file memiliki ekstensi .xlsx
+        If LCase(oFSO.GetExtensionName(oFile.Name)) = "xlsx" Then
+            ' Tulis nama file ke worksheet
+            Cells(i + 1, 1).Value = oFile.Name
+            i = i + 1
+        End If
+    Next oFile

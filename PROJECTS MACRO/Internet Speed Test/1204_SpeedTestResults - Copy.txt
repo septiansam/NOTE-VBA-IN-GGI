@@ -1,0 +1,10 @@
+Date/Time: Fri 11/29/2024  9:55:23.91 
+
+   Speedtest by Ookla
+
+      Server: PT. Telekomunikasi Indonesia - Bandung (id: 7580)
+         ISP: PT Comtronics Systems
+Idle Latency:     4.96 ms   (jitter: 0.06ms, low: 4.91ms, high: 5.05ms)
+    Download:   190.70 Mbps (data used: 320.5 MB)                                                   
+                 43.76 ms   (jitter: 2.04ms, low: 5.00ms, high: 51.99ms)
+      Upload: FAILED                                            

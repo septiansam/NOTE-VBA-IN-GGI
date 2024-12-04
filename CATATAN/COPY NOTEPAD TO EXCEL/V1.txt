@@ -1,0 +1,43 @@
+Sub OpenNotepadCopyPasteToSheet()
+    Dim ws As Worksheet
+    Dim notepadPath As String
+    Dim objShell As Object
+    Dim notepadApp As Object
+    Dim clipboardContent As String
+    
+    ' Tentukan path file Notepad (file .txt)
+    notepadPath = "\\10.8.0.35\Bersama\IT\RPA IT\Internet Speed Test\1201_SpeedTestResults.txt" ' Ganti dengan path file Anda
+    
+    ' Pastikan file ada
+    If Dir(notepadPath) = "" Then
+        MsgBox "File tidak ditemukan: " & notepadPath, vbExclamation
+        Exit Sub
+    End If
+    
+    ' Inisialisasi objek Shell
+    Set objShell = CreateObject("WScript.Shell")
+    
+    ' Buka file Notepad
+    objShell.Run "notepad.exe " & Chr(34) & notepadPath & Chr(34)
+    
+    ' Tunggu sampai Notepad terbuka
+    Application.Wait Now + TimeValue("0:00:02") ' Sesuaikan waktu jika diperlukan
+    
+    ' Kirim perintah Ctrl+A dan Ctrl+C
+    objShell.SendKeys "^a"
+    Application.Wait Now + TimeValue("0:00:01")
+    objShell.SendKeys "^c"
+    Application.Wait Now + TimeValue("0:00:01")
+    
+    ' Tutup Notepad
+    objShell.SendKeys "%{F4}" ' Alt + F4 untuk menutup aplikasi
+    
+    ' Tempelkan konten ke Sheet1
+    Set ws = ThisWorkbook.Sheets("Sheet1")
+    ws.Cells.Clear ' Membersihkan isi Sheet1 terlebih dahulu
+    ws.Select
+    ws.Range("a1").Select
+    ActiveSheet.Paste
+    
+    MsgBox "Isi file berhasil ditempel ke Sheet1!", vbInformation
+End Sub

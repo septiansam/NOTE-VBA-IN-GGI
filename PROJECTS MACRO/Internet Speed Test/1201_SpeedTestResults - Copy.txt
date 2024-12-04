@@ -1,0 +1,10 @@
+Date/Time: Fri 11/29/2024 10:51:20.80 
+
+   Speedtest by Ookla
+
+      Server: PT Lancar Teknologi Indonesia - Bandung (id: 38523)
+         ISP: Comtronics Systems
+Idle Latency:     7.85 ms   (jitter: 1.39ms, low: 6.98ms, high: 9.40ms)
+    Download:   181.72 Mbps (data used: 178.4 MB)                                                   
+                100.17 ms   (jitter: 21.00ms, low: 8.55ms, high: 198.30ms)
+      Upload: FAILED                                            
