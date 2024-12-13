@@ -1,0 +1,35 @@
+Sub Validasi_Source()
+    '[*]...INISIALISASI
+    '``````````````````````````````````````````
+    Set WB1 = ThisWorkbook
+    Set SH1_Home = WB1.Worksheets("HOME")
+
+    '[*]...LOKASI FILE & LOKASI FOLDER
+    '``````````````````````````````````````````
+    SH1_Home.Activate
+    LR1_SRC = SH1_Home.Range("F" & Rows.Count).End(xlUp).Row
+    
+    i = 10
+    Do Until i > LR1_SRC
+        If SH1_Home.Range("F" & i).Value <> "" Then
+            LeftEntitas = Left(SH1_Home.Range("D" & i).Value, 11)
+            If LeftEntitas = "LOKASI FILE" Then
+                SH1_Home.Range("F" & i).Hyperlinks.Delete
+                str_PathSource = SH1_Home.Range("F" & i).Value
+                If Dir(str_PathSource) = "" Then
+                    MsgBox "PROSES DIHENTIKAN!" & vbCrLf & "File tarikan GCC tidak ditemukan", vbCritical, "VALIDASI | Check_ExistingFileAndFolder"
+                    End
+                End If
+            ElseIf LeftEntitas = "LOKASI FOLD" Then
+                SH1_Home.Range("F" & i).Hyperlinks.Delete
+                str_PathSource = SH1_Home.Range("F" & i).Value
+                If Dir(str_PathSource, vbDirectory) = "" Then
+                    MsgBox "PROSES DIHENTIKAN!" & vbCrLf & "Folder file upload GCC tidak ditemukan", vbCritical, "VALIDASI | Check_ExistingFileAndFolder"
+                    End
+                End If
+            End If
+        End If
+        i = i + 1
+    Loop
+    SH1_Home.Activate
+End Sub

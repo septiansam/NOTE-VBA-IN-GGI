@@ -165,10 +165,12 @@ End Sub
 '            dari sheet ke 1 workbook lain
 '            tersebut
 ' Parameter:
-'   - PathSource: Lokasi File SRC workbook yang akan di import.
+'   - WB_Dest : Lokasi Workbook yang akan menjadi destinasi file inport
+'   - SH_Dest : Lokasi Sheet yang jadi acuan data import
 '   - Rng_Dest: Lokasi File akan copyan akan di letakan.
+'   - PathSource: Lokasi File SRC workbook yang akan di import.
 '+------------------------------------------------+
-Sub ImportDataFile(PathSource As String, Rng_Dest As Range)
+Sub ImportDataFile(WB_Dest As Workbook, SH_Dest As Worksheet, Rng_Dest As Range, PathSource As String)
     Dim WB_SRC As Workbook
     Dim SH_SRC As Worksheet
     
@@ -179,7 +181,14 @@ Sub ImportDataFile(PathSource As String, Rng_Dest As Range)
     SH_SRC.AutoFilterMode = False
     SH_SRC.Cells.EntireColumn.Hidden = False
     SH_SRC.Cells.EntireRow.Hidden = False
-    SH_SRC.Cells.Copy Rng_Dest
+    SH_SRC.Cells.Copy
+    
+    Windows(WB_Dest.Name).Activate
+    SH_Dest.Activate
+    Rng_Dest.PasteSpecial xlPasteValuesAndNumberFormats: Application.CutCopyMode = False
+    SH_Dest.Cells.EntireColumn.AutoFit
+    SH_Dest.Cells(1, 1).Select
+    
     WB_SRC.Close False
     
     Set WB_SRC = Nothing

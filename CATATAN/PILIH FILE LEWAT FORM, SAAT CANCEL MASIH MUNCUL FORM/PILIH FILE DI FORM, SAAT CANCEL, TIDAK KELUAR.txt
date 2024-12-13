@@ -1,0 +1,38 @@
+Private Sub CommandButton1_Click()
+    Fm_Format16.Show
+End Sub
+
+'[*] TOMBOL DI FORM
+Private Sub CommandButton1_Click()
+    If fileSelected = False Then
+        Call CariLokasi_Format16
+    End If
+End Sub
+
+'[*] CODING PILIH FILE
+Sub CariLokasi_Format16()
+    
+'[*]..Inisialisasi variabel kontrol
+'``````````````````````````````````````
+    fileSelected = False
+    
+'[*]..Loop hingga pengguna memilih file
+'``````````````````````````````````````
+    Do Until fileSelected = True
+        Set FldrPicker = Application.FileDialog(msoFileDialogFilePicker)
+        With FldrPicker
+            .Filters.Clear
+            .Title = "Select A Target File 'Single File'"
+            .AllowMultiSelect = False
+            .InitialFileName = ThisWorkbook.Worksheets("MENU").Range("E12").Value
+            If .Show = -1 Then
+                myFile = .SelectedItems(1)
+                ThisWorkbook.Worksheets("MENU").Range("E14").Hyperlinks.Delete
+                ThisWorkbook.Worksheets("MENU").Range("E14").Value = myFile
+                fileSelected = True
+            Else
+                Exit Sub
+            End If
+        End With
+    Loop
+End Sub
