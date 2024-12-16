@@ -1,0 +1,96 @@
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' ExportToTextFile
+' This exports a sheet or range to a text file, using a
+' user-defined separator character.
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Public Sub ExportToTextFile(FName As String, _
+    Sep As String, SelectionOnly As Boolean, _
+    AppendData As Boolean)
+
+Dim WholeLine As String
+Dim FNum As Integer
+Dim RowNdx As Long
+Dim RowPertamax As Long
+Dim ColNdx As Integer
+Dim StartRow As Long
+Dim EndRow As Long
+Dim StartCol As Integer
+Dim EndCol As Integer
+Dim CellValue As String
+Dim MarkEnd As Boolean
+Dim MarkStart As Boolean
+
+Application.ScreenUpdating = False
+On Error GoTo EndMacro:
+FNum = FreeFile
+MarkEnd = False
+MarkStart = False
+
+If SelectionOnly = True Then
+    With Selection
+        StartRow = .Cells(1).Row
+        StartCol = .Cells(1).Column
+        EndRow = .Cells(.Cells.Count).Row
+        EndCol = .Cells(.Cells.Count).Column
+    End With
+Else
+    With ActiveSheet.UsedRange
+        StartRow = .Cells(1).Row
+        StartCol = .Cells(1).Column
+        EndRow = .Cells(.Cells.Count).Row
+        EndCol = .Cells(4).Column
+    End With
+End If
+
+If AppendData = True Then
+    Open FName For Append Access Write As #FNum
+Else
+    Open FName For Output Access Write As #FNum
+End If
+
+For RowNdx = StartRow To EndRow
+    If MarkStart = False Then
+        If Cells(RowNdx, StartCol).Value = "NO" Then
+            MarkStart = True
+           ' RowNdx = RowNdx + 1
+            RowPertamax = RowNdx
+        End If
+    End If
+    
+    If MarkStart Then
+        WholeLine = ""
+        For ColNdx = StartCol To EndCol
+            ' Handler Baris Header
+            If RowNdx = RowPertamax Then
+                WholeLine = "NO,NAMA,ACCOUNT,AMOUNTt"
+                ColNdx = EndCol
+            Else
+                CellValue = Cells(RowNdx, ColNdx).Value
+                WholeLine = WholeLine & CellValue & Sep
+            End If
+            
+            If ColNdx = StartCol Then
+                If Cells(RowNdx, ColNdx).Value = "CHECK" Then
+                    MarkEnd = True
+                End If
+            End If
+        Next ColNdx
+        WholeLine = Left(WholeLine, Len(WholeLine) - Len(Sep))
+        Print #FNum, WholeLine
+        If MarkEnd Then
+            RowNdx = EndRow + 1
+        End If
+    End If
+Next RowNdx
+
+EndMacro:
+On Error GoTo 0
+Application.ScreenUpdating = True
+Close #FNum
+
+MsgBox "CSV File Has Been Generated!"
+End Sub
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' END ExportTextFile
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+

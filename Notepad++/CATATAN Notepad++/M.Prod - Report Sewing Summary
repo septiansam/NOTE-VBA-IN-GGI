@@ -1,0 +1,318 @@
+Sub PROSES_SUMMARY()
+    
+    Application.DisplayAlerts = False
+    
+    Set TWB = ThisWorkbook
+    Set SH_HOME = TWB.Sheets("HOME")
+    
+    Set SH_TARIKAN = TWB.Sheets("TARIKAN GCC")
+    Set SH_TEMP1 = TWB.Sheets("TEMP1")
+    Set SH_TEMP2 = TWB.Sheets("TEMP2")
+    Set SH_TEMP3 = TWB.Sheets("TEMP3")
+    Set SH_TEMP4 = TWB.Sheets("TEMP4")
+    Set SH_RESULTS = TWB.Sheets("RESULTS")
+    SH_RESULTS.Activate
+    ActiveWindow.Zoom = 70
+    
+    SH_TARIKAN.Activate: Cells.Copy SH_TEMP1.Range("A1")
+    SH_TEMP1.Activate: Cells.Copy SH_TEMP2.Range("A1")
+    
+    SH_TEMP2.Activate
+    Range("C:C,G:G").Delete Shift:=xlToLeft
+    
+    ARR_COMPARISON = Array("Worksheet.Release", _
+                                "Trimcard.Release", _
+                                "Sample.Release", _
+                                "Pilot.Run", _
+                                "Machine.Setting.Release", _
+                                "Mika.Release", _
+                                "Layout.Range.Release", _
+                                "PPM")
+
+    For i = LBound(ARR_COMPARISON) To UBound(ARR_COMPARISON)
+        SH_TEMP3.Cells.CLEAR
+        SH_TEMP4.Cells.CLEAR
+        
+        STR_COMPARISON = ARR_COMPARISON(i)
+        SH_TEMP2.Activate
+        IsFound = Not IsEmpty(Rows(1).Find(STR_COMPARISON, , , xlPart))
+        If IsFound = True Then
+            COL_COMPARISON = Rows(1).Find(STR_COMPARISON, , , xlPart).Column
+            SUM_DATA_COMPARISON = Application.WorksheetFunction.CountA(Columns(COL_COMPARISON))
+
+            'If SUM_DATA_COMPARISON <> 1 Then
+            
+                '''[ PROSES ]'''
+                SH_TEMP2.Activate
+                Range("A:E").Copy SH_TEMP3.Cells(1, 1)
+                Columns(COL_COMPARISON).Copy SH_TEMP3.Cells(1, 6)
+                Columns(COL_COMPARISON + 1).Copy SH_TEMP3.Cells(1, 7)
+                Application.CutCopyMode = False
+                
+                SH_TEMP3.Activate
+                
+                LR_DATA = Cells(Rows.Count, 1).End(xlUp).Row
+                
+                Range("H2:H" & LR_DATA).FormulaR1C1 = "=TODAY()"
+                Range("I2:I" & LR_DATA).FormulaR1C1 = "=RC[-4]-RC[-1]"
+                With Range("H2:I" & LR_DATA)
+                    .Copy: .PasteSpecial xlPasteValuesAndNumberFormats: Application.CutCopyMode = False
+                End With
+                Range("H:H").Delete Shift:=xlToLeft
+                Range("H1") = "Diff Days"
+                
+                SH_TEMP3.Sort.SortFields.CLEAR
+                SH_TEMP3.Sort.SortFields.Add2 Key:=Range("H2:H" & LR_DATA) _
+                    , SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal
+                With ActiveWorkbook.Worksheets("TEMP3").Sort
+                    .SetRange Range("A1:H" & LR_DATA)
+                    .Header = xlYes
+                    .MatchCase = False
+                    .Orientation = xlTopToBottom
+                    .SortMethod = xlPinYin
+                    .Apply
+                End With
+    
+                Cells(1, 1).Select
+                Cells.EntireColumn.AutoFit
+                
+                If SH_TEMP3.AutoFilterMode = True Then SH_TEMP3.AutoFilterMode = False
+                Range("A1").AutoFilter Field:=6, Criteria1:="="
+                
+                If Range("A" & Rows.Count).End(xlUp).Value <> "No" Then
+                    SH_TEMP3.UsedRange.Copy SH_TEMP4.Range("a1")
+                    SH_TEMP4.Activate: Cells.EntireColumn.AutoFit
+                    Range("F:F").Delete Shift:=xlToLeft: Cells(1, 1).Select
+                    LR_DATA = Cells(Rows.Count, 1).End(xlUp).Row
+                    Range("A2:A" & LR_DATA).CLEAR
+                    
+                    ''[ BUAT NOMOR DAN WARNA ]''
+                    Range("A2") = "1": Range("A2").DataSeries xlColumns, xlLinear, , 1, LR_DATA - 1
+                    Call Yellow_Highlight
+                    
+                    Rows(1).Insert
+                    With Range("A1")
+                        .Value = "Plan Cutting Vs " & STR_COMPARISON
+                        .Font.Bold = True
+                        .Font.Name = "Century Gothic"
+                        .Font.Size = 16
+                    End With
+                    
+                    Range("A2:G2").Font.Bold = True
+                    
+                    Range("A2:Z9999").Font.Name = "Verdana"
+                    
+                    Range("A1:G1").Merge
+                    Range("A1:G1").Font.Color = vbWhite
+                    Range("A2:G2").Font.Color = vbWhite
+                    
+                    Range("A1:G1").Interior.Color = RGB(79, 146, 151)
+                    Range("A2:G2").Interior.Color = RGB(52, 98, 101)
+                    Rows(1).Insert: Range("A1:G1").Interior.Color = RGB(228, 240, 241)
+                    Rows(3).Insert: Range("A3:G3").Interior.Color = RGB(228, 240, 241)
+                    
+                    LR_DATA = Cells(Rows.Count, 1).End(xlUp).Row
+                    LC_DATA = SH_TEMP4.Cells(4, Columns.Count).End(xlToLeft).Column
+                            
+                    Set RNG_RESULTS = Range(Cells(1, 1), Cells(LR_DATA, LC_DATA))
+    
+'                    With RNG_RESULTS
+'                        .Borders.LineStyle = xlContinuous
+'                        .HorizontalAlignment = xlCenter
+'                        .VerticalAlignment = xlCenter
+'                        .Borders(xlEdgeLeft).Weight = xlMedium
+'                        .Borders(xlEdgeTop).Weight = xlMedium
+'                        .Borders(xlEdgeBottom).Weight = xlMedium
+'                        .Borders(xlEdgeRight).Weight = xlMedium
+'                    End With
+'                    With Range("A1:G1, A3:G3")
+'                        .Borders.LineStyle = xlNone
+'                        .Borders(xlEdgeTop).LineStyle = xlContinuous
+'                        .Borders(xlEdgeBottom).LineStyle = xlContinuous
+'                        .Borders(xlEdgeRight).LineStyle = xlContinuous
+'                        .Borders(xlEdgeRight).Weight = xlMedium
+'                        .Borders(xlEdgeLeft).LineStyle = xlContinuous
+'                        .Borders(xlEdgeLeft).Weight = xlMedium
+'                    End With
+                    Cells.Borders.LineStyle = xlNone
+                    With Range("A2:G2, A4:G4")
+                        .HorizontalAlignment = xlCenter
+                        .VerticalAlignment = xlCenter
+                    End With
+                    Dim RNG_FILL As Range
+                    Dim RNG_ROW As Range
+                    Set RNG_FILL = Range(Cells(5, 1), Cells(LR_DATA, LC_DATA))
+                    
+                    For Each RNG_ROW In RNG_FILL.Rows
+                        If RNG_ROW.Row Mod 2 = 0 Then
+                            RNG_ROW.Font.Name = "Verdana"
+                            With RNG_ROW.Interior
+                                .Pattern = xlSolid
+                                .PatternColorIndex = xlAutomatic
+                                .Color = RGB(255, 255, 255)
+                            End With
+                            RNG_ROW.HorizontalAlignment = xlCenter
+                            RNG_ROW.VerticalAlignment = xlCenter
+                        Else
+                            RNG_ROW.Font.Name = "Verdana"
+                            With RNG_ROW.Interior
+                                .Pattern = xlSolid
+                                .PatternColorIndex = xlAutomatic
+                                .Color = RGB(228, 240, 241)
+                            End With
+                            RNG_ROW.HorizontalAlignment = xlCenter
+                            RNG_ROW.VerticalAlignment = xlCenter
+                        End If
+                    Next RNG_ROW
+                    
+                End If
+                If SH_TEMP3.AutoFilterMode = True Then SH_TEMP3.AutoFilterMode = False
+                Call Yellow_Highlight
+                
+                SH_RESULTS.Activate
+                COL_PASTE = SH_RESULTS.Cells(4, Columns.Count).End(xlToLeft).Column
+                            
+                If COL_PASTE <> 1 Then
+                    Columns(COL_PASTE + 1).ColumnWidth = 10
+                    COL_PASTE = COL_PASTE + 2
+                End If
+                
+                RNG_RESULTS.Copy
+                Cells(1, COL_PASTE).PasteSpecial xlPasteAll: Application.CutCopyMode = False
+                
+                Set RNG_RESULTS = Selection
+                
+                RNG_RESULTS.EntireColumn.AutoFit
+                
+                For Each COL In RNG_RESULTS.Columns
+                    COL_WIDTH = COL.ColumnWidth
+                    COL.ColumnWidth = COL_WIDTH + 3
+                Next COL
+                
+                '''[ AKHIR PROSES ]'''
+            'End If
+        End If
+
+    Next i
+    
+    SH_RESULTS.Activate: Cells(1, 1).Select
+    On Error Resume Next
+    SH_RESULTS.Tab.Color = 15773696
+    On Error GoTo 0
+    ActiveWindow.Zoom = 85
+    
+    Set RNG_RESULTS = SH_RESULTS.UsedRange
+    
+    LR_DATA = RNG_RESULTS.Rows.Count + RNG_RESULTS.Row - 1
+    LC_DATA = RNG_RESULTS.Columns.Count + RNG_RESULTS.Column - 1
+    
+    Rows(1).RowHeight = 3
+    Rows(2).RowHeight = 30
+    Rows(3).RowHeight = 3
+    Rows(4).RowHeight = 20
+    Rows("5:" & LR_DATA).RowHeight = 17
+    
+    '------------------------------'
+    '_-_-_-_-_-[ HEADER ]-_-_-_-_-_'
+    '------------------------------'
+    Rows("1:2").Insert
+    With Range("A1")
+        .Value = "WO Production Sewing"
+        .Font.Bold = True
+        .Font.Name = "Century Gothic"
+        .Font.Size = 30
+        .Font.Color = RGB(79, 146, 151)
+    End With
+    
+    With Range(Cells(1, 1), Cells(1, LC_DATA))
+        .Merge
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+    End With
+    
+    ROW_HEIGHT = Rows(1).RowHeight
+    Rows(1).RowHeight = ROW_HEIGHT + 3
+    Rows("2:2").Insert
+    Rows("2:2").RowHeight = 15
+
+    Cells(1, 1).Select
+    
+    SH_RESULTS.Activate
+    Rows("1:2").Insert xlDown
+    Range("A:A").Insert xlRight
+    
+    On Error Resume Next
+    Rows("10:10").Select
+    ActiveWindow.FreezePanes = True
+    On Error GoTo 0
+    
+    Range("A1").Select
+    
+    SH_HOME.Activate
+    Cells(1, 1).Select
+    
+End Sub
+
+'******************************
+
+' Berikut ini merupakan sub untuk memberi warna kuning pada setiap WO
+' yang terdapat nilai 0
+
+' Procedure dibawah ini akan di panggil di
+' Module7
+' Pada Sub SMPN
+
+'******************************
+
+
+'-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+'[DECLARE VARIABLE]............
+
+Dim TWB As Workbook
+Dim CELL_WO As Range, CELL As Range
+Dim COL As Range
+Dim RG_WO As Range, RG_CEK As Range
+Dim SH_TARGET As Worksheet
+Dim LR_WO As Long, LC_CEK As Long
+
+'-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+
+Sub Yellow_Highlight()
+
+Application.DisplayAlerts = False
+
+Set TWB = ThisWorkbook
+Set SH_TARGET = ActiveSheet
+
+SH_TARGET.Activate
+'SH_TARGET.Cells.Interior.Color = xlNone
+
+LR_WO = Range("A" & Rows.Count).End(xlUp).Row
+
+Set RG_WO = Range(Cells(1, 3), Cells(LR_WO, 3))
+For Each CELL_WO In RG_WO
+    If IsNumeric(CELL_WO.Value) And CELL_WO.Value <> vbNullString Then
+        LC_CEK = Cells(CELL_WO.Row, Columns.Count).End(xlToLeft).Column
+        Set RG_CEK = Range( _
+                    Cells(CELL_WO.Row, CELL_WO.Offset(0, 1).Column), _
+                    Cells(CELL_WO.Row, LC_CEK) _
+                    )
+                   RG_CEK.Activate
+        For Each CELL In RG_CEK
+            If IsNumeric(CELL.Value) And CELL.Value < 0 And CELL.Value <> vbNullString Then
+                CELL_WO.Interior.Color = vbYellow
+                CELL.Interior.Color = vbYellow
+                CELL.Font.Color = vbRed
+            End If
+        Next CELL
+    End If
+Next CELL_WO
+
+SH_TARGET.Activate
+Cells(1, 1).Select
+
+End Sub
+
+
+

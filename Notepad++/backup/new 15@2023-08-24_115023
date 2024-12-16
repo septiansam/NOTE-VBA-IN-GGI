@@ -1,0 +1,414 @@
+Option Explicit
+
+Dim twb As Workbook
+
+Sub GetDataMaster()
+'
+' Tarikan Data Master
+'
+'
+    HideSheets True
+    
+    shMASTER.Cells.Clear
+    
+    Set twb = ThisWorkbook
+    Dim pathMaster As String
+    pathMaster = "\\10.8.0.35\Bersama\IT\SEPTIAN\MAKRO BOM\RESOURCE\ITEM MASTER\ITEM MASTER.xlsx"
+    
+    Dim wbMaster As Workbook
+    Set wbMaster = Workbooks.Open(pathMaster, ReadOnly:=True)
+    
+    Dim rgDest As Range
+    Set rgDest = shMASTER.Range("A1")
+    
+    If Dir(pathMaster) = "" Then
+        twb.Activate
+        MsgBox "File " & "Master doesn't exist", vbCritical, "CEK FILE MASTER"
+        HideSheets False
+        ActiveWorkbook.Save
+        Exit Sub
+    Else
+        Dim arr As Variant
+        arr = wbMaster.Sheets(1).UsedRange.Value
+        rgDest.Resize(UBound(arr, 1), UBound(arr, 2)) = arr
+        
+        wbMaster.Close SaveChanges:=False
+    End If
+    
+End Sub
+
+Sub GetDataRecap()
+'
+' Dapatkan data recap ke shData
+    
+    HideSheets True
+    
+    Set twb = ThisWorkbook
+    
+    Dim pathRecap As String, folder As String, name As String
+'     pathRecap = shTOMBOL.Cells(4, "E").Value2 'TEMPLATE PO
+'     \\10.8.0.35\Bersama\IT\SEPTIAN\MAKRO BOM\BACKUP\FORMAT REKAP\tes.xlsx
+'     pathRecap = "\\10.8.0.35\Bersama\IT\SEPTIAN\MAKRO BOM\BACKUP\FORMAT REKAP\tes.xlsx"
+'     pathRecap = shTOMBOL.Cells(4, "E").Value2
+    
+    folder = shTOMBOL.Range("E3").Value2
+    name = shTOMBOL.Range("D3").Value2
+    pathRecap = folder & Application.PathSeparator & name & ".xlsx"
+
+    If name = "" Then
+        twb.Activate
+        MsgBox "Nama File Belum Di Inputkan", vbExclamation, "INPUT FILE NAME"
+        HideSheets False
+        ActiveWorkbook.Save
+        Exit Sub
+    End If
+    
+    If Evaluate("isref('" & "PO" & "'!A1)") Then
+        Sheets("PO").Delete
+    End If
+    
+    If Dir(pathRecap) = "" Then
+        twb.Activate
+        MsgBox "File " & "Recap doesn't exist", vbCritical, "CEK FILE REKAP"
+        HideSheets False
+        ActiveWorkbook.Save
+        Exit Sub
+    Else
+        Dim wbRecap As Workbook
+        Set wbRecap = Workbooks.Open(pathRecap, ReadOnly:=True)
+        
+        wbRecap.Sheets(1).Copy After:=shTOMBOL
+        wbRecap.Close SaveChanges:=False
+        ActiveSheet.name = "PO"
+    End If
+End Sub
+
+
+Sub GetLookupValue()
+'
+' Get LookupValue
+' Buat Sheets(tes1,tes2,tes3), buat LookupValue
+'
+'    GetDataMaster
+'    GetDataRecap
+
+    HideSheets True
+    
+    Set twb = ThisWorkbook
+    
+    Dim shPO As Worksheet
+    Set shPO = twb.Sheets("PO")
+    
+    ' Clear Sheets
+    Dim sn As Variant
+    Dim ws As Worksheet
+    sn = Array("SAM", "SIZECODE", "MASTER", "TOMBOL", "PO")
+    For Each ws In ThisWorkbook.Worksheets
+        If ws.Visible = xlSheetHidden Then ws.Visible = xlSheetVisible
+        If IsError(Application.Match(ws.name, sn, 0)) Then
+            ws.Delete
+        End If
+    Next ws
+    ' End Clear
+    
+    Dim tes1, tes2, tes3, tes4, tes5 As String
+    tes1 = "tes1": tes2 = "tes2": tes3 = "tes3": tes4 = "tes4": tes5 = "tes5"
+    If Evaluate("isref('" & tes1 & "'!A1)") Then
+        Sheets(tes1).Delete
+    End If
+    If Evaluate("isref('" & tes2 & "'!A1)") Then
+        Sheets(tes2).Delete
+    End If
+    If Evaluate("isref('" & tes3 & "'!A1)") Then
+        Sheets(tes3).Delete
+    End If
+    If Evaluate("isref('" & tes4 & "'!A1)") Then
+        Sheets(tes4).Delete
+    End If
+    If Evaluate("isref('" & tes5 & "'!A1)") Then
+        Sheets(tes5).Delete
+    End If
+    Sheets.Add(After:=Sheets(Sheets.Count)).name = tes1
+    Sheets.Add(After:=Sheets(Sheets.Count)).name = tes2
+    Sheets.Add(After:=Sheets(Sheets.Count)).name = tes3
+    Sheets.Add(After:=Sheets(Sheets.Count)).name = tes4
+    Sheets.Add(After:=Sheets(Sheets.Count)).name = tes5
+    
+    'ADA YANG NGACO DI RECAP -> SH32 HARUSNYA SH 32
+    shPO.Range("AF7").Value2 = "ST 32"
+    'SELESAI PERBAIKAN
+    
+    shPO.Range("L7:AY9").Copy Destination:=Sheets(tes1).Range("A1")
+    Dim lr As Long
+    lr = shPO.Range("BF" & Rows.Count).End(xlUp).Row
+    shPO.Range("BB7:BF" & lr).Copy Destination:=Sheets(tes2).Range("A1")
+    
+    Sheets(tes2).Select
+    Cells.EntireColumn.AutoFit: Cells.EntireRow.AutoFit
+    
+    Dim rgItems As Range
+    Set rgItems = Range("A1").CurrentRegion
+    
+    'Columns("F").Value2 = Columns("E").Value2
+    Sheets(tes2).Columns("E").Copy Destination:=Sheets(tes3).Cells(1, 1)
+    
+    Sheets(tes3).Range("$A$1:$A$100000").RemoveDuplicates Columns:=1, Header:=xlYes
+    
+    Dim keyItem As String, lrFilter As Integer, a As Integer
+    lrFilter = Sheets(tes3).Range("A" & Rows.Count).End(xlUp).Row
+    
+    For a = 1 To lrFilter - 1
+        Sheets(tes4).UsedRange.Clear
+        
+        Dim rgDest As Range
+        Set rgDest = twb.Sheets(tes4).Range("A1")
+        
+        keyItem = twb.Sheets(tes3).Cells(a + 1, "A").Value2
+    
+    ' hidupkan filter
+        Sheets(tes2).Select
+        If ActiveSheet.AutoFilterMode = True Then Selection.AutoFilter
+        twb.Sheets(tes2).Cells(1, "E").AutoFilter
+        
+    ' filter
+        rgItems.AutoFilter Field:=5, Criteria1:=keyItem, Operator:=xlFilterValues
+    
+    ' copy ke sheets(tes4)
+        rgItems.SpecialCells(xlCellTypeVisible).Copy Destination:=rgDest
+        
+        twb.Sheets(tes2).ShowAllData
+    
+    ' ke sheets tes4
+        Sheets(tes4).Select
+        Cells.WrapText = False
+        Cells.EntireRow.AutoFit
+
+        Dim szkecil As Integer
+        Dim szbesar As Integer
+        Dim i As Integer, j As Integer
+        Dim n As Integer, m As Integer
+        
+        lr = Sheets(tes4).Range("A" & Rows.Count).End(xlUp).Row
+    ' tambahan 28 juli 2023 -> isi type
+        If Mid(Cells(2, 1).Value2, 9, 1) = "S" Then
+            Range("C2:C" & lr).Formula = "=IF(MID(A2,9,1)=""S"",""ST"",""NO DATA"")"
+            Range("C2:C" & lr) = Range("C2:C" & lr).Value2
+        End If
+        
+        If Cells(2, 3) = vbNullString And Len(Cells(2, 4).Value2) > 2 Then
+            Range("C2:C" & lr) = "RG"
+        End If
+        
+        If Cells(2, 3) = "ALL" And Len(Cells(2, 4).Value2) = 2 Then
+            Range("C2:C" & lr) = "RG"
+        End If
+        
+        If Cells(2, 3) = "ALL" And Cells(2, 4) <> "" And Cells(2, 4) <> "ALL" And Len(Cells(2, 4).Value2) > 3 Then
+            Range("C2:C" & lr) = "RG"
+        End If
+    ' selesai
+        
+        If Sheets(tes4).Cells(2, "C") <> vbNullString And Len(Cells(2, "D")) > 2 And Cells(2, "D") <> "ALL" Then
+            Range("D2:D" & lr).TextToColumns Destination:=Range("F2"), DataType:=xlDelimited, _
+            TextQualifier:=xlNone, ConsecutiveDelimiter:=False, Tab:=True, Semicolon _
+            :=False, Comma:=False, Space:=False, Other:=True, OtherChar:="-", _
+            FieldInfo:=Array(Array(1, 1), Array(2, 1)), TrailingMinusNumbers:=True
+            
+            n = Range("A" & Rows.Count).End(xlUp).Row - 1
+            For i = 1 To n
+                Sheets(tes4).Select
+                szkecil = Range("F" & i + 1).Value2
+                szbesar = Range("G" & i + 1).Value2
+                If szbesar = 0 Then
+                    m = 1
+                Else
+                    m = (szbesar - szkecil) / 2 + 1
+                End If
+                Dim nilai As Integer
+                
+                For j = 1 To m
+                    If m = 1 Then
+                        nilai = Sheets(tes4).Cells(3, "F").Value
+                    Else
+                        nilai = szkecil + (2 * j - 2)
+                    End If
+                    If Cells(i + 1, 3).Value2 = "RG" Then
+                        Range("A20").Offset(j - 1, 0).Value = nilai
+                        Range("A20").Offset(j - 1, 1).Value = "RG" & " " & nilai
+                    ElseIf Cells(i + 1, 3).Value2 = "ST" Then
+                        Range("A20").Offset(j - 1, 0).Value = nilai
+                        Range("A20").Offset(j - 1, 1).Value = "ST" & " " & nilai
+                    End If
+                Next j
+                
+                Dim rg As Range
+                If Sheets(tes4).Cells(i + 1, "C").Value2 = "RG" Or Sheets(tes4).Cells(i + 1, "C").Value2 = "ALL" Then
+                Set rg = Sheets(tes1).Range("A1:T2")
+                ElseIf Sheets(tes4).Cells(i + 1, "C").Value2 = "ST" Then
+                Set rg = Sheets(tes1).Range("U1:AN3")
+                End If
+                
+                Dim rgFind As Range, cell As Range
+                Set rgFind = Range("A20:A" & Cells(20, 2).End(xlDown).Row).Offset(0, 1)
+                
+                Dim item As String, sizeCode As String, x As Integer
+                
+                If WorksheetFunction.CountA(Range("f" & i + 1, "g" & i + 1)) = 1 Then
+                    Dim cs As String
+                    cs = Sheets(tes4).Cells(20, "B").Value2
+                    If rg.Find(What:=cs).Offset(1).Value2 <> vbNullString Then
+                        Sheets(tes5).Select
+                        lr = Range("A" & Rows.Count).End(xlUp).Row
+                        item = Sheets(tes4).Cells(2, "E").Value2
+                        sizeCode = Sheets(tes4).Cells(20, "A").Value2
+                        Cells(lr, 1).Offset(1).Value2 = item
+                        Cells(lr, 2).Offset(1).Value2 = sizeCode
+                    ElseIf rg.Find(What:=cs).Offset(2).Value2 <> vbNullString Then
+                        Sheets(tes5).Select
+                        lr = Range("A" & Rows.Count).End(xlUp).Row
+                        item = Sheets(tes4).Cells(2, "E").Value2
+                        sizeCode = Sheets(tes4).Cells(20, "A").Value2 & " " & "ST"
+                        Cells(lr, 1).Offset(1).Value2 = item
+                        Cells(lr, 2).Offset(1).Value2 = sizeCode
+                    End If
+                    Sheets(tes4).Range("A20").CurrentRegion.ClearContents
+                Else
+                    x = 1
+                    For Each cell In rgFind
+                        If rg.Find(What:=cell.Value2).Offset(1).Value2 <> vbNullString Then
+                            Sheets(tes5).Select
+                            lr = Range("A" & Rows.Count).End(xlUp).Row
+                            item = Sheets(tes4).Cells(2, "E").Value2
+                            sizeCode = Sheets(tes4).Cells(x + 19, "A").Value2
+                            Cells(lr, 1).Offset(1).Value2 = item
+                            Cells(lr, 2).Offset(1).Value2 = sizeCode
+                        ElseIf rg.Find(What:=cell.Value2).Offset(2).Value2 <> vbNullString Then
+                            Sheets(tes5).Select
+                            lr = Range("A" & Rows.Count).End(xlUp).Row
+                            item = Sheets(tes4).Cells(2, "E").Value2
+                            sizeCode = Sheets(tes4).Cells(x + 19, "A").Value2 & " " & "ST"
+                            Cells(lr, 1).Offset(1).Value2 = item
+                            Cells(lr, 2).Offset(1).Value2 = sizeCode
+                        End If
+                        x = x + 1
+                    Next cell
+                    Sheets(tes4).Range("A20").CurrentRegion.ClearContents
+                End If
+                
+            Next i
+            
+        'ElseIf Len(Cells(2, 4)) = 2 And Cells(1, 1).CurrentRegion.Rows.Count <= 2 Then
+        ElseIf Len(Cells(2, 4)) = 2 Then
+
+            Sheets(tes4).Select
+            If Cells(2, 3).Value2 = "RG" Then
+                n = Range("A" & Rows.Count).End(xlUp).Row - 1
+                For i = 1 To n
+                    Sheets(tes5).Select
+                    lr = Range("A" & Rows.Count).End(xlUp).Row
+                    Cells(lr, 1).Offset(1).Value2 = Sheets(tes4).Cells(i + 1, "E").Value2
+                    Cells(lr, 2).Offset(1).Value2 = Sheets(tes4).Cells(i + 1, "D").Value2
+                    If Sheets(tes4).Cells(2, "D").Value2 = "ALL" And Sheets(tes4).Cells(2, "B").Value2 = "ALL" Then
+                        Cells(lr, 2).Offset(1).Value2 = "ALLSize"
+                    End If
+                Next i
+            ElseIf Cells(2, 3).Value2 = "ST" Then
+                n = Range("A" & Rows.Count).End(xlUp).Row - 1
+                For i = 1 To n
+                    Sheets(tes5).Select
+                    lr = Range("A" & Rows.Count).End(xlUp).Row
+                    Cells(lr, 1).Offset(1).Value2 = Sheets(tes4).Cells(i + 1, "E").Value2
+                    Cells(lr, 2).Offset(1).Value2 = Sheets(tes4).Cells(i + 1, "D").Value2 & " " & "ST"
+                Next i
+            ElseIf Cells(2, 3).Value2 = vbNullString Then
+                n = Range("A" & Rows.Count).End(xlUp).Row - 1
+                For i = 1 To n
+                    Sheets(tes5).Select
+                    lr = Range("A" & Rows.Count).End(xlUp).Row
+                    Cells(lr, 1).Offset(1).Value2 = Sheets(tes4).Cells(i + 1, "E").Value2
+                    Cells(lr, 2).Offset(1).Value2 = Sheets(tes4).Cells(i + 1, "D").Value2
+                Next i
+            End If
+            
+        ElseIf Cells(2, "D") = vbNullString Then
+            n = Range("A" & Rows.Count).End(xlUp).Row - 1
+            For i = 1 To n
+                Sheets(tes5).Select
+                lr = Range("A" & Rows.Count).End(xlUp).Row
+                Cells(lr, 1).Offset(1).Value2 = Sheets(tes4).Cells(i + 1, "E").Value2
+                Cells(lr, 2).Offset(1).Value2 = "ALLSize"
+            Next i
+            
+        ElseIf Cells(2, "C").Value2 = "ALL" And Cells(2, "D").Value2 = "ALL" Then
+            n = Range("A" & Rows.Count).End(xlUp).Row - 1
+            For i = 1 To n
+                Sheets(tes5).Select
+                lr = Range("A" & Rows.Count).End(xlUp).Row
+                Cells(lr, 1).Offset(1).Value2 = Sheets(tes4).Cells(i + 1, "E").Value2
+                Cells(lr, 2).Offset(1).Value2 = "ALLSize"
+            Next i
+            
+        
+        End If
+        
+    Next a
+
+    Sheets(tes1).Delete
+    Sheets(tes2).Delete
+    Sheets(tes3).Delete
+    Sheets(tes4).Delete
+    
+    Sheets(tes5).name = "PROSES1"
+    
+
+End Sub
+
+Sub GetDataStatus()
+    Set twb = ThisWorkbook
+    
+    Dim pathSTATUS As String
+    Dim nameFile As String
+    nameFile = shTOMBOL.Range("D8").Value2
+    pathSTATUS = shTOMBOL.Cells(8, "E").Value2 & Application.PathSeparator & nameFile & ".xlsx"
+    
+    If Evaluate("isref('" & "STATUS" & "'!A1)") Then
+        Sheets("STATUS").Delete
+    End If
+    
+    If Dir(pathSTATUS) = "" Then
+        twb.Activate
+        MsgBox "File " & "STATUS doesn't exist", vbCritical, "CEK FILE STATUS"
+        HideSheets False
+        ActiveWorkbook.Save
+        Exit Sub
+    Else
+        Dim wbSTATUS As Workbook
+        Set wbSTATUS = Workbooks.Open(pathSTATUS, ReadOnly:=True)
+        
+        wbSTATUS.Sheets(1).Copy After:=twb.Sheets(twb.Sheets.Count)
+        wbSTATUS.Close SaveChanges:=False
+    End If
+End Sub
+
+Sub HideSheets(ByVal Hide As Boolean)
+    Dim sn As Variant, name As String
+    sn = Array("SAM", "SIZECODE", "MASTER")
+    
+    Dim ws As Worksheet
+    Dim i As Long
+    
+    For i = LBound(sn) To UBound(sn)
+        name = sn(i)
+        If Sheets(name).Visible = False Then
+            Sheets(name).Visible = True
+        End If
+        Sheets(name).Visible = Hide
+    Next i
+End Sub
+
+
+'Public Sub Preprocessing()
+'    GetLookupValue
+'End Sub
+
+

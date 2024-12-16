@@ -1,0 +1,71 @@
+    'SAM COPY HEADER
+    Selection.Cells.WrapText = False
+    Dim twb As Workbook, shPO As Worksheet, shMaster As Worksheet
+    Set twb = ThisWorkbook
+    Set shPO = twb.Sheets(Sheets.Count)
+    Set shMaster = twb.Sheets("MASTER")
+    
+    Dim rg As Range, text As String, sumHeader As Long, cell As Range, f As Range
+    Dim rgHeader As Range, rgDest As Range
+    Dim barisPaste As Integer, kolomPaste As Integer
+    
+    shPO.Activate
+    Set rg = shPO.Range("B1:B" & Range("B" & Rows.Count).End(xlUp).Row)
+    text = LCase(shPO.Range("B1"))
+    
+    For Each cell In rg
+        
+        If LCase(cell.Value) = text Then
+            barisPaste = cell.Row
+            kolomPaste = Cells(barisPaste, Columns.Count).End(xlToLeft).Offset(0, 2).Column
+            kode = cell.Offset(2, -1).Value
+            
+'            Set rgDest = shPO.Range(shPO.Cells(cell.Row, kolomPaste), shPO.Cells(cell.Row, kolomPaste))
+            Set rgDest = shPO.Cells(cell.Row, kolomPaste)
+
+            shMaster.Select
+'            Columns("A").Find(what:=kode).Select
+            Set f = Columns("A").Find(what:=kode)
+            
+            If Not f Is Nothing Then
+            f.Select
+            
+            'CARI KATA WORK# atau Sel yang tidak kosong, dan fillnya tidak xlNone
+            fr = ActiveCell.Row
+            For selnya = fr To 4 Step -1
+                If shMaster.Cells(selnya, 3) = "WORK#" Or (Cells(selnya, 3) <> "" And Cells(selnya, 3).Interior.ColorIndex <> xlNone) Then ' And Cells(selnya, 4).Interior.ColorIndex = 15) Then
+                    r = shMaster.Cells(selnya, 4).Row
+                    Exit For
+                End If
+            Next selnya
+            fc = shMaster.Cells(fr, 1).CurrentRegion.Columns(Sheets("MASTER").Cells(fr, 1).CurrentRegion.Columns.Count).Column
+            fc = shMaster.Cells(r, fc).End(xlToRight).Column
+            c = shMaster.Cells(r, Columns.Count).End(xlToLeft).Column
+            lc = shMaster.Cells(r, c).CurrentRegion.Columns(Sheets("MASTER").Cells(r, c).CurrentRegion.Columns.Count).Column
+
+            Set rgHeader = Range(Cells(r, fc), Cells(r + 1, lc))
+
+            rgHeader.Copy 'Destination:=rgDest
+            
+            shPO.Activate
+            rgDest.PasteSpecial xlPasteAll
+            
+            '" NEW SAM -> ATUR WARNA FILL/SEL
+            Dim sel As Range
+            For Each sel In Selection
+            If sel.Interior.ColorIndex <> xlNone And sel.Interior.ColorIndex <> 15 And sel.Interior.ColorIndex <> 6 Then
+                sel.Interior.ColorIndex = 15
+            End If
+            'if cell.Interior.ColorIndex <> xlnone
+            Next sel
+            'END
+            
+            shPO.Activate
+            'Selection.Interior.ColorIndex = 15
+            
+            End If
+'            shPO.Activate
+        End If
+    Next cell
+    shPO.Activate
+    Range("A:A").Delete

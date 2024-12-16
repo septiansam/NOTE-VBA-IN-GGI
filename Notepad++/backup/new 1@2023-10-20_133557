@@ -1,0 +1,116 @@
+Sub CreateCSV()
+Application.DisplayAlerts = False
+Application.ScreenUpdating = False
+Application.EnableEvents = False
+Application.Calculation = xlCalculationManual
+
+    Dim twb As Workbook, shBantu As Worksheet, shValid As Worksheet, shTGCC As Worksheet
+    Dim sumData As Long, fileName As String, path As String, i As Integer
+    Dim shOlah As Worksheet, shOlah2 As Worksheet
+
+    Set twb = ThisWorkbook
+    Set shBantu = twb.Sheets("BANTUAN")
+    Set shValid = twb.Sheets("VALIDASI")
+    Set shTGCC = twb.Sheets("TARIKAN GCC")
+    
+    If shTGCC.Visible = False Then shTGCC.Visible = True
+    
+    If Application.WorksheetFunction.CountA(shValid.Range("A:A")) = 1 Then
+        MsgBox "Tidak Terdapat No PO yang Akan Dibuat", vbExclamation, "Tidak Ada Data Tervalidasi YES"
+        If shTGCC.Visible = True Then shTGCC.Visible = False
+        Exit Sub
+    End If
+    
+    shTGCC.Activate
+    Dim colContractNoGCC As Integer, colNoMakloonGCC As Integer, colLineGCC As Integer, colQTY As Integer
+    
+    colContractNoGCC = shTGCC.Range("A1").EntireRow.Find("Order Number", , , xlPart).Column
+    colNoMakloonGCC = shTGCC.Range("A1").EntireRow.Find("Address No Makloon", , , xlPart).Column
+    colLineGCC = shTGCC.Range("A1").EntireRow.Find("Line", , , xlPart).Column
+    colQTY = shTGCC.Range("A1").EntireRow.Find("Qty", , , xlPart).Column
+    
+    If Evaluate("isref('" & "OLAH" & "'!A1)") Then Sheets("OLAH").Delete
+    
+    Sheets.Add(After:=Sheets(Sheets.Count)).Name = "OLAH"
+    Set shOlah = twb.Sheets("OLAH")
+    
+    shValid.Activate
+    sumData = shValid.Range("B" & Rows.Count).End(xlUp).Row - 1
+    
+    Dim colPO As Integer
+    
+    colPO = shValid.Range("A1").EntireRow.Find("PO", , , xlPart).Column
+    For i = 1 To sumData
+    
+        shOlah.UsedRange.ClearContents
+    
+        fileName = shValid.Cells(i + 1, colPO) & ".xlsx"
+        
+        path = shBantu.Range("H5") & Application.PathSeparator & fileName
+        
+        If Dir(path) <> vbNullString Then
+            Workbooks.Open path
+            Workbooks(fileName).Sheets(1).UsedRange.Copy shOlah.Range("A1")
+            Workbooks(fileName).Close False
+            shOlah.Activate
+        
+            lr = shOlah.Cells.Find(what:="*" _
+                , lookat:=xlPart _
+                , LookIn:=xlFormulas _
+                , Searchorder:=xlByRows _
+                , searchdirection:=xlPrevious).Row
+                
+            Range("A2:A" & lr) = 1
+                
+            Dim colContractNoOlah As Integer, colNoMakloonOlah As Integer, colLineOlah As Integer, colQTYOlah As Integer, colSecon As Integer
+            
+            colContractNoOlah = shOlah.Range("A1").EntireRow.Find("Order Number", , , xlPart).Column
+            colNoMakloonOlah = shOlah.Range("A1").EntireRow.Find("Supplier", , , xlPart).Column
+            colLineOlah = shOlah.Range("A1").EntireRow.Find("Line Number", , , xlPart).Column
+            colQTYOlah = shOlah.Range("A1").EntireRow.Find("Quantity", , , xlPart).Column
+            colSecon = shOlah.Range("A1").EntireRow.Find("Secondary Quantity", , , xlPart).Column
+            
+            Range(Cells(2, colQTYOlah), Cells(lr, colQTYOlah)).ClearContents
+            Range(Cells(2, colSecon), Cells(lr, colSecon)).ClearContents
+    
+            Range(Cells(2, colQTYOlah), Cells(lr, colQTYOlah)).FormulaR1C1 = _
+                "=SUMIFS('TARIKAN GCC'!C[" & colQTY - colQTYOlah & "],'TARIKAN GCC'!C[" & colNoMakloonGCC - colQTYOlah & "],OLAH!RC[" & colNoMakloonOlah - colQTYOlah & "],'TARIKAN GCC'!C[" & colContractNoGCC - colQTYOlah & "],OLAH!RC[" & colContractNoOlah - colQTYOlah & "],'TARIKAN GCC'!C[" & colLineGCC - colQTYOlah & "],OLAH!RC[" & colLineOlah - colQTYOlah & "])"
+            
+'            Range(Cells(2, colSecon), Cells(lr, colSecon)).FormulaR1C1 = _
+'                "=RC[-" & colSecon - colQTYOlah & "]"
+            
+            shOlah.UsedRange.Select
+            With Selection
+                .Copy
+                .PasteSpecial (xlPasteValues): Application.CutCopyMode = False
+            End With
+            
+            shOlah.Rows(1).Delete
+            
+            'SAVE CSV DENGAN NAMA fileName
+            Dim fileCSV As String
+            fileCSV = shValid.Cells(i + 1, colPO) & ".csv"
+            path = shBantu.Range("H7") & Application.PathSeparator & fileCSV
+    
+            shOlah.Copy
+            ActiveWorkbook.Sheets(1).Name = "UPLOAD CSV"
+            
+            ActiveWorkbook.SaveAs path, xlCSV
+            Workbooks(fileCSV).Close SaveChanges:=True
+        
+        End If
+    Next i
+    
+    If Evaluate("isref('" & "OLAH" & "'!A1)") Then Sheets("OLAH").Delete
+    
+    shBantu.Activate
+    Cells(1, 1).Select
+    
+'    MsgBox "Create File CSV is Complete.....", vbInformation, "Running Success..............."
+'    twb.Save
+    
+Application.DisplayAlerts = True
+Application.ScreenUpdating = True
+Application.EnableEvents = True
+Application.Calculation = xlCalculationAutomatic
+End Sub

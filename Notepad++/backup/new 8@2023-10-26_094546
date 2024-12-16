@@ -1,0 +1,249 @@
+Sub Validation()
+
+Application.DisplayAlerts = False
+Application.ScreenUpdating = False
+Application.EnableEvents = False
+Application.Calculation = xlCalculationManual
+
+    Dim twb As Workbook, shINMK As Worksheet, shTGCC As Worksheet, shBantu As Worksheet, shValidate As Worksheet, shtes1 As Worksheet, shtes2 As Worksheet, shStatus As Worksheet
+    Dim i As Long, fileName As String, filePath As String, lr As Long, rg As Range, lc As Long
+    
+    Set twb = ThisWorkbook
+    Set shBantu = twb.Sheets("BANTUAN")
+    
+    Dim sh As Worksheet
+    
+    For Each sh In twb.Worksheets
+        If sh.Name <> "BANTUAN" Then
+            sh.Delete
+        End If
+    Next sh
+        
+    Sheets.Add(Before:=shBantu).Name = "INMK"
+    Set shINMK = twb.Sheets("INMK")
+    
+    Sheets.Add(Before:=shBantu).Name = "Tarikan GCC"
+    Set shTGCC = twb.Sheets("TARIKAN GCC")
+    
+    Sheets.Add(After:=shBantu).Name = "VALIDASI"
+    Set shValidate = twb.Sheets("VALIDASI")
+    
+    Sheets.Add(After:=Sheets(Sheets.Count)).Name = "tes1"
+    Sheets.Add(After:=Sheets(Sheets.Count)).Name = "tes2"
+    Set shtes1 = twb.Sheets("tes1")
+    Set shtes2 = twb.Sheets("tes2")
+    
+    Sheets.Add(After:=shValidate).Name = "STATUS"
+    Set shStatus = twb.Sheets("STATUS")
+    
+    shStatus.Range("A1") = "Kode"
+    
+    ' TARIK DATA GCC
+    fileName = shBantu.Range("E5") & ".xlsx"
+    filePath = shBantu.Range("F5") & Application.PathSeparator & fileName
+    
+    If Dir(filePath) = vbNullString Then
+        MsgBox "File " & fileName & "Doesn't Exists", vbCritical
+        For Each sh In twb.Worksheets
+            If sh.Name <> "BANTUAN" Then
+                sh.Delete
+            End If
+        Next sh
+        Exit Sub
+    Else
+        Workbooks.Open filePath
+        Workbooks(fileName).Sheets(1).UsedRange.Copy shTGCC.Range("A1")
+        Workbooks(fileName).Close False
+    End If
+        
+    ' TARIK DATA INMK
+    fileName = shBantu.Range("E6") & ".csv"
+    filePath = shBantu.Range("F6") & Application.PathSeparator & fileName
+    
+    If Dir(filePath) = vbNullString Then
+        MsgBox "File " & fileName & " Doesn't Exists", vbCritical
+        For Each sh In twb.Worksheets
+            If sh.Name <> "BANTUAN" Then
+                sh.Delete
+            End If
+        Next sh
+        Exit Sub
+    Else
+        Workbooks.Open filePath
+        Workbooks(fileName).Sheets(1).UsedRange.Copy shINMK.Range("A1")
+        Workbooks(fileName).Close False
+    End If
+    
+    twb.Activate
+    With shValidate
+        .Range("A1") = "No"
+        .Range("B1") = "PO"
+        .Range("C1") = "Branch"
+        .Range("D1") = "Validasi"
+        .Range("E1") = "Tanggal Transaksi"
+        .Range("F1") = "Status"
+    End With
+    
+    Dim wbKecuali As Workbook, colAddress As Integer, filterData As Variant
+    filterData = Array("55466078", "57235572", "55372611", "55376531", "57339620")
+    fileName = shBantu.Range("E7") & ".xlsx"
+    filePath = shBantu.Range("F7") & Application.PathSeparator & fileName
+    
+    shTGCC.Activate
+    colAddress = Range("A1").EntireRow.Find("Address No Makloon", , , xlPart).Column
+        
+    If shTGCC.AutoFilterMode Then Selection.AutoFilter
+    Range("A1").AutoFilter Field:=colAddress, Criteria1:=filterData, Operator:=xlFilterValues
+    
+    If Application.WorksheetFunction.CountA(Range("A:A").SpecialCells(xlCellTypeVisible)) <> 1 Then
+        Set wbKecuali = Workbooks.Open(filePath)
+        wbKecuali.Activate
+        shBantu.Range(shBantu.Cells(1, "Z"), shBantu.Cells(1, shBantu.Cells(1, Columns.Count).End(xlToLeft).Column)).Copy wbKecuali.Sheets(1).Range("A1")
+        lr = Range("A" & Rows.Count).End(xlUp).Row + 1
+        twb.Activate
+        shTGCC.Activate
+        shTGCC.UsedRange.SpecialCells(xlCellTypeVisible).Select
+        shTGCC.UsedRange.SpecialCells(xlCellTypeVisible).Offset(1).Copy
+        wbKecuali.Sheets(1).Activate
+        Range("A" & lr).PasteSpecial (xlPasteValues): Application.CutCopyMode = False
+        wbKecuali.Close SaveChanges:=True
+    End If
+    
+    twb.Activate
+    shTGCC.Activate
+    If shTGCC.AutoFilterMode Then Selection.AutoFilter
+    Range("A1").AutoFilter Field:=colAddress, Criteria1:=filterData, Operator:=xlFilterValues
+    shTGCC.UsedRange.SpecialCells(xlCellTypeVisible).Offset(1).Delete xlUp
+
+    If shTGCC.AutoFilterMode Then Selection.AutoFilter
+
+    Dim sumData As Long
+    shTGCC.Activate
+    lr = Range("A" & Rows.Count).End(xlUp).Row
+    
+    sumData = Range("A" & Rows.Count).End(xlUp).Row
+    
+    If sumData > 1 Then
+    
+        Dim colContractNo As Integer, colShortItem As Integer, colBranch As Integer
+        colContractNo = Range("A1").EntireRow.Find("Contract No", , , xlPart).Column
+        colShortItem = Range("A1").EntireRow.Find("Short Item", , , xlPart).Column
+        colBranch = Range("A1").EntireRow.Find("WO Branch", , , xlPart).Column
+        
+        Range(Cells(1, colContractNo), Cells(lr, colContractNo)).Copy shtes1.Range("A1")
+        Range(Cells(1, colShortItem), Cells(lr, colShortItem)).Copy shtes1.Range("B1")
+        Range(Cells(1, colBranch), Cells(lr, colBranch)).Copy shtes1.Range("C1")
+        
+        lr = shtes1.Range("A" & Rows.Count).End(xlUp).Row
+        
+        shtes2.Activate
+        
+        shtes2.Range("A1:A" & lr - 1).FormulaR1C1 = "=LEFT('tes1'!R[1]C,8)"
+        shtes1.Range("B2:B" & lr).Copy shtes2.Cells(1, 2)
+        shtes1.Range("C2:C" & lr).Copy shtes2.Cells(1, 3)
+    
+        lr = shtes2.Range("A" & Rows.Count).End(xlUp).Row
+        Range("A1:A" & lr).Copy Cells(1, 26)
+        Range(Cells(1, 26), Cells(lr, 26)).RemoveDuplicates 1, xlNo
+        shtes2.Range("D1:D" & lr).FormulaR1C1 = _
+            "=IFERROR(IF(ISNUMBER(VLOOKUP(RC[-2],INMK!C[-3],1,0)), ""YES"", ""NO""),""NO"")"
+        shtes2.UsedRange.Copy: shtes2.Range("A1").PasteSpecial (xlPasteValues): Application.CutCopyMode = False
+        
+        lr = shtes2.Range("Z" & Rows.Count).End(xlUp).Row
+        Range("Z1:Z" & lr).Copy shValidate.Cells(2, 2)
+        shtes2.Range("Z:Z").ClearContents
+        
+        shTGCC.Activate
+    
+        lr = shTGCC.Cells.Find(what:="*" _
+            , lookat:=xlPart _
+            , LookIn:=xlFormulas _
+            , Searchorder:=xlByRows _
+            , searchdirection:=xlPrevious).Row
+        
+        lc = shTGCC.Cells.Find(what:="*" _
+            , lookat:=xlPart _
+            , LookIn:=xlFormulas _
+            , Searchorder:=xlByColumns _
+            , searchdirection:=xlPrevious).Column
+            
+        Cells(1, lc + 1) = "Order Number"
+        
+        Range(Cells(2, lc + 1), Cells(lr, lc + 1)).FormulaR1C1 = _
+            "=LEFT(RC[-13],8)"
+            
+        Range(Cells(2, lc + 1), Cells(lr, lc + 1)).Select
+        
+        With Selection
+            .Copy
+            .PasteSpecial (xlPasteValues): Application.CutCopyMode = False
+        End With
+
+        shTGCC.Rows(1).Font.Bold = True
+        shTGCC.UsedRange.EntireColumn.AutoFit
+        
+        shValidate.Activate
+        
+        lr = shValidate.Cells.Find(what:="*" _
+            , lookat:=xlPart _
+            , LookIn:=xlFormulas _
+            , Searchorder:=xlByRows _
+            , searchdirection:=xlPrevious).Row
+            
+        lc = shValidate.Cells.Find(what:="*" _
+            , lookat:=xlPart _
+            , LookIn:=xlFormulas _
+            , Searchorder:=xlByColumns _
+            , searchdirection:=xlPrevious).Column
+        
+        If lr > 1 Then
+            Range("A2") = "1"
+            Range("A2").DataSeries xlColumns, xlLinear, , 1, lr - 1
+        End If
+        
+        Range("C2:C" & lr).FormulaR1C1 = _
+            "=IFERROR(VLOOKUP(RC[-1],'tes2'!C[-2]:C,3,0),"""")"
+        
+        Range("D2:D" & lr).FormulaR1C1 = _
+            "=IFERROR(IF(COUNTIFS('tes2'!C[-3],VALIDASI!RC[-2],'tes2'!C,""NO"")>0, ""NO"", ""YES""),""NO"")"
+
+        Range("E2:E" & lr).FormulaR1C1 = _
+            "=IFERROR(INDEX('Tarikan GCC'!C[11],MATCH(VALIDASI!RC[-3],'Tarikan GCC'!C[12],0)),"""")"
+            
+        Dim colTGL As Integer
+        colTGL = shValidate.Range("A1").EntireRow.Find("Tanggal Transaksi", , , xlPart).Column
+        
+        Columns(colTGL).NumberFormat = "m/d/yyyy"
+        
+        shValidate.UsedRange.Copy: shValidate.Range("A1").PasteSpecial (xlPasteValues): Application.CutCopyMode = False
+        
+        shStatus.Activate
+        Cells(2, 1) = 1
+        
+        shValidate.Activate
+        With shValidate.UsedRange
+            .Rows(1).Font.Bold = True
+            .HorizontalAlignment = xlCenter
+            .VerticalAlignment = xlCenter
+            .EntireColumn.AutoFit
+        End With
+    Else
+        shStatus.Activate
+        Cells(2, 1) = 0
+    End If
+    
+    If Evaluate("isref('" & "INMK" & "'!A1)") Then Sheets("INMK").Delete
+    If Evaluate("isref('" & "tes1" & "'!A1)") Then Sheets("tes1").Delete
+    If Evaluate("isref('" & "tes2" & "'!A1)") Then Sheets("tes2").Delete
+    
+    If shTGCC.Visible = True Then shTGCC.Visible = False
+ 
+Application.DisplayAlerts = True
+Application.ScreenUpdating = True
+Application.EnableEvents = True
+Application.Calculation = xlCalculationAutomatic
+
+'twb.Save
+
+End Sub
+

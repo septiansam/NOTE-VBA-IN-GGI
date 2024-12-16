@@ -1,0 +1,279 @@
+Option Explicit
+
+Public twb As Workbook
+Public shBantu As Worksheet, shRpa As Worksheet, shTPB As Worksheet
+Public tanggalTarikan As Date
+
+Sub GetData()
+
+Application.DisplayAlerts = False
+Application.ScreenUpdating = False
+
+Set twb = ThisWorkbook
+Set shRpa = twb.Sheets("RPA")
+Set shBantu = twb.Sheets("BANTUAN")
+Set shTPB = twb.Sheets("Tarikan_TPB")
+
+Dim i As Integer
+For i = twb.Worksheets.Count To 5 Step -1
+    Sheets(i).Delete
+Next i
+
+Dim shOlah As Worksheet
+If Evaluate("isref('" & "olah" & "'!A1)") Then
+    Sheets("olah").Delete
+End If
+Sheets.Add(After:=Sheets(Sheets.Count)).Name = "olah"
+Set shOlah = twb.Sheets("olah")
+
+Dim lr As Long, rPaste As Integer, lr2 As Long
+Dim wbFile As Workbook
+Dim pathFile As String, nameFile As String
+nameFile = shRpa.Range("E2")
+pathFile = shRpa.Range("D2") & Application.PathSeparator & nameFile & ".xlsx"
+
+If Dir(pathFile) = "" Then
+    twb.Activate
+    MsgBox "File " & nameFile & " doesn't exist", vbCritical, "PERIKSA FILE DOWNLOAD NYA"
+    Exit Sub
+Else
+    Set wbFile = Workbooks.Open(pathFile)
+End If
+
+wbFile.Activate
+tanggalTarikan = FileDateTime(pathFile)
+Dim shHeaderDoc As Worksheet, shBarang As Worksheet, shBarangTarif As Worksheet, shDokPelengkap As Worksheet, shPungutanDok As Worksheet, shBahanBaku As Worksheet, shKemasan As Worksheet, shKontainer As Worksheet
+Set shHeaderDoc = wbFile.Sheets("Header Dokumen")
+Set shBarang = wbFile.Sheets("Barang")
+Set shBarangTarif = wbFile.Sheets("Barang Tarif")
+Set shDokPelengkap = wbFile.Sheets("Dokumen Pelengkap")
+Set shPungutanDok = wbFile.Sheets("Pungutan Dokumen")
+Set shBahanBaku = wbFile.Sheets("Bahan Baku")
+Set shKemasan = wbFile.Sheets("Kemasan")
+Set shKontainer = wbFile.Sheets("Kontainer")
+
+' ISI NOMOR AJU
+'shHeaderDoc.Activate
+'shHeaderDoc.Range("B2:B" & shHeaderDoc.Range("B" & Rows.Count).End(xlUp).Row).Copy Destination:=shOlah.Cells(2, 3)
+shBarang.Activate
+shBarang.Range("B2:B" & shBarang.Range("B" & Rows.Count).End(xlUp).Row).Copy Destination:=shOlah.Cells(2, 3)
+
+shOlah.Activate
+lr = shOlah.Range("C" & Rows.Count).End(xlUp).Row
+
+' ISI DOKUMEN BERDASARKAN JUMLAH NOMOR AJU DI SHEETS HEADER DOKUMEN
+Range("B2:B" & lr) = shRpa.Range("B2")
+
+' SET NILAI LOOKUP
+Range("D2:D" & lr).Formula = "=C2&""BM"""
+Range("E2:E" & lr).Formula = "=C2&""PPH"""
+Range("F2:F" & lr).Formula = "=C2&""PPN"""
+Range("G2:G" & lr).Formula = "=C2&""INVOICE"""
+Range("H2:H" & lr).Formula = "=C2&""MASTER B/L"""
+Range("I2:I" & lr).Formula = "=C2&""B/L"""
+Range("D2:I" & lr).Copy
+Range("D2:I" & lr).PasteSpecial xlPasteValues: Application.CutCopyMode = False
+shTPB.Range(shTPB.Cells(3, 4), shTPB.Cells(3, shTPB.Cells(3, Columns.Count).End(xlToLeft).Column)).Copy Destination:=shOlah.Range("J1")
+Range(Cells(1, 10), Cells(1, Cells(1, Columns.Count).End(xlToLeft).Column)).EntireColumn.AutoFit
+
+shDokPelengkap.Activate
+Range("A:A").Insert Shift:=xlToRight
+Range("A2:A" & Range("B" & Rows.Count).End(xlUp).Row).Formula = "=C2&D2"
+Range("A2:A" & Range("B" & Rows.Count).End(xlUp).Row).Copy
+Range("A2:A" & Range("B" & Rows.Count).End(xlUp).Row).PasteSpecial xlPasteValues
+Application.CutCopyMode = False
+
+shBarangTarif.Activate
+Range("A:A").Insert Shift:=xlToRight
+Range("A2:A" & Range("B" & Rows.Count).End(xlUp).Row).Formula = "=C2&G2"
+Range("A2:A" & Range("B" & Rows.Count).End(xlUp).Row).Copy
+Range("A2:A" & Range("B" & Rows.Count).End(xlUp).Row).PasteSpecial xlPasteValues
+Application.CutCopyMode = False
+
+' ISI NOMOR DAFTAR
+shOlah.Activate
+Dim wbName As String, arr As Variant
+wbName = wbFile.Name
+
+' ISI NOMOR DAFTAR
+Range("J2:J" & lr).Formula = "=IFERROR(INDEX('[" & wbName & "]Header Dokumen'!$C:$C,MATCH(C2,'[" & wbName & "]Header Dokumen'!$B:$B,0)),""CEK FORMULA"")"
+
+' ISI TANGGAL DAFTAR
+Range("K2:K" & lr).Formula = "=IFERROR(INDEX('[" & wbName & "]Header Dokumen'!$D:$D,MATCH(C2,'[" & wbName & "]Header Dokumen'!$B:$B,0)),""CEK FORMULA"")"
+
+' ISI NOMOR INVOICE
+Range("L2:L" & lr).Formula = "=IFERROR(VLOOKUP(G2,'[" & wbName & "]Dokumen Pelengkap'!$A:$E,5,0),""CEK FORMULA"")"
+
+' ISI TANGGAL INVOICE
+Range("M2:M" & lr).Formula = "=IFERROR(VLOOKUP(G2,'[" & wbName & "]Dokumen Pelengkap'!$A:$F,6,0),""CEK FORMULA"")"
+
+' ISI NOMOR BL/AWB
+Range("N2:N" & lr).Formula = "=IFERROR(IFNA(VLOOKUP(I2,'[" & wbName & "]Dokumen Pelengkap'!$A:$E,5,0),VLOOKUP(C2&""AWB"",'[" & wbName & "]Dokumen Pelengkap'!$A:$E,5,0)),""CEK FORMULA"")"
+
+' ISI TANGGAL BL/AWB
+Range("O2:O" & lr).Formula = "=IFERROR(IFNA(VLOOKUP(I2,'[" & wbName & "]Dokumen Pelengkap'!$A:$F,6,0),VLOOKUP(C2&""AWB"",'[" & wbName & "]Dokumen Pelengkap'!$A:$F,6,0)),""CEK FORMULA"")"
+
+' ISI NAMA PEMASOK/PENGIRIM
+Range("P2:P" & lr).Formula = "=IFERROR(VLOOKUP(C2,'[" & wbName & "]Header Dokumen'!$B:$I,8,0),""CEK FORMULA"")"
+
+' ISI SERI BARANG ( pr )
+Range("Q2:Q" & lr).Formula = "=IF(C2<>"""",IF(C2=C1,Q1+1,1),"""")"
+
+Cells(2, 1) = 1
+Range("A2").AutoFill Destination:=Range(Cells(2, 1), Cells(lr, 1)), Type:=xlFillSeries
+
+shBarang.Activate
+Range("A:A").Insert Shift:=xlToRight
+Range("A2:A" & Range("B" & Rows.Count).End(xlUp).Row).Formula = "=CONCATENATE(IF(LEN(B2)=2,LEFT(B2,1),B2),C2)"
+
+shOlah.Activate
+Range("A:A").Insert Shift:=xlToRight
+Range("A2:A" & Range("B" & Rows.Count).End(xlUp).Row).Formula = "=CONCATENATE(B2,D2)"
+
+''' SET LOOKUP VALUE
+Range("R:R").Insert Shift:=xlToRight
+Range("R2:R" & lr).Formula = "=C2&Q2"
+
+shBarang.Activate
+lr2 = shBarang.Range("C" & Rows.Count).End(xlUp).Row
+Range("C:C").Insert Shift:=xlToRight
+Range("C2:C" & lr2).Formula = "=B2&E2"
+
+shOlah.Activate
+
+' ISI KODE BARANG
+Range("S2:S" & lr).Formula = "=IFERROR(VLOOKUP(R2,[" & wbName & "]Barang!$C:$I,7,0),""CEK FORMULA"")"
+
+' ISI NAMA BARANG
+Range("T2:T" & lr).Formula = "=IFERROR(VLOOKUP(R2,[" & wbName & "]Barang!$C:$F,4,0),""CEK FORMULA"")"
+
+' ISI KODE HS
+Range("U2:U" & lr).Formula = "=IFERROR(VLOOKUP(R2,[" & wbName & "]Barang!$C:$D,2,0),""CEK FORMULA"")"
+
+' ISI TARIF BM %
+Range("V2:V" & lr).Formula = "=IFERROR(VLOOKUP(D2,'[" & wbName & "]Barang Tarif'!$A:$H,8,0),""CEK FORMULA"")"
+
+' ISI TARIF PPN %
+Range("W2:W" & lr).Formula = "=IFERROR(VLOOKUP(F2,'[" & wbName & "]Barang Tarif'!$A:$H,8,0),""CEK FORMULA"")"
+
+' ISI TARIF PPH %
+Range("X2:X" & lr).Formula = "=IFERROR(VLOOKUP(E2,'[" & wbName & "]Barang Tarif'!$A:$H,8,0),""CEK FORMULA"")"
+
+' ISI SATUAN
+Range("Y2:Y" & lr).Formula = "=IFERROR(VLOOKUP(R2,[" & wbName & "]Barang!$C:$K,9,0),""CEK FORMULA"")"
+
+' ISI JUMLAH
+Range("Z2:Z" & lr).Formula = "=IFERROR(VLOOKUP(R2,[" & wbName & "]Barang!$C:$J,8,0),""CEK FORMULA"")"
+
+' ISI NILAI BARANG
+Range("AA2:AA" & lr).Formula = "=IFERROR(VLOOKUP(R2,[" & wbName & "]Barang!$C:$M,11,0),""CEK FORMULA"")"
+
+' ISI VALUTA
+Range("AB2:AB" & lr).Formula = "=IFERROR(VLOOKUP(C2,'[" & wbName & "]Header Dokumen'!$B:$AB,27,0),""CEK FORMULA"")"
+
+' ISI KURS
+Range("AC2:AC" & lr).Formula = "=IFERROR(VLOOKUP(C2,'[" & wbName & "]Header Dokumen'!$B:$AC,28,0),""CEK FORMULA"")"
+
+' ISI KODE NEGARA PEMASOK
+Range("AD2:AD" & lr).Formula = "=IFERROR(VLOOKUP(C2,'[" & wbName & "]Header Dokumen'!$B:$K,10,0),""CEK FORMULA"")"
+
+' ISI DATA SOURCE
+Range("AE2:AE" & lr).Formula = "PORTAL"
+
+' ISI TOTAL RP
+Range("AF2:AF" & lr).Formula = "=IFERROR(AA2*AC2,""CEK FORMULA"")"
+
+' HILANGKAN RUMUS
+Cells.Copy
+Cells.PasteSpecial xlPasteValues
+Application.CutCopyMode = False
+
+Range("R1").EntireColumn.Delete Shift:=xlToLeft
+Range("D2:I" & lr).EntireColumn.Delete Shift:=xlToLeft
+
+wbFile.Close SaveChanges:=False
+
+shOlah.Activate
+
+Range("E2").EntireColumn.Insert
+Range("E2:E" & lr).Formula = "=DATE(LEFT(F2,4),MID(F2,6,2),MID(F2,9,2))"
+Range("E:E").NumberFormat = "d-mmm-yy"
+Range("E1") = Range("F1")
+Range("E2:E" & lr) = Range("E2:E" & lr).Value2
+Range("F:F").Delete
+
+Range("G2").EntireColumn.Insert
+Range("G2:G" & lr).Formula = "=DATE(LEFT(H2,4),MID(H2,6,2),MID(H2,9,2))"
+Range("G:G").NumberFormat = "d-mmm-yy"
+Range("G1") = Range("H1")
+Range("G2:G" & lr) = Range("G2:G" & lr).Value2
+Range("H:H").Delete
+
+Range("I2").EntireColumn.Insert
+Range("I2:I" & lr).Formula = "=DATE(LEFT(J2,4),MID(J2,6,2),MID(J2,9,2))"
+Range("I:I").NumberFormat = "d-mmm-yy"
+Range("I1") = Range("J1")
+Range("I2:I" & lr) = Range("I2:I" & lr).Value2
+Range("J:J").Delete
+
+' KE SHEETS TPB
+shTPB.Activate
+rPaste = shTPB.Range("B" & Rows.Count).End(xlUp).Row + 1
+
+' ISI TGL TARIKAN DATA
+Range("C2") = tanggalTarikan
+
+' PINDAHKAN NILAI YANG SUDAH DI OLAH KE SHEETS TPB
+shOlah.Range("B2:Y" & lr).Copy Destination:=shTPB.Cells(rPaste, 2)
+
+' Tambahkan Nomor
+lr = shTPB.Range("B" & Rows.Count).End(xlUp).Row
+If lr > 3 Then
+    Range("A4:A" & lr).ClearContents
+    Range("A4") = "1"
+    Range("A4").DataSeries Rowcol:=xlColumns, Step:=1, Stop:=lr - 3
+End If
+
+' Rapihkan
+Range("A3:Z" & lr).EntireColumn.AutoFit
+Range("B2").EntireColumn.ColumnWidth = 14
+
+' Isi C1 Berapa Dokumen
+Dim sumDoc As Long
+sumDoc = WorksheetFunction.CountA(shTPB.Range("C4:C" & lr))
+Range("C1") = sumDoc & " Documents"
+
+shOlah.Delete
+
+Application.DisplayAlerts = True
+Application.ScreenUpdating = True
+
+MsgBox "Done", vbInformation, "Running Success..."
+
+twb.Save
+End Sub
+
+
+Sub TES()
+    
+    MsgBox "ini sub tes"
+    isData = False
+    Exit Sub
+    
+    MsgBox "ini sub tes lagi"
+    
+End Sub
+
+Sub tesCEK()
+
+Call TES
+If isData = False Then Exit Sub
+
+MsgBox "Masih Jalan"
+
+End Sub
+
+Sub cekcek()
+
+
+End Sub

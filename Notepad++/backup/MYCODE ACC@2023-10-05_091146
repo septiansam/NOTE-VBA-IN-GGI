@@ -1,0 +1,544 @@
+Sub PROCESS()
+
+Application.EnableEvents = False
+Application.ScreenUpdating = False
+Application.Calculation = xlCalculationManual
+
+Running.Show vbModeless
+DoEvents
+
+
+Dim starttime As Double, SUMMASTER As Integer
+Dim elapsedtime As Double
+starttime = Timer
+
+If Sheets.count > 4 Then
+    For i = Sheets.count To 5 Step -1
+        Application.DisplayAlerts = False
+        Sheets(i).Delete
+        Application.DisplayAlerts = True
+    Next i
+End If
+
+If Sheets(1).Visible = True Then Sheets(1).Visible = False
+
+'Call TAMBAHAN_LUR
+
+'=================
+Sheets("MASTER").Select
+Range("B" & Rows.count).End(xlUp).Offset(0, -1).Select
+Range(Selection, "A6").SpecialCells(xlCellTypeBlanks).FormulaR1C1 = "=IF(AND(RC[6]<>""FABRIC"",RC[6]<>""""),R[-1]C,"""")"
+
+Columns("A").Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+Range("B" & Rows.count).End(xlUp).Offset(0, -1).Select
+Range(Selection, "A6").FormulaR1C1 = "=IF(RC[1]<>"""",RC[2]&RC[1],"""")"
+
+Columns("A").Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+Range("B" & Rows.count).End(xlUp).Offset(0, -1).Select
+Range(Selection, "A6").FormulaR1C1 = "=IF(RC[1]<>"""",IF(RC[1]=R[-1]C[1],R[-1]C+1,1),"""")"
+
+Columns("A").Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+Range("B" & Rows.count).End(xlUp).Offset(0, -1).Select
+Range(Selection, "A6").FormulaR1C1 = "=IF(RC[1]<>"""",RC[2]&RC[1],"""")"
+
+Columns("A").Select
+Selection.Copy
+Selection.PasteSpecial xlPasteValues
+
+Columns("B:C").Delete
+
+Range("B:B").SpecialCells(xlCellTypeFormulas).ClearContents
+
+Sheets("PO").Copy After:=Sheets(4)
+Sheets("PO").Select
+Range("I" & Rows.count).End(xlUp).Select
+SUMAWAL = ActiveCell.row - 2
+
+'ISI KOLOM COLORWAY YANG KOSONG, ISI DENGAN COLORWAY YG SEBELUMNYA
+For i = 1 To SUMAWAL
+    If Cells(1 + i, 3) <> "" And Cells(2 + i, 3) = "" And (Cells(2 + i, 9) <> "" Or Cells(2 + i, 10) = "TOTAL QTY") Then
+        Cells(2 + i, 3) = Cells(1 + i, 3)
+        Cells(2 + i, 4) = Cells(1 + i, 4)
+    End If
+Next i
+
+'Range("I" & Rows.Count).End(xlUp).Offset(0, -6).Select
+'Range(Selection, "C3").SpecialCells(xlCellTypeBlanks).FormulaR1C1 = "=IF(OR(RC[5]<>"""",RC[6]=""TOTAL QTY""),R[-1]C,"""")"
+
+Range("C" & Rows.count).End(xlUp).Offset(0, -1).Select
+Range(Selection, "B3").SpecialCells(xlCellTypeBlanks).Select
+Selection.NumberFormat = "General"
+'LENGKAPI BARIS PO YG KOSONG
+Selection.FormulaR1C1 = "=R[-1]C"
+
+Range("C" & Rows.count).End(xlUp).Offset(0, 13).Select
+Range(Selection, "P3").SpecialCells(xlCellTypeBlanks).Select
+'LENGKAPI BARIS TANGGAL YG KOSONG
+Selection.FormulaR1C1 = "=R[-1]C"
+
+Columns("B:C").Select
+Selection.Copy
+Selection.PasteSpecial xlPasteValues
+
+Columns("P").Select
+Selection.Copy
+Selection.PasteSpecial xlPasteValues
+
+Columns("B").Copy
+Range("AA1").Select
+ActiveSheet.Paste
+'LIAT ADA PO APA AJA BUAT PATOKAN BIKIN SHEETS NYA
+Columns("AA").RemoveDuplicates Columns:=1, Header:=xlNo
+
+Range("AB3").FormulaR1C1 = "=VLOOKUP(RC[-1],C[-26]:C[-12],15,0)"
+Range("AB3").Copy
+Range("AA" & Rows.count).End(xlUp).Offset(0, 1).Select
+Range(Selection, "AB3").Select
+ActiveSheet.Paste
+Selection.Copy
+'SESUAIKAN FORMAT TANGGAL
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+Selection.NumberFormat = "[$-en-US]d-mmm-yy;@"
+
+Range("AA" & Rows.count).End(xlUp).Select
+SUMALL = ActiveCell.row
+
+For i = SUMALL To 2 Step -1
+    If Cells(i, 27) = "0" Then
+        Range(Cells(i, 27), Cells(i, 28)).Delete
+    End If
+Next i
+
+Range("AA" & Rows.count).End(xlUp).Select
+SUMALL = ActiveCell.row - 2
+
+'LOOPING BERDASARKAN BANYAK PO================
+'For k = 1 To 5
+
+' NEW
+    Dim arr As Variant
+    Sheets("MASTER").Select
+    Sheets("MASTER").Range("B:B").Insert Shift:=xlToRight
+    lr = Sheets("MASTER").Range("D" & Rows.count).End(xlUp).row
+
+    Range("C6:C" & lr).SpecialCells(xlCellTypeBlanks).Formula = "=IF(AND(I7<>""FABRIC"",I7<>""""),C6,"""")"
+    Range("B6:B" & lr).Formula = "=IF(AND(C6<>"""",D6<>"""",E6<>""WORK#""),IF(D6=D5,B5+1,1),"""")"
+    Sheets("MASTER").Range("B:B").Insert Shift:=xlToRight
+    Range("B6:B" & lr).Formula = "=IF(C6<>"""",E6&C6,"""")"
+    Range("B6:B" & lr).Copy: Range("B6").PasteSpecial xlPasteValues: Application.CutCopyMode = False
+    Range("C:C").Delete Shift:=xlToLeft
+' END
+
+For k = 1 To SUMALL
+'    k = 4
+    Sheets("PO").Select
+    'FILTER BERDASARKAN PO NYA
+    ActiveSheet.Range("$A$5:$Q$500000").AutoFilter Field:=2, Criteria1:=Cells(2 + k, 27).Value
+    Range("C" & Rows.count).End(xlUp).Select
+    'COPY KOLOM COLORWAY SAMPE TOTAL DARI SHEETS PO KE SHEETS DENGAN NAMA PO NYA
+    Range(Selection, "O4").SpecialCells(xlCellTypeVisible).Copy
+    Sheets.Add(After:=Sheets(Sheets.count)).Name = "PO " & Cells(2 + k, 27).Value
+    
+    'Update 28 August 2023 - SAM
+    Dim twb As Workbook, shPO As Worksheet
+    Set twb = ThisWorkbook
+    Set shPO = twb.ActiveSheet
+    'End
+    
+    'PASTE HASILNYA KE SHEETS DENGAN NAMA PO NYA
+    Sheets(Sheets.count).Select
+    Range("B1").PasteSpecial xlPasteAll
+    Sheets("PO").Select
+    Selection.AutoFilter
+
+    Sheets(Sheets.count).Select
+    For i = 2 To 8
+        If Cells(1, i) = "LINE" Then
+            Columns(i).Delete
+        Exit For
+        End If
+    Next i
+            
+    'NYARI DAN MENCOCOKKAN IDENTITAS DI KOLOM B (COLORWAY) DENGAN YANG DI MASTER KOLOM
+    'JADI MENGKATEGORI DIA SMALL ATAU 2X-LARGE
+    
+    'Update SAM 25 August 2023
+    lc = shPO.Cells(1, Columns.count).End(xlToLeft).Column + 1
+    lr = shPO.Range("N" & Rows.count).End(xlUp).row
+    n = shPO.Name
+    Range(Cells(3, lc), Cells(lr, lc)).Formula = "=IFERROR(IF(AND(B3<>""COLORWAY"",B3<>"""",LEFT(H3,5)<>""COLOR"",LEFT(H3,5)<>""TOTAL""),IF(INDEX(MASTER!C:C,MATCH('" & n & "'!B3,MASTER!D:D,0))<>""B&T"",""SMALL"",""2X – LARGE""),""""),""ADA ERROR"")"
+    'END
+
+    Columns("O").Select
+    Selection.Copy
+    Selection.PasteSpecial xlPasteValues
+
+    Sheets("MASTERKOLOM").Visible = True
+    
+    Range("G" & Rows.count).End(xlUp).Select
+    SUMPO = ActiveCell.row - 2
+    For i = SUMPO To 1 Step -1
+    Cells(2 + i, 2).Select
+        If Cells(1 + i, 2) <> "" And Cells(3 + i, 2) <> "" And Left(Cells(1 + i, 2), 6) <> Left(Cells(2 + i, 2), 6) And Cells(2 + i, 7) <> "" Then
+            'KALO DIA KATEGORI SMALL MASUKKAN HEADER NYA SMALL SAMPE XX-LARGE
+            If Cells(2 + i, 15) = "SMALL" Then
+                Rows(2 + i).Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+                Rows("1:2").Copy
+                Rows(3 + i).Insert Shift:=xlDown
+            ElseIf Cells(2 + i, 15) = "2X – LARGE" Then
+                'HANYA UNTUK YANG B&T
+                Rows(2 + i).Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+                Sheets("MASTERKOLOM").Select
+                Range("BD1:BP2").Copy
+                Sheets(Sheets.count).Select
+                Cells(3 + i, 2).Insert Shift:=xlDown
+            End If
+        End If
+    Next i
+    Application.CutCopyMode = False
+    Columns("O").ClearContents
+    'MENGKATEGORIKAN JENIS UKURAN S TO X-LARGE ATAU XX-LARGE ATAU YTH DAN LAINNYA
+    'UNTUK KEMUDIAN DIJADIKAN ACUAN MENGAMBIL KOLOM ELASTIC DAN SETERUSNYA
+    'IF(AND(LOGIC1,LOGIC2),IF(VLOOKUP(LOGIC1,TABLE,KOLOM 2,0)=NORMAL,
+    'TAMBAHKAN S TO XX-LARGE DI KONDISI
+    'LOGIC AND(RC[6]<>"""",RC[6]<>""FABRIC"")
+    'TRUE IF(VLOOKUP(RC[1],MASTERKOLOM!C[52]:C[53],2,0)=""NORMAL"",IF(RC[12]="""",""S TO X-LARGE"",""XX-LARGE"")
+    'FALSE VLOOKUP(RC[1],MASTERKOLOM!C[52]:C[53],2,0)),"""")
+    'Range("A3").FormulaR1C1 = "=IF(AND(RC[6]<>"""",RC[6]<>""FABRIC""),IF(VLOOKUP(RC[1],MASTERKOLOM!C[52]:C[53],2,0)=""NORMAL"",IF(RC[12]="""",""S TO X-LARGE"",""XX-LARGE""),VLOOKUP(RC[1],MASTERKOLOM!C[52]:C[53],2,0)),"""")"
+    '## INI AWAL BUKAN SAM
+    'Range("A3").FormulaR1C1 = "=IF(AND(RC[6]<>"""",RC[6]<>""FABRIC""),IF(VLOOKUP(RC[1],MASTERKOLOM!C53:C54,2,0)=""NORMAL"",IF(or(LEFT(RC[1],6)=""981644"",LEFT(RC[1],6)=""982062""),""S TO XX-LARGE"",IF(OR(RC[8]<>"""",RC[9]<>"""",RC[10]<>"""",RC[11]<>""""),""S TO X-LARGE"",""XX-LARGE"")),VLOOKUP(RC[1],MASTERKOLOM!C53:C54,2,0)),"""")"
+    
+    shPO.Activate
+    
+    lr = shPO.Range("B" & Rows.count).End(xlUp).row
+    Range("A3:A" & lr).Formula = "=IF(AND(B3<>"""",B3<>""COLORWAY"",LEFT(H3,5)<>""TOTAL""),IF(B3=B2,A2+1,1),"""")"
+    Range("A:A").Insert Shift:=xlToRight
+    Range("A3:A" & lr).Formula = "=IF(AND(C3<>"""",C3<>""COLORWAY"",H3<>""FABRIC"",LEFT(I3,5)<>""TOTAL"",LEFT(I3,5)<>""COLOR""),C3&B3,"""")"
+    Range("A3:A" & lr).Copy: Range("A3").PasteSpecial xlPasteValues: Application.CutCopyMode = False
+    Range("B3:B" & lr).ClearContents
+    Range("B3:B" & lr).Formula = "=IF(A3<>"""",VLOOKUP(A3,MASTER!B:C,2,0),"""")"
+    Range("B3:B" & lr).Copy: Range("B3").PasteSpecial xlPasteValues: Application.CutCopyMode = False
+    Range("A3:A" & lr).ClearContents
+
+    '=IFERROR(IF(AND(B3<>"COLORWAY",B3<>"",LEFT(H3,5)<>"COLOR",LEFT(H3,5)<>"TOTAL",H3<>"",D3<>"",D3<>"OR#"),INDEX(MASTER!B:B,MATCH('PO 0146821'!B3,MASTER!C:C,0)),""),"ADA ERROR")
+    '=IFERROR(IF(AND(C3<>"",C3<>"COLORWAY"),INDEX(MASTER!A:A,MATCH('PO 0146821'!C3,MASTER!C:C,0)),""),"ADA ERROR")
+    
+'    Range("A3").Copy
+'    Range("B" & Rows.Count).End(xlUp).Offset(0, -1).Select
+'    Range(Selection, "A3").Select
+'    ActiveSheet.Paste
+'    Selection.Copy
+'    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+'
+'    Columns("A").Insert Shift:=xlToRight
+    Range("A3:A" & lr).FormulaR1C1 = "=IF(RC[1]<>"""",IF(AND(RC[2]=R[-1]C[2],RC[1]=R[-1]C[1],RC[3]=R[-1]C[3]),R[-1]C+1,1),"""")"
+'    Range("A3").Copy
+'    Range("B" & Rows.Count).End(xlUp).Offset(0, -1).Select
+'    Range(Selection, "A3").Select
+'    ActiveSheet.Paste
+    Range("A3:A" & lr).Copy
+    Range("A3").PasteSpecial Paste:=xlPasteValues: Application.CutCopyMode = False
+
+    Columns("A").Insert Shift:=xlToRight
+    Range("A3:A" & lr).FormulaR1C1 = "=IF(RC[1]<>"""",RC[3]&RC[2]&RC[1],"""")"
+
+    Range("A3:A" & lr).Copy
+    Range("A3").PasteSpecial Paste:=xlPasteValues: Application.CutCopyMode = False
+
+    Columns("B:C").Delete Shift:=xlToLeft
+    
+    Range("A" & Rows.count).End(xlUp).Select
+    SUMTES = ActiveCell.row - 2
+    'COPY ISI KOLOM ELASTIC DAN SETERUSNYA
+    For i = 1 To SUMTES
+    Sheets(Sheets.count).Select
+    If Cells(2 + i, 1) <> "" Then
+        Sheets("MASTER").Select
+        Range("A1").Select
+        a = Sheets(Sheets.count).Cells(2 + i, 1).Value
+        If a = "982982 – AS TO X-LARGE1" Then
+            a = "982982 – AB&T1"
+        ElseIf a = "982982 – AS TO X-LARGE2" Then
+            a = "982982 – AB&T2"
+        ElseIf a = "982982 – AS TO X-LARGE3" Then
+            a = "982982 – AB&T3"
+        ElseIf a = "983118 – AS TO X-LARGE1" Then
+            a = "983118 – AS TO XX-LARGE1"
+        ElseIf a = "983118 – AS TO X-LARGE2" Then
+            a = "983118 – AS TO XX-LARGE2"
+        ElseIf a = "983118 – BS TO X-LARGE1" Then
+            a = "983118 – BS TO XX-LARGE1"
+        ElseIf a = "983118 – BS TO X-LARGE2" Then
+            a = "983118 – BS TO XX-LARGE2"
+        ElseIf a = "983119 – AS TO X-LARGE1" Then
+            a = "983119 – AS TO XX-LARGE1"
+        ElseIf a = "983119 – AS TO X-LARGE2" Then
+            a = "983119 – AS TO XX-LARGE2"
+        ElseIf a = "983119 – BS TO X-LARGE1" Then
+            a = "983119 – BS TO XX-LARGE1"
+        ElseIf a = "983119 – BS TO X-LARGE2" Then
+            a = "983119 – BS TO XX-LARGE2"
+            
+        End If
+        Cells.Find(what:=a, After:=ActiveCell, LookIn:=xlFormulas, lookat:=xlPart, Searchorder:=xlByRows, searchdirection:=xlNext, MatchCase:=False, SearchFormat:=False).Activate
+        ROWMASTER = ActiveCell.row
+        ''''
+        
+        barisPaste = shPO.Cells(2 + i, 1).row
+        kolomPaste = shPO.Cells(barisPaste, 1).CurrentRegion.Columns(shPO.Cells(barisPaste, 1).CurrentRegion.Columns.count).Offset(0, 2).Column
+        Set rgPaste = shPO.Cells(barisPaste, kolomPaste)
+        
+        c1 = Sheets("MASTER").Cells(ROWMASTER, 1).CurrentRegion.Columns(Sheets("MASTER").Cells(ROWMASTER, 1).CurrentRegion.Columns.count).End(xlToRight).Column
+        c2 = Sheets("MASTER").Cells(ROWMASTER, Columns.count).End(xlToLeft).Column
+        Sheets("MASTER").Range(Cells(ROWMASTER, c1), Cells(ROWMASTER, c2)).Copy
+        shPO.Activate
+        rgPaste.PasteSpecial xlPasteAll
+        
+        Dim cell As Range
+        For Each cell In Selection
+            If cell.Interior.ColorIndex <> xlNone Then
+                cell.Interior.ColorIndex = xlNone
+            End If
+        Next cell
+        
+        ''''
+    End If
+    Next i
+    
+    Sheets(Sheets.count).Select
+    For i = SUMTES To 1 Step -1
+    If Cells(2 + i, 2) = Cells(3 + i, 2) And Cells(3 + i, 3) = "" Then
+        Cells(3 + i, 2).ClearContents
+    End If
+    Next i
+
+'    Columns("A").Delete Shift:=xlToLeft
+    
+    'VERSI AWAL
+    
+    'COPY HEADER NYA DARI COLORWAY SAMPE SETERUSNYA SPASI ANTARA KOLOM FULL SIZE DAN SEWING TAK NGARUH
+'    For i = 1 To SUMTES + 2
+'    Sheets(Sheets.Count).Select
+'    If Cells(i, 1) = "COLORWAY" Then
+'        Sheets("MASTERKOLOM").Select
+'        Range("A1").Select
+'        Sheets(Sheets.Count).Select
+'        Range("da" & 2 + i).FormulaR1C1 = "=RIGHT(RC[-104],FIND("""",RC[-104]))"
+'        simpan_kode = Range("da" & 2 + i).Value
+'        Range("cz" & 2 + i).FormulaR1C1 = "=LEFT(RC[-103],6)"
+'        simpan_work = Range("cz" & 2 + i).Value
+''
+'        If simpan_work = "980181" And (simpan_kode = "K" Or simpan_kode = "L" Or simpan_kode = "M") Then
+'            Sheets("MASTERKOLOM").Select
+'            Range("A1").Select
+'            Columns("A").Find(What:="980181_2", After:=ActiveCell, LookIn:=xlFormulas, lookat:=xlPart, Searchorder:=xlByRows, searchdirection:=xlNext, MatchCase:=False, SearchFormat:=False).Activate
+'            ROWKOLOMMASTER = ActiveCell.Row
+'            Range(Cells(ROWKOLOMMASTER, 2), Cells(ROWKOLOMMASTER + 1, 42)).Copy
+'            Sheets(Sheets.Count).Select
+'            Cells(i, 15).PasteSpecial xlPasteAll
+'        Else
+'            Sheets("MASTERKOLOM").Select
+'            Range("A1").Select
+'            Debug.Print Left(Sheets(Sheets.Count).Cells(2 + i, 1).Value, 6)
+'
+'                Columns(1).Select
+'                Columns("A").Find(What:=Left(Sheets(Sheets.Count).Cells(2 + i, 1).Value, 6), After:=ActiveCell, LookIn:=xlFormulas, lookat:=xlPart, Searchorder:=xlByRows, searchdirection:=xlNext, MatchCase:=False, SearchFormat:=False).Activate
+'                ROWKOLOMMASTER = ActiveCell.Row
+'                Range(Cells(ROWKOLOMMASTER, 2), Cells(ROWKOLOMMASTER + 1, 48)).Copy
+'                Sheets(Sheets.Count).Select
+'                Cells(i, 15).PasteSpecial xlPasteAll
+'        End If
+'
+'    End If
+'
+'    Next i
+    
+    'VERSI BARU (SAM) 24 AGUSTUS 2023
+    
+    Dim rg As Range, text As String, sumHeader As Long
+    shPO.Activate
+    Set rg = shPO.Range("B1:B" & Range("B" & Rows.count).End(xlUp).row)
+    text = LCase(shPO.Range("B1"))
+    
+    For Each cell In rg
+        If LCase(cell.Value) = text Then
+            kode = cell.Offset(2, -1).Value
+            Set rgDest = shPO.Range(shPO.Cells(cell.row, kolomPaste), shPO.Cells(cell.row, kolomPaste))
+            Sheets(2).Select
+            Columns("A").Find(what:=kode).Select
+            
+            'CARI KATA WORK# atau Sel yang tidak kosong, dan fillnya tidak xlNone
+            fr = ActiveCell.row
+            For selnya = fr To 4 Step -1
+                If Sheets("MASTER").Cells(selnya, 4) = "WORK#" Or (Cells(selnya, 4) <> "" And Cells(selnya, 4).Interior.ColorIndex <> xlNone And Cells(selnya, 4).Interior.ColorIndex = 15) Then
+                    r = Sheets("MASTER").Cells(selnya, 4).row
+                    Exit For
+                End If
+            Next selnya
+            fc = Sheets("MASTER").Cells(fr, 1).CurrentRegion.Columns(Sheets("MASTER").Cells(fr, 1).CurrentRegion.Columns.count).Column
+            fc = Sheets("MASTER").Cells(r, fc).End(xlToRight).Column
+            c = Sheets("MASTER").Cells(r, Columns.count).End(xlToLeft).Column
+            lc = Sheets("MASTER").Cells(r, c).CurrentRegion.Columns(Sheets("MASTER").Cells(r, c).CurrentRegion.Columns.count).Column
+
+            Set rgHeader = Range(Cells(r, fc), Cells(r + 1, lc))
+            rgHeader.Copy Destination:=rgDest
+            Sheets(Sheets.count).Select
+            'Selection.Interior.ColorIndex = 15
+        End If
+    Next cell
+    Range("A:A").Delete
+
+    'SESUAIKAN FORMAT
+    Cells.Replace what:="COLORWAY", Replacement:="WORK#", lookat:=xlWhole, Searchorder:=xlByRows, MatchCase:=False, SearchFormat:=False, ReplaceFormat:=False
+    ActiveWindow.Zoom = 55
+    Cells.WrapText = False
+    Columns("T").ColumnWidth = 56.57
+    Columns("Q").ColumnWidth = 55.43
+    Columns("A:BD").EntireColumn.AutoFit
+    Columns("A:BD").Rows.AutoFit
+
+    For i = 1 To SUMTES
+    If Cells(2 + i, 7) = "TOTAL QTY" Then
+    Rows(2 + i).Select
+    'HAPUS ROW YG KOSONG INDIKATORNYA ADA KATA TOTAL DI KOLOM 7
+    Selection.ClearContents
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    Selection.Borders(xlEdgeLeft).LineStyle = xlNone
+    'Selection.Borders(xlEdgeTop).LineStyle = xlNone
+    Selection.Borders(xlEdgeBottom).LineStyle = xlNone
+    Selection.Borders(xlEdgeRight).LineStyle = xlNone
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    With Selection.Interior
+        .Pattern = xlNone
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    End If
+    'HAPUS ROW YG KOSONG INDIKATORNYA ADA KATA WORK DI KOLOM 7
+    If Cells(2 + i, 1) = "WORK#" Then
+        Rows(1 + i).Select
+        Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+        Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+        Selection.Borders(xlEdgeLeft).LineStyle = xlNone
+        Selection.Borders(xlEdgeTop).LineStyle = xlNone
+        'Selection.Borders(xlEdgeBottom).LineStyle = xlNone
+        Selection.Borders(xlEdgeRight).LineStyle = xlNone
+        Selection.Borders(xlInsideVertical).LineStyle = xlNone
+        Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    With Selection.Interior
+        .Pattern = xlNone
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    End If
+    Next i
+    
+    'MASUKKAN IDENTITAS PO DLL
+    Rows("1:3").Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    
+    Range("A1") = "MATERIAL ACCESSORIES PO#" & Sheets("PO").Cells(2 + k, 27).Value
+    Range("A2") = "GARMENT DELY : " & Sheets("PO").Cells(2 + k, 28)
+    TOTALPO = WorksheetFunction.Sum(Range("M6:M10000"))
+    Sheets("PO").Select
+    Range("Z" & Rows.count).End(xlUp).Offset(1, 0) = TOTALPO
+    Sheets(Sheets.count).Select
+
+    Range("F" & Rows.count).End(xlUp).Select
+    SUMSHEET = ActiveCell.row - 5
+    'KOSONGKAN KOLOM WORK YANG KOLOM OR NYA KOSONG
+    For i = SUMSHEET To 1 Step -1
+        If Cells(5 + i, 1) = Cells(6 + i, 1) And Cells(6 + i, 5) = "" Then
+            Range(Cells(6 + i, 1), Cells(6 + i, 2)).ClearContents
+        End If
+    Next i
+    
+    '" NEW SAM -> ATUR WARNA FILL/SEL
+    For Each cell In shPO.UsedRange
+        If cell.Interior.ColorIndex <> xlNone And cell.Interior.ColorIndex <> 15 And cell.Interior.ColorIndex <> 6 Then
+            cell.Interior.ColorIndex = 15
+        End If
+        
+        'if cell.Interior.ColorIndex <> xlnone
+    Next cell
+    'END
+
+    Range("A1").Select
+
+Next k
+' NEW
+    Sheets("MASTER").Select
+    Range("B:B").Delete Shift:=xlToLeft
+    Range("B:B").SpecialCells(xlCellTypeFormulas).ClearContents
+
+
+
+
+'==========================================
+Sheets("MASTER").Select
+Columns("A").Delete
+
+Sheets("MASTERKOLOM").Select
+ActiveWindow.SelectedSheets.Visible = False
+
+Sheets("PO").Select
+Range("Z1").Formula = "=SUM(Z2:Z10000)"
+Range("Y1").Formula = "=SUM(O3:O10000)/2"
+
+If Range("Z1").Value - Range("Y1").Value <= 0.000005 Or Range("Z1").Value - Range("Y1").Value >= 0.000005 Then
+Sheets("TOMBOL").Select
+Range("F7") = "OK"
+Else
+Sheets("TOMBOL").Select
+Range("F7") = "NOT OK, CHECK AGAIN"
+End If
+
+Application.DisplayAlerts = False
+Sheets("PO").Delete
+Application.DisplayAlerts = True
+
+Sheets("PO (2)").Name = "PO"
+Sheets("PO").Select
+Range("A1").Select
+
+Call editlur
+Call TAMBAHAN_LUR2
+
+ActiveWorkbook.Save
+Application.EnableEvents = True
+Application.ScreenUpdating = True
+Application.Calculation = xlCalculationAutomatic
+
+Running.Label1.Caption = " ...  Program Selesai Dijalankan   ... "
+Unload Running
+
+ThisWorkbook.Save
+
+elapsedtime = Round(Timer - starttime, 2)
+MsgBox "Successfully done in " & elapsedtime & " seconds", , "RECAP ORDER AGRON"
+
+
+
+End Sub
+
+Sub editlur()
+Dim Rng As Range, i As Integer, j As Integer
+
+If Sheets.count > 4 Then
+    For i = 5 To Sheets.count
+        Sheets(i).Select
+        With Columns("N:N").Interior
+            .Pattern = xlNone
+            .TintAndShade = 0
+            .PatternTintAndShade = 0
+        End With
+        With Columns("N:N").Borders 'BUAT BORDER
+            .LineStyle = xlNone
+        End With
+    
+        
+    Next i
+End If
+
+End Sub

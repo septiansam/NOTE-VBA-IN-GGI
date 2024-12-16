@@ -1,0 +1,208 @@
+Sub PIVOTT()
+
+Dim TOLAST As Integer
+Dim PTable As PivotTable, twb As Workbook, LASTT As Integer, i As Integer, PCache As PivotCache, PSheet As Worksheet, PRange As Range, RNG As Range, DATAHAPUS As Integer
+
+Set twb = ThisWorkbook: Set PSheet = twb.Worksheets("TES2")
+
+Sheets("OLAHAN1").Select
+Cells(1, 9) = "Style": Cells(1, 10) = "Item": Cells(1, 2) = "Factory"
+Cells(1, 2) = "Factory"
+
+Set PRange = Sheets("olahan1").Range("C3").CurrentRegion
+Set PCache = ActiveWorkbook.PivotCaches.Create(SourceType:=xlDatabase, SourceData:=PRange) 'UNTUK INSERT PIVOT DARI SHEET REKAP
+Set PTable = PCache.CreatePivotTable(TableDestination:=PSheet.Cells(1, 1), TableName:="PivotTable") 'MEMBUAT PIVOT DI SHEET TES
+
+Sheets("TES2").Select
+With PTable.PivotFields("Factory") 'INSERT FIELD JENIS MESIN DI BARIS PERTAMA
+    .Caption = "Factory": .Orientation = xlRowField: .Position = 1
+End With
+With PTable.PivotFields("BUYER2")
+    .Caption = "Buyer2": .Orientation = xlRowField: .Position = 2
+End With
+With PTable.PivotFields("Line")
+    .Caption = "Line": .Orientation = xlRowField
+    .Position = 3
+End With
+With PTable.PivotFields("Item")
+    .Caption = "Item": .Orientation = xlRowField
+    .Position = 4
+End With
+With PTable.PivotFields("Style")
+    .Caption = "Style": .Orientation = xlRowField
+    .Position = 5
+End With '
+With PTable.PivotFields("FOB")
+    .Caption = "FOB": .Orientation = xlRowField
+    .Position = 6
+End With
+With PTable.PivotFields("CMT")
+    .Caption = "CMT": .Orientation = xlRowField
+    .Position = 7
+End With
+'With PTable.PivotFields("CMTP")
+'    .Caption = "CMTP": .Orientation = xlRowField
+'    .Position = 8
+'End With
+With PTable.PivotFields("CM(USD)")
+    .Orientation = xlDataField
+    .Position = 1: .Function = xlAverage
+End With
+With PTable.PivotFields("Output")
+    .Orientation = xlDataField
+    .Position = 2: .Function = xlSum
+End With
+With PTable.PivotFields("Amount.CM(USD)")
+    .Orientation = xlDataField
+    .Position = 3: .Function = xlSum
+End With
+With PTable.PivotFields("Cost.Proporsional(US)")
+    .Orientation = xlDataField
+    .Position = 4: .Function = xlSum
+End With
+With PTable.PivotFields("Profit.Lost(USD)")
+    .Orientation = xlDataField
+    .Position = 5: .Function = xlSum
+End With
+
+Sheets("TES2").Select
+ActiveSheet.PivotTables("PivotTable").RowAxisLayout xlTabularRow
+
+'ActiveSheet.PivotTables("PivotTable").PivotSelect "CRPAN", xlDataAndLabel, True
+ActiveSheet.PivotTables("PivotTable").PivotFields("Item").Subtotals = Array(False, False, False, False, False, False, False, False, False, False, False, False)
+ActiveSheet.PivotTables("PivotTable").PivotSelect "Line[All]", xlLabelOnly, True
+ActiveSheet.PivotTables("PivotTable").PivotFields("Line").Subtotals = Array(False, False, False, False, False, False, False, False, False, False, False, False)
+ActiveSheet.PivotTables("PivotTable").PivotFields("FOB").Subtotals = Array(False, False, False, False, False, False, False, False, False, False, False, False)
+ActiveSheet.PivotTables("PivotTable").PivotFields("CMT").Subtotals = Array(False, False, False, False, False, False, False, False, False, False, False, False)
+'ActiveSheet.PivotTables("PivotTable").PivotFields("CMTP").Subtotals = Array(False, False, False, False, False, False, False, False, False, False, False, False)
+ActiveSheet.PivotTables("PivotTable").PivotFields("Style").Subtotals = Array(False, False, False, False, False, False, False, False, False, False, False, False)
+
+Cells.Copy: Cells(1, 1).PasteSpecial xlPasteValues
+
+Cells.Replace what:="(blank)", Replacement:=""
+Columns("F:G").Cut: Range("M1").Insert Shift:=xlToRight
+    
+Cells(2, 13) = "Sum of FOB": Cells(2, 14) = "Sum of CMT"
+
+TOLAST = Range("A" & Rows.Count).End(xlUp).Row - 1
+Range("M3:N" & TOLAST).Formula = "=$G3*K3"
+Cells(2, 15) = "Total Sales"
+Range("O3:O" & TOLAST).Formula = "=M3+N3"
+
+Set RNG = Range("A2").CurrentRegion
+With RNG.Borders 'BUAT BORDER
+    .LineStyle = xlContinuous: .Weight = xlThin
+End With
+For i = 3 To TOLAST
+    If Right(Cells(i, 1), 5) = "Total" Or Right(Cells(i, 2), 5) = "Total" Then
+        Range(Cells(i, 13), Cells(i, 16)).ClearContents
+    End If
+Next i
+With Range("A2:O2")
+    .Interior.Color = 15773696: .Font.Bold = True
+End With
+Cells(2, 7) = "Sum of QTY"
+LASTT = Sheets("TES2").Cells(Rows.Count, 1).End(xlUp).Row
+For i = 2 To LASTT
+    If Right(Cells(i, 1), 5) = "Total" And Cells(i - 1, 1) = vbNullString Then
+        Rows(i).Font.Bold = True: Rows(i - 1).Font.Bold = True
+        Range(Cells(i, 1), Cells(i, 15)).Interior.Color = 15773696
+        Range(Cells(i - 1, 1), Cells(i - 1, 15)).Select
+            With Selection.Interior
+                .Pattern = xlSolid
+                .PatternColorIndex = xlAutomatic
+                .ThemeColor = xlThemeColorAccent6
+                .TintAndShade = 0.599993896298105
+                .PatternTintAndShade = 0
+            End With
+    End If
+Next i
+
+Range(Cells(LASTT, 1), Cells(LASTT, 15)).Font.Bold = True
+Range(Cells(LASTT, 1), Cells(LASTT, 15)).Interior.Color = 15773696
+ActiveSheet.Name = "Resume per Buyer"
+
+LASTT = Sheets("Resume per Buyer").Cells(Rows.Count, 2).End(xlUp).Row
+For i = 2 To LASTT
+    If Right(Cells(i, 2), 5) = "Total" Then
+        Rows(i).Font.Bold = True
+            Range(Cells(i, 1), Cells(i, 15)).Select
+            With Selection.Interior
+                .Pattern = xlSolid
+                .PatternColorIndex = xlAutomatic
+                .ThemeColor = xlThemeColorAccent6
+                .TintAndShade = 0.599993896298105
+                .PatternTintAndShade = 0
+            End With
+    End If
+Next i
+
+Dim AWAL As Integer
+Dim AKHIR As Integer
+
+AWAL = 3
+AKHIR = Cells(AWAL, 14).End(xlDown).Row
+Cells(LASTT + 1, 14) = "QWERTY"
+Cells(LASTT + 2, 14) = "QWERTY"
+Cells(LASTT + 1, 15) = "QWERTY"
+For i = 2 To LASTT
+    
+    If Right(Cells(i, 2), 5) = "Total" Then
+        Cells(i, 15).Formula = "=sum(O" & AWAL & ":O" & AKHIR & ")"
+        Cells(i, 16) = i
+        Cells(i + 1, 15).Select
+        AWAL = ActiveCell.Row
+        If Cells(AWAL, 15) = vbNullString Then
+            AWAL = AWAL + 1
+        End If
+        
+        AKHIR = Cells(AWAL, 14).End(xlDown).Row
+        If Cells(AWAL + 1, 14) = vbNullString Then
+             AKHIR = AWAL
+        End If
+        
+    End If
+
+Next i
+Range("N2:O1000").Replace what:="QWERTY", Replacement:=""
+Range("P1:P" & LASTT).SpecialCells(xlCellTypeBlanks).Delete Shift:=xlUp
+
+SUMTGL = Cells(Rows.Count, 16).End(xlUp).Row
+FORMULAUSE2 = ""
+For k = 1 To SUMTGL
+    If k = 1 Then
+        FORMULAUSE2 = "O" & Cells(k, 16).Value
+    Else
+        FORMULAUSE2 = FORMULAUSE2 & "+O" & Cells(k, 16).Value
+    End If
+Next k
+FORMULAUSE3 = "=" & FORMULAUSE2
+
+Cells(LASTT + 2, 15) = FORMULAUSE3
+Columns("P").ClearContents
+ActiveSheet.Name = "Resume per Buyer"
+Columns("F").NumberFormat = "0.0"
+Columns("H:J").NumberFormat = "#,##0.00_);[Red](#,##0.00)"
+Cells.EntireColumn.AutoFit
+Cells(2, 2) = "Buyer": Cells(2, 6) = "CM (USD)"
+
+Columns("G").NumberFormat = "#,##0"
+Rows(1).Delete
+For i = 1 To 3
+    Rows(i).Insert
+Next i
+
+DATAHAPUS = Sheets("Resume per Buyer").Cells(Rows.Count, 6).End(xlUp).Row
+For i = 5 To DATAHAPUS
+    If Cells(i, 6).Font.Bold = True Then
+        Cells(i, 6).ClearContents
+    End If
+Next i
+ActiveWindow.Zoom = 75
+Columns("M:O").NumberFormat = "#,##0_);[Red](#,##0)"
+With Range("A1:J1")
+    .Merge: .Font.Bold = True: .HorizontalAlignment = xlCenter: .Font.Size = 18
+End With
+Cells(1, 1).Select
+
+End Sub

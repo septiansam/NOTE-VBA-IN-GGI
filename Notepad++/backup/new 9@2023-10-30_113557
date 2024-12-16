@@ -1,0 +1,300 @@
+Option Explicit
+
+Sub PROCESSLAPORANGM1()
+Dim DirFile  As String, ROWNAMA As Integer, ROWNAMA2 As Integer
+Dim twb As Workbook, ws1 As Worksheet, i As Integer, FILEWO As String, NAMASHEET As String
+Dim A As Double, B As Double, C As Double, FILEPATHNAME As String, FILENAMA As String
+
+Set twb = ThisWorkbook: Set ws1 = twb.Sheets("TOMBOL")
+
+Dim starttime As Double, elapsedtime As Double
+starttime = Timer
+
+For i = Sheets.Count To 2 Step -1
+Application.DisplayAlerts = False
+Sheets(i).Delete
+Application.DisplayAlerts = True
+Next i
+
+Sheets("TOMBOL").Select
+If Range("I3") = "" Then
+MsgBox "Mohon isi tanggal terlebih dahulu"
+Range("I3").Select
+Exit Sub
+ElseIf Range("I4") = "" Then
+MsgBox "Mohon isi bulan terlebih dahulu"
+Range("I4").Select
+Exit Sub
+ElseIf Range("I5") = "" Then
+MsgBox "Mohon isi tahun terlebih dahulu"
+Range("I5").Select
+Exit Sub
+End If
+
+FILEWO = ws1.Cells(4, 6) & ws1.Cells(5, 6)
+DirFile = ThisWorkbook.Sheets("TOMBOL").Range("F3").Value & "\" & ThisWorkbook.Sheets("TOMBOL").Range("F4").Value & ThisWorkbook.Sheets("TOMBOL").Range("F5").Value
+If Dir(DirFile) = "" Then
+ThisWorkbook.Activate
+Sheets("TOMBOL").Select
+Range("F4").Select
+MsgBox "File " & ThisWorkbook.Sheets("TOMBOL").Range("F4").Value & " doesn't exist"
+Exit Sub
+Else
+Application.DisplayAlerts = False
+Workbooks.Open ThisWorkbook.Sheets("TOMBOL").Range("F3").Value & "\" & ThisWorkbook.Sheets("TOMBOL").Range("F4").Value & ThisWorkbook.Sheets("TOMBOL").Range("F5").Value
+End If
+
+Workbooks(ThisWorkbook.Sheets("TOMBOL").Range("F4").Value & ThisWorkbook.Sheets("TOMBOL").Range("F5").Value).Activate
+
+For i = 1 To Worksheets.Count
+    If Worksheets(i).Name = ThisWorkbook.Sheets("TOMBOL").Range("F6").Value Then
+        Worksheets(ThisWorkbook.Sheets("TOMBOL").Range("F6").Value).Activate
+    End If
+Next i
+If ActiveSheet.Name <> ThisWorkbook.Sheets("TOMBOL").Range("F6").Value Then
+    Workbooks(ThisWorkbook.Sheets("TOMBOL").Range("F4").Value & ThisWorkbook.Sheets("TOMBOL").Range("F5").Value).Close SaveChanges:=False
+    ThisWorkbook.Activate
+    Sheets("TOMBOL").Select
+    Range("F6").Select
+    MsgBox "Sheet " & ThisWorkbook.Sheets("TOMBOL").Range("F6").Value & " doesn't exist"
+    Exit Sub
+End If
+
+Cells.Copy
+ThisWorkbook.Activate
+Sheets.Add(After:=Sheets(Sheets.Count)).Name = "LAPORAN"
+Sheets.Add(After:=Sheets(Sheets.Count)).Name = "TES"
+Sheets.Add(After:=Sheets(Sheets.Count)).Name = "TES2"
+Sheets.Add(After:=Sheets(Sheets.Count)).Name = "TES3"
+Sheets("LAPORAN").Select
+Range("A1").PasteSpecial xlPasteAll
+
+Workbooks(FILEWO).Close SaveChanges:=False
+
+ThisWorkbook.Activate
+Sheets("LAPORAN").Select
+Cells.Copy
+Sheets("TES").Select
+Range("A1").PasteSpecial xlPasteAll
+
+Columns("A").NumberFormat = "m/d/yyyy"
+ActiveSheet.Range("$A$4:$AS$50000").AutoFilter Field:=1, Operator:=xlFilterValues, Criteria1:=Array(2, Sheets("TOMBOL").Range("I4").Value & "/" & Sheets("TOMBOL").Range("I3").Value & "/" & Sheets("TOMBOL").Range("I5").Value)
+If Range("A" & Rows.Count).End(xlUp) = "TANGGAL" Then
+Application.DisplayAlerts = False
+Sheets("TES").Delete
+Sheets("TES2").Delete
+Application.DisplayAlerts = True
+Sheets("TOMBOL").Select
+Range("I3").Select
+MsgBox "Data pada tanggal tersebut tidak tersedia"
+Exit Sub
+End If
+
+Range("A" & Rows.Count).End(xlUp).Select
+Range(Selection, "AS5").SpecialCells(xlCellTypeVisible).Copy
+Sheets("TES2").Select
+Range("A1").PasteSpecial xlPasteAll
+
+Range("A" & Rows.Count).End(xlUp).Offset(1, 3).Select
+ROWNAMA = ActiveCell.Row
+For i = 1 To ROWNAMA
+If Cells(i, 4) = "" Then
+Cells(i, 4) = "kosong"
+End If
+Next i
+
+Cells.Copy
+Sheets("TES3").Select
+Range("A1").PasteSpecial xlPasteValues
+
+Application.DisplayAlerts = False
+Sheets("TES2").Delete
+Application.DisplayAlerts = True
+
+Sheets("TES3").Name = "TES2"
+
+Sheets("TES2").Select
+For i = 1 To ROWNAMA
+If Cells(i, 4) = "" Then
+Cells(i, 4) = Cells(i - 1, 4)
+End If
+Next i
+
+Columns("D").Replace What:="kosong", Replacement:=""
+
+'Range(Selection, "D1").SpecialCells(xlCellTypeBlanks).FormulaR1C1 = "=R[-1]C"
+Range("A" & Rows.Count).End(xlUp).Offset(0, 36).Select
+Range(Selection, "AK1").FormulaR1C1 = "=IFERROR(RC[-3]/(RC[3]-RC[-2]),0)"
+
+Range("AT1") = "1"
+Range("AU1") = "1"
+
+Range("A" & Rows.Count).End(xlUp).Offset(0, 45).Select
+Range(Selection, "AT2").FormulaR1C1 = "=IF(RC[-5]<>"""",1,R[-1]C+1)"
+Range("A" & Rows.Count).End(xlUp).Offset(0, 46).Select
+Range(Selection, "AU2").FormulaR1C1 = "=IF(RC[-5]<>"""",1,R[-1]C+1)"
+
+Range("A" & Rows.Count).End(xlUp).Select
+ROWNAMA2 = ActiveCell.Row
+
+If ROWNAMA2 = 1 Then
+Range("AV1") = "1"
+Else
+Range("A" & Rows.Count).End(xlUp).Offset(0, 47).Select
+Range(Selection, "AV1").FormulaR1C1 = "=IF(R[1]C[-1]=1,RC[-1],R[1]C)"
+End If
+
+Range("AU" & Rows.Count).End(xlUp).Offset(1, 0) = "1"
+
+Columns("AO:AP").Copy
+Range("AW1").PasteSpecial xlPasteAll
+
+Range("A" & Rows.Count).End(xlUp).Offset(2, 48).Select
+Range(Selection, "AX1").SpecialCells(xlCellTypeBlanks).FormulaR1C1 = "=R[-1]C"
+
+Range("A" & Rows.Count).End(xlUp).Offset(0, 50).Select
+Range(Selection, "AZ1").FormulaR1C1 = "=IFERROR(RC[-2]/RC48,0)"
+
+Range("AH" & Rows.Count).End(xlUp).Offset(0, 5).Select
+Range(Selection, "AM1").FormulaR1C1 = "=RC[-5]"
+
+Columns("AT:AZ").Select
+Selection.Copy
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+Columns("AY:AZ").Copy
+Range("AO1").PasteSpecial xlPasteAll
+
+Columns("AT:AZ").ClearContents
+Range("A" & Rows.Count).End(xlUp).Offset(1, 0).Select
+Range(Selection, "AS60000").ClearContents
+
+Range("A" & Rows.Count).End(xlUp).Offset(0, 45).Select
+Range(Selection, "AT1").FormulaR1C1 = "=TEXT(RC[-45],""YYYY"")&""-""&TEXT(RC[-45],""MM"")&""-""&TEXT(RC[-45],""DD"")"
+Columns("AT").Select
+Selection.Copy
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+
+Range("AT" & Rows.Count).End(xlUp).Select
+Range(Selection, "AT1").Copy
+Range("A1").PasteSpecial Paste:=xlPasteValuesAndNumberFormats, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+Columns("AT").ClearContents
+Columns("A").NumberFormat = "@"
+
+Range("S" & Rows.Count).End(xlUp).Select
+Range(Selection, "S1").FormulaR1C1 = "=IFERROR(ROUNDUP(60*(RC[-14]+RC[-13])/RC[-2],0),0)"
+Range("R" & Rows.Count).End(xlUp).Select
+Range(Selection, "R1").FormulaR1C1 = "=ROUNDUP(RC[1]*0.85,0)"
+
+Columns("R:S").Select
+Selection.Copy
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+
+Cells.Select
+Selection.Copy
+Selection.PasteSpecial xlPasteValues
+
+Sheets("TES2").Name = "Monitoring_" & Sheets("TOMBOL").Range("I4").Value & "-" & Sheets("TOMBOL").Range("I3").Value & "-" & Sheets("TOMBOL").Range("I5").Value
+
+Sheets("Monitoring_" & Sheets("TOMBOL").Range("I4").Value & "-" & Sheets("TOMBOL").Range("I3").Value & "-" & Sheets("TOMBOL").Range("I5").Value).Select
+
+Range("A" & Rows.Count).End(xlUp).Select
+Range(Selection, "AS1").Select
+Selection.Font.Name = "Arial"
+Selection.Font.Size = 10
+Selection.Borders(xlEdgeLeft).Weight = xlHairline
+Selection.Borders(xlEdgeTop).Weight = xlHairline
+Selection.Borders(xlEdgeBottom).Weight = xlHairline
+Selection.Borders(xlEdgeRight).Weight = xlHairline
+Selection.Borders(xlInsideVertical).Weight = xlHairline
+Selection.Borders(xlInsideHorizontal).Weight = xlHairline
+
+Columns("A:AS").EntireColumn.AutoFit
+Range("A1").Select
+
+Sheets("TES").Select
+If Range("AO" & Rows.Count).End(xlUp).Value <> "CUTTING" Then
+Range("AO" & Rows.Count).End(xlUp).Offset(1, 0).Select
+Range(Selection, "AO5").Select
+Selection.SpecialCells(xlCellTypeVisible).Copy
+Sheets("Monitoring_" & Sheets("TOMBOL").Range("I4").Value & "-" & Sheets("TOMBOL").Range("I3").Value & "-" & Sheets("TOMBOL").Range("I5").Value).Select
+Range("BA1").PasteSpecial xlPasteAll
+End If
+
+Sheets("Monitoring_" & Sheets("TOMBOL").Range("I4").Value & "-" & Sheets("TOMBOL").Range("I3").Value & "-" & Sheets("TOMBOL").Range("I5").Value).Select
+A = WorksheetFunction.Sum(Range("BA1:BA50000"))
+B = WorksheetFunction.Sum(Range("AO1:AO50000"))
+C = A - B
+
+If -0.005 < C And C < 0.005 Then
+Sheets("TOMBOL").Select
+Range("H7") = "OK"
+Else
+Sheets("TOMBOL").Select
+Range("H7") = "NOT OK, CHECK AGAIN"
+Application.DisplayAlerts = False
+Sheets("TES").Delete
+Application.DisplayAlerts = True
+Sheets("Monitoring_" & Sheets("TOMBOL").Range("I4").Value & "-" & Sheets("TOMBOL").Range("I3").Value & "-" & Sheets("TOMBOL").Range("I5").Value).Select
+Columns("BA").ClearContents
+MsgBox "Amount tidak sama, mohon cek kembali"
+Exit Sub
+End If
+
+Application.DisplayAlerts = False
+Sheets("TES").Delete
+Application.DisplayAlerts = True
+
+Sheets("Monitoring_" & Sheets("TOMBOL").Range("I4").Value & "-" & Sheets("TOMBOL").Range("I3").Value & "-" & Sheets("TOMBOL").Range("I5").Value).Select
+Columns("BA").ClearContents
+
+'edit
+Dim DATAMONITORING As Integer
+
+DATAMONITORING = Cells(Rows.Count, 1).End(xlUp).Row
+For i = 1 To DATAMONITORING
+    Cells(i, 2) = "L" & Cells(i, 2).Text
+Next i
+Columns(2).EntireColumn.AutoFit
+
+Sheets("LAPORAN").Select
+Range("A1").Select
+
+FILEPATHNAME = ThisWorkbook.Sheets("TOMBOL").Range("F10").Value & "\" & "Monitoring_" & ThisWorkbook.Sheets("TOMBOL").Range("I4").Value & "-" & ThisWorkbook.Sheets("TOMBOL").Range("I3").Value & "-" & ThisWorkbook.Sheets("TOMBOL").Range("I5").Value & ThisWorkbook.Sheets("TOMBOL").Range("F11").Value
+FILENAMA = "Monitoring_" & ThisWorkbook.Sheets("TOMBOL").Range("I4").Value & "-" & ThisWorkbook.Sheets("TOMBOL").Range("I3").Value & "-" & ThisWorkbook.Sheets("TOMBOL").Range("I5").Value & ThisWorkbook.Sheets("TOMBOL").Range("F11").Value
+NAMASHEET = "Monitoring_" & ThisWorkbook.Sheets("TOMBOL").Range("I4").Value & "-" & ThisWorkbook.Sheets("TOMBOL").Range("I3").Value & "-" & ThisWorkbook.Sheets("TOMBOL").Range("I5").Value
+
+DirFile = FILEPATHNAME
+If Dir(DirFile) <> "" Then
+ThisWorkbook.Activate
+Sheets("TOMBOL").Select
+Range("F11").Select
+MsgBox "File " & FILENAMA & " already exists"
+Exit Sub
+Else
+Application.DisplayAlerts = False
+Workbooks.Add.SaveAs Filename:=FILEPATHNAME
+End If
+
+Workbooks(FILENAMA).Activate
+Sheets(1).Name = NAMASHEET
+
+ThisWorkbook.Activate
+Sheets(NAMASHEET).Select
+Cells.Copy
+Workbooks(FILENAMA).Activate
+Worksheets(1).Activate
+Range("A1").PasteSpecial xlPasteAll
+Range("A1").Select
+
+Workbooks(FILENAMA).Close SaveChanges:=True
+
+Sheets(NAMASHEET).Select
+Range("A1").Select
+Application.CutCopyMode = False
+Sheets("TOMBOL").Select
+Range("A1").Select
+
+elapsedtime = Round(Timer - starttime, 2)
+MsgBox "Successfully done in " & elapsedtime & " seconds", , "LAPORAN PRODUKSI GM1"
+
+End Sub

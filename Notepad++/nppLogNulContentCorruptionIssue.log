@@ -1,0 +1,924 @@
+2023-08-10 11:09:07  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-08-10 11:09:07  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-08-10 11:09:07  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-08-10 11:09:07  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8601/8601 bytes are written.
+2023-08-10 11:09:07  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-08-10 11:09:07  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-08-10 11:09:07  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  3182/3182 bytes are written.
+2023-08-10 11:09:07  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-08-10 11:09:07  WM_DESTROY (isEndSessionStarted == true)
+2023-08-21 17:01:50  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-08-21 17:01:50  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-08-21 17:01:50  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-08-21 17:01:50  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8678/8678 bytes are written.
+2023-08-21 17:01:50  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-08-21 17:01:50  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-08-21 17:01:50  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  8509/8509 bytes are written.
+2023-08-21 17:01:50  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-08-21 17:01:50  WM_DESTROY (isEndSessionStarted == true)
+2023-08-22 10:28:12  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-08-22 10:28:12  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-08-22 10:28:12  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-08-22 10:28:12  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8678/8678 bytes are written.
+2023-08-22 10:28:13  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-08-22 10:28:13  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-08-22 10:28:13  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  9160/9160 bytes are written.
+2023-08-22 10:28:13  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-08-22 10:28:13  WM_DESTROY (isEndSessionStarted == true)
+2023-08-23 10:05:13  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-08-23 10:05:13  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-08-23 10:05:13  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-08-23 10:05:13  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8678/8678 bytes are written.
+2023-08-23 10:05:13  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-08-23 10:05:13  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-08-23 10:05:13  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  9105/9105 bytes are written.
+2023-08-23 10:05:13  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-08-23 10:05:13  WM_DESTROY (isEndSessionStarted == true)
+2023-08-24 14:13:20  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-08-24 14:13:20  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-08-24 14:13:20  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-08-24 14:13:20  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8677/8677 bytes are written.
+2023-08-24 14:13:20  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-08-24 14:13:20  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-08-24 14:13:20  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  9700/9700 bytes are written.
+2023-08-24 14:13:20  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-08-24 14:13:20  WM_DESTROY (isEndSessionStarted == true)
+2023-10-03 09:10:20  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-10-03 09:10:21  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-10-03 09:10:21  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-10-03 09:10:21  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8783/8783 bytes are written.
+2023-10-03 09:10:21  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-10-03 09:10:21  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-10-03 09:10:21  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  16266/16266 bytes are written.
+2023-10-03 09:10:21  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-10-03 09:10:21  WM_DESTROY (isEndSessionStarted == true)
+2023-10-04 13:40:48  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-10-04 13:40:48  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-10-04 13:40:48  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-10-04 13:40:48  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8783/8783 bytes are written.
+2023-10-04 13:40:48  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-10-04 13:40:48  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-10-04 13:40:48  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  5549/5549 bytes are written.
+2023-10-04 13:40:48  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-10-04 13:40:48  WM_DESTROY (isEndSessionStarted == true)
+2023-10-09 11:27:59  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-10-09 11:27:59  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-10-09 11:27:59  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-10-09 11:27:59  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8783/8783 bytes are written.
+2023-10-09 11:27:59  E:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-10-09 11:27:59  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-10-09 11:27:59  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  6743/6743 bytes are written.
+2023-10-09 11:27:59  E:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-10-13 00:04:02  WM_QUERYENDSESSION (lParam: 1073741825 - ENDSESSION_CLOSEAPP - ENDSESSION_CRITICAL) =====================================
+2023-10-13 00:04:02  WM_ENDSESSION (wParam: TRUE, lParam: 1073741825 - ENDSESSION_CLOSEAPP - ENDSESSION_CRITICAL)
+2023-10-13 00:04:02  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-10-13 00:04:02  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8783/8783 bytes are written.
+2023-10-13 00:04:02  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-10-13 00:04:02  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-10-13 00:04:02  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  3241/3241 bytes are written.
+2023-10-13 00:04:02  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-10-13 00:04:02  WM_DESTROY (isEndSessionStarted == true)
+2023-10-19 17:03:17  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-10-19 17:03:17  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-10-19 17:03:17  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-10-19 17:03:17  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8783/8783 bytes are written.
+2023-10-19 17:03:17  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-10-19 17:03:17  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-10-19 17:03:17  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  5058/5058 bytes are written.
+2023-10-19 17:03:17  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-10-19 17:03:18  WM_DESTROY (isEndSessionStarted == true)
+2023-10-24 17:04:45  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-10-24 17:04:45  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-10-24 17:04:45  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-10-24 17:04:45  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8783/8783 bytes are written.
+2023-10-24 17:04:45  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-10-24 17:04:45  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-10-24 17:04:45  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  3233/3233 bytes are written.
+2023-10-24 17:04:45  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-10-24 17:04:45  WM_DESTROY (isEndSessionStarted == true)
+2023-10-30 15:08:48  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-10-30 15:08:48  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-10-30 15:08:48  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-10-30 15:08:48  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8782/8782 bytes are written.
+2023-10-30 15:08:48  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-10-30 15:08:48  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-10-30 15:08:48  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  5649/5649 bytes are written.
+2023-10-30 15:08:48  F:\DATA SEPTIAN\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-10-30 15:08:48  WM_DESTROY (isEndSessionStarted == true)
+2023-11-03 15:43:17  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-11-03 15:43:17  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-11-03 15:43:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-11-03 15:43:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8783/8783 bytes are written.
+2023-11-03 15:43:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-11-03 15:43:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-11-03 15:43:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  2599/2599 bytes are written.
+2023-11-03 15:43:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-11-03 15:43:17  WM_DESTROY (isEndSessionStarted == true)
+2023-11-09 17:08:23  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-11-09 17:08:24  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-11-09 17:08:24  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-11-09 17:08:24  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8782/8782 bytes are written.
+2023-11-09 17:08:24  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-11-09 17:08:24  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-11-09 17:08:24  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  6160/6160 bytes are written.
+2023-11-09 17:08:24  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-11-09 17:08:24  WM_DESTROY (isEndSessionStarted == true)
+2023-11-14 17:02:15  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-11-14 17:02:15  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-11-14 17:02:15  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-11-14 17:02:15  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8782/8782 bytes are written.
+2023-11-14 17:02:15  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-11-14 17:02:16  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-11-14 17:02:16  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  7933/7933 bytes are written.
+2023-11-14 17:02:16  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-11-14 17:02:16  WM_DESTROY (isEndSessionStarted == true)
+2023-11-16 14:19:31  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-11-16 14:19:32  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-11-16 14:19:32  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-11-16 14:19:32  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8782/8782 bytes are written.
+2023-11-16 14:19:32  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-11-16 14:19:32  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-11-16 14:19:32  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  9125/9125 bytes are written.
+2023-11-16 14:19:32  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-11-16 14:19:32  WM_DESTROY (isEndSessionStarted == true)
+2023-11-20 20:06:10  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-11-20 20:06:10  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-11-20 20:06:10  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-11-20 20:06:10  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8783/8783 bytes are written.
+2023-11-20 20:06:10  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-11-20 20:06:10  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-11-20 20:06:10  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  9124/9124 bytes are written.
+2023-11-20 20:06:10  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-11-20 20:06:10  WM_DESTROY (isEndSessionStarted == true)
+2023-11-22 17:04:26  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-11-22 17:04:26  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-11-22 17:04:26  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-11-22 17:04:27  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8782/8782 bytes are written.
+2023-11-22 17:04:27  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-11-22 17:04:27  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-11-22 17:04:27  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  6742/6742 bytes are written.
+2023-11-22 17:04:27  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-11-22 17:04:27  WM_DESTROY (isEndSessionStarted == true)
+2023-11-24 17:02:17  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-11-24 17:02:17  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-11-24 17:02:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-11-24 17:02:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8782/8782 bytes are written.
+2023-11-24 17:02:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-11-24 17:02:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-11-24 17:02:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  8512/8512 bytes are written.
+2023-11-24 17:02:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-11-24 17:02:17  WM_DESTROY (isEndSessionStarted == true)
+2023-11-28 17:05:51  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-11-28 17:05:51  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-11-28 17:05:51  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-11-28 17:05:51  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8782/8782 bytes are written.
+2023-11-28 17:05:51  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-11-28 17:05:51  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-11-28 17:05:51  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  10282/10282 bytes are written.
+2023-11-28 17:05:51  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-11-28 17:05:51  WM_DESTROY (isEndSessionStarted == true)
+2023-12-01 09:21:57  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-12-01 09:21:57  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-12-01 09:21:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-12-01 09:21:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  8787/8787 bytes are written.
+2023-12-01 09:21:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-12-01 09:21:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-12-01 09:21:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  12053/12053 bytes are written.
+2023-12-01 09:21:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-12-01 09:21:57  WM_DESTROY (isEndSessionStarted == true)
+2023-12-11 17:04:14  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-12-11 17:04:14  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-12-11 17:04:15  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-12-11 17:04:15  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9021/9021 bytes are written.
+2023-12-11 17:04:15  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-12-11 17:04:15  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-12-11 17:04:15  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  14450/14450 bytes are written.
+2023-12-11 17:04:15  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-12-11 17:04:15  WM_DESTROY (isEndSessionStarted == true)
+2023-12-13 20:01:28  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-12-13 20:01:28  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-12-13 20:01:28  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-12-13 20:01:28  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9024/9024 bytes are written.
+2023-12-13 20:01:28  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-12-13 20:01:28  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-12-13 20:01:28  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  11504/11504 bytes are written.
+2023-12-13 20:01:28  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-12-14 17:37:47  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-12-14 17:37:47  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-12-14 17:37:47  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-12-14 17:37:47  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9024/9024 bytes are written.
+2023-12-14 17:37:47  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-12-14 17:37:47  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-12-14 17:37:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  12092/12092 bytes are written.
+2023-12-14 17:37:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-12-14 17:37:48  WM_DESTROY (isEndSessionStarted == true)
+2023-12-15 17:04:55  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-12-15 17:04:55  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-12-15 17:04:55  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-12-15 17:04:55  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9028/9028 bytes are written.
+2023-12-15 17:04:55  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-12-15 17:04:55  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-12-15 17:04:55  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  12709/12709 bytes are written.
+2023-12-15 17:04:55  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-12-15 17:04:55  WM_DESTROY (isEndSessionStarted == true)
+2023-12-21 17:01:44  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-12-21 17:01:44  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-12-21 17:01:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-12-21 17:01:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9026/9026 bytes are written.
+2023-12-21 17:01:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-12-21 17:01:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-12-21 17:01:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  15121/15121 bytes are written.
+2023-12-21 17:01:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-12-21 17:01:44  WM_DESTROY (isEndSessionStarted == true)
+2023-12-26 10:30:18  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-12-26 10:30:18  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-12-26 10:30:18  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-12-26 10:30:18  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9025/9025 bytes are written.
+2023-12-26 10:30:18  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-12-26 10:30:18  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-12-26 10:30:18  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  18104/18104 bytes are written.
+2023-12-26 10:30:18  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-12-26 10:30:18  WM_DESTROY (isEndSessionStarted == true)
+2023-12-26 17:05:57  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-12-26 17:05:57  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-12-26 17:05:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-12-26 17:05:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9025/9025 bytes are written.
+2023-12-26 17:05:58  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-12-26 17:05:58  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-12-26 17:05:58  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  19298/19298 bytes are written.
+2023-12-26 17:05:58  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-12-26 17:05:58  WM_DESTROY (isEndSessionStarted == true)
+2023-12-28 17:06:48  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-12-28 17:06:48  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-12-28 17:06:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-12-28 17:06:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9025/9025 bytes are written.
+2023-12-28 17:06:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-12-28 17:06:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-12-28 17:06:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  19964/19964 bytes are written.
+2023-12-28 17:06:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-12-28 17:06:48  WM_DESTROY (isEndSessionStarted == true)
+2023-12-29 17:36:35  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2023-12-29 17:36:35  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2023-12-29 17:36:35  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2023-12-29 17:36:35  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9028/9028 bytes are written.
+2023-12-29 17:36:35  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2023-12-29 17:36:35  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2023-12-29 17:36:35  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  21161/21161 bytes are written.
+2023-12-29 17:36:35  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2023-12-29 17:36:35  WM_DESTROY (isEndSessionStarted == true)
+2024-01-02 17:03:04  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-01-02 17:03:04  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-01-02 17:03:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-01-02 17:03:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9025/9025 bytes are written.
+2024-01-02 17:03:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-01-02 17:03:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-01-02 17:03:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  10979/10979 bytes are written.
+2024-01-02 17:03:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-01-02 17:03:04  WM_DESTROY (isEndSessionStarted == true)
+2024-01-03 17:09:21  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-01-03 17:09:21  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-01-03 17:09:21  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-01-03 17:09:21  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9025/9025 bytes are written.
+2024-01-03 17:09:21  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-01-03 17:09:21  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-01-03 17:09:21  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  10973/10973 bytes are written.
+2024-01-03 17:09:21  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-01-03 17:09:21  WM_DESTROY (isEndSessionStarted == true)
+2024-01-19 13:22:41  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-01-19 13:22:41  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-01-19 13:22:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-01-19 13:22:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9024/9024 bytes are written.
+2024-01-19 13:22:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-01-19 13:22:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-01-19 13:22:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  12760/12760 bytes are written.
+2024-01-19 13:22:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-01-19 13:22:41  WM_DESTROY (isEndSessionStarted == true)
+2024-01-22 15:18:52  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-01-22 15:18:52  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-01-22 15:18:52  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-01-22 15:18:52  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9028/9028 bytes are written.
+2024-01-22 15:18:52  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-01-22 15:18:52  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-01-22 15:18:52  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  12764/12764 bytes are written.
+2024-01-22 15:18:52  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-01-22 15:18:52  WM_DESTROY (isEndSessionStarted == true)
+2024-01-23 17:04:01  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-01-23 17:04:01  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-01-23 17:04:01  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-01-23 17:04:01  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9028/9028 bytes are written.
+2024-01-23 17:04:01  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-01-23 17:04:01  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-01-23 17:04:01  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  12763/12763 bytes are written.
+2024-01-23 17:04:01  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-01-23 17:04:01  WM_DESTROY (isEndSessionStarted == true)
+2024-01-24 15:08:39  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-01-24 15:08:39  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-01-24 15:08:39  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-01-24 15:08:39  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9028/9028 bytes are written.
+2024-01-24 15:08:39  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-01-24 15:08:39  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-01-24 15:08:39  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  13352/13352 bytes are written.
+2024-01-24 15:08:39  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-01-24 15:08:39  WM_DESTROY (isEndSessionStarted == true)
+2024-01-25 08:47:29  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-01-25 08:47:29  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-01-25 08:47:29  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-01-25 08:47:29  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9028/9028 bytes are written.
+2024-01-25 08:47:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-01-25 08:47:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-01-25 08:47:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  13952/13952 bytes are written.
+2024-01-25 08:47:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-01-25 08:47:30  WM_DESTROY (isEndSessionStarted == true)
+2024-02-23 10:19:45  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-02-23 10:19:45  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-02-23 10:19:45  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-02-23 10:19:45  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9079/9079 bytes are written.
+2024-02-23 10:19:45  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-02-23 10:19:45  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-02-23 10:19:45  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  22319/22319 bytes are written.
+2024-02-23 10:19:45  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-02-23 10:19:45  WM_DESTROY (isEndSessionStarted == true)
+2024-02-26 11:14:37  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-02-26 11:14:37  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-02-26 11:14:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-02-26 11:14:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9078/9078 bytes are written.
+2024-02-26 11:14:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-02-26 11:14:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-02-26 11:14:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  11614/11614 bytes are written.
+2024-02-26 11:14:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-02-26 11:14:37  WM_DESTROY (isEndSessionStarted == true)
+2024-02-28 11:25:04  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-02-28 11:25:04  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-02-28 11:25:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-02-28 11:25:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9080/9080 bytes are written.
+2024-02-28 11:25:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-02-28 11:25:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-02-28 11:25:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  15870/15870 bytes are written.
+2024-02-28 11:25:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-02-28 11:25:04  WM_DESTROY (isEndSessionStarted == true)
+2024-03-12 11:53:20  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-03-12 11:53:21  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-03-12 11:53:21  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-03-12 11:53:21  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9082/9082 bytes are written.
+2024-03-12 11:53:21  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-03-12 11:53:21  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-03-12 11:53:21  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  16401/16401 bytes are written.
+2024-03-12 11:53:21  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-03-12 11:53:21  WM_DESTROY (isEndSessionStarted == true)
+2024-03-12 13:14:06  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-03-12 13:14:06  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-03-12 13:14:07  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-03-12 13:14:07  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9082/9082 bytes are written.
+2024-03-12 13:14:07  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-03-12 13:14:07  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-03-12 13:14:07  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  16990/16990 bytes are written.
+2024-03-12 13:14:07  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-03-12 13:14:07  WM_DESTROY (isEndSessionStarted == true)
+2024-03-13 12:16:32  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-03-13 12:16:32  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-03-13 12:16:32  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-03-13 12:16:32  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9082/9082 bytes are written.
+2024-03-13 12:16:32  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-03-13 12:16:32  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-03-13 12:16:32  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  16993/16993 bytes are written.
+2024-03-13 12:16:32  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-03-13 12:16:33  WM_DESTROY (isEndSessionStarted == true)
+2024-03-14 13:00:03  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-03-14 13:00:04  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-03-14 13:00:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-03-14 13:00:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9082/9082 bytes are written.
+2024-03-14 13:00:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-03-14 13:00:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-03-14 13:00:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  17580/17580 bytes are written.
+2024-03-14 13:00:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-03-14 13:00:04  WM_DESTROY (isEndSessionStarted == true)
+2024-03-19 10:19:04  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-03-19 10:19:04  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-03-19 10:19:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-03-19 10:19:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9079/9079 bytes are written.
+2024-03-19 10:19:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-03-19 10:19:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-03-19 10:19:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  18773/18773 bytes are written.
+2024-03-19 10:19:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-03-19 10:19:04  WM_DESTROY (isEndSessionStarted == true)
+2024-03-19 16:01:56  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-03-19 16:01:56  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-03-19 16:01:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-03-19 16:01:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9079/9079 bytes are written.
+2024-03-19 16:01:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-03-19 16:01:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-03-19 16:01:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  18770/18770 bytes are written.
+2024-03-19 16:01:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-03-19 16:01:57  WM_DESTROY (isEndSessionStarted == true)
+2024-03-22 15:59:13  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-03-22 15:59:13  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-03-22 15:59:13  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-03-22 15:59:13  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9080/9080 bytes are written.
+2024-03-22 15:59:13  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-03-22 15:59:14  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-03-22 15:59:14  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  19354/19354 bytes are written.
+2024-03-22 15:59:14  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-03-22 15:59:14  WM_DESTROY (isEndSessionStarted == true)
+2024-03-28 15:58:42  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-03-28 15:58:42  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-03-28 15:58:43  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-03-28 15:58:43  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9078/9078 bytes are written.
+2024-03-28 15:58:43  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-03-28 15:58:43  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-03-28 15:58:43  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  19367/19367 bytes are written.
+2024-03-28 15:58:43  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-03-28 15:58:43  WM_DESTROY (isEndSessionStarted == true)
+2024-04-01 16:00:43  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-04-01 16:00:43  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-04-01 16:00:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-04-01 16:00:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9079/9079 bytes are written.
+2024-04-01 16:00:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-04-01 16:00:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-04-01 16:00:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  19368/19368 bytes are written.
+2024-04-01 16:00:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-04-01 16:00:44  WM_DESTROY (isEndSessionStarted == true)
+2024-04-03 16:00:55  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-04-03 16:00:55  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-04-03 16:00:55  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-04-03 16:00:55  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9079/9079 bytes are written.
+2024-04-03 16:00:55  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-04-03 16:00:55  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-04-03 16:00:55  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  19369/19369 bytes are written.
+2024-04-03 16:00:55  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-04-03 16:00:55  WM_DESTROY (isEndSessionStarted == true)
+2024-04-05 07:35:38  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-04-05 07:35:38  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-04-05 07:35:38  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-04-05 07:35:38  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9079/9079 bytes are written.
+2024-04-05 07:35:38  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-04-05 07:35:38  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-04-05 07:35:38  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  19965/19965 bytes are written.
+2024-04-05 07:35:38  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-04-05 07:35:38  WM_DESTROY (isEndSessionStarted == true)
+2024-04-05 16:02:13  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-04-05 16:02:13  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-04-05 16:02:13  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-04-05 16:02:14  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9079/9079 bytes are written.
+2024-04-05 16:02:14  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-04-05 16:02:14  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-04-05 16:02:14  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  19964/19964 bytes are written.
+2024-04-05 16:02:14  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-04-05 16:02:14  WM_DESTROY (isEndSessionStarted == true)
+2024-04-16 00:17:02  WM_QUERYENDSESSION (lParam: 1073741825 - ENDSESSION_CLOSEAPP - ENDSESSION_CRITICAL) =====================================
+2024-04-16 00:17:02  WM_ENDSESSION (wParam: TRUE, lParam: 1073741825 - ENDSESSION_CLOSEAPP - ENDSESSION_CRITICAL)
+2024-04-16 00:17:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-04-16 00:17:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9083/9083 bytes are written.
+2024-04-16 00:17:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-04-16 00:17:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-04-16 00:17:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  20549/20549 bytes are written.
+2024-04-16 00:17:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-04-16 00:17:02  WM_DESTROY (isEndSessionStarted == true)
+2024-04-16 17:00:29  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-04-16 17:00:29  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-04-16 17:00:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-04-16 17:00:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9083/9083 bytes are written.
+2024-04-16 17:00:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-04-16 17:00:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-04-16 17:00:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  20551/20551 bytes are written.
+2024-04-16 17:00:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-04-16 17:00:30  WM_DESTROY (isEndSessionStarted == true)
+2024-04-19 17:00:17  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-04-19 17:00:17  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-04-19 17:00:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-04-19 17:00:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9083/9083 bytes are written.
+2024-04-19 17:00:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-04-19 17:00:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-04-19 17:00:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  20552/20552 bytes are written.
+2024-04-19 17:00:17  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-04-19 17:00:17  WM_DESTROY (isEndSessionStarted == true)
+2024-04-23 08:40:27  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-04-23 08:40:27  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-04-23 08:40:27  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-04-23 08:40:27  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9083/9083 bytes are written.
+2024-04-23 08:40:27  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-04-23 08:40:27  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-04-23 08:40:27  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  20548/20548 bytes are written.
+2024-04-23 08:40:27  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-04-23 08:40:27  WM_DESTROY (isEndSessionStarted == true)
+2024-04-25 16:23:40  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-04-25 16:23:40  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-04-25 16:23:40  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-04-25 16:23:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9084/9084 bytes are written.
+2024-04-25 16:23:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-04-25 16:23:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-04-25 16:23:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  20546/20546 bytes are written.
+2024-04-25 16:23:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-04-25 16:23:41  WM_DESTROY (isEndSessionStarted == true)
+2024-05-15 10:46:04  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-05-15 10:46:04  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-05-15 10:46:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-05-15 10:46:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9117/9117 bytes are written.
+2024-05-15 10:46:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-05-15 10:46:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-05-15 10:46:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  14760/14760 bytes are written.
+2024-05-15 10:46:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-05-15 10:46:05  WM_DESTROY (isEndSessionStarted == true)
+2024-05-15 18:37:02  WM_QUERYENDSESSION (lParam: 1073741825 - ENDSESSION_CLOSEAPP - ENDSESSION_CRITICAL) =====================================
+2024-05-15 18:37:02  WM_ENDSESSION (wParam: TRUE, lParam: 1073741825 - ENDSESSION_CLOSEAPP - ENDSESSION_CRITICAL)
+2024-05-15 18:37:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-05-15 18:37:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9117/9117 bytes are written.
+2024-05-15 18:37:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-05-15 18:37:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-05-15 18:37:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  16596/16596 bytes are written.
+2024-05-15 18:37:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-05-15 18:37:02  WM_DESTROY (isEndSessionStarted == true)
+2024-05-22 09:46:48  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-05-22 09:46:48  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-05-22 09:46:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-05-22 09:46:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9127/9127 bytes are written.
+2024-05-22 09:46:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-05-22 09:46:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-05-22 09:46:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  18402/18402 bytes are written.
+2024-05-22 09:46:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-05-22 09:46:48  WM_DESTROY (isEndSessionStarted == true)
+2024-05-24 17:01:29  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-05-24 17:01:29  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-05-24 17:01:29  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-05-24 17:01:29  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9127/9127 bytes are written.
+2024-05-24 17:01:29  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-05-24 17:01:29  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-05-24 17:01:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  19024/19024 bytes are written.
+2024-05-24 17:01:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-05-24 17:01:30  WM_DESTROY (isEndSessionStarted == true)
+2024-05-27 16:30:12  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-05-27 16:30:12  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-05-27 16:30:12  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-05-27 16:30:12  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9127/9127 bytes are written.
+2024-05-27 16:30:12  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-05-27 16:30:12  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-05-27 16:30:12  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  19019/19019 bytes are written.
+2024-05-27 16:30:12  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-05-27 16:30:12  WM_DESTROY (isEndSessionStarted == true)
+2024-05-28 17:00:31  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-05-28 17:00:31  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-05-28 17:00:31  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-05-28 17:00:31  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9127/9127 bytes are written.
+2024-05-28 17:00:31  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-05-28 17:00:31  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-05-28 17:00:31  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  20213/20213 bytes are written.
+2024-05-28 17:00:31  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-05-28 17:00:31  WM_DESTROY (isEndSessionStarted == true)
+2024-05-30 16:40:02  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-05-30 16:40:02  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-05-30 16:40:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-05-30 16:40:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9127/9127 bytes are written.
+2024-05-30 16:40:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-05-30 16:40:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-05-30 16:40:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  20209/20209 bytes are written.
+2024-05-30 16:40:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-05-30 16:40:02  WM_DESTROY (isEndSessionStarted == true)
+2024-06-04 17:16:30  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-06-04 17:16:30  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-06-04 17:16:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-06-04 17:16:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9128/9128 bytes are written.
+2024-06-04 17:16:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-06-04 17:16:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-06-04 17:16:30  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  20209/20209 bytes are written.
+2024-06-04 17:16:31  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-06-04 17:16:31  WM_DESTROY (isEndSessionStarted == true)
+2024-06-05 17:24:02  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-06-05 17:24:02  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-06-05 17:24:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-06-05 17:24:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9128/9128 bytes are written.
+2024-06-05 17:24:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-06-05 17:24:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-06-05 17:24:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  20206/20206 bytes are written.
+2024-06-05 17:24:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-06-05 17:24:02  WM_DESTROY (isEndSessionStarted == true)
+2024-06-07 13:48:22  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-06-07 13:48:22  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-06-07 13:48:22  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-06-07 13:48:22  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9128/9128 bytes are written.
+2024-06-07 13:48:22  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-06-07 13:48:22  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-06-07 13:48:22  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  20801/20801 bytes are written.
+2024-06-07 13:48:22  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-06-07 13:48:22  WM_DESTROY (isEndSessionStarted == true)
+2024-06-07 16:16:12  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-06-07 16:16:12  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-06-07 16:16:12  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-06-07 16:16:12  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9127/9127 bytes are written.
+2024-06-07 16:16:12  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-06-07 16:16:12  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-06-07 16:16:12  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  20801/20801 bytes are written.
+2024-06-07 16:16:12  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-06-07 16:16:12  WM_DESTROY (isEndSessionStarted == true)
+2024-06-10 10:25:04  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-06-10 10:25:04  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-06-10 10:25:04  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-06-10 10:25:05  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9128/9128 bytes are written.
+2024-06-10 10:25:05  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-06-10 10:25:05  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-06-10 10:25:05  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  20802/20802 bytes are written.
+2024-06-10 10:25:05  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-06-10 10:25:05  WM_DESTROY (isEndSessionStarted == true)
+2024-06-12 17:05:07  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-06-12 17:05:07  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-06-12 17:05:07  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-06-12 17:05:07  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9129/9129 bytes are written.
+2024-06-12 17:05:07  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-06-12 17:05:07  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-06-12 17:05:07  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  20804/20804 bytes are written.
+2024-06-12 17:05:07  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-06-12 17:05:07  WM_DESTROY (isEndSessionStarted == true)
+2024-06-12 20:36:36  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-06-12 20:36:36  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-06-12 20:36:36  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-06-12 20:36:36  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9129/9129 bytes are written.
+2024-06-12 20:36:36  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-06-12 20:36:36  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-06-12 20:36:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  20804/20804 bytes are written.
+2024-06-12 20:36:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-06-12 20:36:37  WM_DESTROY (isEndSessionStarted == true)
+2024-06-14 17:16:02  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-06-14 17:16:02  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-06-14 17:16:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-06-14 17:16:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9129/9129 bytes are written.
+2024-06-14 17:16:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-06-14 17:16:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-06-14 17:16:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  21993/21993 bytes are written.
+2024-06-14 17:16:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-06-14 17:16:02  WM_DESTROY (isEndSessionStarted == true)
+2024-06-24 08:05:37  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-06-24 08:05:37  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-06-24 08:05:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-06-24 08:05:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9129/9129 bytes are written.
+2024-06-24 08:05:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-06-24 08:05:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-06-24 08:05:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  23788/23788 bytes are written.
+2024-06-24 08:05:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-06-24 08:05:37  WM_DESTROY (isEndSessionStarted == true)
+2024-06-25 16:28:56  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-06-25 16:28:56  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-06-25 16:28:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-06-25 16:28:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9128/9128 bytes are written.
+2024-06-25 16:28:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-06-25 16:28:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-06-25 16:28:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  23796/23796 bytes are written.
+2024-06-25 16:28:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-06-25 16:28:57  WM_DESTROY (isEndSessionStarted == true)
+2024-06-26 17:38:36  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-06-26 17:38:37  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-06-26 17:38:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-06-26 17:38:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9128/9128 bytes are written.
+2024-06-26 17:38:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-06-26 17:38:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-06-26 17:38:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  23850/23850 bytes are written.
+2024-06-26 17:38:37  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-06-26 17:38:37  WM_DESTROY (isEndSessionStarted == true)
+2024-06-27 17:01:43  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-06-27 17:01:43  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-06-27 17:01:43  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-06-27 17:01:43  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9128/9128 bytes are written.
+2024-06-27 17:01:43  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-06-27 17:01:43  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-06-27 17:01:43  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  23853/23853 bytes are written.
+2024-06-27 17:01:43  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-06-27 17:01:43  WM_DESTROY (isEndSessionStarted == true)
+2024-06-28 14:53:46  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-06-28 14:53:46  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-06-28 14:53:46  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-06-28 14:53:46  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9128/9128 bytes are written.
+2024-06-28 14:53:46  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-06-28 14:53:46  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-06-28 14:53:46  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  23855/23855 bytes are written.
+2024-06-28 14:53:46  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-06-28 14:53:46  WM_DESTROY (isEndSessionStarted == true)
+2024-07-03 09:22:49  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-07-03 09:22:49  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-07-03 09:22:49  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-07-03 09:22:49  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9128/9128 bytes are written.
+2024-07-03 09:22:49  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-07-03 09:22:49  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-07-03 09:22:49  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  23852/23852 bytes are written.
+2024-07-03 09:22:49  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-07-03 09:22:49  WM_DESTROY (isEndSessionStarted == true)
+2024-07-05 13:18:33  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-07-05 13:18:33  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-07-05 13:18:33  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-07-05 13:18:33  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9129/9129 bytes are written.
+2024-07-05 13:18:33  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-07-05 13:18:33  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-07-05 13:18:33  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  24470/24470 bytes are written.
+2024-07-05 13:18:33  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-07-05 13:18:33  WM_DESTROY (isEndSessionStarted == true)
+2024-07-08 09:13:34  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-07-08 09:13:34  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-07-08 09:13:34  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-07-08 09:13:34  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9131/9131 bytes are written.
+2024-07-08 09:13:34  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-07-08 09:13:34  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-07-08 09:13:34  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  24466/24466 bytes are written.
+2024-07-08 09:13:34  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-07-08 09:13:34  WM_DESTROY (isEndSessionStarted == true)
+2024-07-08 14:33:41  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-07-08 14:33:41  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-07-08 14:33:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-07-08 14:33:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9131/9131 bytes are written.
+2024-07-08 14:33:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-07-08 14:33:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-07-08 14:33:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  24469/24469 bytes are written.
+2024-07-08 14:33:41  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-07-08 14:33:41  WM_DESTROY (isEndSessionStarted == true)
+2024-07-12 17:05:54  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-07-12 17:05:54  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-07-12 17:05:54  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-07-12 17:05:54  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9128/9128 bytes are written.
+2024-07-12 17:05:54  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-07-12 17:05:54  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-07-12 17:05:54  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  24455/24455 bytes are written.
+2024-07-12 17:05:54  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-07-12 17:05:54  WM_DESTROY (isEndSessionStarted == true)
+2024-07-15 17:02:43  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-07-15 17:02:44  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-07-15 17:02:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-07-15 17:02:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9128/9128 bytes are written.
+2024-07-15 17:02:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-07-15 17:02:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-07-15 17:02:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  24459/24459 bytes are written.
+2024-07-15 17:02:44  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-07-15 17:02:44  WM_DESTROY (isEndSessionStarted == true)
+2024-07-30 18:31:02  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-07-30 18:31:02  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-07-30 18:31:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-07-30 18:31:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9124/9124 bytes are written.
+2024-07-30 18:31:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-07-30 18:31:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-07-30 18:31:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  25066/25066 bytes are written.
+2024-07-30 18:31:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-07-30 18:31:02  WM_DESTROY (isEndSessionStarted == true)
+2024-07-31 10:44:58  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-07-31 10:44:58  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-07-31 10:44:58  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-07-31 10:44:58  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9124/9124 bytes are written.
+2024-07-31 10:44:58  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-07-31 10:44:58  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-07-31 10:44:58  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  25655/25655 bytes are written.
+2024-07-31 10:44:58  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-07-31 10:44:58  WM_DESTROY (isEndSessionStarted == true)
+2024-07-31 11:02:44  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-07-31 11:02:44  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-07-31 11:02:45  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-07-31 11:02:45  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9123/9123 bytes are written.
+2024-07-31 11:02:45  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-07-31 11:02:45  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-07-31 11:02:45  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  25657/25657 bytes are written.
+2024-07-31 11:02:45  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-07-31 11:02:45  WM_DESTROY (isEndSessionStarted == true)
+2024-08-09 11:06:56  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-08-09 11:06:56  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-08-09 11:06:56  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-08-09 11:06:56  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9124/9124 bytes are written.
+2024-08-09 11:06:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-08-09 11:06:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-08-09 11:06:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  28720/28720 bytes are written.
+2024-08-09 11:06:57  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-08-09 11:06:57  WM_DESTROY (isEndSessionStarted == true)
+2024-08-14 02:40:01  WM_QUERYENDSESSION (lParam: 1073741825 - ENDSESSION_CLOSEAPP - ENDSESSION_CRITICAL) =====================================
+2024-08-14 02:40:02  WM_ENDSESSION (wParam: TRUE, lParam: 1073741825 - ENDSESSION_CLOSEAPP - ENDSESSION_CRITICAL)
+2024-08-14 02:40:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-08-14 02:40:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9125/9125 bytes are written.
+2024-08-14 02:40:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-08-14 02:40:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-08-14 02:40:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  28724/28724 bytes are written.
+2024-08-14 02:40:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-08-14 02:40:02  WM_DESTROY (isEndSessionStarted == true)
+2024-08-23 13:54:40  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-08-23 13:54:40  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-08-23 13:54:40  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-08-23 13:54:40  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9127/9127 bytes are written.
+2024-08-23 13:54:40  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-08-23 13:54:40  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-08-23 13:54:40  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  28718/28718 bytes are written.
+2024-08-23 13:54:40  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-08-23 13:54:41  WM_DESTROY (isEndSessionStarted == true)
+2024-08-31 10:25:22  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-08-31 10:25:22  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-08-31 10:25:22  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-08-31 10:25:22  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9127/9127 bytes are written.
+2024-08-31 10:25:23  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-08-31 10:25:23  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-08-31 10:25:23  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  29316/29316 bytes are written.
+2024-08-31 10:25:23  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-08-31 10:25:23  WM_DESTROY (isEndSessionStarted == true)
+2024-09-04 09:17:30  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-09-04 09:17:30  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-09-04 09:17:31  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-09-04 09:17:31  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9118/9118 bytes are written.
+2024-09-04 09:17:31  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-09-04 09:17:31  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-09-04 09:17:31  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  29310/29310 bytes are written.
+2024-09-04 09:17:31  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-09-04 09:17:31  WM_DESTROY (isEndSessionStarted == true)
+2024-09-05 08:09:49  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-09-05 08:09:49  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-09-05 08:09:49  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-09-05 08:09:49  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9117/9117 bytes are written.
+2024-09-05 08:09:49  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-09-05 08:09:49  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-09-05 08:09:49  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  29313/29313 bytes are written.
+2024-09-05 08:09:49  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-09-05 08:09:49  WM_DESTROY (isEndSessionStarted == true)
+2024-09-07 16:56:10  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-09-07 16:56:10  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-09-07 16:56:10  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-09-07 16:56:10  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9126/9126 bytes are written.
+2024-09-07 16:56:10  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-09-07 16:56:10  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-09-07 16:56:10  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  29907/29907 bytes are written.
+2024-09-07 16:56:10  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-09-10 16:59:42  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-09-10 16:59:42  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-09-10 16:59:42  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-09-10 16:59:42  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9127/9127 bytes are written.
+2024-09-10 16:59:42  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-09-10 16:59:42  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-09-10 16:59:42  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  28043/28043 bytes are written.
+2024-09-10 16:59:42  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-09-10 16:59:42  WM_DESTROY (isEndSessionStarted == true)
+2024-09-17 14:33:47  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-09-17 14:33:47  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-09-17 14:33:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-09-17 14:33:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9127/9127 bytes are written.
+2024-09-17 14:33:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-09-17 14:33:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-09-17 14:33:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  28036/28036 bytes are written.
+2024-09-17 14:33:48  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-09-17 14:33:48  WM_DESTROY (isEndSessionStarted == true)
+2024-10-09 13:15:29  WM_QUERYENDSESSION (lParam: 1073741824 - ENDSESSION_CRITICAL) =====================================
+2024-10-09 13:15:29  WM_ENDSESSION (wParam: TRUE, lParam: 1073741824 - ENDSESSION_CRITICAL)
+2024-10-09 13:15:29  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-10-09 13:15:29  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9116/9116 bytes are written.
+2024-10-09 13:15:29  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-10-09 13:15:29  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-10-09 13:15:29  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  29235/29235 bytes are written.
+2024-10-09 13:15:29  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-10-11 11:02:14  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-10-11 11:02:14  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-10-11 11:02:14  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-10-11 11:02:14  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9118/9118 bytes are written.
+2024-10-11 11:02:14  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-10-11 11:02:14  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-10-11 11:02:14  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  29831/29831 bytes are written.
+2024-10-11 11:02:14  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-10-11 11:02:15  WM_DESTROY (isEndSessionStarted == true)
+2024-10-12 16:29:52  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-10-12 16:29:52  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-10-12 16:29:52  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-10-12 16:29:52  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9118/9118 bytes are written.
+2024-10-12 16:29:52  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-10-12 16:29:52  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-10-12 16:29:52  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  30434/30434 bytes are written.
+2024-10-12 16:29:52  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-10-12 16:29:52  WM_DESTROY (isEndSessionStarted == true)
+2024-10-28 17:00:14  WM_QUERYENDSESSION (lParam: 1073741824 - ENDSESSION_CRITICAL) =====================================
+2024-10-30 08:46:01  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-10-30 08:46:02  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-10-30 08:46:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-10-30 08:46:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9118/9118 bytes are written.
+2024-10-30 08:46:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-10-30 08:46:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-10-30 08:46:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  31657/31657 bytes are written.
+2024-10-30 08:46:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-10-30 08:46:02  WM_DESTROY (isEndSessionStarted == true)
+2024-11-01 16:53:42  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-11-01 16:53:42  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-11-01 16:53:42  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-11-01 16:53:42  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9118/9118 bytes are written.
+2024-11-01 16:53:42  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-11-01 16:53:42  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-11-01 16:53:42  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  31020/31020 bytes are written.
+2024-11-01 16:53:42  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-11-01 16:53:42  WM_DESTROY (isEndSessionStarted == true)
+2024-11-14 09:23:28  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-11-14 09:23:28  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-11-14 09:23:28  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-11-14 09:23:28  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9118/9118 bytes are written.
+2024-11-14 09:23:28  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-11-14 09:23:28  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-11-14 09:23:28  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  32848/32848 bytes are written.
+2024-11-14 09:23:29  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-11-14 09:23:29  WM_DESTROY (isEndSessionStarted == true)
+2024-11-14 17:33:02  WM_QUERYENDSESSION (lParam: 1073741825 - ENDSESSION_CLOSEAPP - ENDSESSION_CRITICAL) =====================================
+2024-11-14 17:33:02  WM_ENDSESSION (wParam: TRUE, lParam: 1073741825 - ENDSESSION_CLOSEAPP - ENDSESSION_CRITICAL)
+2024-11-14 17:33:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-11-14 17:33:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9118/9118 bytes are written.
+2024-11-14 17:33:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-11-14 17:33:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-11-14 17:33:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  32848/32848 bytes are written.
+2024-11-14 17:33:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-11-14 17:33:03  WM_DESTROY (isEndSessionStarted == true)
+2024-12-11 04:38:02  WM_QUERYENDSESSION (lParam: 1073741825 - ENDSESSION_CLOSEAPP - ENDSESSION_CRITICAL) =====================================
+2024-12-11 04:38:02  WM_ENDSESSION (wParam: TRUE, lParam: 1073741825 - ENDSESSION_CLOSEAPP - ENDSESSION_CRITICAL)
+2024-12-11 04:38:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is opened.
+2024-12-11 04:38:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml  9117/9117 bytes are written.
+2024-12-11 04:38:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\config.xml is closed.
+2024-12-11 04:38:02  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is opened.
+2024-12-11 04:38:03  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  32846/32846 bytes are written.
+2024-12-11 04:38:03  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
+2024-12-11 04:38:03  WM_DESTROY (isEndSessionStarted == true)

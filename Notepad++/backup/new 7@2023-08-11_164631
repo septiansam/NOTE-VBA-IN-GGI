@@ -1,0 +1,366 @@
+Option Explicit
+
+Dim twb As Workbook
+
+Sub Proses_1()
+
+OptVBA True
+'' program dimulai ''
+' ==================================================================================
+    GetDataMaster
+    If shMASTER.Range("A1").Value2 = vbNullString Then
+        HideSheets False
+        ActiveWorkbook.Save
+        Exit Sub
+    End If
+    
+    GetDataRecap
+    
+    If Not Evaluate("isref('" & "PO" & "'!A1)") Then
+        HideSheets False
+        ActiveWorkbook.Save
+        Exit Sub
+    End If
+    
+    GetLookupValue
+    
+    Set twb = ThisWorkbook
+    
+    ' TAMBAHAN CEK
+    If Evaluate("isref('" & "CEK" & "'!A1)") Then
+        Sheets("CEK").Delete
+    End If
+    Sheets.Add(After:=Sheets("PROSES1")).name = "CEK"
+    Dim shCEK As Worksheet
+    Set shCEK = twb.Sheets("CEK")
+    ' END
+    
+    Dim shPROSES1 As Worksheet
+    Set shPROSES1 = twb.Sheets("PROSES1")
+    
+    shPROSES1.Select
+    Dim lr As Long
+    lr = shPROSES1.Range("A" & Rows.Count).End(xlUp).Row
+    
+    Range("C2:C" & lr).Formula = "=IFERROR(INDEX(MASTER!I:I,MATCH(PROSES1!A2,MASTER!G:G,0)),""NO DATA"")"
+    Range("D2:D" & lr).Formula = "=IFERROR(INDEX(MASTER!L:L,MATCH(PROSES1!A2,MASTER!G:G,0)),""NO DATA"")"
+    Range("E2:E" & lr).Formula = "=IFERROR(INDEX(SIZECODE!A:A,MATCH(PROSES1!B2,SIZECODE!B:B,0)),""#"")"
+    Range("F2:F" & lr).Formula = "=IFERROR(""ALLCtr|ALLColor|""&B2,""NO DATA"")"
+    Range("G2:G" & lr).Formula = "=IFERROR(INDEX(PO!BH:BH,MATCH(PROSES1!A2,PO!BF:BF,0)),""NO DATA"")"
+    Range("H2:H" & lr).Formula = "=IFERROR(INDEX(PO!BI:BI,MATCH(PROSES1!A2,PO!BF:BF,0)),""NO DATA"")"
+    Range("I2:I" & lr).Formula = "=IFERROR(INDEX(PO!BA:BA,MATCH(PROSES1!A2,PO!BF:BF,0)),""NO DATA"")"
+    
+    Columns("B").Delete SHIFT:=xlToLeft
+    
+    shSAM.Range("A11").CurrentRegion.Copy Destination:=Sheets("PROSES1").Range("A" & lr).Offset(1)
+    
+    lr = shPROSES1.Range("A" & Rows.Count).End(xlUp).Row
+    Range("I2:I" & lr).Value2 = "N"
+    
+    Dim rgDrop As Range
+    Set rgDrop = Range("I2:I" & lr)
+    
+    ' Hapus Validasi
+    rgDrop.Validation.Delete
+    
+    ' Tambah Validasi
+    With rgDrop.Validation
+        .Add Type:=xlValidateList, AlertStyle:=xlValidAlertStop, Formula1:="N,Y"
+        .IgnoreBlank = True
+        .InCellDropdown = True
+    End With
+    
+    shSAM.Range("A9").CurrentRegion.Copy Destination:=Sheets("PROSES1").Range("A1")
+    
+    Dim arr As Variant
+    
+    arr = twb.Sheets("PROSES1").UsedRange.Value2
+    twb.Sheets("PROSES1").Range("A1").Resize(UBound(arr, 1), UBound(arr, 2)).Value2 = arr
+    
+    With Sheets("PROSES1").Cells
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .EntireColumn.AutoFit
+        .EntireRow.AutoFit
+    End With
+    
+    ' Save File Hasil Proses 1
+    
+    Dim pathResult As String, folderResult As String, nameResult As String
+    folderResult = shTOMBOL.Range("E8")
+    nameResult = shTOMBOL.Range("D8")
+    pathResult = folderResult & Application.PathSeparator & nameResult
+    
+    twb.Sheets("PROSES1").Copy
+    Sheets("PROSES1").name = nameResult
+    With ActiveWorkbook.Sheets(nameResult).Cells
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .EntireColumn.AutoFit
+        .EntireRow.AutoFit
+    End With
+    
+    ActiveWorkbook.SaveAs Filename:=pathResult, FileFormat:=xlOpenXMLWorkbook
+    
+    ActiveWindow.Close SaveChanges:=True
+    
+    twb.Activate
+    
+    ' TAMBAHAN CEK JIKA NO DATA/TYPE ITEM# (8/2/2023)
+    shCEK.Activate
+    
+    With shCEK
+        .Cells.ClearContents
+        .Range("A1").Value2 = "NUMBER OF ITEM NOT FOUND : "
+        .Range("B1").Value = "=COUNTIF(PROSES1!B:B,""NO DATA"")"
+        '.Range("B1").Value = "=COUNTIF(PROSES1!B:B,"""")"
+        .Cells.EntireColumn.AutoFit
+        .Cells.EntireRow.AutoFit
+    End With
+    
+    Dim found As Integer, name As String
+    
+    found = shCEK.Range("B1").Value
+    name = shTOMBOL.Range("D3").Value2
+    If found > 0 Then
+        Range("A3").Value2 = "ITEM :"
+        
+        ' Item yang tidak ditemukan
+        shPROSES1.Activate
+        Dim rg As Range
+        Set rg = Range("A1", "B" & Range("B" & Rows.Count).End(xlUp).Row)
+        If ActiveSheet.AutoFilterMode = True Then Selection.AutoFilter
+        Range("B:B").AutoFilter
+        rg.AutoFilter Field:=1, Criteria1:="NO DATA", Operator:=xlFilterValues
+        rg.SpecialCells(xlCellTypeVisible).Copy Destination:=shCEK.Range("A4")
+        Cells.AutoFilter
+        
+        shCEK.Activate
+        Range("B4", "B" & Range("A" & Rows.Count).End(xlUp).Row).ClearContents
+        Rows(4).Delete SHIFT:=xlUp
+        Range("A4", "A" & Range("A" & Rows.Count).End(xlUp).Row).RemoveDuplicates Columns:=1, Header:=xlNo
+        'Range("A4", "A" & Range("A" & Rows.Count).End(xlUp).Row).Value2 = Range("B4", "B" & Range("B" & Rows.Count).End(xlUp).Row).Value2
+        'Range("B4", "B" & Range("B" & Rows.Count).End(xlUp).Row).ClearContents
+        With shCEK
+            .Cells.HorizontalAlignment = xlCenter
+            .Cells.VerticalAlignment = xlCenter
+            .Cells.EntireColumn.AutoFit
+            .Cells.EntireRow.AutoFit
+        End With
+        
+        MsgBox "TERDAPAT ITEM YANG TIDAK MEMILIKI DATA", vbExclamation, "CEK ITEM# DI FILE " & name
+    End If
+    ' END
+    
+    HideSheets False
+    
+' ==================================================================================
+'' program berakhir ''
+ThisWorkbook.Worksheets("TOMBOL").Activate
+ActiveSheet.Cells(1, 1).Select
+OptVBA False
+ActiveWorkbook.Save
+
+End Sub
+
+Sub Proses_2()
+    
+OptVBA True
+'' program dimulai ''
+' ==================================================================================
+    
+    Set twb = ThisWorkbook
+
+    If Not Evaluate("isref('" & "PROSES1" & "'!A1)") Then
+        HideSheets False
+        MsgBox "PROSES 1 BELUM DIJALANKAN!", vbExclamation, "JALANKAN DULU PROSES 1!"
+        ActiveWorkbook.Save
+        Exit Sub
+    End If
+    
+    GetDataStatus
+    If Not Evaluate("isref('" & "STATUS" & "'!A1)") Then
+        HideSheets False
+        ActiveWorkbook.Save
+        Exit Sub
+    End If
+    
+    Dim find_Y As Range, find_found As Range
+    Sheets("STATUS").Select
+    Set find_Y = Columns("I").Find("Y")
+    If find_Y Is Nothing Then
+        Sheets("STATUS").Delete
+        shTOMBOL.Activate: Cells(1, 1).Select
+        HideSheets False
+        MsgBox "STATUS Belum Di Update", vbExclamation, "Update Terlebih Dahulu File STATUS"
+        ActiveWorkbook.Save
+        Exit Sub
+    End If
+    
+    Set find_found = Cells.Find("NO DATA")
+    If Not find_found Is Nothing Then
+        Sheets("STATUS").Delete
+        shTOMBOL.Activate: Cells(1, 1).Select
+        HideSheets False
+        Dim name As String
+        name = shTOMBOL.Range("D3").Value2
+        MsgBox "MASIH TERDAPAT ITEM YANG TIDAK MEMILIKI DATA", vbExclamation, "CEK ITEM# DI FILE " & name
+        ActiveWorkbook.Save
+        Exit Sub
+    End If
+    
+    Dim shSTATUS As Worksheet
+    Set shSTATUS = twb.Sheets("STATUS")
+    
+    Dim lr As Long, namaFile As String, pathFile As String
+    Dim shCSV As Worksheet
+    Dim shStatusN As Worksheet
+    Dim arr As Variant ', rgDest As Range
+    
+    ' ===================================================
+    ' Buat File CSV
+    
+    namaFile = shTOMBOL.Range("D12")
+    pathFile = shTOMBOL.Range("E12") & Application.PathSeparator & namaFile
+    
+    If Evaluate("isref('" & "UPLOAD" & "'!A1)") Then
+        twb.Sheets("UPLOAD").Delete
+    End If
+    Sheets.Add(After:=twb.Sheets(twb.Sheets.Count)).name = "UPLOAD"
+    Set shCSV = twb.Sheets("UPLOAD")
+    
+    lr = shSTATUS.Range("A" & Rows.Count).End(xlUp).Row
+
+    arr = shSTATUS.Range("A2:C" & lr).Value2
+    shCSV.Range("A1").Resize(UBound(arr, 1), UBound(arr, 2)) = arr
+    
+    Dim lrCSV As Long
+    lrCSV = shCSV.Range("A" & Rows.Count).End(xlUp).Row
+    
+    shCSV.Range("D1:E" & lrCSV).Value2 = "#"
+    
+    arr = shSTATUS.Range("D2:G" & lr).Value2
+    shCSV.Range("F1").Resize(UBound(arr, 1), UBound(arr, 2)) = arr
+    
+    shCSV.Range("P1:P" & lrCSV) = shSTATUS.Range("H2:H" & lr).Value2
+    shCSV.Range("Z1:Z" & lrCSV) = shSTATUS.Range("I2:I" & lr).Value2
+    
+    With shCSV.Cells
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .EntireColumn.AutoFit
+        .EntireRow.AutoFit
+    End With
+    
+    ' Save File CSV
+    
+    shCSV.Copy
+    ActiveWorkbook.SaveAs Filename:=pathFile, FileFormat:=xlCSV
+    ActiveWindow.Close SaveChanges:=False
+    twb.Activate
+    
+    ' Buat File CSV SELESAI!
+    ' ===================================================
+    
+    ' Buat File Status N
+    
+    namaFile = shTOMBOL.Range("D14")
+    pathFile = shTOMBOL.Range("E14") & Application.PathSeparator & namaFile
+    
+    If Evaluate("isref('" & "STATUS_N" & "'!A1)") Then
+        twb.Sheets("STATUS_N").Delete
+    End If
+    Sheets.Add(After:=twb.Sheets(twb.Sheets.Count)).name = "STATUS_N"
+    Dim shSN As Worksheet
+    Set shSN = twb.Sheets("STATUS_N")
+    
+    shSTATUS.Activate
+    Dim files As Range, rgDest As Range
+    Set files = shSTATUS.Range("A1").CurrentRegion
+    Set rgDest = shSN.Range("A1")
+    
+    If shSTATUS.AutoFilterMode = True Then shSTATUS.AutoFilterMode = False
+    shSTATUS.Range("I:I").AutoFilter
+    
+    files.AutoFilter Field:=1, Criteria1:="N", Operator:=xlFilterValues
+    
+    files.SpecialCells(xlCellTypeVisible).Copy Destination:=rgDest
+    shSTATUS.Range("I:I").AutoFilter
+    
+    With shSN.Cells
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .EntireColumn.AutoFit
+        .EntireRow.AutoFit
+    End With
+    
+    ' Save File
+    
+    shSN.Copy
+    ActiveWorkbook.SaveAs Filename:=pathFile, FileFormat:=xlOpenXMLWorkbook
+    ActiveWindow.Close SaveChanges:=True
+    twb.Activate
+    ' Buat File Status N SELESAI!
+    
+    ' Tambahan 09/08/2023 -> File Resume Untuk Kirim Email
+    
+    Dim shPO As Worksheet, pathResume As String, nameFile As String, nsRO As String 'Nama sheets Recap Order
+    Set shPO = twb.Sheets("PO")
+    pathResume = shTOMBOL.Range("D16").Value
+    nsRO = "PO"
+    shPO.Copy
+    ActiveWorkbook.Sheets(1).name = nsRO
+    ActiveWorkbook.SaveAs Filename:=pathResume, FileFormat:=xlOpenXMLWorkbook, CreateBackup:=False
+    ActiveWindow.Close SaveChanges:=True
+    
+    HideSheets False
+    
+' ==================================================================================
+'' program berakhir ''
+ThisWorkbook.Worksheets("TOMBOL").Activate
+ActiveSheet.Cells(1, 1).Select
+OptVBA False
+ActiveWorkbook.Save
+End Sub
+
+Sub ClearSheets()
+    
+    OptVBA True
+    
+    HideSheets True
+
+    Dim sn As Variant
+    Dim ws As Worksheet
+    
+    shMASTER.Cells.Clear
+    
+    sn = Array("SAM", "SIZECODE", "MASTER", "TOMBOL")
+    
+    For Each ws In ThisWorkbook.Worksheets
+        
+        If ws.Visible = xlSheetHidden Then ws.Visible = xlSheetVisible
+
+        If IsError(Application.Match(ws.name, sn, 0)) Then
+            ws.Delete
+        End If
+        
+    Next ws
+    
+    shTOMBOL.Range("D3").ClearContents
+    
+    HideSheets False
+    
+    OptVBA False
+    ActiveWorkbook.Save
+End Sub
+
+
+Private Sub OptVBA(isOn As Boolean)
+    With Application
+        .Calculation = IIf(isOn, xlCalculationManual, xlCalculationAutomatic)
+        .EnableEvents = Not (isOn)
+        .ScreenUpdating = Not (isOn)
+        .DisplayAlerts = Not (isOn)
+    End With
+End Sub
+

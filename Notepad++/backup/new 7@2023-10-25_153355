@@ -1,0 +1,126 @@
+
+Private Sub Worksheet_SelectionChange(ByVal Target As Range)
+'Application.DisplayAlerts = False
+'Application.ScreenUpdating = False
+'Application.EnableEvents = False
+
+    Cells.EntireColumn.AutoFit
+    ThisWorkbook.Worksheets("INPUT").Range("H2:I100000").NumberFormat = "m/dd/yyyy"
+    Dim InputColumn As Range
+    Dim ClickedCell As Range
+    Set InputColumn = Intersect(Target, Union(Me.Range("E2:E100000"), Me.Range("K2:K100000")))
+    If Not InputColumn Is Nothing Then
+        If Target.Column = 5 Then
+            r = Target.Row
+            If Target.Value <> "" Then
+                Range(Cells(r, 1), Cells(r, Cells(1, Columns.Count).End(xlToLeft).Column)).Borders.LineStyle = xlContinuous
+            Else
+                Range(Cells(r, 1), Cells(r, Cells(1, Columns.Count).End(xlToLeft).Column)).Borders.LineStyle = xlNone
+            End If
+            With Target.Offset(0, 1)
+                .Font.Bold = False
+                .Font.Color = vbBlack
+                .EntireColumn.AutoFit
+            End With
+        fm_Placing.Show
+        ElseIf Target.Column = 11 Then
+            r = Target.Row
+            If Target.Value <> "" Then
+                Range(Cells(r, 1), Cells(r, Cells(1, Columns.Count).End(xlToLeft).Column)).Borders.LineStyle = xlContinuous
+            Else
+                Range(Cells(r, 1), Cells(r, Cells(1, Columns.Count).End(xlToLeft).Column)).Borders.LineStyle = xlNone
+            End If
+            With Target.Offset(0, 1)
+                .Font.Bold = False
+                .Font.Color = vbBlack
+                .EntireColumn.AutoFit
+            End With
+        fm_Item_Makloon.Show
+        End If
+    End If
+
+'Application.DisplayAlerts = True
+'Application.ScreenUpdating = True
+'Application.EnableEvents = True
+End Sub
+
+
+Private Sub Worksheet_Change(ByVal Target As Range)
+Application.DisplayAlerts = False
+Application.ScreenUpdating = False
+Application.EnableEvents = False
+
+Dim affectedRange As Range, Cell As Range
+Set affectedRange = Intersect(Target, Union(Me.Range("E2:E100000"), Me.Range("K2:K100000")))
+
+If Not affectedRange Is Nothing Then
+    For Each Cell In affectedRange
+        If Cell.Column = 5 Then
+            If Cell.Value <> vbNullString Then
+                Cell.Offset(0, 1).Formula = "=IFERROR(INDEX(ADDRESS!A:A,MATCH(INPUT!" & Cell.Address & ",ADDRESS!B:B,0)),""Data Placing Tidak Ditemukan, Mohon Klik Tombol Di Sheets TOMBOL"")"
+                If Cell.Offset(0, 1).Value = "Data Placing Tidak Ditemukan, Mohon Klik Tombol Di Sheets TOMBOL" Then
+                    With Cell.Offset(0, 1)
+                        .Font.Bold = True
+                        .Font.Color = vbRed
+                    End With
+                Cell.EntireColumn.AutoFit
+                End If
+            ElseIf Cell.Value = vbNullString Then
+                Cell.Offset(0, 1).Value = vbNullString
+                With Cell.Offset(0, 1)
+                    .Font.Bold = False
+                    .Font.Color = vbBlack
+                    .EntireColumn.AutoFit
+                End With
+            End If
+        ElseIf Cell.Column = 11 Then
+            If Cell.Value <> "" Then
+                Cell.Offset(0, 1).Formula = "=IFERROR(VLOOKUP(" & Cell.Address & ",INMK!A:B,2,0),""Data ITEM MAKLOON Tidak Ditemukan, Mohon Klik Tombol Di Sheets TOMBOL"")"
+                Cell.Offset(0, 2).Formula = "=IFERROR(VLOOKUP(" & Cell.Address & ",INMK!A:E,5,0),""Data ITEM MAKLOON Tidak Ditemukan, Mohon Klik Tombol Di Sheets TOMBOL"")"
+                Cell.Offset(0, 3).Formula = "=IFERROR(VLOOKUP(" & Cell.Address & ",INMK!A:G,7,0),""Data ITEM MAKLOON Tidak Ditemukan, Mohon Klik Tombol Di Sheets TOMBOL"")"
+                If Cell.Offset(0, 1).Value = "Data ITEM MAKLOON Tidak Ditemukan, Mohon Klik Tombol Di Sheets TOMBOL" Or _
+                    Cell.Offset(0, 2).Value = "Data ITEM MAKLOON Tidak Ditemukan, Mohon Klik Tombol Di Sheets TOMBOL" Then
+                    With Cell.Offset(0, 1)
+                        .Font.Bold = True
+                        .Font.Color = vbRed
+                        .EntireColumn.AutoFit
+                    End With
+                    With Cell.Offset(0, 2)
+                        .Font.Bold = True
+                        .Font.Color = vbRed
+                        .EntireColumn.AutoFit
+                    End With
+                Else
+                    With Cell.Offset(0, 1)
+                        .Font.Bold = False
+                        .Font.Color = vbBlack
+                        .EntireColumn.AutoFit
+                    End With
+                    With Cell.Offset(0, 2)
+                        .Font.Bold = False
+                        .Font.Color = vbBlack
+                        .EntireColumn.AutoFit
+                    End With
+                End If
+            ElseIf Cell.Value = vbNullString Then
+                Cell.Offset(0, 1).Value = vbNullString
+                Cell.Offset(0, 2).Value = vbNullString
+                With Cell.Offset(0, 1)
+                    .Font.Bold = False
+                    .Font.Color = vbBlack
+                    .EntireColumn.AutoFit
+                End With
+                With Cell.Offset(0, 2)
+                    .Font.Bold = False
+                    .Font.Color = vbBlack
+                    .EntireColumn.AutoFit
+                End With
+            End If
+        End If
+    Next Cell
+End If
+
+Application.DisplayAlerts = True
+Application.ScreenUpdating = True
+Application.EnableEvents = True
+End Sub

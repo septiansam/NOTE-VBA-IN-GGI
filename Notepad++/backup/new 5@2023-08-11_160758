@@ -1,0 +1,30 @@
+Set WSREWORK = Sheets("REWORK")
+    ' Tentukan folder tempat file-file berada
+    folderPath = "E:\DATA SEPTIAN\LEARN-PROJECT\REWORK\TERBARU 03_07_2023\REWORK"
+    
+    ' Tentukan nama file yang ingin dicari dalam array
+    fileNames = Array("Cileunyi", "Majalengka 1", "Majalengka 2", "Kalibenda", "CV Chawan", "CV Anugrah", "CNJ2", "CAHAYA BUSANA ABADI")
+    
+    ' Loop melalui setiap nama file dalam array
+    For i = LBound(fileNames) To UBound(fileNames)
+        Sheets("NOTE1").Select
+        Cells.Clear 'SUDAH TERMASUK ClearContents dan ClearFormat
+        
+        ' Tentukan nama file yang ingin dicari
+        fileName = fileNames(i)
+        
+        ' Cari file dalam folder yang terbuka
+
+        filePath = Dir(folderPath & Application.PathSeparator & "*" & fileName & "*")
+
+        ' Periksa apakah file ditemukan
+        If filePath = "" Then
+            ' Jika file tidak ditemukan
+            twb.Activate
+            MsgBox "File " & fileName & " Doesn't Exists", vbCritical
+            Exit Sub
+            'Next 'jika tidak ada lanjut keperulangan selanjutnya
+        Else
+            ' Buka file yang ditemukan
+            Workbooks.Open folderPath & "\" & filePath
+        End If

@@ -1,0 +1,189 @@
+Option Explicit
+
+Public twb As Workbook
+Public shBantu As Worksheet
+Public shRpa As Worksheet
+Public shCek As Worksheet
+
+Sub SplitDate()
+
+Application.EnableEvents = False
+Application.ScreenUpdating = False
+Application.DisplayAlerts = False
+
+Set twb = ThisWorkbook
+Set shBantu = twb.Sheets("Bantuan")
+Set shRpa = twb.Sheets("RPA")
+Set shCek = twb.Sheets("CEK")
+
+shBantu.Range("G3:I5").Interior.Color = xlNone
+
+If shCek.Visible = True Then shCek.Visible = False
+
+Dim bulan As String, noBulan As Integer
+Dim tahun As String
+Dim tanggalAwal As Date
+Dim tanggalAkhir As Date
+Dim namaBulan As String
+Dim namaSheet As String
+Dim i As Integer
+
+bulan = shBantu.Range("B4").Value
+tahun = shBantu.Range("C4").Value
+
+'' KONDISI BULAN DAN TAHUN, UNTUK PEMBAHARUAN SHEETS
+Dim cekBulan As String, cekTahun As String
+cekBulan = shCek.Range("B4").Value
+cekTahun = shCek.Range("C4").Value
+
+If bulan = cekBulan And tahun = cekTahun And twb.Sheets.Count > 3 Then
+    MsgBox "Sheets Untuk Bulan " & bulan & " & Tahun " & tahun & " Sudah ada", vbInformation, "Sheets is Exists"
+    Exit Sub
+ElseIf bulan <> cekBulan And tahun = cekTahun Then
+    For i = twb.Sheets.Count To 4 Step -1
+        Sheets(i).Delete
+    Next i
+    cekBulan = bulan
+    cekTahun = tahun
+ElseIf bulan = cekBulan And tahun <> cekTahun Then
+    For i = twb.Sheets.Count To 4 Step -1
+        Sheets(i).Delete
+    Next i
+    cekBulan = bulan
+    cekTahun = tahun
+ElseIf bulan <> cekBulan And tahun <> cekTahun Then
+    For i = twb.Sheets.Count To 4 Step -1
+        Sheets(i).Delete
+    Next i
+    cekBulan = bulan
+    cekTahun = tahun
+End If
+''' SELESAI '''
+
+' Lakukan konversi berdasarkan nama bulan
+Select Case bulan
+    Case "Januari"
+        noBulan = 1
+    Case "Februari"
+        noBulan = 2
+    Case "Maret"
+        noBulan = 3
+    Case "April"
+        noBulan = 4
+    Case "Mei"
+        noBulan = 5
+    Case "Juni"
+        noBulan = 6
+    Case "Juli"
+        noBulan = 7
+    Case "Agustus"
+        noBulan = 8
+    Case "September"
+        noBulan = 9
+    Case "Oktober"
+        noBulan = 10
+    Case "November"
+        noBulan = 11
+    Case "Desember"
+        noBulan = 12
+End Select
+
+' Mendapatkan tanggal awal bulan ini
+tanggalAwal = DateSerial(tahun, noBulan, 1)
+' Mendapatkan tanggal akhir bulan ini
+tanggalAkhir = DateSerial(tahun, noBulan + 1, 0)
+' Mendapatkan nama bulan
+namaBulan = format(bulan, "MMMM")
+
+' JIKA TERKLIK TOMBOL PROSES, DENGAN KODISI FILE TERSEBUT SUDAH ADA DI DIRECTORY
+' UNTUK MENGHINDARI REPLACE FILE YANG BERISI DATA PENTING
+
+' VALIDASI / CEK
+
+' Siapkan File Backup
+Dim wbBackup As Workbook, pathFile As String, nameFile As String
+nameFile = namaBulan & "'" & Right(Year(tanggalAwal), 2)
+pathFile = shBantu.Range("E4") & Application.PathSeparator & nameFile
+
+Dim pathCek As String, nameCek As String, version As Long, fileCek As String
+pathCek = shBantu.Range("E4")
+nameCek = nameFile
+
+' Inisialisasi nomor versi awal
+version = 2
+
+' Cek apakah ada file dengan nama yang sama tanpa v di awal, dan v berapa lagi yang ada
+If Dir(pathCek & "\" & nameCek & ".xlsx") = "" Then
+    nameFile = nameCek
+ElseIf Dir(pathCek & "\" & nameCek & ".xlsx") <> "" Then
+    nameFile = nameCek & "v2.xlsx"
+End If
+
+If Dir(pathCek & "\" & nameFile) <> "" Then
+    Do
+        nameFile = nameCek & "v" & version & ".xlsx"
+        version = version + 1
+    Loop While Dir(pathCek & "\" & nameFile) <> ""
+End If
+
+' Simpan workbook dengan nama file yang belum digunakan
+pathFile = shBantu.Range("E4") & Application.PathSeparator & nameFile
+
+Set wbBackup = Workbooks.Add
+
+' Membuat sheets sesuai dengan jumlah hari dalam bulan
+Dim tanggal As Date, header As Variant
+For tanggal = tanggalAwal To tanggalAkhir
+    twb.Activate
+    namaSheet = format(tanggal, "dd") & " " & namaBulan & "'" & Right(Year(tanggalAwal), 2)
+    
+    ' Membuat lembar kerja baru dengan nama tanggal
+    Sheets.Add(After:=Sheets(Sheets.Count)).Name = namaSheet
+    
+    ' Memindahkan data atau melakukan operasi lain di lembar kerja baru
+    ReDim header(1 To 7)
+    header(1) = "No"
+    header(2) = "Penerima"
+    header(3) = "Pengirim"
+    header(4) = "Packaging"
+    header(5) = "Keterangan"
+    header(6) = "Email"
+    header(7) = "Status"
+    
+    For i = LBound(header) To UBound(header)
+        Cells(1, i) = header(i)
+    Next i
+    
+    With Range("1:1")
+        .Font.Bold = True
+        .EntireColumn.AutoFit
+        .EntireRow.AutoFit
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+    End With
+    
+    ' Salin ke wbBackup
+    ActiveSheet.Copy After:=wbBackup.Sheets(wbBackup.Sheets.Count)
+
+Next tanggal
+
+' SaveAs wbBackup
+wbBackup.Sheets(1).Delete
+wbBackup.SaveAs fileName:=pathFile, FileFormat:=xlOpenXMLWorkbook
+wbBackup.Close SaveChanges:=False
+
+shBantu.Range("G3:I5").Interior.Color = RGB(51, 153, 255)
+shBantu.Activate
+ActiveWindow.Zoom = 90
+
+
+Application.EnableEvents = True
+Application.ScreenUpdating = True
+Application.DisplayAlerts = True
+
+MsgBox "Done", vbInformation, "Process is Successful"
+
+twb.Save
+End Sub
+
+

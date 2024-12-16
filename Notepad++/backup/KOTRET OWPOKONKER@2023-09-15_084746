@@ -1,0 +1,146 @@
+Option Explicit
+
+Public twb As Workbook
+Public shInput As Worksheet
+Public shAddress As Worksheet
+Public shINMK As Worksheet
+Public shBantu As Worksheet
+
+
+Private Sub Workbook_Open()
+
+Application.DisplayAlerts = False
+Application.ScreenUpdating = False
+Application.EnableEvents = False
+
+Set twb = ThisWorkbook
+Set shInput = twb.Sheets("INPUT")
+Set shAddress = twb.Sheets("ADDRESS")
+Set shINMK = twb.Sheets("INMK")
+Set shBantu = twb.Sheets("BANTUAN")
+
+shAddress.Cells.ClearContents
+shINMK.Cells.ClearContents
+
+Dim pathAddress As String, pathINMK As String, wbAddress As Workbook, wbINMK As Workbook
+
+pathAddress = "\\10.8.0.35\Bersama\IT\RPA PPIC\Inputan OW_PO_konker\Address Number\Address.xlsx"
+pathINMK = "\\10.8.0.35\Bersama\IT\RPA PPIC\Inputan OW_PO_konker\Item INMK\INMK.xlsx"
+
+If Dir(pathAddress) = "" Then
+    twb.Activate
+    MsgBox "Address File Doesn't Exists", vbExclamation
+    Exit Sub
+Else
+    Set wbAddress = Workbooks.Open(pathAddress)
+    wbAddress.Activate
+    wbAddress.Sheets(1).UsedRange.Copy Destination:=shAddress.Range("A1")
+    wbAddress.Close SaveChanges:=False
+End If
+
+If Dir(pathINMK) = "" Then
+    twb.Activate
+    MsgBox "INMK File Doesn't Exists", vbExclamation
+    Exit Sub
+Else
+    Set wbINMK = Workbooks.Open(pathINMK)
+    wbINMK.Activate
+    wbINMK.Sheets(1).UsedRange.Copy Destination:=shINMK.Range("A1")
+    wbINMK.Close SaveChanges:=False
+End If
+
+shInput.Activate
+
+With Range("C2:C15000").Validation
+    .Delete
+    .Add Type:=xlValidateList, AlertStyle:=xlValidAlertStop, Operator:= _
+    xlBetween, Formula1:="1201,1204,1205"
+    .IgnoreBlank = True
+    .InCellDropdown = True
+    .InputTitle = ""
+    .ErrorTitle = "BRACH SALAH"
+    .InputMessage = ""
+    .ErrorMessage = ""
+    .ShowInput = True
+    .ShowError = True
+End With
+
+With Range("D2:D15000").Validation
+    .Delete
+    .Add Type:=xlValidateList, AlertStyle:=xlValidAlertStop, Operator:= _
+    xlBetween, Formula1:="=ADDRESS!$B$2:$B$1048576"
+    .IgnoreBlank = True
+    .InCellDropdown = True
+    .InputTitle = ""
+    .ErrorTitle = ""
+    .InputMessage = ""
+    .ErrorMessage = ""
+    .ShowInput = True
+    .ShowError = False
+End With
+
+With Range("F2:F15000").Validation
+    .Delete
+    .Add Type:=xlValidateList, AlertStyle:=xlValidAlertStop, Operator:= _
+    xlBetween, Formula1:="=BANTUAN!$B$7:$B$1048576"
+    .IgnoreBlank = True
+    .InCellDropdown = True
+    .InputTitle = ""
+    .ErrorTitle = ""
+    .InputMessage = ""
+    .ErrorMessage = ""
+    .ShowInput = True
+    .ShowError = False
+End With
+
+Range("E2:E15000").Formula = "=IFERROR(INDEX(ADDRESS!A:A,MATCH(INPUT!D2,ADDRESS!B:B,0)),"""")"
+
+Range("G2:H15000").NumberFormat = "mm/dd/yyyy"
+Columns("G:H").NumberFormat = "mm/dd/yyyy"
+
+With Range("K2:K15000").Validation
+    .Delete
+    .Add Type:=xlValidateList, AlertStyle:=xlValidAlertStop, Operator:= _
+    xlBetween, Formula1:="=INMK!$A$2:$A$1048576"
+    .IgnoreBlank = True
+    .InCellDropdown = True
+    .InputTitle = ""
+    .ErrorTitle = ""
+    .InputMessage = ""
+    .ErrorMessage = ""
+    .ShowInput = False
+    .ShowError = False
+End With
+
+Range("L2:L15000").Formula = "=IFERROR(VLOOKUP(K2,INMK!A:B,2,0),"""")"
+Range("M2:M15000").Formula = "=IFERROR(VLOOKUP(K2,INMK!A:E,5,0),"""")"
+
+With Range("Q2:Q15000").Validation
+    .Delete
+    .Add Type:=xlValidateList, AlertStyle:=xlValidAlertStop, Operator:= _
+    xlBetween, Formula1:="PC,ST"
+    .IgnoreBlank = True
+    .InCellDropdown = True
+    .InputTitle = ""
+    .ErrorTitle = ""
+    .InputMessage = ""
+    .ErrorMessage = ""
+    .ShowInput = True
+    .ShowError = False
+
+End With
+
+shInput.Cells.Calculate
+If shAddress.Visible = True Then shAddress.Visible = False
+If shINMK.Visible = True Then shINMK.Visible = False
+If shBantu.Visible = True Then shBantu.Visible = False
+
+Application.DisplayAlerts = True
+Application.ScreenUpdating = True
+Application.EnableEvents = True
+
+'twb.Save
+
+End Sub
+
+

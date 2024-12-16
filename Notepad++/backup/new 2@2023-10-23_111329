@@ -1,0 +1,251 @@
+Sub PIVOTT2()
+
+Dim TOLAST As Integer
+Dim TES3 As String, TES4 As String, PTable As PivotTable, twb As Workbook, LASTT As Integer, i As Integer, PCache As PivotCache, PSheet As Worksheet, DATAOLAH As Integer, PERODE As String
+Dim PRange As Range, RNG As Range, DATAHAPUS As Integer, DATALOOP As Integer, LASTROWTES3 As Integer, KUNCI As String, FIRSTDATE As Date, LASTDATE As Date
+
+Set twb = ThisWorkbook: Set PSheet = twb.Worksheets("TES2")
+
+TES3 = "TES3"
+If Evaluate("isref('" & TES3 & "'!A1)") Then
+   Application.DisplayAlerts = False: Sheets(TES3).Delete: Application.DisplayAlerts = True
+End If
+TES4 = "TES4"
+If Evaluate("isref('" & TES4 & "'!A1)") Then
+   Application.DisplayAlerts = False: Sheets(TES4).Delete: Application.DisplayAlerts = True
+End If
+
+Sheets("OLAHAN1").Select
+If ActiveSheet.AutoFilterMode = True Then Selection.AutoFilter
+If Cells(1, 1) = "KUNCI" Then
+    Columns("A").Delete
+End If
+
+Columns("A").Insert
+DATAOLAH = Cells(Rows.Count, 2).End(xlUp).Row
+
+Range("A2:A" & DATAOLAH).FormulaR1C1 = "=WEEKNUM(RC[1])-WEEKNUM(DATE(YEAR(RC[1]), MONTH(RC[1]),1))+1"
+Columns("A").Copy: Cells(1, 1).PasteSpecial xlPasteValues: Application.CutCopyMode = False
+
+Columns("A").Copy Destination:=Cells(1, 30)
+Range("AD1:AD10000").RemoveDuplicates Columns:=1, Header:=xlYes
+
+DATALOOP = Sheets("OLAHAN1").Cells(Rows.Count, 30).End(xlUp).Row - 1
+Sheets.Add(after:=Sheets(Sheets.Count)).Name = "TES3": Sheets.Add(after:=Sheets(Sheets.Count)).Name = "TES4"
+
+Sheets("OLAHAN1").Select: Cells(1, 1) = "KUNCI"
+
+For i = 1 To DATALOOP
+    Sheets("OLAHAN1").Select
+    KUNCI = Sheets("OLAHAN1").Cells(1 + i, 30).Value
+    Range("A1:AB" & DATAOLAH).AutoFilter Field:=1, Criteria1:=KUNCI
+    
+    If Range("B" & Rows.Count).End(xlUp).Row >= 1 Then
+        Range(Cells(1, 2), Cells(DATAOLAH, 28)).SpecialCells(xlCellTypeVisible).Copy Destination:=Sheets("TES3").Cells(1, 1)
+        Sheets("TES3").Select
+        
+        Columns("A").Insert: Cells(1, 1) = "Periode Minggu"
+        LASTROWTES3 = Sheets("TES3").Cells(Rows.Count, 2).End(xlUp).Row
+        FIRSTDATE = Sheets("TES3").Cells(2, 2).Value: LASTDATE = Sheets("TES3").Cells(Rows.Count, 2).End(xlUp).Value
+        
+        Columns("AD:AJ").ClearContents
+        Cells(1, 30) = FIRSTDATE: Cells(1, 31) = LASTDATE
+            With Cells(1, 32)
+                .FormulaR1C1 = "=DAYS360(RC[-2],RC[-1])"
+                .NumberFormat = "General"
+            End With
+            With Cells(2, 30)
+                .FormulaR1C1 = "=DAY(R[-1]C)" '
+                .NumberFormat = "General"
+            End With
+            With Cells(4, 30)
+                .FormulaR1C1 = "=IF(R[-2]C<10,(0&R[-2]C),R[-2]C)"
+            End With
+            Cells(1, 34).FormulaR1C1 = "=TEXT(RC[-2],""[$-421]DDDD"")"
+            Cells(2, 31).FormulaR1C1 = "=DAY(R[-1]C)"
+            Cells(2, 31).NumberFormat = "General"
+            Cells(4, 31).FormulaR1C1 = "=IF(R[-2]C<10,(0&R[-2]C),R[-2]C)"
+            Cells(3, 30).FormulaR1C1 = "=LEFT(TEXT(R[-2]C,""[$-421]MMMM""),3)"
+            Cells(1, 33).FormulaR1C1 = "=R[3]C[-3]&"" - ""&R[3]C[-2]&"" ""&R[2]C[-3]"
+    
+            
+            Columns("AD:AJ").Copy
+            Cells(1, 30).PasteSpecial xlPasteValues: Application.CutCopyMode = False
+            
+            PERODE = Sheets("TES3").Cells(1, 33).Text
+            If Cells(1, 32) = 0 And Cells(2, 30) = Cells(2, 31) Then
+                 PERODE = "'" & Sheets("TES3").Cells(4, 30) & " " & Cells(3, 30).Text
+            End If
+            
+            Range("A2:A" & LASTROWTES3) = PERODE
+            Range(Cells(2, 1), Cells(LASTROWTES3, 28)).Copy Destination:=Sheets("TES4").Range("A" & Rows.Count).End(xlUp).Offset(1, 0)
+            Range("A1:AB1").Copy Destination:=Sheets("TES4").Cells(1, 1)
+            
+            Cells.ClearContents
+    End If
+Next i
+
+Sheets("TES2").Select
+Set PRange = Sheets("TES4").Range("C3").CurrentRegion
+Set PCache = ActiveWorkbook.PivotCaches.Create(SourceType:=xlDatabase, SourceData:=PRange)
+Set PTable = PCache.CreatePivotTable(TableDestination:=PSheet.Cells(1, 1), TableName:="PivotTable") 'MEMBUAT PIVOT DI SHEET TES
+
+With PTable.PivotFields("Factory") 'INSERT FIELD JENIS MESIN DI BARIS PERTAMA
+    .Caption = "Factory": .Orientation = xlRowField
+    .Position = 1
+End With
+With PTable.PivotFields("Line")
+    .Caption = "Line": .Orientation = xlRowField
+    .Position = 2
+End With
+With PTable.PivotFields("Periode Minggu")
+    .Caption = "Periode Minggu": .Orientation = xlRowField
+    .Position = 3: .AutoSort xlAscending, "Periode Minggu"
+End With
+With PTable.PivotFields("FOB")
+    .Caption = "FOB": .Orientation = xlRowField
+    .Position = 4
+End With
+With PTable.PivotFields("CMT")
+    .Caption = "CMT": .Orientation = xlRowField
+    .Position = 5
+End With
+With PTable.PivotFields("Output")
+    .Orientation = xlDataField
+    .Position = 1: .Function = xlSum
+End With
+With PTable.PivotFields("Amount.CM(USD)")
+    .Orientation = xlDataField
+    .Position = 2: .Function = xlSum
+End With
+With PTable.PivotFields("Cost.Proporsional(US)")
+    .Orientation = xlDataField
+    .Position = 3: .Function = xlSum
+End With
+With PTable.PivotFields("Profit.Lost(USD)")
+    .Orientation = xlDataField
+    .Position = 4: .Function = xlSum
+End With
+
+Sheets("TES2").Select
+ActiveSheet.PivotTables("PivotTable").RowAxisLayout xlTabularRow
+'ActiveSheet.PivotTables("PivotTable").PivotFields("Line").Subtotals = Array(False, False, False, False, False, False, False, False, False, False, False, False)
+ActiveSheet.PivotTables("PivotTable").PivotFields("Periode Minggu").Subtotals = Array(False, False, False, False, False, False, False, False, False, False, False, False)
+ActiveSheet.PivotTables("PivotTable").PivotFields("FOB").Subtotals = Array(False, False, False, False, False, False, False, False, False, False, False, False)
+ActiveSheet.PivotTables("PivotTable").PivotFields("CMT").Subtotals = Array(False, False, False, False, False, False, False, False, False, False, False, False)
+
+Cells.Copy: Cells(1, 1).PasteSpecial xlPasteValues
+
+Cells.Replace what:="(blank)", Replacement:=""
+Columns("D:E").Cut: Range("K1").Insert Shift:=xlToRight
+Columns("H").Delete
+Cells(2, 10) = "Sum of FOB": Cells(2, 11) = "Sum of CMT"
+Cells(2, 12) = "Total Sales"
+
+TOLAST = Range("B" & Rows.Count).End(xlUp).Row
+Range("J3:K" & TOLAST).Formula = "=$D3*H3"
+Range("L3:L" & TOLAST).Formula = "=J3+K3"
+
+Set RNG = Range("A2").CurrentRegion
+With RNG.Borders 'BUAT BORDER
+    .LineStyle = xlContinuous
+    .Weight = xlThin
+End With
+With Range("A2:L2")
+    .Interior.Color = 15773696: .Font.Bold = True
+End With
+Cells(2, 4) = "Sum of QTY": Cells(2, 5) = "Sum of Amount.CM"
+
+LASTT = Sheets("TES2").Cells(Rows.Count, 1).End(xlUp).Row
+Range("B1:B" & LASTT).HorizontalAlignment = xlLeft
+
+For i = 2 To LASTT
+    If Right(Cells(i, 1), 5) = "Total" And Cells(i - 1, 1) = vbNullString Then
+        Rows(i).Font.Bold = True
+        Range(Cells(i, 10), Cells(i, 12)).ClearContents
+        Range(Cells(i, 1), Cells(i, 12)).Select
+            With Selection.Interior
+                .Pattern = xlSolid
+                .PatternColorIndex = xlAutomatic
+                .ThemeColor = xlThemeColorAccent6
+                .TintAndShade = 0.599993896298105
+                .PatternTintAndShade = 0
+            End With
+    End If
+Next i
+
+Range(Cells(LASTT, 1), Cells(LASTT, 12)).Font.Bold = True
+Range(Cells(LASTT, 1), Cells(LASTT, 12)).Interior.Color = 15773696
+
+For i = 2 To LASTT - 2
+    If Right(Cells(i, 2), 5) = "Total" And Cells(i, 3) = vbNullString Then
+        
+        Range(Cells(i, 10), Cells(i, 12)).ClearContents
+        With Range(Cells(i, 1), Cells(i, 12))
+            .Interior.ColorIndex = 44
+            .Font.Bold = True
+        End With
+    End If
+Next i
+
+
+AWAL = 3
+AKHIR = Cells(AWAL, 11).End(xlDown).Row
+Cells(LASTT + 1, 11) = "QWERTY"
+Cells(LASTT + 2, 11) = "QWERTY"
+Cells(LASTT + 1, 12) = "QWERTY"
+For i = 2 To LASTT
+    
+    If Right(Cells(i, 2), 5) = "Total" Then
+        Cells(i, 12).Formula = "=sum(L" & AWAL & ":L" & AKHIR & ")"
+        Cells(i, 16) = i
+        Cells(i + 1, 15).Select
+        AWAL = ActiveCell.Row
+        If Cells(AWAL, 12) = vbNullString Then
+            AWAL = AWAL + 1
+        End If
+        
+        AKHIR = Cells(AWAL, 11).End(xlDown).Row
+        If Cells(AWAL + 1, 11) = vbNullString Then
+             AKHIR = AWAL
+        End If
+        
+    End If
+
+Next i
+Range("K2:L1000").Replace what:="QWERTY", Replacement:=""
+
+Range("P1:P" & LASTT).SpecialCells(xlCellTypeBlanks).Delete Shift:=xlUp
+
+SUMTGL = Cells(Rows.Count, 16).End(xlUp).Row
+FORMULAUSE2 = ""
+For k = 1 To SUMTGL
+    If k = 1 Then
+        FORMULAUSE2 = "L" & Cells(k, 16).Value
+    Else
+        FORMULAUSE2 = FORMULAUSE2 & "+L" & Cells(k, 16).Value
+    End If
+Next k
+FORMULAUSE3 = "=" & FORMULAUSE2
+
+Cells(LASTT, 12) = FORMULAUSE3
+Columns("P").ClearContents
+
+ActiveSheet.Name = "Resume Per Line"
+Range(Cells(LASTT, 1), Cells(LASTT, 13)).Font.Bold = True
+
+Columns("E:M").NumberFormat = "#,##0.00_);[Red](#,##0.00)"
+
+Cells.EntireColumn.AutoFit
+Columns("D").NumberFormat = "#,##0"
+Rows(1).Delete
+For i = 1 To 3
+    Rows(i).Insert
+Next i
+
+With Range("A1:M1")
+    .Merge: .Font.Bold = True: .HorizontalAlignment = xlCenter: .Font.Size = 18
+End With
+ActiveWindow.Zoom = 80
+Cells(1, 1).Select
+End Sub

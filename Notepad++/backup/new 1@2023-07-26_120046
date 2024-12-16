@@ -1,0 +1,28 @@
+Sub Clear()
+'
+' Hapus Semua Sheets Kecuali Sheets TOMBOL
+'
+    
+    Dim ws As Worksheet
+    
+    For Each ws In ThisWorkbook.Worksheets
+        If ws.Name <> "TOMBOL" Then
+            Application.DisplayAlerts = False
+            ws.Delete
+            Application.DisplayAlerts = True
+        End If
+    Next ws
+
+End Sub
+
+' Clear Sheets
+Dim sn As Variant
+Dim ws As Worksheet
+sn = Array("SAM", "SIZECODE", "MASTER", "TOMBOL", "PO")
+For Each ws In ThisWorkbook.Worksheets
+	If ws.Visible = xlSheetHidden Then ws.Visible = xlSheetVisible
+	If IsError(Application.Match(ws.name, sn, 0)) Then
+		ws.Delete
+	End If
+Next ws
+    ' End Clear

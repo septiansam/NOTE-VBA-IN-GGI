@@ -1,0 +1,43 @@
+Sub TARIKANRPA()
+
+Sheets("INPUT FILE").Select
+Range("AJ1:AK2").Copy
+Range("AM1").PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+Range("AM1:AN2").NumberFormat = "@"
+Range("A1").Select
+
+Sheets("RPA").Select
+Range("A2:E25").Delete
+
+Range("A2") = "'1201.213110"
+Range("A3") = "'1201.213110"
+
+Range("E2") = "APC 1201"
+Range("E3") = "APC 1201"
+
+''' SAM '''
+Sheets("INPUT FILE").Select
+Range("AH4") = Range("C6")
+Sheets("RPA").Select
+Range("B2") = "='INPUT FILE'!R2C36"
+Range("C2") = "='INPUT FILE'!R2C37"
+Range("B3") = "='INPUT FILE'!R1C36"
+Range("C3") = "='INPUT FILE'!$AK$1"
+''' END '''
+
+Range("D2") = "=RC[1]&"" - ""&'INPUT FILE'!R5C34"
+Range("D3") = "=RC[1]&"" - ""&'INPUT FILE'!R4C34"
+
+Columns("B:D").Select
+Selection.Copy
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+Application.CutCopyMode = False
+Cells.EntireColumn.AutoFit
+Range("A1").Select
+lastrpaa = Sheets("RPA").Range("d" & Rows.Count).End(xlUp).Row
+Range("d2:d" & lastrpaa).Copy
+Sheets("INPUT FILE").Select
+Range("g4").PasteSpecial xlPasteValues
+Range("a1").Select
+
+End Sub

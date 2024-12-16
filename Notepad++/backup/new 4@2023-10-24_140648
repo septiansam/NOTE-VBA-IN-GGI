@@ -1,0 +1,102 @@
+Sub TARIKANRPA()
+
+Sheets("INPUT FILE").Select
+Range("AJ1:AK2").Copy
+Range("AM1").PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+Range("AM1:AN2").NumberFormat = "@"
+Range("A1").Select
+
+Sheets("RPA").Select
+Range("A2:E25").Delete
+
+Range("A2") = "'1201.213110"
+Range("A3") = "'1204.213110"
+Range("A4") = "'1205.213110"
+Range("A5") = "'1206.213110"
+Range("A6") = "'1201.213150"
+Range("A7") = "'1204.213150"
+Range("A8") = "'1205.213150"
+Range("A9") = "'1206.213150"
+Range("A10") = "'1201.114400"
+Range("A11") = "'1204.114400"
+Range("A12") = "'1205.114400"
+Range("A13") = "'1206.114400"
+Range("A14") = "'1201.213110"
+Range("A15") = "'1204.213110"
+Range("A16") = "'1205.213110"
+Range("A17") = "'1206.213110"
+Range("A18") = "'1201.213150"
+Range("A19") = "'1204.213150"
+Range("A20") = "'1205.213150"
+Range("A21") = "'1206.213150"
+Range("A22") = "'1201.114400"
+Range("A23") = "'1204.114400"
+Range("A24") = "'1205.114400"
+Range("A25") = "'1206.114400"
+
+Range("E2") = "APC 1201"
+Range("E3") = "APC 1204"
+Range("E4") = "APC 1205"
+Range("E5") = "APC 1206"
+Range("E6") = "RNV 1201"
+Range("E7") = "RNV 1204"
+Range("E8") = "RNV 1205"
+Range("E9") = "RNV 1206"
+Range("E10") = "GIT 1201"
+Range("E11") = "GIT 1204"
+Range("E12") = "GIT 1205"
+Range("E13") = "GIT 1206"
+Range("E14") = "APC 1201"
+Range("E15") = "APC 1204"
+Range("E16") = "APC 1205"
+Range("E17") = "APC 1206"
+Range("E18") = "RNV 1201"
+Range("E19") = "RNV 1204"
+Range("E20") = "RNV 1205"
+Range("E21") = "RNV 1206"
+Range("E22") = "GIT 1201"
+Range("E23") = "GIT 1204"
+Range("E24") = "GIT 1205"
+Range("E25") = "GIT 1206"
+
+''' SAM '''
+'Dim X As Variant, Y As Variant
+Sheets("INPUT FILE").Select
+Range("AH4") = Range("C6")
+'X = Sheets("INPUT FILE").Range("AJ2")
+'Y = Sheets("INPUT FILE").Range("AK2")
+Sheets("RPA").Select
+Range("B2") = "='INPUT FILE'!R2C36"
+Range("C2") = "='INPUT FILE'!R2C37"
+Range("B14") = "='INPUT FILE'!R1C36"
+Range("C14") = "='INPUT FILE'!$AK$1"
+'Range("B2") = X
+'Range("C2") = Y
+''' END '''
+
+'Range("B2") = "='INPUT FILE'!R2C39"
+'Range("C2") = "='INPUT FILE'!R2C40"
+Range("D2") = "=RC[1]&"" - ""&'INPUT FILE'!R5C34"
+'Range("B14") = "='INPUT FILE'!R1C39"
+'Range("C14") = "='INPUT FILE'!$AN$1"
+Range("D14") = "=RC[1]&"" - ""&'INPUT FILE'!R4C34"
+Range("B2").AutoFill Destination:=Range("B2:B13"), Type:=xlFillDefault
+Range("C2").AutoFill Destination:=Range("C2:C13"), Type:=xlFillDefault
+Range("D2").AutoFill Destination:=Range("D2:D13"), Type:=xlFillDefault
+Range("B14").AutoFill Destination:=Range("B14:B25"), Type:=xlFillDefault
+Range("C14").AutoFill Destination:=Range("C14:C25"), Type:=xlFillDefault
+Range("D14").AutoFill Destination:=Range("D14:D25"), Type:=xlFillDefault
+
+Columns("B:D").Select
+Selection.Copy
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+Application.CutCopyMode = False
+Cells.EntireColumn.AutoFit
+Range("A1").Select
+lastrpaa = Sheets("RPA").Range("d" & Rows.Count).End(xlUp).Row
+Range("d2:d" & lastrpaa).Copy
+Sheets("INPUT FILE").Select
+Range("g4").PasteSpecial xlPasteValues
+Range("a1").Select
+
+End Sub
