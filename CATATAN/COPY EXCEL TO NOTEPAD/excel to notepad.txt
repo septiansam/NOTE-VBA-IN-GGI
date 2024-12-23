@@ -1,0 +1,78 @@
+Sub AppendDataToNotepad34()
+    Dim filePath As String
+    Dim fileNum As Integer
+    Dim ws As Worksheet
+    Dim textToAppend As String
+    Dim rowRange As Range
+    Dim cell As Range
+    Dim separator As String
+    Dim existingData As String
+
+    ' Path file Notepad
+    filePath = "\\10.8.0.35\bersama\IT\RPA PPIC\Create OW O4\MACRO_PROCESS - Create OW O4\RPA Preference\.Source\INPUT USER\logInputUser.txt"
+
+    ' Separator untuk memisahkan kolom (gunakan tab "\t" atau koma ",")
+    separator = vbTab ' Anda bisa ganti dengan "," untuk format CSV
+
+    ' Periksa apakah file Notepad ada
+    If Dir(filePath) = "" Then
+        MsgBox "File tidak ditemukan: " & filePath, vbExclamation, "Error"
+        Exit Sub
+    End If
+
+    ' Baca isi file untuk memeriksa apakah ada data
+    fileNum = FreeFile
+    On Error Resume Next
+    Open filePath For Input As #fileNum
+    existingData = Input$(LOF(fileNum), fileNum)
+    Close #fileNum
+    On Error GoTo 0
+
+    ' Ambil worksheet aktif (ubah jika perlu)
+    Set ws = ThisWorkbook.Worksheets("IU - DATA1")
+
+    ' Ambil data dari range A1:R10 dan susun data per baris
+    For Each rowRange In ws.Range("A1:S10").Rows
+        Dim rowText As String
+        rowText = ""
+
+        ' Loop setiap kolom di baris ini
+        For Each cell In rowRange.Cells
+            If cell.Value <> "" Then
+                rowText = rowText & cell.Value & separator
+            Else
+                rowText = rowText & separator ' Tambahkan separator untuk sel kosong
+            End If
+        Next cell
+
+        ' Hapus separator terakhir di akhir baris
+        If Len(rowText) > 0 Then
+            rowText = Left(rowText, Len(rowText) - Len(separator))
+        End If
+
+        ' Tambahkan baris ke teks untuk ditulis
+        textToAppend = textToAppend & rowText & vbCrLf
+    Next rowRange
+
+    ' Tambahkan baris kosong jika Notepad sudah ada data
+    If Len(existingData) > 0 Then
+        textToAppend = vbCrLf & textToAppend
+    End If
+
+    ' Periksa jika ada data untuk ditambahkan
+    If textToAppend = "" Then
+        MsgBox "Tidak ada data untuk ditambahkan dari range A1:S10.", vbExclamation, "Peringatan"
+        Exit Sub
+    End If
+
+    ' Dapatkan nomor file bebas untuk dibuka
+    fileNum = FreeFile
+
+    ' Buka file Notepad dalam mode Append untuk menambahkan teks
+    Open filePath For Append As #fileNum
+        ' Tambahkan teks ke baris terakhir
+        Print #fileNum, textToAppend
+    Close #fileNum
+
+    MsgBox "Data berhasil disalin ke baris terakhir di file Notepad.", vbInformation, "Sukses"
+End Sub

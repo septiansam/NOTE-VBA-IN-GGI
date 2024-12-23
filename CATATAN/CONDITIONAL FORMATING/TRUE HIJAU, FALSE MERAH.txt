@@ -1,0 +1,32 @@
+TRUE: Huruf berwarna Hijau dan tebal (bold).
+FALSE: Huruf berwarna Merah dan tebal (bold).
+
+Sub ApplyConditionalFormatting()
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim rng As Range
+    
+    ' Referensi worksheet aktif
+    Set ws = ActiveSheet
+    
+    ' Menentukan baris terakhir dengan data di kolom T
+    lastRow = ws.Cells(ws.Rows.Count, "T").End(xlUp).Row
+    
+    ' Menentukan range untuk conditional formatting
+    Set rng = ws.Range("T2:T" & lastRow)
+    
+    ' Hapus semua conditional formatting sebelumnya di range
+    rng.FormatConditions.Delete
+    
+    ' Aturan format untuk nilai TRUE
+    With rng.FormatConditions.Add(Type:=xlCellValue, Operator:=xlEqual, Formula1:="=TRUE")
+        .Font.Color = RGB(0, 128, 0) ' Hijau
+        .Font.Bold = True
+    End With
+    
+    ' Aturan format untuk nilai FALSE
+    With rng.FormatConditions.Add(Type:=xlCellValue, Operator:=xlEqual, Formula1:="=FALSE")
+        .Font.Color = RGB(255, 0, 0) ' Merah
+        .Font.Bold = True
+    End With
+End Sub

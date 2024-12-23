@@ -922,3 +922,12 @@
 2024-12-11 04:38:03  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml  32846/32846 bytes are written.
 2024-12-11 04:38:03  F:\DATA SEPTIAN\APP\Appl\Notepad++\session.xml is closed.
 2024-12-11 04:38:03  WM_DESTROY (isEndSessionStarted == true)
+2024-12-18 08:25:10  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2024-12-18 08:25:10  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2024-12-18 08:25:11  F:\DATA SEPTIAN\CATATAN PENTING (PARIRIMBON)\Notepad++\config.xml is opened.
+2024-12-18 08:25:11  F:\DATA SEPTIAN\CATATAN PENTING (PARIRIMBON)\Notepad++\config.xml  9586/9586 bytes are written.
+2024-12-18 08:25:11  F:\DATA SEPTIAN\CATATAN PENTING (PARIRIMBON)\Notepad++\config.xml is closed.
+2024-12-18 08:25:11  F:\DATA SEPTIAN\CATATAN PENTING (PARIRIMBON)\Notepad++\session.xml is opened.
+2024-12-18 08:25:11  F:\DATA SEPTIAN\CATATAN PENTING (PARIRIMBON)\Notepad++\session.xml  33522/33522 bytes are written.
+2024-12-18 08:25:11  F:\DATA SEPTIAN\CATATAN PENTING (PARIRIMBON)\Notepad++\session.xml is closed.
+2024-12-18 08:25:11  WM_DESTROY (isEndSessionStarted == true)

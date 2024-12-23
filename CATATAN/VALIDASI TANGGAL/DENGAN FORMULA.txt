@@ -1,0 +1,37 @@
+Dengan Formula
+=IF(ISTEXT(O2), IF(ISNUMBER(DATEVALUE(O2)), IF(TEXT(DATEVALUE(O2), "mm/dd/yyyy") = O2, "Valid", "Invalid Format"), "Invalid"), IF(ISNUMBER(O2), IF(TEXT(O2, "mm/dd/yyyy") = TEXT(O2, "mm/dd/yyyy"), "Valid", "Invalid Format"), "Invalid"))
+
+Penjelasan Formula:
+
+1. **ISTEXT(O2)**: 
+   - Memeriksa apakah nilai di sel O2 adalah teks.
+   - Jika O2 berisi teks, maka dilanjutkan ke pemeriksaan apakah teks tersebut bisa dikonversi menjadi tanggal.
+
+2. **IF(ISNUMBER(DATEVALUE(O2))**:
+   - `DATEVALUE(O2)` mencoba mengonversi teks di O2 menjadi nilai tanggal.
+   - Jika konversi berhasil dan menghasilkan angka, maka teks tersebut dapat dianggap sebagai tanggal valid.
+
+3. **IF(TEXT(DATEVALUE(O2), "dd/mm/yyyy") = O2, "Valid", "Invalid Format")**:
+   - Mengonversi nilai tanggal yang telah diperoleh dari `DATEVALUE(O2)` menjadi format "dd/mm/yyyy".
+   - Membandingkan apakah hasil format tersebut sama persis dengan nilai asli di O2.
+   - Jika sesuai, berarti formatnya valid, hasilnya "Valid". Jika tidak sesuai, berarti formatnya salah, hasilnya "Invalid Format".
+
+4. **"Invalid"**:
+   - Jika teks di O2 tidak bisa dikonversi menjadi tanggal yang valid, hasilnya adalah "Invalid".
+
+5. **IF(ISNUMBER(O2))**:
+   - Jika nilai di O2 sudah berupa tanggal (format tanggal), formula memeriksa apakah tanggal tersebut valid dan sesuai dengan format "dd/mm/yyyy".
+   - Fungsi `ISNUMBER(O2)` digunakan untuk memeriksa apakah nilai tersebut adalah angka yang mewakili tanggal di Excel.
+
+6. **IF(TEXT(O2, "dd/mm/yyyy") = TEXT(O2, "dd/mm/yyyy"), "Valid", "Invalid Format")**:
+   - Mengonversi nilai tanggal yang ada di O2 menjadi format "dd/mm/yyyy".
+   - Memastikan bahwa format tanggal tersebut sesuai dengan "dd/mm/yyyy". Jika sesuai, hasilnya "Valid". Jika tidak sesuai format, hasilnya "Invalid Format".
+
+7. **"Invalid"**:
+   - Jika nilai di O2 bukan berupa tanggal atau formatnya tidak sesuai, hasilnya adalah "Invalid".
+
+Ringkasan:
+- Formula ini digunakan untuk memvalidasi nilai di sel O2, apakah berupa teks yang bisa dikenali sebagai tanggal atau sudah berupa tanggal valid.
+- Jika teks bisa dikonversi menjadi tanggal dan formatnya benar, maka hasilnya adalah "Valid".
+- Jika teks tidak dapat dikonversi atau formatnya salah, hasilnya adalah "Invalid Format".
+- Jika nilai di O2 bukan tanggal yang valid, hasilnya adalah "Invalid".

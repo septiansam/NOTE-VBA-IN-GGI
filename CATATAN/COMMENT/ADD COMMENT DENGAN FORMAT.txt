@@ -1,0 +1,24 @@
+Sub TambahkanComment()
+    Dim ws As Worksheet
+    Dim rng As Range
+    
+    ' Mengatur worksheet dan sel
+    Set ws = ThisWorkbook.Worksheets("Sheet1") ' Ganti Sheet1 dengan nama sheet Anda
+    Set rng = ws.Range("O1")
+    
+    ' Hapus komentar lama jika ada
+    If Not rng.Comment Is Nothing Then rng.Comment.Delete
+    
+    ' Menambahkan komentar dengan dua baris teks
+    rng.AddComment "Format Penulisan" & vbLf & """dd/mm/yyyy"""
+    
+    ' Mengatur format komentar
+    With rng.Comment.Shape.TextFrame.Characters(1, 16).Font
+        .Color = RGB(255, 0, 0) ' Warna merah untuk "Format Penulisan"
+        .Bold = True ' Bold untuk "Format Penulisan"
+    End With
+    With rng.Comment.Shape.TextFrame.Characters(18, 12).Font
+        .Color = RGB(0, 0, 0) ' Warna hitam untuk "dd/mm/yyyy"
+        .Bold = True ' Bold untuk "dd/mm/yyyy"
+    End With
+End Sub

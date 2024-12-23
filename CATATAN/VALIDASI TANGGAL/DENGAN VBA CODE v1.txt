@@ -1,0 +1,78 @@
+Sub ValidateDateFormat()
+    Dim lastRow As Long
+    Dim i As Long
+    Dim receiptDate As Variant
+    Dim formattedDate As String
+    
+    ' Menentukan baris terakhir dengan data di kolom O
+    lastRow = Cells(Rows.Count, "O").End(xlUp).Row
+    
+    ' Memeriksa setiap entri di kolom O
+    For i = 2 To lastRow
+        receiptDate = Cells(i, "O").Value
+        
+        ' Cek apakah nilai di O adalah teks
+        If IsText(receiptDate) Then
+            ' Jika nilai berupa teks, coba konversi ke tanggal menggunakan DATEVALUE
+            If IsDate(DATEVALUE(receiptDate)) Then
+                formattedDate = Format(DATEVALUE(receiptDate), "mm/dd/yyyy")
+                ' Periksa apakah hasil konversi sesuai dengan format tanggal
+                If formattedDate = receiptDate Then
+                    Cells(i, "T").Value = "Valid"
+                Else
+                    Cells(i, "T").Value = "Invalid Format"
+                End If
+            Else
+                Cells(i, "T").Value = "Invalid"
+            End If
+        ' Cek apakah nilai sudah berupa tanggal
+        ElseIf IsDate(receiptDate) Then
+            formattedDate = Format(receiptDate, "mm/dd/yyyy")
+            ' Jika valid, periksa apakah formatnya mm/dd/yyyy
+            If formattedDate = receiptDate Then
+                Cells(i, "T").Value = "Valid"
+            Else
+                Cells(i, "T").Value = "Invalid Format"
+            End If
+        Else
+            ' Jika bukan teks atau tanggal valid
+            Cells(i, "T").Value = "Invalid"
+        End If
+    Next i
+End Sub
+
+
+Penjelasan Kode:
+
+1. **Deklarasi Variabel**:
+   - `lastRow`: Menyimpan baris terakhir yang memiliki data di kolom O.
+   - `i`: Digunakan untuk iterasi melalui setiap baris data di kolom O.
+   - `receiptDate`: Menyimpan nilai dari setiap sel di kolom O.
+   - `validDate`: Boolean untuk memeriksa apakah nilai tanggal valid.
+   - `formattedDate`: Menyimpan nilai tanggal yang diformat dalam bentuk "mm/dd/yyyy".
+
+2. **Menentukan Baris Terakhir dengan Data**:
+   - `lastRow = Cells(Rows.Count, "O").End(xlUp).Row` mencari baris terakhir yang memiliki data di kolom O.
+
+3. **Iterasi Melalui Setiap Baris Data di Kolom O**:
+   - `For i = 2 To lastRow`: Memulai iterasi dari baris kedua (mengabaikan header) hingga baris terakhir dengan data.
+
+4. **Memeriksa Jika Nilai Adalah Teks**:
+   - `If IsText(receiptDate) Then`: Memeriksa apakah nilai di kolom O berupa teks.
+   - `DATEVALUE(receiptDate)`: Mencoba mengonversi teks menjadi tanggal.
+   - `IsDate(DATEVALUE(receiptDate))`: Memastikan teks tersebut dapat dikonversi menjadi tanggal valid.
+
+5. **Validasi Format Tanggal**:
+   - Jika tanggal valid, formatkan tanggal menggunakan `Format(DATEVALUE(receiptDate), "mm/dd/yyyy")` dan periksa apakah tanggal yang diformat sesuai dengan nilai teks asli di O.
+   - Jika format sesuai, beri tanda "Valid", jika tidak sesuai, beri tanda "Invalid Format".
+
+6. **Jika Nilai Sudah Berupa Tanggal**:
+   - `ElseIf IsDate(receiptDate) Then`: Jika nilai di O sudah berupa tanggal, validasi formatnya dengan cara yang sama seperti pada teks.
+
+7. **Menandai Invalid**:
+   - Jika nilai di O tidak bisa dikenali sebagai teks yang valid atau tanggal yang valid, beri tanda "Invalid".
+
+Ringkasan:
+- **Valid**: Jika nilai di kolom O adalah tanggal valid dengan format "mm/dd/yyyy".
+- **Invalid Format**: Jika nilai adalah tanggal yang tidak sesuai dengan format "mm/dd/yyyy".
+- **Invalid**: Jika nilai bukan tanggal atau teks yang valid.

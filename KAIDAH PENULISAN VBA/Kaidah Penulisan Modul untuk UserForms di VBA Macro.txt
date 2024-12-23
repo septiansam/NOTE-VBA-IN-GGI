@@ -1,0 +1,189 @@
+' =====================================================================================
+' Kaidah Penulisan Form dan Elemen UserForms di VBA Macro
+' =====================================================================================
+
+' 1. Penamaan UserForms:
+'    - Nama UserForm harus mencerminkan tujuan atau fungsi form tersebut.
+'    - Gunakan format PascalCase dengan awalan "frm_" untuk modul UserForm.
+'    - Contoh:
+'        - frm_UserLogin (untuk UserForm login)
+'        - frm_ReportFilter (untuk form filter laporan)
+'        - frm_Settings (untuk form pengaturan)
+'        - frm_Registration (untuk form pendaftaran pengguna)
+
+' 2. Penamaan Kontrol (Button, TextBox, ComboBox, dll):
+'    - Gunakan awalan yang konsisten sesuai tipe kontrol, diikuti dengan deskripsi fungsi atau nama kontrol.
+'    - Contoh penamaan kontrol:
+'        - btn_ : Button (Tombol)
+'        - txt_ : TextBox (Kolom Teks)
+'        - cmb_ : ComboBox (ComboBox)
+'        - chk_ : CheckBox (Checkbox)
+'        - lbl_ : Label (Label)
+'        - frm_ : Form (UserForm)
+'    - Gunakan nama kontrol yang deskriptif, menggambarkan fungsinya.
+'    - Contoh:
+'        - btnLogin (Tombol Login)
+'        - txtUsername (Kolom Username)
+'        - cmbUserRole (ComboBox untuk memilih role pengguna)
+'        - chkRememberMe (CheckBox untuk mengingat login)
+'        - lblError (Label untuk menampilkan pesan error)
+
+' 3. Penamaan Variabel:
+'    - Gunakan prefiks sesuai dengan tipe data variabel untuk meningkatkan keterbacaan.
+'    - Contoh:
+'        - strUsername (String untuk username)
+'        - intLoginAttempts (Integer untuk jumlah percobaan login)
+'        - blnIsLoggedIn (Boolean untuk status login)
+'        - dblDiscountRate (Double untuk tarif diskon)
+'        - dtLoginTime (Date untuk waktu login)
+
+' =====================================================================================
+' Contoh Penulisan Modul untuk UserForm dengan Penamaan Profesional
+' =====================================================================================
+
+' Nama Modul: frm_UserLogin
+' Deskripsi : Modul ini berisi Sub dan Fungsi untuk UserForm Login.
+
+' Sub untuk Menangani Klik Tombol Login
+Public Sub btnLogin_Click()
+    ' Validasi Input
+    If txtUsername.Text = "" Or txtPassword.Text = "" Then
+        MsgBox "Username dan Password tidak boleh kosong.", vbExclamation, "Validasi Login"
+        Exit Sub
+    End If
+    
+    ' Proses Login
+    If ValidateLogin(txtUsername.Text, txtPassword.Text) Then
+        MsgBox "Login berhasil!", vbInformation, "Sukses"
+        frm_UserLogin.Hide
+    Else
+        MsgBox "Username atau Password salah.", vbCritical, "Gagal"
+    End If
+End Sub
+
+' Sub untuk Menangani Klik Tombol Cancel
+Public Sub btnCancel_Click()
+    ' Menutup Form Login jika Cancel diklik
+    frm_UserLogin.Hide
+End Sub
+
+' Fungsi untuk Validasi Login
+Private Function ValidateLogin(ByVal strUsername As String, ByVal strPassword As String) As Boolean
+    ' Fungsi validasi login (contoh simulasi validasi)
+    If strUsername = "admin" And strPassword = "1234" Then
+        ValidateLogin = True
+    Else
+        ValidateLogin = False
+    End If
+End Function
+
+' =====================================================================================
+' Struktur Proyek dengan Penamaan Profesional untuk Banyak UserForms
+' =====================================================================================
+
+' 1. Form Login:
+'    - Nama Modul: frm_UserLogin
+'    - Kontrol: btnLogin, btnCancel, txtUsername, txtPassword
+'    - Sub: btnLogin_Click, btnCancel_Click
+
+' 2. Form Filter Laporan:
+'    - Nama Modul: frm_ReportFilter
+'    - Kontrol: btnApplyFilter, btnClearFilter, cmbReportType, txtDateRange
+'    - Sub: btnApplyFilter_Click, btnClearFilter_Click
+
+' 3. Form Pengaturan:
+'    - Nama Modul: frm_Settings
+'    - Kontrol: btnSaveSettings, btnResetSettings, chkAutoSave, txtBackupPath
+'    - Sub: btnSaveSettings_Click, btnResetSettings_Click
+
+' =====================================================================================
+' Catatan:
+' 1. Nama UserForm harus deskriptif, misalnya frm_UserLogin, bukan frm_LoginForm atau frm_LoginScreen.
+' 2. Kontrol (seperti tombol dan kolom teks) harus diberi nama yang menggambarkan fungsinya.
+' 3. Hindari penggunaan singkatan yang berlebihan, pastikan nama variabel dan kontrol mudah dimengerti.
+' 4. Selalu gunakan komentar yang jelas untuk mendokumentasikan setiap prosedur dan fungsi.
+' =====================================================================================
+
+
+' =====================================================================================
+' Kaidah Penulisan Modul untuk UserForms di VBA Macro
+' =====================================================================================
+
+' 1. Gunakan Awalan Modul:
+'    - Gunakan awalan seperti `frm_` untuk modul yang berisi kode terkait UserForms.
+'    - Contoh: frm_UserLogin, frm_ReportFilter.
+
+' 2. Pisahkan Modul untuk Setiap UserForm:
+'    - Buat modul terpisah untuk setiap UserForm agar kode modular dan mudah dikelola.
+
+' 3. Nama Modul Konsisten dengan Nama Form:
+'    - Pastikan nama modul mencerminkan UserForm yang digunakan.
+'    - Contoh: Jika form bernama "UserLogin", modul diberi nama "frm_UserLogin".
+
+' 4. Sub dan Fungsi Deskriptif:
+'    - Gunakan nama Sub dan Fungsi yang mencerminkan tugasnya.
+'    - Contoh: btnLogin_Click, ValidateLogin.
+
+' 5. Awalan untuk Kontrol Form:
+'    - btn_ : Button (Tombol)
+'    - txt_ : TextBox
+'    - cmb_ : ComboBox
+'    - chk_ : CheckBox
+'    - lbl_ : Label
+
+' 6. Komentar dan Dokumentasi:
+'    - Tambahkan komentar untuk menjelaskan tujuan Sub dan Fungsi.
+'    - Sertakan dokumentasi singkat di awal modul untuk menggambarkan fungsinya.
+
+' =====================================================================================
+' Contoh Penulisan Modul untuk UserForm
+' =====================================================================================
+
+' Nama Modul: frm_UserLogin
+' Deskripsi : Modul ini berisi Sub dan Fungsi untuk UserForm Login.
+
+Public Sub btnLogin_Click()
+    ' Validasi Input
+    If txtUsername.Text = "" Or txtPassword.Text = "" Then
+        MsgBox "Username dan Password tidak boleh kosong.", vbExclamation, "Validasi Login"
+        Exit Sub
+    End If
+    
+    ' Proses Login
+    If ValidateLogin(txtUsername.Text, txtPassword.Text) Then
+        MsgBox "Login berhasil!", vbInformation, "Sukses"
+        frm_UserLogin.Hide
+    Else
+        MsgBox "Username atau Password salah.", vbCritical, "Gagal"
+    End If
+End Sub
+
+Public Sub btnCancel_Click()
+    ' Event untuk tombol Cancel
+    frm_UserLogin.Hide
+End Sub
+
+Private Function ValidateLogin(ByVal username As String, ByVal password As String) As Boolean
+    ' Fungsi validasi login (contoh simulasi validasi)
+    If username = "admin" And password = "1234" Then
+        ValidateLogin = True
+    Else
+        ValidateLogin = False
+    End If
+End Function
+
+' =====================================================================================
+' Contoh Struktur Proyek dengan Banyak UserForms
+' =====================================================================================
+
+' 1. Form Login:
+'    - Nama Modul: frm_UserLogin
+'    - Sub: btnLogin_Click, btnCancel_Click
+
+' 2. Form Filter Laporan:
+'    - Nama Modul: frm_ReportFilter
+'    - Sub: btnApplyFilter_Click, btnClearFilter_Click
+
+' 3. Form Pengaturan:
+'    - Nama Modul: frm_Settings
+'    - Sub: btnSaveSettings_Click, btnResetSettings_Click

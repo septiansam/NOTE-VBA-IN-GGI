@@ -1,0 +1,29 @@
+    LR1_ILDV = SH1_ILDV.Cells.Find("*", , xlFormulas, xlPart, xlByRows, xlPrevious).Row
+    LR1_WO = SH1_CC1_RekapDetail.Range("AB" & Rows.Count).End(xlUp).Row
+    
+    ' Loop melalui setiap nilai di kolom N pada Sheet1
+    For Each cell In SH1_ILDV.Range("N8:N" & LR1_ILDV)
+        If cell.Offset(0, -4) = "IC" Then
+            lookupValue = cell.Value
+            result = "" ' Reset result untuk setiap lookup value
+    
+            ' Loop melalui setiap cell di Sheet2 untuk mencari nilai yang cocok
+            For Each rng In SH1_CC1_RekapDetail.Range("AB2:AB" & LR1_WO)
+                ' Jika nilai cocok, tambahkan ke hasil dengan pemisah "|"
+                If rng.Value <> "" Then
+                    If rng.Value = lookupValue Then
+                        If result = "" Then
+                            result = rng.Offset(0, -1).Value ' Ambil nilai di kolom sebelah kanan dari hasil yang cocok
+                        Else
+                            If rng.Offset(0, -1).Value <> Left(Results, 8) Then
+                                result = result & " | " & rng.Offset(0, -1).Value
+                            End If
+                        End If
+                    End If
+                End If
+            Next rng
+    
+            ' Simpan hasil di kolom F pada baris yang sama di Sheet1
+            cell.Offset(0, -8).Value = result ' Sesuaikan Offset sesuai dengan posisi kolom F
+        End If
+    Next cell

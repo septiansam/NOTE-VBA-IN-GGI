@@ -1,0 +1,29 @@
+Sub Validasi_ReceiptDate()
+    Set WB1 = ThisWorkbook
+    Set SH1_IU_DATA1 = WB1.Worksheets("IU - DATA1")
+    
+    SH1_IU_DATA1.Activate
+    SH1_IU_DATA1.Range("T1").Value = "Validasi Receipt Date"
+    
+'[*] Menentukan baris terakhir
+'``````````````````````````````````````````````````
+    LR1_DataInput = SH1_IU_DATA1.Cells.Find("*", , xlFormulas, xlPart, xlByRows, xlPrevious).Row
+    
+'[*] Tambahkan conditional formating -> TRUE (HIJAU) - FALSE (MERAH), di Kolom T
+'``````````````````````````````````````````````````
+    ' Hapus semua conditional formatting sebelumnya di range
+    SH1_IU_DATA1.Range("T2:T" & LR1_DataInput).FormatConditions.Delete
+    
+    ' Aturan format untuk nilai TRUE
+    With SH1_IU_DATA1.Range("T2:T" & LR1_DataInput).FormatConditions.Add(Type:=xlCellValue, Operator:=xlEqual, Formula1:="=TRUE")
+        .Font.Color = RGB(0, 128, 0) ' Hijau
+        .Font.Bold = True
+    End With
+    
+    ' Aturan format untuk nilai FALSE
+    With SH1_IU_DATA1.Range("T2:T" & LR1_DataInput).FormatConditions.Add(Type:=xlCellValue, Operator:=xlEqual, Formula1:="=FALSE")
+        .Font.Color = RGB(255, 0, 0) ' Merah
+        .Font.Bold = True
+    End With
+    
+End Sub

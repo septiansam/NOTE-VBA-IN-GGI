@@ -1,0 +1,31 @@
+Sub ProteksiSheet()
+    Dim ws As Worksheet
+    Dim password As String
+
+    password = "AdMinistratorp455"
+    
+    ' Ganti "Sheet1" dengan nama sheet yang ingin diproteksi
+    Set ws = ThisWorkbook.Sheets("Sheet1")
+    
+    ws.Protect Password:=password
+    MsgBox "Sheet telah diproteksi dengan password."
+End Sub
+
+Sub UnproteksiSheet()
+    Dim ws As Worksheet
+    Dim password As String
+
+    password = "AdMinistratorp455"
+    
+    ' Ganti "Sheet1" dengan nama sheet yang ingin di-unprotect
+    Set ws = ThisWorkbook.Sheets("Sheet1")
+    
+    On Error Resume Next
+    ws.Unprotect Password:=password
+    If Err.Number = 0 Then
+        MsgBox "Proteksi sheet telah dibuka."
+    Else
+        MsgBox "Password salah atau sheet tidak terproteksi.", vbExclamation
+    End If
+    On Error GoTo 0
+End Sub

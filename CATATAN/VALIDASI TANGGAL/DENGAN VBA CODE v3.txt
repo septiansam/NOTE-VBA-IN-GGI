@@ -1,0 +1,100 @@
+Sub Validasi_ReceiptDate()
+    Set WB1 = ThisWorkbook
+    Set SH1_IU_DATA1 = WB1.Worksheets("IU - DATA1")
+    
+    SH1_IU_DATA1.Activate
+    SH1_IU_DATA1.Range("T:T").Delete
+    
+    SH1_IU_DATA1.Range("T1").Value = "VALIDASI RECEIPT DATE"
+    With SH1_IU_DATA1.Range("T1")
+        .Interior.Color = RGB(0, 176, 240)
+        .Font.Bold = True
+    End With
+    
+'[*] Menentukan baris terakhir
+'``````````````````````````````````````````````````
+    LR1_DataInput = SH1_IU_DATA1.Cells.Find("*", , xlFormulas, xlPart, xlByRows, xlPrevious).Row
+    
+'[*] Jika Receipt Date Hasil Copy paste dan number format jadi date, maka rubah
+'``````````````````````````````````````````````````
+    SH1_IU_DATA1.Range("O2:O" & LR1_DataInput).NumberFormat = "mm/dd/yyyy"
+    
+'[*] Tambahkan conditional formating -> TRUE (HIJAU) - FALSE (MERAH), di Kolom T
+'``````````````````````````````````````````````````
+    ' Hapus semua conditional formatting sebelumnya di range
+    SH1_IU_DATA1.Range("T2:T" & LR1_DataInput).FormatConditions.Delete
+    
+    ' Aturan format untuk nilai TRUE
+    With SH1_IU_DATA1.Range("T2:T" & LR1_DataInput).FormatConditions.Add(Type:=xlCellValue, Operator:=xlEqual, Formula1:="=TRUE")
+        .Font.Color = RGB(0, 128, 0) ' Hijau
+        .Font.Bold = True
+    End With
+    
+    ' Aturan format untuk nilai FALSE
+    With SH1_IU_DATA1.Range("T2:T" & LR1_DataInput).FormatConditions.Add(Type:=xlCellValue, Operator:=xlEqual, Formula1:="=FALSE")
+        .Font.Color = RGB(255, 0, 0) ' Merah
+        .Font.Bold = True
+    End With
+    
+'[*] VALIDASI RECEIPT DATE
+'``````````````````````````````````````````````````
+    ' Memeriksa setiap entri di kolom O
+    For i = 2 To LR1_DataInput
+        receiptDate = SH1_IU_DATA1.Cells(i, "O").Text
+        
+        ' Cek apakah nilai di O adalah teks
+        If VarType(receiptDate) = vbString And Not IsDate(receiptDate) Then
+            
+            ' Jika nilai berupa teks, coba konversi ke tanggal menggunakan DATEVALUE
+            On Error Resume Next
+            ' Formatkan hasil konversi tanggal menjadi "mm/dd/yyyy"
+            formattedDate = Format(DateValue(receiptDate), "mm/dd/yyyy")
+            
+            If Err.Number = 0 Then
+                ' Periksa apakah hasil konversi sesuai dengan nilai teks di sel
+                If formattedDate = receiptDate Then
+                    SH1_IU_DATA1.Cells(i, "T").Value = "TRUE"  ' Tanggal valid dengan format benar
+                Else
+                    SH1_IU_DATA1.Cells(i, "T").Value = "FALSE"  ' Format tanggal salah
+                End If
+            Else
+                SH1_IU_DATA1.Cells(i, "T").Value = "FALSE"  ' Nilai tidak dapat dikonversi ke tanggal
+            End If
+            On Error GoTo 0
+        
+        ' Cek apakah nilai sudah berupa tanggal
+        ElseIf IsDate(receiptDate) Then
+            
+            ' Formatkan nilai tanggal menjadi "mm/dd/yyyy"
+            formattedDate = Format(receiptDate, "mm/dd/yyyy")
+            
+            ' Periksa apakah nilai sesuai dengan format "mm/dd/yyyy"
+            If formattedDate = receiptDate Then
+                SH1_IU_DATA1.Cells(i, "T").Value = "TRUE"  ' Tanggal valid dengan format benar
+            Else
+                SH1_IU_DATA1.Cells(i, "T").Value = "FALSE"  ' Format tanggal salah
+            End If
+            
+        Else
+            ' Jika bukan teks atau tanggal valid, beri tanda "Invalid"
+            SH1_IU_DATA1.Cells(i, "T").Value = "FALSE"
+        End If
+    Next i
+    
+    SH1_IU_DATA1.Cells.EntireColumn.AutoFit
+    SH1_IU_DATA1.Cells(1, 1).Select
+    
+    SumFalse = Application.WorksheetFunction.CountIf(SH1_IU_DATA1.Range("T2:T" & LR1_DataInput), False)
+    If SumFalse > 0 Then
+        MsgBox "PROSES DIHENTIKAN..." & vbCrLf _
+        & "Terdapat Inputan Receipt Date di kolom O yang Kurang Tepat" & vbCrLf _
+        & "Silahkan perbaiki di sheet ''IU - DATA1''", vbInformation, "Validation | Check"
+        SH1_IU_DATA1.Activate
+        SH1_IU_DATA1.Range("A1").Select
+        End
+    End If
+    
+    SH1_IU_DATA1.Range("T:T").Delete
+    SH1_IU_DATA1.Cells(1, 1).Select
+    
+End Sub

@@ -263,7 +263,6 @@ Sub HideSheets(ParamArray sheetNames() As Variant)
     
 End Sub
 
-
 '+------------------------------------------------+
 '        Function: wsx
 ' Deskripsi: Fungsi ini memeriksa apakah sheet
@@ -279,3 +278,13 @@ Function wsx(sheet_names As String) As Boolean
         wsx = Not Sheets(sheet_names) Is Nothing
     On Error GoTo 0
 End Function
+
+'+------------------------------------------------+
+' Kode : vba code
+' Deskripsi: Untuk Cek Sheet Ada Atau Tidak Menggunakan
+' Parameter:
+'   - Sebagai Contoh Nama Sheet yang akan di cek
+'     adalah Sheet dengan nama TES
+'+------------------------------------------------+
+' Kode dibawah ini
+' If Evaluate("isref('" & "TES" & "'!A1)") Then Sheets("TES").Delete
