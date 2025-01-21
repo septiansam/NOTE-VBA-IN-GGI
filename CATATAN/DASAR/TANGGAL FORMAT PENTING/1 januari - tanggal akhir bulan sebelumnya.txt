@@ -1,0 +1,40 @@
+Sub IsiTanggal()
+
+    Application.DisplayAlerts = False
+    
+    Dim tanggalAwalBulanSebelumnya As Date
+    Dim tanggalAkhirBulanSebelumnya As Date
+    
+    If WorksheetExists("PERIODE") Then Sheets("PERIODE").Delete
+    Sheets.Add(AFTER:=Sheets("BANTUAN")).Name = "PERIODE"
+    With Sheets("PERIODE")
+        .Range("A1").Value = "TANGGAL AWAL"
+        .Range("B1").Value = "TANGGAL AKHIR"
+    End With
+    
+    ' Tentukan tanggal hari ini
+    Dim tanggalHariIni As Date
+    tanggalHariIni = Date
+    
+    ' Hitung tanggal pertama bulan sebelumnya
+    If Month(tanggalHariIni) = 1 Then
+        ' Jika bulan saat ini adalah Januari, maka tahun diubah menjadi tahun sebelumnya
+        tanggalAwalBulanSebelumnya = DateSerial(Year(tanggalHariIni) - 1, 1, 1)
+    Else
+        ' Jika bulan saat ini bukan Januari, maka tanggal 1 dari bulan sebelumnya
+        tanggalAwalBulanSebelumnya = DateSerial(Year(tanggalHariIni), Month(tanggalHariIni) - 1, 1)
+    End If
+    
+    ' Hitung tanggal terakhir bulan sebelumnya
+    tanggalAkhirBulanSebelumnya = DateSerial(Year(tanggalHariIni), Month(tanggalHariIni), 0)
+    
+    ' Isi data ke dalam sel A2 dan B2
+    With ThisWorkbook.Sheets("PERIODE") ' Ganti "Sheet1" dengan nama sheet Anda
+        .Range("A2").Value = tanggalAwalBulanSebelumnya
+        .Range("B2").Value = tanggalAkhirBulanSebelumnya
+    End With
+    Sheets("PERIODE").Select
+    Cells.EntireColumn.AutoFit: Cells(1, 1).Select
+    
+    Application.DisplayAlerts = True
+End Sub

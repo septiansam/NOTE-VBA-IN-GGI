@@ -1,0 +1,5 @@
+    With WB2S_X.AutoFilter.Range
+        FR = WB2S_X.Range("E" & .Offset(1, 0).SpecialCells(xlCellTypeVisible)(1).Row).Row
+        WB2S_X.Range("$A$1:$N$" & WB2S_X.Range("A" & Rows.Count).End(xlUp).Row).AutoFilter Field:=3, Criteria1:="7"
+        LR = WB2S_X.Range("E" & .Offset(1, 0).SpecialCells(xlCellTypeVisible)(1).Row).Row
+    End With

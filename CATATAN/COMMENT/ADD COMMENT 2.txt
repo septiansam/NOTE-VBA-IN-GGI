@@ -1,0 +1,11 @@
+    '  Hapus komentar lama jika ada
+    If Not SH1_IU_DATA1.Range("O1").Comment Is Nothing Then SH1_IU_DATA1.Range("O1").Comment.Delete
+    
+    '  Tambahkan komentar baru
+    SH1_IU_DATA1.Range("O1").AddComment "Format Penulisan" & vbLf & """mm/dd/yyyy"""
+    
+    '  Mengatur format komentar
+    With SH1_IU_DATA1.Range("O1").Comment.Shape.TextFrame.Characters(1, 16).Font
+        .Color = RGB(255, 0, 0) ' Warna merah untuk "Format Penulisan"
+        .Bold = True ' Bold untuk "Format Penulisan"
+    End With

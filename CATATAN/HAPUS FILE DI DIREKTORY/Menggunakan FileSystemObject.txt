@@ -1,0 +1,31 @@
+'Kode VBA untuk menghapus semua file di direktori tertentu kecuali folder
+Sub HapusSemuaFile()
+    Dim fso As Object
+    Dim folderPath As String
+    Dim folder As Object
+    Dim file As Object
+
+    ' Path ke direktori yang akan dibersihkan
+    folderPath = "\\10.8.0.35\rpa$\RPA Excel Template\Internal Audit\MACRO_RPA - Tarik Data Pengujian Ceisa x IT inventory at GCC\.Result"
+
+    ' Membuat objek FileSystemObject
+    Set fso = CreateObject("Scripting.FileSystemObject")
+
+    ' Pastikan direktori ada
+    If Not fso.FolderExists(folderPath) Then
+        MsgBox "Direktori tidak ditemukan: " & folderPath, vbExclamation
+        Exit Sub
+    End If
+
+    ' Referensi ke folder
+    Set folder = fso.GetFolder(folderPath)
+
+    ' Loop melalui semua file di folder
+    For Each file In folder.Files
+        On Error Resume Next ' Tangani kesalahan jika ada file yang terkunci
+        file.Delete
+        On Error GoTo 0
+    Next file
+
+    MsgBox "Semua file di direktori berhasil dihapus.", vbInformation
+End Sub

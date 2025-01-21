@@ -1,2 +1,4 @@
 TEMP.Range("A:A").TextToColumns Destination:=TEMP.Range("B1"), DataType:=xlDelimited, _
         Other:=True, OtherChar:="-"
+
+Range("T2").TextToColumns Destination:=Range("T2"), DataType:=xlDelimited, Comma:=True
