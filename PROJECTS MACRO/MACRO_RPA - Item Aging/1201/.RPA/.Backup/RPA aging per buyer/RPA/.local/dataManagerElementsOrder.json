@@ -1,0 +1,1167 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Profit Loss Resume Selasa New.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "mail&Sequence_362",
+        "pass&Sequence_1",
+        "max&Sequence_2",
+        "bacaWO&Sequence_5",
+        "ada&Sequence_37",
+        "PASSWORDEMAIL&Sequence_6",
+        "gaada&Sequence_6",
+        "PASSWORDEMAIL&Sequence_46",
+        "PASSWORDEMAIL&Sequence_39",
+        "readread&Sequence_20",
+        "mail&Sequence_22"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Profit Loss Resume Senin New.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "max&Sequence_2",
+        "bacaWO&Sequence_5",
+        "ada&Sequence_37",
+        "PASSWORDEMAIL&Sequence_6",
+        "readread&Sequence_20",
+        "mail&Sequence_22"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Report Profit Loss_selasa.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Report_UnplannedWO.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Report Profit Loss_Senin.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "max1&Sequence_2",
+        "PASSWORDEMAIL&Sequence_6",
+        "max&Sequence_6",
+        "bacaWO&Sequence_5"
+      ],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "email Selasa.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "readread&Sequence_20",
+        "pass&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "email Senin.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "readread&Sequence_20",
+        "mail&Sequence_22",
+        "mail&Sequence_362"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Reminder Status Material.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan GCC PO Preparation.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "KirimWA&Sequence_9",
+        "KirimWA&Sequence_372",
+        "max&Sequence_372",
+        "pass&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan GCC WO Preparation.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "max&Sequence_372",
+        "KirimWA&Sequence_372",
+        "KirimWA&Sequence_9"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Production Schedulle.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "max&Sequence_333",
+        "pass&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan GCC WO Purchasing Berjalan.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "max&Sequence_372",
+        "KirimWA&Sequence_372",
+        "KirimWA&Sequence_9"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan GCC WO Produksi.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "BacaTanggal&Sequence_443",
+        "max&Sequence_444",
+        "KirimWA&Sequence_444",
+        "tanggal&Sequence_436",
+        "tanggal&Sequence_405",
+        "pass&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan GCC WO Produksi YULIA.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "tanggal&Sequence_402",
+        "pass&Sequence_1",
+        "BacaTanggal&Sequence_3",
+        "max&Sequence_372",
+        "KirimWA&Sequence_372",
+        "tanggal&Sequence_332"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan GCC WO Produksi jam3.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "BacaTanggal&Sequence_443",
+        "max&Sequence_444",
+        "KirimWA&Sequence_444",
+        "tanggal&Sequence_436"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Reminder Bullmer.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "tanggal&Sequence_453",
+        "tanggal&Sequence_452",
+        "pass&Sequence_1",
+        "tanggal&Sequence_436"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Production Schedulle 3 Bulan.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "BACAWA&Sequence_332",
+        "bacaPer&Sequence_339",
+        "max&Sequence_338",
+        "pass&Sequence_1",
+        "max&Sequence_333"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Email Reminder Perbulan.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_381"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Closing 262.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "bacaWO&Sequence_6",
+        "GoToEnd&Sequence_6",
+        "Replace&Sequence_6"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan Supply Performance Bulanan..xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "bacaWO&Sequence_6",
+        "GoToEnd&Sequence_6",
+        "Replace&Sequence_6"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan Supply Performance Monthly.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "KirimWA&Sequence_32",
+        "bacaWO&Sequence_6",
+        "GoToEnd&Sequence_6",
+        "Replace&Sequence_6",
+        "max&Sequence_22",
+        "KirimWA&Sequence_22",
+        "bacaWO&Sequence_7",
+        "GoToEnd&Sequence_7",
+        "Replace&Sequence_7",
+        "PERIODE&Sequence_7",
+        "PERIODE2&Sequence_14",
+        "max&Sequence_16",
+        "KirimWA&Sequence_16",
+        "max&Sequence_17",
+        "KirimWA&Sequence_17"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Pengeluaran Barang Per Doc.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "bacaWO&Sequence_3",
+        "GoToEnd&Sequence_3",
+        "Replace&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan GCC WO Purchasing Monthly.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "KirimWA&Sequence_383",
+        "PERIODE&Sequence_3",
+        "max&Sequence_380",
+        "KirimWA&Sequence_380",
+        "pass&Sequence_1",
+        "max&Sequence_372",
+        "KirimWA&Sequence_372"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarik ILDV DateTransaction 1204.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "bacaWO&Sequence_6",
+        "Baca&Sequence_5",
+        "Baca&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan Alert Waktu Barang Monthly.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "tarikanOV&Sequence_5",
+        "CODE&Sequence_12",
+        "max&Sequence_13",
+        "KirimWA&Sequence_13",
+        "bacaWO&Sequence_6",
+        "Baca&Sequence_5",
+        "Baca&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Report Bullmer.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "max&Sequence_333",
+        "KirimWA&Sequence_333",
+        "KirimWA&Sequence_334",
+        "KirimWA&Sequence_342",
+        "KirimWA&Sequence_338",
+        "KirimWA&Sequence_339",
+        "KirimWA&Sequence_340"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "WO Produksi/Tarikan GCC WO Purchasing Berjalan.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "max&Sequence_372",
+        "KirimWA&Sequence_372",
+        "KirimWA&Sequence_9"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan GCC WO Preparation Monthly.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "KirimWA&Sequence_392",
+        "PERIODE&Sequence_3",
+        "max&Sequence_388",
+        "KirimWA&Sequence_388",
+        "pass&Sequence_1",
+        "max&Sequence_372",
+        "KirimWA&Sequence_372"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan WO Warehouse.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "bacaWO&Sequence_6",
+        "max&Sequence_16",
+        "KirimWA&Sequence_16",
+        "Baca&Sequence_3",
+        "Periode&Sequence_3",
+        "periode2&Sequence_13",
+        "max&Sequence_14",
+        "KirimWA&Sequence_14",
+        "max&Sequence_22",
+        "KirimWA&Sequence_22",
+        "KirimWA&Sequence_25",
+        "wa&Sequence_25",
+        "PERIODEEMAIL&Sequence_33"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan GCC Income VS Cost.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "max&Sequence_372",
+        "KirimWA&Sequence_372"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan GCC WO Finishing.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "KirimWA&Sequence_380",
+        "pass&Sequence_1",
+        "max&Sequence_372",
+        "KirimWA&Sequence_372"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan GCC Income VS Cost Monthly.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "max&Sequence_382",
+        "KirimWA&Sequence_382",
+        "PERIODE&Sequence_3",
+        "PERIODE2&Sequence_381",
+        "max&Sequence_372",
+        "KirimWA&Sequence_372",
+        "KirimWA&Sequence_387"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "coba.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "PERIODEEMAIL&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan GCC Productivity RFID.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "max&Sequence_390",
+        "KirimWA&Sequence_390",
+        "PERIODE&Sequence_3",
+        "pass&Sequence_1",
+        "max&Sequence_382",
+        "KirimWA&Sequence_382"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan GCC Alert WO QC.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_413",
+        "pass&Sequence_401",
+        "max&Sequence_402",
+        "KirimWA&Sequence_402",
+        "PERIODE&Sequence_403",
+        "max&Sequence_404",
+        "KirimWA&Sequence_404",
+        "KirimWA&Sequence_405",
+        "max&Sequence_397",
+        "KirimWA&Sequence_397",
+        "PERIODE&Sequence_398",
+        "max&Sequence_399",
+        "KirimWA&Sequence_399",
+        "KirimWA&Sequence_400",
+        "pass&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan Output Sewing VS Plan Shipment.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "max&Sequence_346",
+        "PERIODE1&Sequence_3",
+        "PERIODE2&Sequence_338",
+        "max&Sequence_333",
+        "max&Sequence_350",
+        "KirimWA&Sequence_342"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan QC Rework.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "PERIODE&Sequence_398",
+        "pass&Sequence_1",
+        "pass&Sequence_413",
+        "max&Sequence_397",
+        "KirimWA&Sequence_397"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Reminder Data Karyawan.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "tanggal&Sequence_453",
+        "tanggal&Sequence_436",
+        "tanggal&Sequence_452"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Report Data Karyawan Monthly.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "KirimWA&Sequence_465",
+        "KirimWA&Sequence_473",
+        "KirimWA&Sequence_464",
+        "KirimWA&Sequence_463",
+        "KirimWA&Sequence_462",
+        "KirimWA&Sequence_461",
+        "KirimWA&Sequence_460",
+        "KirimWA&Sequence_469",
+        "KirimWA&Sequence_470",
+        "KirimWA&Sequence_471",
+        "KirimWA&Sequence_472",
+        "KirimWA&Sequence_459"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan View Open PO VS EX Factory.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "max&Sequence_13",
+        "KirimWA&Sequence_13",
+        "inputuser3&Sequence_3",
+        "inputuser2&Sequence_3",
+        "InputUser1&Sequence_3",
+        "max&Sequence_18",
+        "KirimWA&Sequence_18",
+        "bacaWO&Sequence_6",
+        "bacaPer&Sequence_19",
+        "Baca&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Test.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan Data Onhand H-1.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Baca&Sequence_3",
+        "max&Sequence_13",
+        "KirimWA&Sequence_13",
+        "Baca&Sequence_19",
+        "dataRPA&Sequence_19",
+        "dataBU&Sequence_21",
+        "max&Sequence_23",
+        "KirimWA&Sequence_23"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "BOM Data Browser.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "gotoend&Sequence_3",
+        "Baca&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Whitelist Email.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "gaada&Sequence_4",
+        "dataSheet&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Whitelist Email Ver2 Create.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dataSheet&Sequence_2",
+        "gaada&Sequence_4"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Daily Data Master.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Baca&Sequence_19",
+        "bacaWO&Sequence_6",
+        "Baca&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Daily Email DHL.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "PERIODEEMAIL&Sequence_6",
+        "max&Sequence_3",
+        "KirimWA&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Daily Email DHL & FEDEX.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "EMAIL&Sequence_15",
+        "max&Sequence_14",
+        "KirimWA&Sequence_14",
+        "PERIODEEMAIL&Sequence_15",
+        "max&Sequence_12",
+        "KirimWA&Sequence_12",
+        "PERIODEEMAIL&Sequence_13"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Whitelist Add Member.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dataSheet&Sequence_2",
+        "gaada&Sequence_4",
+        "notfound&Sequence_4"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan Monitoring Pemakaian Fabric Weekly.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "max&Sequence_21",
+        "KirimWA&Sequence_21",
+        "max&Sequence_4",
+        "KirimWA&Sequence_4",
+        "SheetItemLedger&Sequence_3",
+        "Baca&Sequence_8",
+        "SheetItemLedger&Sequence_8",
+        "SheetMIS&Sequence_8",
+        "Baca&Sequence_13",
+        "InputUser1&Sequence_13",
+        "inputuser2&Sequence_13",
+        "inputuser3&Sequence_13",
+        "SheetViewOPO&Sequence_13",
+        "Baca&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan Report Bullmer.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "max&Sequence_385",
+        "KirimWA&Sequence_385",
+        "KirimWA&Sequence_384",
+        "periode&Sequence_3",
+        "pass&Sequence_1",
+        "max&Sequence_372",
+        "KirimWA&Sequence_372"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "WIP INFA.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "max&Sequence_20",
+        "KirimWA&Sequence_20",
+        "sheetBOM&Sequence_13",
+        "Baca&Sequence_13",
+        "gotoend&Sequence_13",
+        "Baca&Sequence_9",
+        "SheetItemLedger&Sequence_9",
+        "SheetMIS&Sequence_9",
+        "max&Sequence_8",
+        "KirimWA&Sequence_8",
+        "max&Sequence_3",
+        "KirimWA&Sequence_3",
+        "PERIODE2&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan For Internal Audit.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Baca&Sequence_5",
+        "bacaWO&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Report Monitoring Performance Shipment.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "KirimWA&Sequence_35",
+        "KirimWA&Sequence_34",
+        "KirimWA&Sequence_32",
+        "max&Sequence_31",
+        "KirimWA&Sequence_31",
+        "KirimWA&Sequence_30",
+        "KirimWA&Sequence_29",
+        "KirimWA&Sequence_22"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Report MA Lectra VS Aktual Produksi Flex Offer.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "KirimWA&Sequence_31",
+        "KirimWA&Sequence_30",
+        "KirimWA&Sequence_29",
+        "KirimWA&Sequence_28",
+        "max&Sequence_4",
+        "KirimWA&Sequence_4",
+        "KirimWA&Sequence_22"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Report WIP INFA.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "KirimWA&Sequence_6",
+        "KirimWA&Sequence_5",
+        "KirimWA&Sequence_4",
+        "KirimWA&Sequence_3",
+        "KirimWA&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Input Partlist.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "datBantuan&Sequence_6",
+        "max&Sequence_38",
+        "KirimWA&Sequence_38",
+        "PERIODE&Sequence_34",
+        "bacaWO&Sequence_6"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan Output Gelaran Cutting.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "periode&Sequence_3",
+        "pass&Sequence_1",
+        "max&Sequence_385",
+        "KirimWA&Sequence_385"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "WO Produksi/Tarikan GCC WO Produksi.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "BacaTanggal&Sequence_443",
+        "max&Sequence_444",
+        "KirimWA&Sequence_444",
+        "tanggal&Sequence_436",
+        "tanggal&Sequence_405"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Whitelist Email Ver2 Create NEW.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dataSheet&Sequence_2",
+        "gaada&Sequence_4"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan WO Exceses.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Baca&Sequence_73",
+        "datRPA1&Sequence_73",
+        "Baca&Sequence_70",
+        "datRPA1&Sequence_70",
+        "Baca&Sequence_64",
+        "datRPA1&Sequence_64",
+        "Baca&Sequence_60",
+        "datRPA1&Sequence_60",
+        "datRPA2&Sequence_60",
+        "datRPA4&Sequence_60",
+        "max&Sequence_57",
+        "KirimWA&Sequence_57",
+        "datRPA4&Sequence_54",
+        "Baca&Sequence_54",
+        "datRPA1&Sequence_54",
+        "datRPA2&Sequence_54",
+        "max&Sequence_48",
+        "KirimWA&Sequence_48",
+        "datRPA3&Sequence_43",
+        "Baca&Sequence_43",
+        "SheetItemLedger&Sequence_43",
+        "SheetMIS&Sequence_43",
+        "max&Sequence_42",
+        "KirimWA&Sequence_42",
+        "datRPA2&Sequence_37",
+        "Baca&Sequence_37",
+        "datRPA1&Sequence_37",
+        "max&Sequence_36",
+        "KirimWA&Sequence_36",
+        "datRPA1&Sequence_3",
+        "Baca&Sequence_3",
+        "max&Sequence_13",
+        "KirimWA&Sequence_13"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Reminder Submission KK.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "datRPA&Sequence_380",
+        "pass&Sequence_1",
+        "max&Sequence_372",
+        "KirimWA&Sequence_372",
+        "KirimWA&Sequence_380"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Input OW Fedex.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "max&Sequence_397",
+        "KirimWA&Sequence_397",
+        "max&Sequence_399",
+        "KirimWA&Sequence_399",
+        "KirimWA&Sequence_400",
+        "pass&Sequence_401",
+        "max&Sequence_402",
+        "KirimWA&Sequence_402",
+        "PERIODE&Sequence_403",
+        "max&Sequence_404",
+        "KirimWA&Sequence_404",
+        "KirimWA&Sequence_405",
+        "pass&Sequence_1",
+        "pass&Sequence_413",
+        "PERIODE&Sequence_398"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Reminder Performance Shipment.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "tanggal&Sequence_458",
+        "tanggal&Sequence_456",
+        "pass&Sequence_1",
+        "tanggal&Sequence_453"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Report Monitoring Pemakaian Fabric Weekly [Selasa].xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "KirimWA&Sequence_33",
+        "KirimWA&Sequence_22",
+        "KirimWA&Sequence_23",
+        "KirimWA&Sequence_24",
+        "KirimWA&Sequence_26"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Input OW DHL.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "datRPA&Sequence_398",
+        "pass&Sequence_1",
+        "PERIODE&Sequence_398"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "WO Produksi/Tarikan GCC WO Preparation.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "max&Sequence_372",
+        "KirimWA&Sequence_372",
+        "KirimWA&Sequence_9"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Report E-Sport Gistex.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "datBadminton&Sequence_392",
+        "KirimWA&Sequence_393",
+        "datLPUTRI&Sequence_385",
+        "datLPUTRA&Sequence_377",
+        "datBadminton&Sequence_385",
+        "datPINGPONG&Sequence_385",
+        "datVOLI&Sequence_385",
+        "KirimWA&Sequence_386",
+        "KirimWA&Sequence_384",
+        "datBadminton&Sequence_377",
+        "datPINGPONG&Sequence_377",
+        "datVOLI&Sequence_377",
+        "KirimWA&Sequence_371",
+        "datVOLI&Sequence_369",
+        "datBadminton&Sequence_369",
+        "datPINGPONG&Sequence_369",
+        "datPINGPONG&Sequence_361",
+        "KirimWA&Sequence_363",
+        "datBadminton&Sequence_361",
+        "KirimWA&Sequence_356",
+        "datBadminton&Sequence_354",
+        "pass&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "WO Produksi/Tarikan GCC PO Preparation.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "max&Sequence_372",
+        "KirimWA&Sequence_372",
+        "KirimWA&Sequence_9"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Report Suhu.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "max&Sequence_333",
+        "KirimWA&Sequence_333",
+        "KirimWA&Sequence_334"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Reminder Pickup Trucking Request.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "max&Sequence_372",
+        "KirimWA&Sequence_372",
+        "KirimWA&Sequence_380",
+        "datRPA&Sequence_380"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Reminder Suhu.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "KirimWA&Sequence_385",
+        "datRPA&Sequence_385",
+        "pass&Sequence_1",
+        "max&Sequence_372",
+        "KirimWA&Sequence_372"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ILDV VS Direct as of Entry Amount.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "periode&Sequence_3",
+        "max&Sequence_16",
+        "KirimWA&Sequence_16",
+        "Baca&Sequence_3",
+        "max&Sequence_14",
+        "KirimWA&Sequence_14",
+        "max&Sequence_22",
+        "KirimWA&Sequence_22"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Jadwal E-Sport Gistex.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "pass&Sequence_1",
+        "datBadminton&Sequence_354",
+        "KirimWA&Sequence_356"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan Aging Perbuyer.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "readwa2&Sequence_24",
+        "readwa&Sequence_22",
+        "READSTATUS&Sequence_20",
+        "readrpa2&Sequence_9",
+        "bacaWO&Sequence_9",
+        "GoToEnd&Sequence_9",
+        "Replace&Sequence_9",
+        "PERIODE&Sequence_9",
+        "readrpa&Sequence_9",
+        "replace&Sequence_10",
+        "replace&Sequence_5",
+        "bacaWO&Sequence_3",
+        "GoToEnd&Sequence_3",
+        "Replace&Sequence_3",
+        "PERIODE&Sequence_3",
+        "readrpa&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Tarikan Dead Stock Material.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "readrpa2&Sequence_11",
+        "REPLACE&Sequence_5",
+        "bacaWO&Sequence_3",
+        "GoToEnd&Sequence_3",
+        "Replace&Sequence_3",
+        "PERIODE&Sequence_3",
+        "readrpa&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+"C:\Users\Desktop\AppData\Local\Programs\UiPath\Studio\UiRobot.exe" -f "\\10.8.0.35\Bersama\IT\RPA aging per buyer\RPA\Tarikan Aging Perbuyer.xaml"
