@@ -1,0 +1,30 @@
+    Dim WB1 As Workbook
+    Dim SH1_Home As Worksheet
+    Dim FilePathRPA As String
+    Dim FileNum As Integer
+
+Sub Validasi_RPA()
+
+    Set WB1 = ThisWorkbook
+    Set SH1_Home = WB1.Worksheets("HOME")
+    FilePathRPA = WB1.Worksheets("ADMINISTRATOR").Range("B2").value
+    
+    ' Cek apakah file sedang dikunci oleh pengguna lain
+    FileNum = FreeFile
+    On Error Resume Next
+    Open FilePathRPA For Binary Access Read Lock Read As #FileNum
+    If Err.Number <> 0 Then
+        SH1_Home.Activate
+        SH1_Home.Range("C2").Select
+        MsgBox "Proses dibatalkan karena RPA sedang Berjalan", vbExclamation, "EXPORT EMAIL FAILS"
+        End
+        On Error GoTo 0
+        End
+    End If
+    Close #FileNum
+    On Error GoTo 0
+    
+    SH1_Home.Activate
+    SH1_Home.Range("C2").Select
+    
+End Sub
