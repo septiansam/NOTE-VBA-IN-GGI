@@ -1,0 +1,8 @@
+MENGUBAH NAMA BULAN MENJADI ANGKA
+
+=MATCH(A1, {"January","February","March","April","May","June","July","August","September","October","November","December"}, 0)
+
+JIKA A1 = JANUARY DST
+
+MENGUBAH NOMOR MENJADI NAMA BULAN
+=CHOOSE(A1, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")

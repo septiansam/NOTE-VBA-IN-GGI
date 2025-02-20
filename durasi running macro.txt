@@ -1,0 +1,8 @@
+    Dim starttime As Double
+    Dim elapsedtime As Double
+    starttime = Timer
+
+
+
+    elapsedtime = Round(Timer - starttime, 2)
+    MsgBox "Successfully done in " & elapsedtime & " seconds", vbInformation, "©SAM - Running Success"

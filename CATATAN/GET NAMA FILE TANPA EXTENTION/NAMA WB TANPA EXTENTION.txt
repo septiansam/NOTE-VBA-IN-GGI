@@ -1,0 +1,9 @@
+Sub TampilkanNamaWorkbook()
+    Dim wbName As String
+    
+    ' Ambil nama workbook yang aktif tanpa ekstensi
+    wbName = Left(ActiveWorkbook.Name, InStrRev(ActiveWorkbook.Name, ".") - 1)
+    
+    ' Tampilkan hasil dalam message box
+    MsgBox "Nama Workbook: " & wbName, vbInformation, "Informasi Workbook"
+End Sub

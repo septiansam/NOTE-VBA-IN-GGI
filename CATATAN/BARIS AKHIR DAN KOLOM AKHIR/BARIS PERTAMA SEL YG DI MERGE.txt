@@ -1,0 +1,9 @@
+Sub TestFRMerge()
+Dim FR As Long
+
+'UNTUK MENGECEK BARIS TERAKHIR SEL YG DI MERGE DI AKHIR DI -1
+'FR = Range("A2").MergeArea.Row + Range("A2").MergeArea.Rows.Count -1
+
+'BARIS PERTAMA SETELAH KOLOM HEADER YG DI MERGE TIDAK DI - 1
+FR = Range("A2").MergeArea.Row + Range("A2").MergeArea.Rows.Count
+End Sub
