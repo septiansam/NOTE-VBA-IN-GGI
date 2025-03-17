@@ -1,0 +1,15 @@
+Sub CekDanBuatFolder()
+    Dim strFolderPath As String
+    
+    ' Tentukan path folder yang akan dicek
+    strFolderPath = "\\10.8.0.35\Bersama\BEACUKAI\CLOSING KONTRAK\24001082"
+    
+    ' Periksa apakah folder sudah ada
+    If Dir(strFolderPath, vbDirectory) = "" Then
+        ' Jika belum ada, buat folder baru
+        MkDir strFolderPath
+        MsgBox "Folder berhasil dibuat: " & strFolderPath, vbInformation, "Sukses"
+    Else
+        MsgBox "Folder sudah ada: " & strFolderPath, vbExclamation, "Informasi"
+    End If
+End Sub

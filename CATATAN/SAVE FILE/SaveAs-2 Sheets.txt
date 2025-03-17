@@ -23,3 +23,8 @@
 
 
     ' UPDATE 11 JULI 2023 SELESAI
+
+
+Sheets(Array("TES3", "TES6")).Select
+
+Sheets("TES3").ExportAsFixedFormat Type:=xlTypePDF, Filename:=Save

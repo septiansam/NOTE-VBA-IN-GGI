@@ -1,0 +1,30 @@
+Sub FilterAndDelete()
+    Dim ws As Worksheet
+    Dim rng As Range
+    
+    ' Tentukan worksheet aktif
+    Set ws = ActiveSheet
+    
+    ' Pastikan ada data di kolom A
+    If ws.Cells(Rows.Count, "A").End(xlUp).Row < 2 Then
+        MsgBox "Tidak ada data untuk difilter.", vbExclamation, "Peringatan"
+        Exit Sub
+    End If
+    
+    ' Tentukan rentang data (misalnya mulai dari A1, sesuaikan jika ada header)
+    Set rng = ws.Range("A1").CurrentRegion
+    
+    ' Terapkan filter untuk menyaring nilai yang tidak sama dengan 1 di kolom A
+    rng.AutoFilter Field:=1, Criteria1:="<>" & 1
+    
+    ' Cek apakah ada data yang terfilter
+    If ws.Range("A2:A" & ws.Cells(Rows.Count, "A").End(xlUp).Row).SpecialCells(xlCellTypeVisible).Count > 1 Then
+        ' Hapus semua baris yang terfilter (kecuali header)
+        ws.Range("A2:A" & ws.Cells(Rows.Count, "A").End(xlUp).Row).SpecialCells(xlCellTypeVisible).EntireRow.Delete
+    End If
+    
+    ' Matikan filter
+    ws.AutoFilterMode = False
+
+    MsgBox "Data dengan nilai di kolom A tidak sama dengan 1 telah dihapus.", vbInformation, "Selesai"
+End Sub
