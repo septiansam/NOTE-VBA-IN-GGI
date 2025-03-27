@@ -1,0 +1,15 @@
+    Dim str_Waktu As String, str_Pesan1 As String
+    Dim currentTime As Double
+    currentTime = VBA.Time
+    Select Case currentTime
+        Case TimeValue("05:00:00") To TimeValue("10:59:59")
+            str_Waktu = "Pagi"
+        Case TimeValue("11:00:00") To TimeValue("14:59:59")
+            str_Waktu = "Siang"
+        Case TimeValue("15:00:00") To TimeValue("18:00:00")
+            str_Waktu = "Sore"
+        Case Else
+            str_Waktu = "Malam"
+    End Select
+    SH1_RPA_Email.Range("E1").Value = "TEXT"
+    SH1_RPA_Email.Range("E2").Value = "Selamat " & str_Waktu

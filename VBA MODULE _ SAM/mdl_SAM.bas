@@ -288,3 +288,17 @@ End Function
 '+------------------------------------------------+
 ' Kode dibawah ini
 ' If Evaluate("isref('" & "TES" & "'!A1)") Then Sheets("TES").Delete
+
+Sub MasukanKomen(WS As Worksheet, cellAddress As String, commentText As String)
+    With WS.Range(cellAddress)
+        ' Hapus komentar yang ada, jika ada
+        If Not .Comment Is Nothing Then .Comment.Delete
+
+        ' Tambahkan komentar baru
+        .AddComment
+        .Comment.Text Text:=commentText
+    End With
+
+    'CARA PAKE:
+'    MasukanKomen SH1_CC3, "F6", "test"
+End Sub
