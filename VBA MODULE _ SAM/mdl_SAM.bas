@@ -302,3 +302,36 @@ Sub MasukanKomen(WS As Worksheet, cellAddress As String, commentText As String)
     'CARA PAKE:
 '    MasukanKomen SH1_CC3, "F6", "test"
 End Sub
+
+Sub DeleteSheetsExceptAndLeftRPA(ParamArray sheetNames() As Variant)
+    Dim WS As Worksheet
+    Dim sheetName As Variant
+    Dim keepSheets As Object
+    Dim sheetExists As Boolean
+    
+    ' Simpan daftar sheet yang harus dipertahankan
+    Set keepSheets = CreateObject("Scripting.Dictionary")
+    For Each sheetName In sheetNames
+        keepSheets(CStr(sheetName)) = True
+    Next sheetName
+
+    Application.DisplayAlerts = False
+    For Each WS In ThisWorkbook.Worksheets
+        ' Periksa apakah sheet harus dihapus
+        If Not keepSheets.exists(WS.Name) Then
+            ' Cek apakah sheet memiliki awalan "rpa" (tidak case-sensitive)
+            NamaSheet = Left(WS.Name, 3)
+            If NamaSheet <> "RPA" Then
+                WS.Delete
+            End If
+        End If
+    Next WS
+    
+    On Error Resume Next
+        ThisWorkbook.Sheets("RPA_Email").Delete
+        ThisWorkbook.Sheets("RPA_WA").Delete
+    On Error GoTo 0
+    
+'    Application.DisplayAlerts = True
+''CARA PAKE: Call DeleteSheetsExceptAndLeftRPA("HOME", "IU - Email", "IU - DATA")
+End Sub
