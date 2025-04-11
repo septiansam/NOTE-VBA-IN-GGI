@@ -1,0 +1,4 @@
+        With SH1_RPA1.Range("B2:B" & SH1_RPA1.Cells.Find("*", , xlFormulas, xlPart, xlByRows, xlPrevious).Row)
+            .NumberFormat = "@" ' Ubah format sel menjadi teks
+            .Value = Evaluate("TEXT(" & .Address & ",""MM/DD/YYYY"")") ' Konversi nilai ke format teks tanggal
+        End With

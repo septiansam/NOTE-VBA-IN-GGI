@@ -1,0 +1,13 @@
+Sub BUTTON_CariFolder_Hasil_Split()
+    Dim FldrPicker As FileDialog
+    Dim myFolder As String
+
+    Set FldrPicker = Application.FileDialog(msoFileDialogFolderPicker)
+    With FldrPicker
+        .Title = "Select A Target Folder 'HASIL SPLIT'"
+        .AllowMultiSelect = False
+        If .Show <> -1 Then Exit Sub
+        myFolder = .SelectedItems(1)
+        ThisWorkbook.Worksheets("HOME").Range("E13").Value = myFolder
+    End With
+End Sub

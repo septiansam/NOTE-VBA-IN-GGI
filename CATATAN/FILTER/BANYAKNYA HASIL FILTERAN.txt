@@ -1,0 +1,34 @@
+With SH1_IU_Data.AutoFilter.Range
+        BanyaknyaHasilFilteran = SH1_IU_Data.Range("A" & .Offset(1, 0).SpecialCells(xlCellTypeVisible)(1).Row).Row
+        
+        If BanyaknyaHasilFilteran = LR1_IUDt + 1 Then
+            MsgBox ("Proses dihentikan. tidak ada data yg bisa proses!"), vbCritical
+            Stop
+        Else
+            SH1_IU_Data.Range("H2:H" & LR1_IUDt).Copy
+            SH1_RPA3.Activate
+            SH1_RPA3.Range("A2").PasteSpecial Paste:=xlPasteValues
+            LR1 = SH1_RPA3.Cells.Find("*", , xlFormulas, xlPart, xlByRows, xlPrevious).Row
+        
+            SH1_RPA3.Range("B2:B" & LR1).FormulaR1C1 = "=""RPA3-""&RC[-1]"
+            SH1_RPA3.Range("B2:B" & LR1).Copy
+            SH1_RPA3.Range("B2").PasteSpecial xlPasteValues
+        
+            SH1_IU_Data.Range("L2:L" & LR1_IUDt).Copy
+            SH1_RPA3.Range("C2").PasteSpecial xlPasteValues
+            
+            SH1_IU_Data.Range("K2:K" & LR1_IUDt).Copy
+            SH1_RPA3.Range("D2").PasteSpecial xlPasteValues
+            
+            SH1_IU_Data.Range("I2:I" & LR1_IUDt).Copy
+            SH1_RPA3.Range("E2").PasteSpecial xlPasteValues
+            
+            SH1_IU_Data.Range("AF2:AF" & LR1_IUDt).Copy
+            SH1_RPA3.Range("F2").PasteSpecial xlPasteValues
+        
+            SH1_IU_Data.Range("AG2:AG" & LR1_IUDt).Copy
+            SH1_RPA3.Range("G2").PasteSpecial xlPasteValues
+            
+            SH1_RPA3.Cells.EntireColumn.AutoFit
+        End If
+    End With
