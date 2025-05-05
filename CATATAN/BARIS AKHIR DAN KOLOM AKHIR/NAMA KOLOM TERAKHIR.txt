@@ -1,2 +1,8 @@
     LC1 = SH1_Resume_PerFactory.Cells.Find("*", , xlFormulas, xlPart, xlByColumns, xlPrevious).Column + 1
-    Str_LC1 = Split(SH1_Resume_PerFactory.Cells(1, LC1).Address, "$")(1)
+    
+
+'''MENDAPATKAN HANYA HURUF KOLOM (INDEX PERTAMA)
+Str_LC1 = Split(SH1_Resume_PerFactory.Cells(1, LC1).Address, "$")(1)
+
+'''MENDAPATKAN HURUF DAN NUMBER (A2) -> parameter address(RowAbsolute, ColumnAbsolute) jika diisi true akan ada dolar sebelum baris dan sebelum kolom
+Str_LC1 = SH1_Resume_PerFactory.Cells(2,1).Address(False, False)
